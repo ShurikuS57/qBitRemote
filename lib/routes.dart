@@ -1,0 +1,99 @@
+import 'package:firebase_analytics/firebase_analytics.dart';
+import 'package:firebase_analytics/observer.dart';
+import 'package:qBitRemote/api/qbittoren_repository.dart';
+import 'package:qBitRemote/app/pages/add_server/add_server_cubit.dart';
+import 'package:qBitRemote/app/pages/add_server/add_server_page.dart';
+import 'package:qBitRemote/app/pages/add_torrent/add_torrent_cubit.dart';
+import 'package:qBitRemote/app/pages/add_torrent/add_torrent_page.dart';
+import 'package:qBitRemote/app/pages/app_settings/app_settings_page.dart';
+import 'package:qBitRemote/app/pages/app_settings/app_settings_cubit.dart';
+import 'package:qBitRemote/app/pages/server_list/server_list.dart';
+import 'package:qBitRemote/app/pages/server_list/server_list_cubit.dart';
+import 'package:qBitRemote/app/pages/torrent_info/torrent_info_page.dart';
+import 'package:qBitRemote/app/widgets/multisect/multi_select_cubit.dart';
+import 'package:qBitRemote/repo/local_repository.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'app/pages/splash/splash_page.dart';
+import 'package:cookie_jar/cookie_jar.dart';
+import 'app/pages/torrent_list/torrents_list_cubit.dart';
+import 'app/pages/torrent_list/torrents_page.dart';
+
+class Routes {
+  static const String splashPage = "/";
+  static const String serverListPage = "/server_list";
+  static const String addServerPage = "/add_server";
+  static const String torrentsPage = "/torrents";
+  static const String addTorrentPage = "/add_torrent";
+  static const String torrentInfoPage = "/torrent_info";
+  static const String appSettingsPage = "/app_settings";
+
+  static CookieJar cookieJar;
+  static LocalRepository _localRepository = HiveRepositoryImpl();
+  static QBitRemoteRepository _qBittorentRepository =
+      QBitRemoteRepositoryImpl();
+
+  static FirebaseAnalytics analytics = FirebaseAnalytics();
+  static FirebaseAnalyticsObserver observer =
+  FirebaseAnalyticsObserver(analytics: analytics);
+
+  static Map<String, WidgetBuilder> getRoutes() {
+    return {
+      Routes.splashPage: (BuildContext context) => BlocProvider(
+            create: (_) => ServerListCubit(
+                localRepository: _localRepository,
+                qBittorentRepository: _qBittorentRepository),
+            child: SplashPage(),
+          ),
+      Routes.serverListPage: (BuildContext context) => BlocProvider(
+            create: (_) => ServerListCubit(
+                localRepository: _localRepository,
+                qBittorentRepository: _qBittorentRepository),
+            child: ServerListPage(),
+          ),
+      Routes.addServerPage: (BuildContext context) => BlocProvider(
+            create: (_) =>
+                AddServerCubit(_qBittorentRepository, _localRepository),
+            child: AddServerPage(),
+          ),
+      Routes.torrentsPage: (BuildContext context) => MultiBlocProvider(
+            providers: [
+              BlocProvider(
+                create: (_) => TorrentListCubit(
+                    localRepository: _localRepository,
+                    qBittorentRepository: _qBittorentRepository),
+              ),
+              BlocProvider(
+                create: (_) => MultiSelectCubit(),
+              )
+            ],
+            child: TorrentListScreen(),
+          ),
+      Routes.addTorrentPage: (BuildContext context) => BlocProvider(
+            create: (_) => AddTorrentCubit(
+                localRepository: _localRepository,
+                qBittorentRepository: _qBittorentRepository),
+            child: AddTorrentScreen(),
+          ),
+      Routes.torrentInfoPage: (BuildContext context) => MultiBlocProvider(
+            providers: [
+              BlocProvider(
+                create: (_) => TorrentListCubit(
+                    localRepository: _localRepository,
+                    qBittorentRepository: _qBittorentRepository),
+              ),
+              BlocProvider(
+                create: (_) => MultiSelectCubit(),
+              )
+            ],
+            child: TorrentInfoScreen(),
+          ),
+      Routes.appSettingsPage: (BuildContext context) => BlocProvider(
+            create: (_) => AppSettingsCubit(
+                localRepository: _localRepository,
+                qBittorentRepository: _qBittorentRepository),
+            child: AppSettingsScreen(),
+          )
+    };
+  }
+}

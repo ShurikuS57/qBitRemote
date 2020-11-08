@@ -1,0 +1,53 @@
+name: qBitRemote
+description: A new Flutter project.
+
+publish_to: 'none'
+
+version: 0.1.0+2
+
+environment:
+  sdk: ">=2.7.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  intl: 0.16.1
+
+  cupertino_icons: ^1.0.0
+  supercharged: ^1.10.0
+
+  # architecture
+  bloc: ^6.1.0
+  flutter_bloc: ^6.0.6
+
+  provider: ^4.3.2+2
+  path_provider: ^1.6.24
+  dio: ^3.0.10
+  dio_cookie_manager: 1.0.0
+  hive: ^1.4.4+1
+  hive_flutter: ^0.3.1
+  toggle_switch: ^0.1.8
+  file_picker: ^2.0.12
+  string_validator: ^0.1.4
+  focus_detector: ^1.0.3
+
+  #analitics
+  firebase_analytics: ^6.2.0
+
+dependency_overrides:
+# path: 1.7.0
+# dartx: ">=0.2.0 <1.0.0"
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  hive_generator: ^0.8.2
+  build_runner: ^1.10.4
+
+flutter:
+  generate: true
+  uses-material-design: true
+  assets:
+    - assets/icons/

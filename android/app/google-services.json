@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "983443302376",
+    "firebase_url": "https://qbitremote-568e4.firebaseio.com",
+    "project_id": "qbitremote-568e4",
+    "storage_bucket": "qbitremote-568e4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:983443302376:android:c5613509392533b717265d",
+        "android_client_info": {
+          "package_name": "ru.taptm.qbitremote"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "983443302376-k5osag2cuhsn0521msciq7erdlq6ifg5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBG7rv7FB8BOAi22pkjNWRoUIhTi50PC1s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "983443302376-k5osag2cuhsn0521msciq7erdlq6ifg5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
