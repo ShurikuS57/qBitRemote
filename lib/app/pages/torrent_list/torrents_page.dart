@@ -1,9 +1,9 @@
 import 'dart:async';
 
-import 'package:qBitRemote/api/models/torrent_enity.dart';
+import 'package:qBitRemote/api/models/torrent_entity.dart';
 import 'package:qBitRemote/app/widgets/MaterialDialog.dart';
-import 'package:qBitRemote/app/widgets/multisect/multi_select_app_bar.dart';
-import 'package:qBitRemote/app/widgets/multisect/multi_select_cubit.dart';
+import 'package:qBitRemote/app/widgets/multiselect/multi_select_app_bar.dart';
+import 'package:qBitRemote/app/widgets/multiselect/multi_select_cubit.dart';
 import 'package:qBitRemote/commons/colors.dart';
 import 'package:qBitRemote/routes.dart';
 import 'package:flutter/material.dart';

@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:qBitRemote/api/http.dart';
-import 'package:qBitRemote/api/qbittoren_repository.dart';
+import 'package:qBitRemote/api/qbitremote_repository.dart';
 import 'package:qBitRemote/local/models/server_host.dart';
 import 'package:qBitRemote/repo/local_repository.dart';
 import 'package:flutter/foundation.dart';

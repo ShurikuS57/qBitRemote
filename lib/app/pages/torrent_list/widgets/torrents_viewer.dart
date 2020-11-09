@@ -1,7 +1,7 @@
-import 'package:qBitRemote/api/models/torrent_enity.dart';
+import 'package:qBitRemote/api/models/torrent_entity.dart';
 import 'package:qBitRemote/app/utils/state_helper.dart';
-import 'package:qBitRemote/app/widgets/multisect/multi_select_list_view.dart';
-import 'package:qBitRemote/app/widgets/multisect/multi_select_cubit.dart';
+import 'package:qBitRemote/app/widgets/multiselect/multi_select_cubit.dart';
+import 'package:qBitRemote/app/widgets/multiselect/multi_select_list_view.dart';
 import 'package:qBitRemote/commons/colors.dart';
 import 'package:qBitRemote/routes.dart';
 import 'package:flutter/material.dart';

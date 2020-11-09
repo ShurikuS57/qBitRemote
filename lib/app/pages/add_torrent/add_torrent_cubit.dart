@@ -1,5 +1,5 @@
 import 'package:qBitRemote/api/http.dart';
-import 'package:qBitRemote/api/qbittoren_repository.dart';
+import 'package:qBitRemote/api/qbitremote_repository.dart';
 import 'package:qBitRemote/app/utils/validator_helper.dart';
 import 'package:qBitRemote/repo/local_repository.dart';
 import 'package:flutter/material.dart';

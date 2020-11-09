@@ -1,7 +1,7 @@
 import 'package:qBitRemote/app/pages/app_settings/app_settings_cubit.dart';
 import 'package:qBitRemote/app/utils/format_helper.dart';
 import 'package:qBitRemote/app/widgets/action_button.dart';
-import 'package:qBitRemote/app/widgets/custom_trackk_shape.dart';
+import 'package:qBitRemote/app/widgets/custom_track_shape.dart';
 import 'package:qBitRemote/app/widgets/input_text.dart';
 import 'package:qBitRemote/commons/colors.dart';
 import 'package:qBitRemote/local/models/app_settings.dart';

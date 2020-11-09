@@ -1,23 +1,23 @@
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_analytics/observer.dart';
-import 'package:qBitRemote/api/qbittoren_repository.dart';
+import 'package:qBitRemote/api/qbitremote_repository.dart';
 import 'package:qBitRemote/app/pages/add_server/add_server_cubit.dart';
 import 'package:qBitRemote/app/pages/add_server/add_server_page.dart';
 import 'package:qBitRemote/app/pages/add_torrent/add_torrent_cubit.dart';
 import 'package:qBitRemote/app/pages/add_torrent/add_torrent_page.dart';
 import 'package:qBitRemote/app/pages/app_settings/app_settings_page.dart';
 import 'package:qBitRemote/app/pages/app_settings/app_settings_cubit.dart';
-import 'package:qBitRemote/app/pages/server_list/server_list.dart';
 import 'package:qBitRemote/app/pages/server_list/server_list_cubit.dart';
 import 'package:qBitRemote/app/pages/torrent_info/torrent_info_page.dart';
-import 'package:qBitRemote/app/widgets/multisect/multi_select_cubit.dart';
 import 'package:qBitRemote/repo/local_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'app/pages/server_list/server_list_page.dart';
 import 'app/pages/splash/splash_page.dart';
 import 'package:cookie_jar/cookie_jar.dart';
 import 'app/pages/torrent_list/torrents_list_cubit.dart';
 import 'app/pages/torrent_list/torrents_page.dart';
+import 'app/widgets/multiselect/multi_select_cubit.dart';
 
 class Routes {
   static const String splashPage = "/";
