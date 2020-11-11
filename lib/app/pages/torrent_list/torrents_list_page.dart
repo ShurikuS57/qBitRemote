@@ -34,7 +34,8 @@ class _TorrentListScreenState extends State<TorrentListScreen> {
   void _restartUpdateTimer() async {
     context.bloc<TorrentListCubit>().loadTorrents();
     _updateTimer?.cancel();
-    int updateSeconds = await context.bloc<TorrentListCubit>().getUpdateTimeSettings();
+    int updateSeconds =
+        await context.bloc<TorrentListCubit>().getUpdateTimeSettings();
     _updateTimer = Timer.periodic(Duration(seconds: updateSeconds), (timer) {
       _restartUpdateTimer();
     });
@@ -55,7 +56,9 @@ class _TorrentListScreenState extends State<TorrentListScreen> {
     return Scaffold(
       appBar: MultiselectAppBar(
         appBar: AppBar(
-          title: Text(AppLocalizations.of(context).torrentList),
+          title: SizedBox(
+            child: buildAppBarBody(context),
+          ),
           actions: [
             IconButton(
               icon: Icon(Icons.settings_applications),
@@ -122,6 +125,40 @@ class _TorrentListScreenState extends State<TorrentListScreen> {
     );
   }
 
+  GestureDetector buildAppBarBody(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        Navigator.pushNamed(context, Routes.serverListPage);
+      },
+      child: BlocConsumer<TorrentListCubit, TorrentListState>(
+        buildWhen: (context, state) {
+          return state is ServerTitle;
+        },
+        builder: (context, state) {
+          String title = "";
+          if (state is ServerTitle) {
+            title = state.host.name + "\n" + state.host.host;
+          }
+          return Row(
+            children: [
+              Text(
+                title,
+                style: TextStyle(fontSize: 16),
+              ),
+            ],
+          );
+        },
+        listener: (context, state) {
+          return Row(
+            children: [
+              Text("2"),
+            ],
+          );
+        },
+      ),
+    );
+  }
+
   void _showDeleteDialog(BuildContext context, List<TorrentEntity> list) {
     MaterialDialog(context)
       ..title = AppLocalizations.of(context).questionDelete
@@ -148,6 +185,9 @@ class _TorrentsScreenView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<TorrentListCubit, TorrentListState>(
+      buildWhen: (previousState, state) {
+        return !(state is ServerTitle);
+      },
       listener: (context, state) {
         if (state is ShowError) {
           Scaffold.of(context).showSnackBar(SnackBar(

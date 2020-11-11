@@ -16,7 +16,7 @@ import 'app/pages/server_list/server_list_page.dart';
 import 'app/pages/splash/splash_page.dart';
 import 'package:cookie_jar/cookie_jar.dart';
 import 'app/pages/torrent_list/torrents_list_cubit.dart';
-import 'app/pages/torrent_list/torrents_page.dart';
+import 'app/pages/torrent_list/torrents_list_page.dart';
 import 'app/widgets/multiselect/multi_select_cubit.dart';
 
 class Routes {
@@ -61,7 +61,7 @@ class Routes {
               BlocProvider(
                 create: (_) => TorrentListCubit(
                     localRepository: _localRepository,
-                    qBittorentRepository: _qBittorentRepository),
+                    qBitRemoteRepository: _qBittorentRepository),
               ),
               BlocProvider(
                 create: (_) => MultiSelectCubit(),
@@ -80,7 +80,7 @@ class Routes {
               BlocProvider(
                 create: (_) => TorrentListCubit(
                     localRepository: _localRepository,
-                    qBittorentRepository: _qBittorentRepository),
+                    qBitRemoteRepository: _qBittorentRepository),
               ),
               BlocProvider(
                 create: (_) => MultiSelectCubit(),
