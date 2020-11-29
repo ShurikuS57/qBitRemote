@@ -118,6 +118,7 @@ class _TorrentInfoScreenState extends State<TorrentInfoScreen> {
                 ),
                 ListView.builder(
                     shrinkWrap: true,
+                    physics: NeverScrollableScrollPhysics(),
                     itemCount: torrent.files.length,
                     itemBuilder: (BuildContext ctxt, int index) {
                       return _buildFileInfoCard(torrent.files[index]);
