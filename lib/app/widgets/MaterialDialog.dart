@@ -100,9 +100,12 @@ class MaterialDialog {
       builder: (BuildContext context) {
         return AlertDialog(
           title: Text(title, style: titleTextStyle),
-          content: SingleChildScrollView(
-            child: ListBody(
-              children: [Text(body, style: bodyTextStyle), _buildBodyWidget(), _buildCheckboxList()],
+          content: Container(
+            width: double.maxFinite,
+            child: SingleChildScrollView(
+              child: ListBody(
+                children: [Text(body, style: bodyTextStyle), _buildBodyWidget(), _buildCheckboxList()],
+              ),
             ),
           ),
           actions: [

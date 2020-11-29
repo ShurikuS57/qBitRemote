@@ -3,7 +3,7 @@ description: A new Flutter project.
 
 publish_to: 'none'
 
-version: 0.1.0+2
+version: 0.1.1+2
 
 environment:
   sdk: ">=2.7.0 <3.0.0"
@@ -20,7 +20,7 @@ dependencies:
 
   # architecture
   bloc: ^6.1.0
-  flutter_bloc: ^6.0.6
+  flutter_bloc: ^6.1.1
 
   provider: ^4.3.2+2
   path_provider: ^1.6.24
@@ -32,11 +32,12 @@ dependencies:
   file_picker: ^2.0.12
   string_validator: ^0.1.4
   focus_detector: ^1.0.3
+  package_info: ^0.4.3+2
 
   #analitics
   firebase_analytics: ^6.2.0
 
-dependency_overrides:
+#dependency_overrides:
 # path: 1.7.0
 # dartx: ">=0.2.0 <1.0.0"
 
