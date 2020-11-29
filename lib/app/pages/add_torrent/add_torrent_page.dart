@@ -45,7 +45,7 @@ class _AddTorrentScreenState extends State<AddTorrentScreen> {
       body: BlocConsumer<AddTorrentCubit, AddTorrentState>(
           listener: (context, state) {
         if (state is ShowError) {
-          Scaffold.of(context).showSnackBar(SnackBar(
+          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
             content: Text(state.message),
           ));
         }

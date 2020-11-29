@@ -190,7 +190,7 @@ class _TorrentsScreenView extends StatelessWidget {
       },
       listener: (context, state) {
         if (state is ShowError) {
-          Scaffold.of(context).showSnackBar(SnackBar(
+          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
             content: Text(state.error),
           ));
         } else if (state is DeleteTorrentsSuccess) {

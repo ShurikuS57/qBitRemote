@@ -58,7 +58,7 @@ class _TorrentInfoScreenState extends State<TorrentInfoScreen> {
         child: BlocConsumer<TorrentListCubit, TorrentListState>(
             listener: (context, state) {
           if (state is ShowError) {
-            Scaffold.of(context).showSnackBar(SnackBar(
+            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
               content: Text(state.error),
             ));
           } else if (state is GoToBackScreen) {

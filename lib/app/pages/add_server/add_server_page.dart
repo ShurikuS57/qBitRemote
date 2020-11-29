@@ -79,12 +79,12 @@ class _AddServerPageState extends State<AddServerPage> {
             listener: (context, state) {
               if (state is TestConnectResult) {
                 if (state.isHaveConnect) {
-                  Scaffold.of(context).showSnackBar(SnackBar(
+                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                     content:
                         Text(AppLocalizations.of(context).connectionSuccessful),
                   ));
                 } else {
-                  Scaffold.of(context).showSnackBar(SnackBar(
+                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                     content: Text(AppLocalizations.of(context).connectionError),
                   ));
                 }

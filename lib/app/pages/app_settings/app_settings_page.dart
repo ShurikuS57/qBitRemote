@@ -56,11 +56,11 @@ class _AppSettingsScreenState extends State<AppSettingsScreen> {
       body: BlocConsumer<AppSettingsCubit, AppSettingsState>(
         listener: (context, state) {
           if (state is ShowError) {
-            Scaffold.of(context).showSnackBar(SnackBar(
+            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
               content: Text(state.error),
             ));
           } else if (state is SaveSettingsSuccess) {
-            Scaffold.of(context).showSnackBar(SnackBar(
+            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
               content: Text(AppLocalizations.of(context).savedSuccessfully),
             ));
           }
