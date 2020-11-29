@@ -33,7 +33,7 @@ class _AddTorrentScreenState extends State<AddTorrentScreen> {
   Widget build(BuildContext context) {
     urlTextController.addListener(() {
       context
-          .bloc<AddTorrentCubit>()
+          .read<AddTorrentCubit>()
           .onChangeUrl(urlTextController.text.trim());
     });
 
@@ -94,7 +94,7 @@ class _AddTorrentScreenState extends State<AddTorrentScreen> {
                     initialLabelIndex: _isChoiceFile ? 0 : 1,
                     onToggle: (index) {
                       context
-                          .bloc<AddTorrentCubit>()
+                          .read<AddTorrentCubit>()
                           .onSwitchInputSource(index == 0);
                     },
                   ),
@@ -106,7 +106,7 @@ class _AddTorrentScreenState extends State<AddTorrentScreen> {
                       child: ActionButton(
                         text: AppLocalizations.of(context).selectedFile,
                         onPressed: () {
-                          context.bloc<AddTorrentCubit>().choiceTorrentFile();
+                          context.read<AddTorrentCubit>().choiceTorrentFile();
                         },
                       ),
                     )
@@ -131,7 +131,7 @@ class _AddTorrentScreenState extends State<AddTorrentScreen> {
                   text: AppLocalizations.of(context).startDownload,
                   onPressed: _isSendButtonEnable
                       ? () {
-                          context.bloc<AddTorrentCubit>().startDownload(
+                          context.read<AddTorrentCubit>().startDownload(
                               savePathTextController.text.trim());
                         }
                       : null)

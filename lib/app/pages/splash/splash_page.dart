@@ -19,7 +19,7 @@ class SplashPage extends StatelessWidget {
         }
       }, builder: (context, snapshot) {
         if (snapshot is ServerListInitial) {
-          context.bloc<ServerListCubit>().checkSelectedServer();
+          context.watch<ServerListCubit>().checkSelectedServer();
         }
         return Stack(
           children: <Widget>[

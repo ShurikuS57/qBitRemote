@@ -32,10 +32,10 @@ class _TorrentListScreenState extends State<TorrentListScreen> {
   }
 
   void _restartUpdateTimer() async {
-    context.bloc<TorrentListCubit>().loadTorrents();
+    context.read<TorrentListCubit>().loadTorrents();
     _updateTimer?.cancel();
     int updateSeconds =
-        await context.bloc<TorrentListCubit>().getUpdateTimeSettings();
+        await context.read<TorrentListCubit>().getUpdateTimeSettings();
     _updateTimer = Timer.periodic(Duration(seconds: updateSeconds), (timer) {
       _restartUpdateTimer();
     });
@@ -73,27 +73,27 @@ class _TorrentListScreenState extends State<TorrentListScreen> {
             icon: Icon(Icons.play_arrow),
             onPressed: () {
               final selectedItems = context
-                  .bloc<MultiSelectCubit>()
+                  .read<MultiSelectCubit>()
                   .getSelectedItems<TorrentEntity>();
-              context.bloc<TorrentListCubit>().downloadCommand(selectedItems);
-              context.bloc<MultiSelectCubit>().closeSelectedMode();
+              context.read<TorrentListCubit>().downloadCommand(selectedItems);
+              context.read<MultiSelectCubit>().closeSelectedMode();
             },
           ),
           IconButton(
             icon: Icon(Icons.pause),
             onPressed: () {
               final selectedItems = context
-                  .bloc<MultiSelectCubit>()
+                  .read<MultiSelectCubit>()
                   .getSelectedItems<TorrentEntity>();
-              context.bloc<TorrentListCubit>().pauseCommand(selectedItems);
-              context.bloc<MultiSelectCubit>().closeSelectedMode();
+              context.read<TorrentListCubit>().pauseCommand(selectedItems);
+              context.read<MultiSelectCubit>().closeSelectedMode();
             },
           ),
           IconButton(
             icon: Icon(Icons.delete),
             onPressed: () {
               final selectedItems = context
-                  .bloc<MultiSelectCubit>()
+                  .read<MultiSelectCubit>()
                   .getSelectedItems<TorrentEntity>();
               _showDeleteDialog(context, selectedItems);
             },
@@ -167,8 +167,8 @@ class _TorrentListScreenState extends State<TorrentListScreen> {
       ..negativeButtonText = AppLocalizations.of(context).cancel
       ..setPositiveButtonCallback((dialog) {
         final isDeleteAllData = dialog.checkboxList.first.isChecked;
-        context.bloc<TorrentListCubit>().deleteTorrents(list, isDeleteAllData);
-        context.bloc<MultiSelectCubit>().closeSelectedMode();
+        context.read<TorrentListCubit>().deleteTorrents(list, isDeleteAllData);
+        context.read<MultiSelectCubit>().closeSelectedMode();
       })
       ..checkboxList = [
         CheckboxEntity(
@@ -194,12 +194,12 @@ class _TorrentsScreenView extends StatelessWidget {
             content: Text(state.error),
           ));
         } else if (state is DeleteTorrentsSuccess) {
-          context.bloc<TorrentListCubit>().loadTorrents();
+          context.read<TorrentListCubit>().loadTorrents();
         }
       },
       builder: (context, state) {
         if (state is TorrentsInitial) {
-          context.bloc<TorrentListCubit>().loadTorrents();
+          context.watch<TorrentListCubit>().loadTorrents();
           return const TorrentsEmptyWidget();
         } else if (state is TorrentsLoading) {
           return TorrentsLoadingWidget();

@@ -53,7 +53,7 @@ class _ServerListView extends StatelessWidget {
       },
       builder: (context, state) {
         if (state is ServerListInitial) {
-          context.bloc<ServerListCubit>().loadServerList();
+          context.watch<ServerListCubit>().loadServerList();
           return const ServerListEmpty();
         } else if (state is ServerListLoaded) {
           return ServerListViewer(servers: state.servers);

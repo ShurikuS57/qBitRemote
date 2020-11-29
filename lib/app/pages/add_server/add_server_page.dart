@@ -65,7 +65,7 @@ class _AddServerPageState extends State<AddServerPage> {
                             host: _hostController.text,
                             login: _loginController.text,
                             password: _passwordController.text);
-                        context.bloc<AddServerCubit>().saveServer(serverHost);
+                        context.read<AddServerCubit>().saveServer(serverHost);
                       },
               );
             },
@@ -157,7 +157,7 @@ class _AddServerPageState extends State<AddServerPage> {
                                           login: _loginController.text,
                                           password: _passwordController.text);
                                       context
-                                          .bloc<AddServerCubit>()
+                                          .read<AddServerCubit>()
                                           .checkServerConnect(serverHost);
                                     },
                             ),
@@ -188,7 +188,7 @@ class _AddServerPageState extends State<AddServerPage> {
     final login = _loginController.text;
     final password = _passwordController.text;
     context
-        .bloc<AddServerCubit>()
+        .read<AddServerCubit>()
         .invalidateButton(name, host, login, password);
   }
 
@@ -196,7 +196,7 @@ class _AddServerPageState extends State<AddServerPage> {
     final AddServerArguments args = ModalRoute.of(context).settings.arguments;
     if (args != null && args.isEditMode) {
       _titleAppBar = AppLocalizations.of(context).editServer;
-      context.bloc<AddServerCubit>().setupEditMode(args.editId);
+      context.read<AddServerCubit>().setupEditMode(args.editId);
     } else {
       _titleAppBar = AppLocalizations.of(context).addNewServer;
     }

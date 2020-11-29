@@ -28,11 +28,11 @@ class _TorrentsViewerWidgetState extends State<TorrentsViewerWidget> {
         if (widget is TorrentItem) {
           if (isSelected) {
             context
-                .bloc<MultiSelectCubit>()
+                .read<MultiSelectCubit>()
                 .addSelectedItem(widget.item.hash, widget.item);
           } else {
             context
-                .bloc<MultiSelectCubit>()
+                .read<MultiSelectCubit>()
                 .removeSelectedItem(widget.item.hash, widget.item);
           }
         }

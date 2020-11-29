@@ -31,9 +31,9 @@ class _TorrentInfoScreenState extends State<TorrentInfoScreen> {
   }
 
   void _restartUpdateTimer() async {
-    context.bloc<TorrentListCubit>().loadTorrentInfo(_torrentHash);
+    context.read<TorrentListCubit>().loadTorrentInfo(_torrentHash);
     _updateTimer?.cancel();
-    int updateSeconds = await context.bloc<TorrentListCubit>().getUpdateTimeSettings();
+    int updateSeconds = await context.read<TorrentListCubit>().getUpdateTimeSettings();
     _updateTimer = Timer.periodic(Duration(seconds: updateSeconds), (timer) {
       _restartUpdateTimer();
     });
@@ -66,7 +66,7 @@ class _TorrentInfoScreenState extends State<TorrentInfoScreen> {
           }
         }, builder: (context, state) {
           if (state is TorrentsInitial) {
-            context.bloc<TorrentListCubit>().loadTorrentInfo(_torrentHash);
+            context.watch<TorrentListCubit>().loadTorrentInfo(_torrentHash);
             return Center(
               child: Container(
                 child: Text(AppLocalizations.of(context).emptyTorrentInfo),
@@ -208,14 +208,14 @@ class _TorrentInfoScreenState extends State<TorrentInfoScreen> {
           icon: Icon(Icons.play_arrow),
           onPressed: () {
             context
-                .bloc<TorrentListCubit>()
+                .read<TorrentListCubit>()
                 .downloadCommandByHash(_torrentHash);
           },
         ),
         IconButton(
           icon: Icon(Icons.pause),
           onPressed: () {
-            context.bloc<TorrentListCubit>().pauseCommandByHash(_torrentHash);
+            context.read<TorrentListCubit>().pauseCommandByHash(_torrentHash);
           },
         ),
         IconButton(
@@ -335,7 +335,7 @@ class _TorrentInfoScreenState extends State<TorrentInfoScreen> {
       ..setPositiveButtonCallback((dialog) {
         final isDeleteAllData = dialog.checkboxList.first.isChecked;
         context
-            .bloc<TorrentListCubit>()
+            .read<TorrentListCubit>()
             .deleteTorrentByHash(_hash, isDeleteAllData);
       })
       ..checkboxList = [

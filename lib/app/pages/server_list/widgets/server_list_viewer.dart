@@ -21,7 +21,7 @@ class ServerListViewer extends StatelessWidget {
           ServerHost server = servers[index];
           return InkWell(
             onTap: () {
-              context.bloc<ServerListCubit>().connectToServer(server);
+              context.read<ServerListCubit>().connectToServer(server);
             },
             child: Padding(
               padding: const EdgeInsets.only(left: 8, right: 8, top: 8),
@@ -98,7 +98,7 @@ class ServerListViewer extends StatelessWidget {
       ..positiveButtonText = AppLocalizations.of(context).ok
       ..negativeButtonText = AppLocalizations.of(context).cancel
       ..setPositiveButtonCallback((dialog) {
-        context.bloc<ServerListCubit>().deleteServer(server);
+        context.read<ServerListCubit>().deleteServer(server);
       })
       ..show();
   }

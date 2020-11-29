@@ -42,7 +42,7 @@ class _MultiselectAppBarState extends State<MultiselectAppBar> {
                     key: Key('multi-select'),
                     leading: BackButton(
                       onPressed: () {
-                        context.bloc<MultiSelectCubit>().closeSelectedMode();
+                        context.read<MultiSelectCubit>().closeSelectedMode();
                       },
                     ),
                     titleSpacing: 0.0,

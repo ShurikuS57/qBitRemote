@@ -35,7 +35,7 @@ class _AppSettingsScreenState extends State<AppSettingsScreen> {
   }
 
   void _onChangeInput() {
-    context.bloc<AppSettingsCubit>().invalidate(_createSettinsObject());
+    context.read<AppSettingsCubit>().invalidate(_createSettinsObject());
   }
 
   @override
@@ -97,7 +97,7 @@ class _AppSettingsScreenState extends State<AppSettingsScreen> {
                       ? null
                       : () {
                           context
-                              .bloc<AppSettingsCubit>()
+                              .read<AppSettingsCubit>()
                               .saveNewSettings(_createSettinsObject());
                         }),
             ],
@@ -197,7 +197,7 @@ class _AppSettingsScreenState extends State<AppSettingsScreen> {
                           _currentUploadSliderValue = value;
                         });
                         context
-                            .bloc<AppSettingsCubit>()
+                            .read<AppSettingsCubit>()
                             .invalidate(_createSettinsObject());
                       },
                     ),
