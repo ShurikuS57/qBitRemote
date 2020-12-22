@@ -13,13 +13,13 @@ dependencies:
     sdk: flutter
   flutter_localizations:
     sdk: flutter
-  intl: 0.16.1
+  intl: ^0.17.0-nullsafety.2
 
-  cupertino_icons: ^1.0.1+1
+  cupertino_icons: ^1.0.2
   supercharged: ^1.12.0
 
   # architecture
-  bloc: ^6.1.0
+  bloc: ^6.1.1
   flutter_bloc: ^6.1.1
 
   provider: ^4.3.2+3
@@ -29,9 +29,9 @@ dependencies:
   hive: ^1.4.4+1
   hive_flutter: ^0.3.1
   toggle_switch: ^0.1.8
-  file_picker: ^2.1.0
+  file_picker: ^2.1.4
   string_validator: ^0.1.4
-  focus_detector: ^1.0.3
+  focus_detector: ^1.1.0
   package_info: ^0.4.3+2
 
   #analitics
@@ -45,7 +45,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   hive_generator: ^0.8.2
-  build_runner: ^1.10.7
+  build_runner: ^1.10.11
 
 flutter:
   generate: true
