@@ -1,18 +1,14 @@
-import 'dart:async';
-
 import 'package:qBitRemote/api/models/file_entity.dart';
 import 'package:qBitRemote/api/models/torrent_entity.dart';
 import 'package:qBitRemote/app/pages/torrent_list/torrents_list_cubit.dart';
 import 'package:qBitRemote/app/utils/format_helper.dart';
 import 'package:qBitRemote/app/utils/state_helper.dart';
 import 'package:qBitRemote/app/widgets/MaterialDialog.dart';
-import 'package:qBitRemote/app/widgets/multiselect/multi_select_app_bar.dart';
 import 'package:qBitRemote/commons/colors.dart';
 import 'package:qBitRemote/commons/icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:focus_detector/focus_detector.dart';
 
 class TorrentInfoScreen extends StatefulWidget {
   @override
@@ -20,127 +16,77 @@ class TorrentInfoScreen extends StatefulWidget {
 }
 
 class _TorrentInfoScreenState extends State<TorrentInfoScreen> {
-  Timer _updateTimer;
   String _torrentHash = "";
-  final _resumeDetectorKey = UniqueKey();
-
-  @override
-  void initState() {
-    _restartUpdateTimer();
-    super.initState();
-  }
-
-  void _restartUpdateTimer() async {
-    context.read<TorrentListCubit>().loadTorrentInfo(_torrentHash);
-    _updateTimer?.cancel();
-    int updateSeconds = await context.read<TorrentListCubit>().getUpdateTimeSettings();
-    _updateTimer = Timer.periodic(Duration(seconds: updateSeconds), (timer) {
-      _restartUpdateTimer();
-    });
-  }
-
-  @override
-  void dispose() {
-    _updateTimer.cancel();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
     _torrentHash = ModalRoute.of(context).settings.arguments;
-    return Scaffold(
-      backgroundColor: AppColors.primaryBackground,
-      appBar: MultiselectAppBar(
-        appBar: _buildAppBar(context),
-      ),
-      body: FocusDetector(
-        key: _resumeDetectorKey,
-        child: BlocConsumer<TorrentListCubit, TorrentListState>(
-            listener: (context, state) {
-          if (state is ShowError) {
-            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-              content: Text(state.error),
-            ));
-          } else if (state is GoToBackScreen) {
-            Navigator.pop(context);
-          }
-        }, builder: (context, state) {
-          if (state is TorrentsInitial) {
-            context.watch<TorrentListCubit>().loadTorrentInfo(_torrentHash);
-            return Center(
-              child: Container(
-                child: Text(AppLocalizations.of(context).emptyTorrentInfo),
-              ),
-            );
-          } else if (state is ShowTorrentInfo) {
-            final torrent = state.torrent;
-            return ListView(
-              padding: const EdgeInsets.all(8.0),
-              children: [
-                Card(
-                  child: Padding(
-                    padding: const EdgeInsets.all(16),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        _buildNameRow(torrent),
-                        SizedBox(
-                          height: 24,
-                        ),
-                        _buildCompleteRow(torrent),
-                        SizedBox(
-                          height: 8,
-                        ),
-                        _buildProgressRow(torrent),
-                        SizedBox(
-                          height: 8,
-                        ),
-                        _buildSpeedRow(torrent),
-                        SizedBox(
-                          height: 30,
-                        ),
-                        _buildInfoText(
-                          AppLocalizations.of(context).fullSize +
-                              " " +
-                              torrent.size,
-                        ),
-                        _buildInfoText(AppLocalizations.of(context).hash +
-                            " " +
-                            torrent.hash),
-                      ],
+    return BlocConsumer<TorrentListCubit, TorrentListState>(
+        listener: (context, state) {
+      if (state is ShowError) {
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          content: Text(state.error),
+        ));
+      } else if (state is GoToBackScreen) {
+        Navigator.pop(context);
+      }
+    }, builder: (context, state) {
+      if (state is TorrentsInitial) {
+        context.watch<TorrentListCubit>().loadTorrentInfo(_torrentHash);
+        return Center(
+          child: Container(
+            child: Text(AppLocalizations.of(context).emptyTorrentInfo),
+          ),
+        );
+      } else if (state is ShowTorrentInfo) {
+        final torrent = state.torrent;
+        return ListView(
+          padding: const EdgeInsets.all(8.0),
+          children: [
+            Card(
+              child: Padding(
+                padding: const EdgeInsets.all(16),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    _buildNameRow(torrent),
+                    SizedBox(
+                      height: 24,
                     ),
-                  ),
+                    _buildCompleteRow(torrent),
+                    SizedBox(
+                      height: 8,
+                    ),
+                    _buildProgressRow(torrent),
+                    SizedBox(
+                      height: 8,
+                    ),
+                    _buildSpeedRow(torrent),
+                    SizedBox(
+                      height: 30,
+                    ),
+                    _buildInfoText(
+                      AppLocalizations.of(context).fullSize +
+                          " " +
+                          torrent.size,
+                    ),
+                    _buildInfoText(
+                        AppLocalizations.of(context).hash + " " + torrent.hash),
+                  ],
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 3, top: 20, bottom: 8),
-                  child: _buildFilesText(context, torrent.files.length),
-                ),
-                ListView.builder(
-                    shrinkWrap: true,
-                    physics: NeverScrollableScrollPhysics(),
-                    itemCount: torrent.files.length,
-                    itemBuilder: (BuildContext ctxt, int index) {
-                      return _buildFileInfoCard(torrent.files[index]);
-                    })
-              ],
-            );
-          } else {
-            return Center(
-              child: Container(
-                child: Text(AppLocalizations.of(context).emptyTorrentInfo),
               ),
-            );
-          }
-        }),
-        onFocusGained: () {
-          _restartUpdateTimer();
-        },
-        onFocusLost: () {
-          _updateTimer?.cancel();
-        },
-      ),
-    );
+            ),
+          ],
+        );
+      } else {
+        return Center(
+          child: Container(
+            child: Text(AppLocalizations.of(context).emptyTorrentInfo),
+          ),
+        );
+      }
+    });
   }
 
   Widget _buildFilesText(BuildContext context, int length) {
@@ -164,7 +110,7 @@ class _TorrentInfoScreenState extends State<TorrentInfoScreen> {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(width: double.infinity, child: Text(fileInfo.name)),
+                SizedBox(width: double.infinity, child: Text(fileInfo.path)),
                 Text(
                     "Size: ${FormatHelper.formatBytes(fileInfo.size)} · ${StateHelper.convertPriority(fileInfo.priority)}")
               ],

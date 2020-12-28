@@ -1,16 +1,16 @@
 import 'dart:convert';
 
 class FileEntity {
-  FileEntity({this.name, this.size, this.progress, this.priority});
+  FileEntity({this.path, this.size, this.progress, this.priority});
 
-  final String name;
+  final String path;
   final int size;
   final double progress;
   final int priority;
 
   Map<String, dynamic> toMap() {
     return {
-      'name': name,
+      'name': path,
       'size': size,
       'progress': progress,
       'priority': priority,
@@ -21,9 +21,9 @@ class FileEntity {
     if (map == null) return null;
   
     return FileEntity(
-      name: map['name'],
+      path: map['name'],
       size: map['size'],
-      progress: map['progress'],
+      progress: double.tryParse(map['progress'].toString()) ?? 0.0,
       priority: map['priority'],
     );
   }

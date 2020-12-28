@@ -8,13 +8,13 @@ import 'package:qBitRemote/app/pages/add_torrent/add_torrent_page.dart';
 import 'package:qBitRemote/app/pages/app_settings/app_settings_page.dart';
 import 'package:qBitRemote/app/pages/app_settings/app_settings_cubit.dart';
 import 'package:qBitRemote/app/pages/server_list/server_list_cubit.dart';
-import 'package:qBitRemote/app/pages/torrent_info/torrent_info_page.dart';
 import 'package:qBitRemote/repo/local_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'app/pages/server_list/server_list_page.dart';
 import 'app/pages/splash/splash_page.dart';
 import 'package:cookie_jar/cookie_jar.dart';
+import 'app/pages/torrent_info/torrent_details_page.dart';
 import 'app/pages/torrent_list/torrents_list_cubit.dart';
 import 'app/pages/torrent_list/torrents_list_page.dart';
 import 'app/widgets/multiselect/multi_select_cubit.dart';
@@ -86,7 +86,7 @@ class Routes {
                 create: (_) => MultiSelectCubit(),
               )
             ],
-            child: TorrentInfoScreen(),
+            child: TorrentDetailsScreen(),
           ),
       Routes.appSettingsPage: (BuildContext context) => BlocProvider(
             create: (_) => AppSettingsCubit(

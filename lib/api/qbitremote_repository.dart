@@ -2,6 +2,7 @@ import 'dart:collection';
 
 import 'package:qBitRemote/api/models/file_entity.dart';
 import 'package:qBitRemote/api/models/torrent_entity.dart';
+import 'package:qBitRemote/app/utils/path_parser.dart';
 import 'package:qBitRemote/local/models/app_settings.dart';
 import 'package:qBitRemote/local/models/server_host.dart';
 import 'package:dio/dio.dart';
@@ -86,7 +87,7 @@ class QBitRemoteRepositoryImpl extends QBitRemoteRepository {
       if (e is DioError && e.response?.statusCode == 403) {
         return await login(serverHost);
       }
-      return UiResponse(List(), e.toString());
+      return UiResponse([], e.toString());
     }
   }
 
@@ -105,8 +106,7 @@ class QBitRemoteRepositoryImpl extends QBitRemoteRepository {
           .map((e) => TorrentEntity.fromJson(e))
           .toList()
           .first;
-
-      result.files.addAll(await getFilesInfo(currentServer, torrentHash));
+      result.fileTreeData.addAll(await getFilesInfo(currentServer, torrentHash));
       return UiResponse(result, "");
     } catch (e) {
       if (e is DioError && e.response.statusCode == 403) {
@@ -116,7 +116,7 @@ class QBitRemoteRepositoryImpl extends QBitRemoteRepository {
     }
   }
 
-  Future<List<FileEntity>> getFilesInfo(
+  Future<List<FileTreeNode>> getFilesInfo(
       ServerHost currentServer, String torrentHash) async {
     try {
       Map<String, dynamic> params = HashMap();
@@ -125,11 +125,13 @@ class QBitRemoteRepositoryImpl extends QBitRemoteRepository {
 
       String url = "http://" + currentServer.host + "/api/v2/torrents/files";
       Response response = await dio.post(url, data: data);
-      List<FileEntity> result =
-          (response.data as List).map((e) => FileEntity.fromMap(e)).toList();
+      List<FileEntity> files =
+      (response.data as List).map((e) => FileEntity.fromMap(e)).toList();
+      final pathParser = PathParser(files);
+      List<FileTreeNode> result = pathParser.treeData;
       return result;
     } catch (e) {
-      return List<FileEntity>();
+      return [];
     }
   }
 

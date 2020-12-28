@@ -33,6 +33,7 @@ dependencies:
   string_validator: ^0.1.4
   focus_detector: ^1.1.0
   package_info: ^0.4.3+2
+  tree_view: ^0.0.5
 
   #analitics
   firebase_analytics: ^6.3.0
