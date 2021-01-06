@@ -64,7 +64,11 @@ class _TorrentInfoScreenState extends State<TorrentInfoScreen> {
                     ),
                     _buildSpeedRow(torrent),
                     SizedBox(
-                      height: 30,
+                      height: 10,
+                    ),
+                    _buildInfoText("Status: " + StateHelper.statusStr(torrent.state)),
+                    SizedBox(
+                      height: 20,
                     ),
                     _buildInfoText(
                       AppLocalizations.of(context).fullSize +

@@ -71,4 +71,66 @@ class StateHelper {
         }
     }
   }
+
+  static String statusStr(String state) {
+    switch(state) {
+      case "error": {
+        return "Error";
+      }
+      case "missingFiles": {
+        return "Files Missing";
+      }
+      case "uploading": {
+        return "Seeding";
+      }
+      case "pausedUP": {
+        return "Paused / Done";
+      }
+      case "queuedUP": {
+        return "Queued For Seeding";
+      }
+      case "stalledUP": {
+        return "Available for Seeding";
+      }
+      case "checkingUP": {
+        return "Checking Files";
+      }
+      case "forcedUP": {
+        return "Force Uploading";
+      }
+      case "allocating": {
+        return "Allocating Space";
+      }
+      case "downloading": {
+        return "Downloading";
+      }
+      case "metaDL": {
+        return "Fetching Metadata";
+      }
+      case "pausedDL": {
+        return "Paused";
+      }
+      case "queuedDL": {
+        return "Queued for Download";
+      }
+      case "stalledDL": {
+        return "Stalled";
+      }
+      case "checkingDL": {
+        return "Checking Files";
+      }
+      case "forceDL": {
+        return "Force Downloading";
+      }
+      case "checkingResumeData": {
+        return "Checking Resume";
+      }
+      case "moving": {
+        return "Moving Location";
+      }
+      default: {
+        return "Unknown";
+      }
+    }
+  }
 }
