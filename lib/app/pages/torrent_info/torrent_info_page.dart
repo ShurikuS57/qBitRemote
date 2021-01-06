@@ -89,89 +89,10 @@ class _TorrentInfoScreenState extends State<TorrentInfoScreen> {
     });
   }
 
-  Widget _buildFilesText(BuildContext context, int length) {
-    if (length > 0) {
-      return Text(
-        AppLocalizations.of(context).files.toUpperCase(),
-        style: TextStyle(fontSize: 14, fontWeight: FontWeight.w700),
-      );
-    } else {
-      return SizedBox();
-    }
-  }
-
-  Stack _buildFileInfoCard(FileEntity fileInfo) {
-    return Stack(
-      children: [
-        Card(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(width: double.infinity, child: Text(fileInfo.path)),
-                Text(
-                    "Size: ${FormatHelper.formatBytes(fileInfo.size)} · ${StateHelper.convertPriority(fileInfo.priority)}")
-              ],
-            ),
-          ),
-        ),
-        Positioned.fill(
-          child: Padding(
-            padding: const EdgeInsets.only(left: 4, right: 4, bottom: 4),
-            child: Align(
-              alignment: Alignment.bottomCenter,
-              child: ClipRRect(
-                borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(8),
-                    bottomRight: Radius.circular(8)),
-                child: LinearProgressIndicator(
-                  backgroundColor: AppColors.progressBackgroundColor,
-                  valueColor: AlwaysStoppedAnimation<Color>(
-                      AppColors.progressValueColor),
-                  value: fileInfo.progress,
-                ),
-              ),
-            ),
-          ),
-        ),
-      ],
-    );
-  }
-
   Text _buildInfoText(String text) {
     return Text(
       text,
       style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
-    );
-  }
-
-  AppBar _buildAppBar(BuildContext context) {
-    return AppBar(
-      title: Text(AppLocalizations.of(context).torrentInfo),
-      actions: [
-        IconButton(
-          icon: Icon(Icons.play_arrow),
-          onPressed: () {
-            context
-                .read<TorrentListCubit>()
-                .downloadCommandByHash(_torrentHash);
-          },
-        ),
-        IconButton(
-          icon: Icon(Icons.pause),
-          onPressed: () {
-            context.read<TorrentListCubit>().pauseCommandByHash(_torrentHash);
-          },
-        ),
-        IconButton(
-          icon: Icon(Icons.delete),
-          onPressed: () {
-            _showDeleteDialog(context, _torrentHash);
-          },
-        )
-      ],
     );
   }
 
@@ -271,25 +192,5 @@ class _TorrentInfoScreenState extends State<TorrentInfoScreen> {
         ),
       ],
     );
-  }
-
-  void _showDeleteDialog(BuildContext context, String _hash) {
-    MaterialDialog(context)
-      ..title = AppLocalizations.of(context).questionDeleteTorrent
-      ..body = AppLocalizations.of(context).questionSureDelete
-      ..positiveButtonText = AppLocalizations.of(context).delete
-      ..negativeButtonText = AppLocalizations.of(context).cancel
-      ..setPositiveButtonCallback((dialog) {
-        final isDeleteAllData = dialog.checkboxList.first.isChecked;
-        context
-            .read<TorrentListCubit>()
-            .deleteTorrentByHash(_hash, isDeleteAllData);
-      })
-      ..checkboxList = [
-        CheckboxEntity(
-            id: "1",
-            title: Text(AppLocalizations.of(context).questionDeleteWithData))
-      ]
-      ..show();
   }
 }
