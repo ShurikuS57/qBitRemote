@@ -1,12 +1,12 @@
+import 'package:hive/hive.dart';
 import 'package:qBitRemote/local/models/app_settings.dart';
 import 'package:qBitRemote/local/models/server_host.dart';
-import 'package:hive/hive.dart';
 
 abstract class LocalRepository {
   Future<List<ServerHost>> loadServerHostList();
   Future<void> saveServerHostList(ServerHost serverHost);
   Future<ServerHost> findServerHostById(int id);
-  Future<void> deleteSErverHost(ServerHost serverHost);
+  Future<void> deleteServerHost(ServerHost serverHost);
   Future<ServerHost> findSelectedServerHost();
   Future<AppSettings> loadAppSettings();
   Future<void> saveAppSettings(AppSettings settings);
@@ -28,7 +28,7 @@ class HiveRepositoryImpl extends LocalRepository {
     var hive = Hive.box(KEY_HIVE_HOSTES);
     List<ServerHost> hostList =
         hive?.values?.map((e) => e as ServerHost)?.toList() ??
-            List<ServerHost>();
+            [];
     return hostList;
   }
 
@@ -43,7 +43,7 @@ class HiveRepositoryImpl extends LocalRepository {
   }
 
   @override
-  Future<void> deleteSErverHost(ServerHost serverHost) async {
+  Future<void> deleteServerHost(ServerHost serverHost) async {
     serverHost.delete();
   }
 

@@ -1,11 +1,13 @@
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:qBitRemote/app/pages/server_list/server_list_cubit.dart';
 import 'package:qBitRemote/commons/colors.dart';
 import 'package:qBitRemote/routes.dart';
-import 'package:flutter/material.dart';
+
 import 'widgets/server_list_empty.dart';
 import 'widgets/server_list_viewer.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ServerListPage extends StatefulWidget {
   @override
@@ -25,8 +27,14 @@ class _ServerListPageState extends State<ServerListPage> {
           onPressed: () {
             Navigator.pushNamed(context, Routes.addServerPage);
           }),
-      body: Center(
-        child: _ServerListView(),
+      body: WillPopScope(
+        onWillPop: () async {
+          context.read<ServerListCubit>().checkIsHaveSelectedServer();
+          return false;
+        },
+        child: Center(
+          child: _ServerListView(),
+        ),
       ),
     );
   }
@@ -49,6 +57,15 @@ class _ServerListView extends StatelessWidget {
         } else if (state is ServerConnectSuccess) {
           Navigator.pushNamedAndRemoveUntil(
               context, Routes.torrentsPage, (route) => false);
+        } else if (state is HaveSelectedServer) {
+          bool isRootScreen = !Navigator.canPop(context);
+          if(isRootScreen) {
+            SystemChannels.platform.invokeMethod('SystemNavigator.pop');
+          } else if (state.isHave) {
+            Navigator.pop(context);
+          } else {
+            Navigator.pushNamedAndRemoveUntil(context, Routes.serverListPage, (route) => false);
+          }
         }
       },
       builder: (context, state) {

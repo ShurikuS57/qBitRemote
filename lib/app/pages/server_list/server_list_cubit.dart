@@ -1,13 +1,13 @@
 import 'dart:async';
 
+import 'package:bloc/bloc.dart';
+import 'package:flutter/foundation.dart';
+import 'package:hive/hive.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:qBitRemote/api/http.dart';
 import 'package:qBitRemote/api/qbitremote_repository.dart';
 import 'package:qBitRemote/local/models/server_host.dart';
 import 'package:qBitRemote/repo/local_repository.dart';
-import 'package:flutter/foundation.dart';
-import 'package:bloc/bloc.dart';
-import 'package:hive/hive.dart';
-import 'package:hive_flutter/hive_flutter.dart';
 
 @immutable
 abstract class ServerListState {}
@@ -15,18 +15,24 @@ abstract class ServerListState {}
 class ServerListInitial extends ServerListState {}
 
 class ServerListLoaded extends ServerListState {
-  ServerListLoaded(this.servers);
-
   final List<ServerHost> servers;
+
+  ServerListLoaded(this.servers);
 }
 
 class ShowError extends ServerListState {
-  ShowError(this.error);
-
   final String error;
+
+  ShowError(this.error);
 }
 
 class ServerConnectSuccess extends ServerListState {}
+
+class HaveSelectedServer extends ServerListState {
+  final bool isHave;
+
+  HaveSelectedServer(this.isHave);
+}
 
 class ServerListCubit extends Cubit<ServerListState> {
   ServerListCubit(
@@ -53,7 +59,7 @@ class ServerListCubit extends Cubit<ServerListState> {
   }
 
   void deleteServer(ServerHost server) async {
-    await localRepository.deleteSErverHost(server);
+    await localRepository.deleteServerHost(server);
   }
 
   void connectToServer(ServerHost server) async {
@@ -78,5 +84,10 @@ class ServerListCubit extends Cubit<ServerListState> {
         return emit(ServerConnectSuccess());
       }
     }
+  }
+
+  Future<void> checkIsHaveSelectedServer() async {
+    final serverHost = await localRepository.findSelectedServerHost();
+    return emit(HaveSelectedServer(serverHost != null));
   }
 }
