@@ -23,13 +23,13 @@ dependencies:
   flutter_bloc: ^6.1.1
 
   provider: ^4.3.2+3
-  path_provider: ^1.6.24
+  path_provider: ^1.6.27
   dio: ^3.0.10
   dio_cookie_manager: 1.0.0
   hive: ^1.4.4+1
   hive_flutter: ^0.3.1
   toggle_switch: ^0.1.8
-  file_picker: ^2.1.4
+  file_picker: ^2.1.5
   string_validator: ^0.1.4
   focus_detector: ^1.1.0
   package_info: ^0.4.3+2
@@ -46,7 +46,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   hive_generator: ^0.8.2
-  build_runner: ^1.10.11
+  build_runner: ^1.10.12
 
 flutter:
   generate: true

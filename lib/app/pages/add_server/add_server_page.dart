@@ -1,11 +1,11 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:qBitRemote/app/pages/add_server/add_server_cubit.dart';
 import 'package:qBitRemote/app/widgets/action_button.dart';
 import 'package:qBitRemote/app/widgets/input_text.dart';
 import 'package:qBitRemote/commons/colors.dart';
 import 'package:qBitRemote/local/models/server_host.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class AddServerPage extends StatefulWidget {
   @override
@@ -187,16 +187,14 @@ class _AddServerPageState extends State<AddServerPage> {
     final host = _hostController.text;
     final login = _loginController.text;
     final password = _passwordController.text;
-    context
-        .read<AddServerCubit>()
-        .invalidateButton(name, host, login, password);
+    context.select((AddServerCubit bloc) => bloc.invalidateButton(name, host, login, password));
   }
 
   void _checkEditMode(BuildContext context) {
     final AddServerArguments args = ModalRoute.of(context).settings.arguments;
     if (args != null && args.isEditMode) {
       _titleAppBar = AppLocalizations.of(context).editServer;
-      context.read<AddServerCubit>().setupEditMode(args.editId);
+      context.select((AddServerCubit bloc) => bloc.setupEditMode(args.editId));
     } else {
       _titleAppBar = AppLocalizations.of(context).addNewServer;
     }
