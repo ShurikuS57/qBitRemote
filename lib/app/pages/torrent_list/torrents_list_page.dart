@@ -1,15 +1,15 @@
 import 'dart:async';
 
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:focus_detector/focus_detector.dart';
 import 'package:qBitRemote/api/models/torrent_entity.dart';
 import 'package:qBitRemote/app/widgets/MaterialDialog.dart';
 import 'package:qBitRemote/app/widgets/multiselect/multi_select_app_bar.dart';
 import 'package:qBitRemote/app/widgets/multiselect/multi_select_cubit.dart';
 import 'package:qBitRemote/commons/colors.dart';
 import 'package:qBitRemote/routes.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:focus_detector/focus_detector.dart';
 
 import 'torrents_list_cubit.dart';
 import 'widgets/torrents_empty.dart';
@@ -66,6 +66,17 @@ class _TorrentListScreenState extends State<TorrentListScreen> {
                 Navigator.pushNamed(context, Routes.appSettingsPage);
               },
             ),
+            PopupMenuButton<String>(
+              onSelected: _handleMenuClick,
+              itemBuilder: (BuildContext context) {
+                return {"Resume all", "Pause all"}
+                    .map((e) => PopupMenuItem<String>(
+                          value: e,
+                          child: Text(e),
+                        ))
+                    .toList();
+              },
+            )
           ],
         ),
         selectingActions: [
@@ -157,6 +168,21 @@ class _TorrentListScreenState extends State<TorrentListScreen> {
         },
       ),
     );
+  }
+
+  void _handleMenuClick(String value) {
+    switch (value) {
+      case "Resume all":
+        {
+          context.read<TorrentListCubit>().downloadCommandByHash("all");
+          break;
+        }
+      case "Pause all":
+        {
+          context.read<TorrentListCubit>().pauseCommandByHash("all");
+          break;
+        }
+    }
   }
 
   void _showDeleteDialog(BuildContext context, List<TorrentEntity> list) {
