@@ -8,6 +8,7 @@ import 'package:qBitRemote/api/models/torrent_entity.dart';
 import 'package:qBitRemote/app/widgets/MaterialDialog.dart';
 import 'package:qBitRemote/app/widgets/multiselect/multi_select_app_bar.dart';
 import 'package:qBitRemote/app/widgets/multiselect/multi_select_cubit.dart';
+import 'package:qBitRemote/app/widgets/popup_submenu_item.dart';
 import 'package:qBitRemote/commons/colors.dart';
 import 'package:qBitRemote/routes.dart';
 
@@ -67,7 +68,7 @@ class _TorrentListScreenState extends State<TorrentListScreen> {
               },
             ),
             PopupMenuButton<String>(
-              onSelected: _handleMenuClick,
+              onSelected: _handleMainPopupMenuItemClick,
               itemBuilder: (BuildContext context) {
                 return {"Resume all", "Pause all"}
                     .map((e) => PopupMenuItem<String>(
@@ -100,14 +101,23 @@ class _TorrentListScreenState extends State<TorrentListScreen> {
               context.read<MultiSelectCubit>().closeSelectedMode();
             },
           ),
-          IconButton(
-            icon: Icon(Icons.delete),
-            onPressed: () {
-              final selectedItems = context
-                  .read<MultiSelectCubit>()
-                  .getSelectedItems<TorrentEntity>();
-              _showDeleteDialog(context, selectedItems);
-            },
+          PopupMenuButton<String>(
+            onSelected: _handleSelectedPopupMenuItemClick,
+            itemBuilder: (context) {
+            return [
+              PopupMenuItem<String>(value: SelectedPopupMenuType.Delete.value, child: Text(SelectedPopupMenuType.Delete.value)),
+              PopupSubMenuItem<String>(
+                title: SelectedPopupMenuType.QueueGroup.value,
+                items: [
+                  SelectedPopupMenuType.QueueMax.value,
+                  SelectedPopupMenuType.QueueUp.value,
+                  SelectedPopupMenuType.QueueDown.value,
+                  SelectedPopupMenuType.QueueMin.value,
+                ],
+                onSelected: _handleQueuePopupMenuItemClick,
+              ),
+            ];
+          },
           )
         ],
       ),
@@ -170,7 +180,7 @@ class _TorrentListScreenState extends State<TorrentListScreen> {
     );
   }
 
-  void _handleMenuClick(String value) {
+  void _handleMainPopupMenuItemClick(String value) {
     switch (value) {
       case "Resume all":
         {
@@ -183,6 +193,33 @@ class _TorrentListScreenState extends State<TorrentListScreen> {
           break;
         }
     }
+  }
+  
+  void _handleSelectedPopupMenuItemClick(String value) {
+    if (value == SelectedPopupMenuType.Delete.value) {
+      final selectedItems = context
+          .read<MultiSelectCubit>()
+          .getSelectedItems<TorrentEntity>();
+      _showDeleteDialog(context, selectedItems);
+    }
+  }
+
+  void _handleQueuePopupMenuItemClick(String value) {
+    final selectedItems = context
+        .read<MultiSelectCubit>()
+        .getSelectedItems<TorrentEntity>();
+    SelectedPopupMenuType priority;
+    if (value == SelectedPopupMenuType.QueueMax.value) {
+      priority = SelectedPopupMenuType.QueueMax;
+    } else if (value == SelectedPopupMenuType.QueueUp.value) {
+      priority = SelectedPopupMenuType.QueueUp;
+    } else if (value == SelectedPopupMenuType.QueueDown.value) {
+      priority = SelectedPopupMenuType.QueueDown;
+    } else if (value == SelectedPopupMenuType.QueueMin.value) {
+      priority = SelectedPopupMenuType.QueueMin;
+    }
+    context.read<TorrentListCubit>().changePriority(selectedItems, priority);
+    context.read<MultiSelectCubit>().closeSelectedMode();
   }
 
   void _showDeleteDialog(BuildContext context, List<TorrentEntity> list) {
@@ -238,5 +275,28 @@ class _TorrentsScreenView extends StatelessWidget {
         }
       },
     );
+  }
+}
+
+enum SelectedPopupMenuType { Delete, QueueGroup, QueueUp, QueueDown, QueueMax, QueueMin }
+
+extension SelectedMenuExtention on SelectedPopupMenuType {
+  String get value {
+    switch(this) {
+      case SelectedPopupMenuType.Delete:
+        return "Delete";
+      case SelectedPopupMenuType.QueueMax:
+        return "Move to top";
+      case SelectedPopupMenuType.QueueUp:
+        return "Move up";
+      case SelectedPopupMenuType.QueueDown:
+        return "Move down";
+      case SelectedPopupMenuType.QueueMin:
+        return "Move to bottom";
+      case SelectedPopupMenuType.QueueGroup:
+        return "Queue";
+      default:
+        return "";
+    }
   }
 }

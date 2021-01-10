@@ -3,7 +3,7 @@ import 'package:qBitRemote/app/utils/path_parser.dart';
 
 class TorrentEntity {
 
-  TorrentEntity({this.name, this.hash, this.state, this.progress, this.fileTreeData, this.size, this.estimateTime, this.downloadSpeed, this.uploadSpeed});
+  TorrentEntity({this.name, this.hash, this.state, this.progress, this.fileTreeData, this.size, this.estimateTime, this.downloadSpeed, this.uploadSpeed, this.priority});
 
   final String name;
   final String hash;
@@ -14,6 +14,7 @@ class TorrentEntity {
   final String estimateTime;
   final String downloadSpeed;
   final String uploadSpeed;
+  final int priority;
 
   factory TorrentEntity.fromJson(Map<String, dynamic> json) {
     return TorrentEntity(
@@ -26,6 +27,7 @@ class TorrentEntity {
       estimateTime: FormatHelper.formatSeconds(json["eta"]),
       downloadSpeed: FormatHelper.formatBytes(json["dlspeed"], 1) + "/s",
       uploadSpeed: FormatHelper.formatBytes(json["upspeed"], 1) + "/s",
+      priority: json["priority"],
     );
   }
 }

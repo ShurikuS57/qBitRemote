@@ -1,11 +1,12 @@
+import 'package:bloc/bloc.dart';
+import 'package:flutter/material.dart';
 import 'package:qBitRemote/api/http.dart';
 import 'package:qBitRemote/api/models/torrent_entity.dart';
 import 'package:qBitRemote/api/qbitremote_repository.dart';
+import 'package:qBitRemote/app/pages/torrent_list/torrents_list_page.dart';
 import 'package:qBitRemote/local/models/app_settings.dart';
 import 'package:qBitRemote/local/models/server_host.dart';
 import 'package:qBitRemote/repo/local_repository.dart';
-import 'package:flutter/material.dart';
-import 'package:bloc/bloc.dart';
 
 @immutable
 abstract class TorrentListState {}
@@ -140,6 +141,42 @@ class TorrentListCubit extends Cubit<TorrentListState> {
     ServerHost currentServer = await localRepository.findSelectedServerHost();
     UiResponse response = await qBitRemoteRepository.pauseCommandByHash(currentServer, hash);
     if (response.error.isNotEmpty) {
+      return emit(ShowError(response.error));
+    }
+  }
+
+  void changePriority(
+      List<TorrentEntity> selectedItems, SelectedPopupMenuType priority) async {
+    ServerHost currentServer = await localRepository.findSelectedServerHost();
+    UiResponse response;
+    switch (priority) {
+      case SelectedPopupMenuType.QueueUp:
+        {
+          response = await qBitRemoteRepository.increasePriority(
+              currentServer, selectedItems);
+          break;
+        }
+      case SelectedPopupMenuType.QueueDown:
+        {
+          response = await qBitRemoteRepository.decreasePriority(
+              currentServer, selectedItems);
+          break;
+        }
+      case SelectedPopupMenuType.QueueMax:
+        {
+          response = await qBitRemoteRepository.maxPriority(
+              currentServer, selectedItems);
+          break;
+        }
+      case SelectedPopupMenuType.QueueMin:
+        {
+          response = await qBitRemoteRepository.minPriority(
+              currentServer, selectedItems);
+          break;
+        }
+    }
+
+    if (response == null || response.error.isNotEmpty) {
       return emit(ShowError(response.error));
     }
   }

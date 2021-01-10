@@ -1,12 +1,13 @@
 import 'dart:collection';
 
+import 'package:dio/dio.dart';
+import 'package:file_picker/file_picker.dart';
 import 'package:qBitRemote/api/models/file_entity.dart';
 import 'package:qBitRemote/api/models/torrent_entity.dart';
 import 'package:qBitRemote/app/utils/path_parser.dart';
 import 'package:qBitRemote/local/models/app_settings.dart';
 import 'package:qBitRemote/local/models/server_host.dart';
-import 'package:dio/dio.dart';
-import 'package:file_picker/file_picker.dart';
+
 import 'http.dart';
 
 abstract class QBitRemoteRepository {
@@ -48,6 +49,14 @@ abstract class QBitRemoteRepository {
 
   Future<UiResponse> saveTorrentSettings(
       ServerHost currentServer, AppSettings settings);
+
+  Future<UiResponse> increasePriority(ServerHost currentServer, List<TorrentEntity> selectedItems);
+
+  Future<UiResponse> decreasePriority(ServerHost currentServer, List<TorrentEntity> selectedItems);
+
+  Future<UiResponse> maxPriority(ServerHost currentServer, List<TorrentEntity> selectedItems);
+
+  Future<UiResponse> minPriority(ServerHost currentServer, List<TorrentEntity> selectedItems);
 }
 
 class QBitRemoteRepositoryImpl extends QBitRemoteRepository {
@@ -82,6 +91,7 @@ class QBitRemoteRepositoryImpl extends QBitRemoteRepository {
       List<TorrentEntity> result = (response.data as List)
           .map((e) => TorrentEntity.fromJson(e))
           .toList();
+      result.sort((a, b) => a.priority.compareTo(b.priority));
       return UiResponse(result, "");
     } catch (e) {
       if (e is DioError && e.response?.statusCode == 403) {
@@ -320,6 +330,66 @@ class QBitRemoteRepositoryImpl extends QBitRemoteRepository {
       return UiResponse("", "");
     } catch (e) {
       return UiResponse(null, e.toString());
+    }
+  }
+
+  @override
+  Future<UiResponse> increasePriority(ServerHost currentServer, List<TorrentEntity> selectedItems) async {
+    try {
+      String hashes = _prepareHashes(selectedItems);
+
+      String url = "http://" + currentServer.host + "/api/v2/torrents/increasePrio";
+      Map<String, dynamic> params = HashMap();
+      params["hashes"] = hashes;
+      await dio.get(url, queryParameters: params);
+      return UiResponse("", "");
+    } catch (e) {
+      return UiResponse("", e.toString());
+    }
+  }
+
+  @override
+  Future<UiResponse> decreasePriority(ServerHost currentServer, List<TorrentEntity> selectedItems) async {
+    try {
+      String hashes = _prepareHashes(selectedItems);
+
+      String url = "http://" + currentServer.host + "/api/v2/torrents/decreasePrio";
+      Map<String, dynamic> params = HashMap();
+      params["hashes"] = hashes;
+      await dio.get(url, queryParameters: params);
+      return UiResponse("", "");
+    } catch (e) {
+      return UiResponse("", e.toString());
+    }
+  }
+
+  @override
+  Future<UiResponse> maxPriority(ServerHost currentServer, List<TorrentEntity> selectedItems) async {
+    try {
+      String hashes = _prepareHashes(selectedItems);
+
+      String url = "http://" + currentServer.host + "/api/v2/torrents/topPrio";
+      Map<String, dynamic> params = HashMap();
+      params["hashes"] = hashes;
+      await dio.get(url, queryParameters: params);
+      return UiResponse("", "");
+    } catch (e) {
+      return UiResponse("", e.toString());
+    }
+  }
+
+  @override
+  Future<UiResponse> minPriority(ServerHost currentServer, List<TorrentEntity> selectedItems) async {
+    try {
+      String hashes = _prepareHashes(selectedItems);
+
+      String url = "http://" + currentServer.host + "/api/v2/torrents/bottomPrio";
+      Map<String, dynamic> params = HashMap();
+      params["hashes"] = hashes;
+      await dio.get(url, queryParameters: params);
+      return UiResponse("", "");
+    } catch (e) {
+      return UiResponse("", e.toString());
     }
   }
 

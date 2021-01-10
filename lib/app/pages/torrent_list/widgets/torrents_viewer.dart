@@ -1,11 +1,11 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:qBitRemote/api/models/torrent_entity.dart';
 import 'package:qBitRemote/app/utils/state_helper.dart';
 import 'package:qBitRemote/app/widgets/multiselect/multi_select_cubit.dart';
 import 'package:qBitRemote/app/widgets/multiselect/multi_select_list_view.dart';
 import 'package:qBitRemote/commons/colors.dart';
 import 'package:qBitRemote/routes.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 class TorrentsViewerWidget extends StatefulWidget {
   TorrentsViewerWidget({Key key, @required this.torrents}) : super(key: key);
@@ -55,7 +55,7 @@ class TorrentItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
       child: Stack(
         children: [
           Card(
@@ -85,6 +85,7 @@ class TorrentItem extends StatelessWidget {
                             Text(
                               item.name,
                               overflow: TextOverflow.ellipsis,
+                              maxLines: 2,
                               style: TextStyle(
                                   color: AppColors.textTitle1Color,
                                   fontSize: 16,
