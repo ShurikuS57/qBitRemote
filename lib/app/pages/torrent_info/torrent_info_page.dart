@@ -1,14 +1,11 @@
-import 'package:qBitRemote/api/models/file_entity.dart';
-import 'package:qBitRemote/api/models/torrent_entity.dart';
-import 'package:qBitRemote/app/pages/torrent_list/torrents_list_cubit.dart';
-import 'package:qBitRemote/app/utils/format_helper.dart';
-import 'package:qBitRemote/app/utils/state_helper.dart';
-import 'package:qBitRemote/app/widgets/MaterialDialog.dart';
-import 'package:qBitRemote/commons/colors.dart';
-import 'package:qBitRemote/commons/icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:qBitRemote/api/models/torrent_entity.dart';
+import 'package:qBitRemote/app/pages/torrent_list/torrents_list_cubit.dart';
+import 'package:qBitRemote/app/utils/state_helper.dart';
+import 'package:qBitRemote/commons/colors.dart';
+import 'package:qBitRemote/commons/icons.dart';
 
 class TorrentInfoScreen extends StatefulWidget {
   @override

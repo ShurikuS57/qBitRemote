@@ -15,7 +15,7 @@ class MaterialDialog {
   bool isAutoCloseable = true;
   bool isButtonTextCaps = true;
   Widget bodyWidget;
-  List<CheckboxEntity> checkboxList = List();
+  List<CheckboxEntity> checkboxList = [];
 
   MaterialDialog(this._context);
 

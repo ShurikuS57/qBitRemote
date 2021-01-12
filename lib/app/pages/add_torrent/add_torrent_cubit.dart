@@ -1,10 +1,10 @@
+import 'package:bloc/bloc.dart';
+import 'package:file_picker/file_picker.dart';
+import 'package:flutter/material.dart';
 import 'package:qBitRemote/api/http.dart';
 import 'package:qBitRemote/api/qbitremote_repository.dart';
 import 'package:qBitRemote/app/utils/validator_helper.dart';
 import 'package:qBitRemote/repo/local_repository.dart';
-import 'package:flutter/material.dart';
-import 'package:bloc/bloc.dart';
-import 'package:file_picker/file_picker.dart';
 import 'package:string_validator/string_validator.dart';
 
 @immutable
@@ -55,7 +55,7 @@ class AddTorrentCubit extends Cubit<AddTorrentState> {
   final QBitRemoteRepository qBittorentRepository;
 
   bool _isFileSourceSelected = true;
-  List<PlatformFile> _filesSelectedPath = List();
+  List<PlatformFile> _filesSelectedPath = [];
   String _urlLink = "";
 
   void onSwitchInputSource(bool isFileSourceSelected) {

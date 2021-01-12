@@ -150,7 +150,7 @@ class QBitRemoteRepositoryImpl extends QBitRemoteRepository {
       List<PlatformFile> fileSelectedPath, String newSavePath) async {
     try {
       String url = "http://" + serverHost.host + "/api/v2/torrents/add";
-      List<MultipartFile> multipartFiles = List();
+      List<MultipartFile> multipartFiles = [];
       for (var item in fileSelectedPath) {
         final mp = await MultipartFile.fromFile(item.path, filename: item.name);
         multipartFiles.add(mp);

@@ -42,7 +42,7 @@ class MultiSelectCubit<T> extends Cubit<MultiSelectState> {
   }
 
   List<K> getSelectedItems<K>() {
-    List<K> result = List();
+    List<K> result = [];
     _selectedItems.entries.forEach((element) {
       if (element.value is K) {
         result.add(element.value as K);
