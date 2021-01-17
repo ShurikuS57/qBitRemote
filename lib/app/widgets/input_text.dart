@@ -1,6 +1,6 @@
-import 'package:qBitRemote/commons/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:qBitRemote/commons/colors.dart';
 
 class InputText extends StatefulWidget {
   InputText(
@@ -13,7 +13,8 @@ class InputText extends StatefulWidget {
       this.inputFormatters,
       this.maxLength,
       this.minLines,
-      this.maxLines})
+      this.maxLines,
+      this.obscureText = false})
       : super(key: key);
 
   final TextEditingController controller;
@@ -25,6 +26,7 @@ class InputText extends StatefulWidget {
   final int maxLength;
   final int minLines;
   final int maxLines;
+  final bool obscureText;
 
   @override
   _InputTextState createState() => _InputTextState();
@@ -40,6 +42,7 @@ class _InputTextState extends State<InputText> {
       maxLength: widget.maxLength,
       minLines: widget.minLines,
       maxLines: widget.maxLines,
+      obscureText: widget.obscureText,
       decoration: InputDecoration(
           labelText: widget.lableText ?? "",
           counter: Offstage(),

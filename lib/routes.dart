@@ -1,19 +1,20 @@
+import 'package:cookie_jar/cookie_jar.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_analytics/observer.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:qBitRemote/api/qbitremote_repository.dart';
-import 'package:qBitRemote/app/pages/add_server/add_server_cubit.dart';
 import 'package:qBitRemote/app/pages/add_server/add_server_page.dart';
 import 'package:qBitRemote/app/pages/add_torrent/add_torrent_cubit.dart';
 import 'package:qBitRemote/app/pages/add_torrent/add_torrent_page.dart';
-import 'package:qBitRemote/app/pages/app_settings/app_settings_page.dart';
 import 'package:qBitRemote/app/pages/app_settings/app_settings_cubit.dart';
+import 'package:qBitRemote/app/pages/app_settings/app_settings_page.dart';
 import 'package:qBitRemote/app/pages/server_list/server_list_cubit.dart';
 import 'package:qBitRemote/repo/local_repository.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+
+import 'app/pages/add_server/add_server_bloc.dart';
 import 'app/pages/server_list/server_list_page.dart';
 import 'app/pages/splash/splash_page.dart';
-import 'package:cookie_jar/cookie_jar.dart';
 import 'app/pages/torrent_info/torrent_details_page.dart';
 import 'app/pages/torrent_list/torrents_list_cubit.dart';
 import 'app/pages/torrent_list/torrents_list_page.dart';
@@ -35,7 +36,7 @@ class Routes {
 
   static FirebaseAnalytics analytics = FirebaseAnalytics();
   static FirebaseAnalyticsObserver observer =
-  FirebaseAnalyticsObserver(analytics: analytics);
+      FirebaseAnalyticsObserver(analytics: analytics);
 
   static Map<String, WidgetBuilder> getRoutes() {
     return {
@@ -51,9 +52,13 @@ class Routes {
                 qBittorentRepository: _qBittorentRepository),
             child: ServerListPage(),
           ),
-      Routes.addServerPage: (BuildContext context) => BlocProvider(
-            create: (_) =>
-                AddServerCubit(_qBittorentRepository, _localRepository),
+      Routes.addServerPage: (BuildContext context) => MultiBlocProvider(
+            providers: [
+              BlocProvider(
+                create: (_) =>
+                    AddServerBloc(_qBittorentRepository, _localRepository),
+              ),
+            ],
             child: AddServerPage(),
           ),
       Routes.torrentsPage: (BuildContext context) => MultiBlocProvider(

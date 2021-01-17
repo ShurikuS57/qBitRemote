@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:qBitRemote/app/pages/add_server/add_server_cubit.dart';
+import 'package:qBitRemote/app/pages/add_server/add_server_bloc.dart';
 import 'package:qBitRemote/app/widgets/action_button.dart';
 import 'package:qBitRemote/app/widgets/input_text.dart';
 import 'package:qBitRemote/commons/colors.dart';
@@ -17,9 +17,6 @@ class _AddServerPageState extends State<AddServerPage> {
   var _hostController = TextEditingController();
   var _loginController = TextEditingController();
   var _passwordController = TextEditingController();
-
-  var _isSaveButtonEnable = false;
-  var _titleAppBar = "";
 
   @override
   void initState() {
@@ -40,24 +37,91 @@ class _AddServerPageState extends State<AddServerPage> {
 
   @override
   Widget build(BuildContext context) {
-    _checkEditMode(context);
     return Scaffold(
       appBar: AppBar(
-        title: Text(_titleAppBar),
-        actions: [
-          BlocConsumer<AddServerCubit, AddServerState>(
-            listener: (context, state) {
-              if (state is AddServerSuccessful) {
-                Navigator.pop(context);
-              }
-            },
-            builder: (context, state) {
-              if (state is ButtonInvalidate) {
-                _isSaveButtonEnable = state.isEnableButton;
-              }
-              return IconButton(
-                icon: Icon(Icons.save),
-                onPressed: !_isSaveButtonEnable
+        title: _buildAppBarTitle(),
+        actions: [_buildSaveButton()],
+      ),
+      backgroundColor: AppColors.primaryBackground,
+      body: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: ListView(
+            shrinkWrap: true,
+            children: [
+              InputText(
+                controller: _nameController,
+                lableText: AppLocalizations.of(context).name,
+                isEnableNextFocus: true,
+                suffixIcon: Icons.title_outlined,
+              ),
+              Container(
+                height: 8,
+              ),
+              InputText(
+                controller: _hostController,
+                lableText: AppLocalizations.of(context).hostname,
+                isEnableNextFocus: true,
+                suffixIcon: Icons.http_outlined,
+              ),
+              Container(
+                height: 8,
+              ),
+              InputText(
+                  controller: _loginController,
+                  lableText: AppLocalizations.of(context).username,
+                  isEnableNextFocus: true,
+                  suffixIcon: Icons.account_circle_outlined),
+              Container(
+                height: 8,
+              ),
+              InputText(
+                  controller: _passwordController,
+                  lableText: AppLocalizations.of(context).password,
+                  isEnableNextFocus: false,
+                  suffixIcon: Icons.lock_outline,
+              obscureText: true,
+              maxLines: 1,),
+              Container(
+                height: 16,
+              ),
+              _buildTestConnectButton()
+            ],
+          )),
+    );
+  }
+
+  Widget _buildTestConnectButton() {
+    return BlocConsumer<AddServerBloc, AddServerState>(
+      listener: (context, state) {
+        if (state is ConnectSuccessResultState) {
+          Navigator.pop(context);
+        }
+        if (state is TestConnectState) {
+          if (state.isConnect) {
+            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+              content: Text(AppLocalizations.of(context).connectionSuccessful),
+            ));
+          } else {
+            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+              content: Text(AppLocalizations.of(context).connectionError),
+            ));
+          }
+        }
+      },
+      builder: (context, state) {
+        bool isSaveButtonEnable = false;
+        if (state is ButtoinEnableState) {
+          isSaveButtonEnable = state.isEnable;
+        } else if (state is TestConnectState) {
+          isSaveButtonEnable = true;
+        }
+        return Center(
+          child: Wrap(
+            children: [
+              ActionButton(
+                text: AppLocalizations.of(context).testConnect,
+                isTextUpperCase: true,
+                onPressed: !isSaveButtonEnable
                     ? null
                     : () {
                         final serverHost = ServerHost(
@@ -65,111 +129,68 @@ class _AddServerPageState extends State<AddServerPage> {
                             host: _hostController.text,
                             login: _loginController.text,
                             password: _passwordController.text);
-                        context.read<AddServerCubit>().saveServer(serverHost);
+                        context
+                            .read<AddServerBloc>()
+                            .add(CheckConnectEvent(serverHost));
                       },
-              );
-            },
-          )
-        ],
-      ),
-      backgroundColor: AppColors.primaryBackground,
-      body: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: BlocConsumer<AddServerCubit, AddServerState>(
-            listener: (context, state) {
-              if (state is TestConnectResult) {
-                if (state.isHaveConnect) {
-                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                    content:
-                        Text(AppLocalizations.of(context).connectionSuccessful),
-                  ));
-                } else {
-                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                    content: Text(AppLocalizations.of(context).connectionError),
-                  ));
-                }
-              }
-            },
-            buildWhen: (previous, current) {
-              return current is AddServerSetupEditMode;
-            },
-            builder: (context, state) {
-              if (state is AddServerSetupEditMode) {
-                _nameController.text = state.server.name;
-                _hostController.text = state.server.host;
-                _loginController.text = state.server.login;
-                _passwordController.text = state.server.password;
-              }
-              return ListView(
-                shrinkWrap: true,
-                children: [
-                  InputText(
-                    controller: _nameController,
-                    lableText: AppLocalizations.of(context).name,
-                    isEnableNextFocus: true,
-                    suffixIcon: Icons.title_outlined,
-                  ),
-                  Container(
-                    height: 8,
-                  ),
-                  InputText(
-                    controller: _hostController,
-                    lableText: AppLocalizations.of(context).hostname,
-                    isEnableNextFocus: true,
-                    suffixIcon: Icons.http_outlined,
-                  ),
-                  Container(
-                    height: 8,
-                  ),
-                  InputText(
-                      controller: _loginController,
-                      lableText: AppLocalizations.of(context).username,
-                      isEnableNextFocus: true,
-                      suffixIcon: Icons.account_circle_outlined),
-                  Container(
-                    height: 8,
-                  ),
-                  InputText(
-                      controller: _passwordController,
-                      lableText: AppLocalizations.of(context).password,
-                      isEnableNextFocus: false,
-                      suffixIcon: Icons.lock_outline),
-                  Container(
-                    height: 16,
-                  ),
-                  BlocBuilder<AddServerCubit, AddServerState>(
-                    builder: (context, state) {
-                      if (state is ButtonInvalidate) {
-                        _isSaveButtonEnable = state.isEnableButton;
-                      }
-                      return Center(
-                        child: Wrap(
-                          children: [
-                            ActionButton(
-                              text: AppLocalizations.of(context).testConnect,
-                              isTextUpperCase: true,
-                              onPressed: !_isSaveButtonEnable
-                                  ? null
-                                  : () {
-                                      final serverHost = ServerHost(
-                                          name: _nameController.text,
-                                          host: _hostController.text,
-                                          login: _loginController.text,
-                                          password: _passwordController.text);
-                                      context
-                                          .read<AddServerCubit>()
-                                          .checkServerConnect(serverHost);
-                                    },
-                            ),
-                          ],
-                        ),
-                      );
-                    },
-                  )
-                ],
-              );
-            },
-          )),
+              ),
+            ],
+          ),
+        );
+      },
+    );
+  }
+
+  Widget _buildSaveButton() {
+    return BlocConsumer<AddServerBloc, AddServerState>(
+      listener: (context, state) {
+        if (state is SetupEditModeState) {
+          _nameController.text = state.server.name;
+          _hostController.text = state.server.host;
+          _loginController.text = state.server.login;
+          _passwordController.text = state.server.password;
+        }
+      },
+      builder: (context, state) {
+        bool isSaveButtonEnable = false;
+        if (state is ButtoinEnableState) {
+          isSaveButtonEnable = state.isEnable;
+        } else if (state is TestConnectState) {
+          isSaveButtonEnable = true;
+        }
+        if (state is InitialAddServerState) {
+          _checkEditMode(context);
+        }
+        return IconButton(
+          icon: Icon(Icons.save),
+          onPressed: !isSaveButtonEnable
+              ? null
+              : () {
+                  final serverHost = ServerHost(
+                      name: _nameController.text.trim(),
+                      host: _hostController.text.trim(),
+                      login: _loginController.text.trim(),
+                      password: _passwordController.text.trim());
+                  context
+                      .read<AddServerBloc>()
+                      .add(SaveServerEvent(serverHost));
+                  // context.read<AddServerCubit>().saveServer(serverHost);
+                },
+        );
+      },
+    );
+  }
+
+  Widget _buildAppBarTitle() {
+    return BlocBuilder<AddServerBloc, AddServerState>(
+      buildWhen: (previous, current) => current is AppBarTitleState,
+      builder: (context, state) {
+        String title = "";
+        if (state is AppBarTitleState) {
+          title = state.title;
+        }
+        return Text(title);
+      },
     );
   }
 
@@ -187,16 +208,23 @@ class _AddServerPageState extends State<AddServerPage> {
     final host = _hostController.text;
     final login = _loginController.text;
     final password = _passwordController.text;
-    context.select((AddServerCubit bloc) => bloc.invalidateButton(name, host, login, password));
+    context
+        .read<AddServerBloc>()
+        .add(AddServerEvent.invalidateButton(name, host, login, password));
   }
 
   void _checkEditMode(BuildContext context) {
     final AddServerArguments args = ModalRoute.of(context).settings.arguments;
     if (args != null && args.isEditMode) {
-      _titleAppBar = AppLocalizations.of(context).editServer;
-      context.select((AddServerCubit bloc) => bloc.setupEditMode(args.editId));
+      context.select((AddServerBloc bloc) => bloc.add(
+          AddServerEvent.setAppBarTitle(
+              AppLocalizations.of(context).editServer)));
+      context.select((AddServerBloc bloc) =>
+          bloc.add(AddServerEvent.setEditMode(args.editId)));
     } else {
-      _titleAppBar = AppLocalizations.of(context).addNewServer;
+      context.select((AddServerBloc bloc) => bloc.add(
+          AddServerEvent.setAppBarTitle(
+              AppLocalizations.of(context).addNewServer)));
     }
   }
 }

@@ -1,6 +1,6 @@
 import 'package:hive/hive.dart';
 
-@HiveType()
+@HiveType(typeId: 0)
 class ServerHost extends HiveObject {
   @HiveField(0)
   String name;
@@ -28,7 +28,7 @@ class ServerHost extends HiveObject {
 
 class ServerHostAdapter extends TypeAdapter<ServerHost> {
   @override
-  final typeId = 0;
+  int get typeId => 0;
 
   @override
   ServerHost read(BinaryReader reader) {

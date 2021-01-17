@@ -19,24 +19,24 @@ dependencies:
   supercharged: ^1.12.0
 
   # architecture
-  bloc: ^6.1.1
   flutter_bloc: ^6.1.1
 
-  provider: ^4.3.2+3
+  provider: ^4.3.2+4
   path_provider: ^1.6.27
   dio: ^3.0.10
   dio_cookie_manager: 1.0.0
   hive: ^1.4.4+1
   hive_flutter: ^0.3.1
   toggle_switch: ^0.1.8
-  file_picker: ^2.1.5
+  file_picker: ^2.1.5+1
   string_validator: ^0.1.4
-  focus_detector: ^1.1.0
+  focus_detector: ^1.1.0+1
   package_info: ^0.4.3+2
   tree_view: ^0.0.5
+  freezed_annotation: ^0.12.0
 
   #analitics
-  firebase_analytics: ^6.3.0
+  firebase_analytics: ^7.0.1
 
 #dependency_overrides:
 # path: 1.7.0
@@ -46,7 +46,13 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   hive_generator: ^0.8.2
-  build_runner: ^1.10.12
+  build_runner: ^1.10.13
+  freezed: ^0.12.7
+
+analyzer:
+  exclude:
+    - "**/*.g.dart"
+    - "**/*.freezed.dart"
 
 flutter:
   generate: true
