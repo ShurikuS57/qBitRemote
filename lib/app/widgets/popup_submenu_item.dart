@@ -36,7 +36,7 @@ class _PopupSubMenuState<T> extends State<PopupSubMenuItem<T>> {
           mainAxisSize: MainAxisSize.max,
           children: <Widget>[
             Expanded(
-              child: Text(widget.title),
+              child: Text(widget.title, style: TextStyle(fontSize: 16),),
             ),
             Icon(
               Icons.arrow_right,
