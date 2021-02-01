@@ -1,8 +1,9 @@
-import 'package:qBitRemote/commons/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import '../routes.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:qBitRemote/commons/colors.dart';
+
+import '../routes.dart';
 
 class QBitRemoteApp extends StatefulWidget {
   @override
@@ -13,7 +14,8 @@ class _QBitRemoteAppState extends State<QBitRemoteApp> {
   @override
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-      statusBarColor: AppColors.primary, //or set color with: Color(0xFF0000FF)
+      statusBarColor: AppColors.primary,
+      statusBarBrightness: Brightness.light
     ));
     return MaterialApp(
       initialRoute: Routes.splashPage,

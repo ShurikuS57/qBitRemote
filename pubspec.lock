@@ -77,7 +77,7 @@ packages:
       name: build_runner
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.10.13"
+    version: "1.11.0"
   build_runner_core:
     dependency: transitive
     description:
@@ -231,7 +231,7 @@ packages:
       name: file_picker
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.1.5+1"
+    version: "2.1.6"
   firebase:
     dependency: transitive
     description:
@@ -489,7 +489,7 @@ packages:
       name: package_info
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.4.3+2"
+    version: "0.4.3+4"
   path:
     dependency: transitive
     description:
@@ -573,7 +573,7 @@ packages:
       name: provider
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "4.3.2+4"
+    version: "4.3.3"
   pub_semver:
     dependency: transitive
     description:

@@ -95,7 +95,8 @@ class QBitRemoteRepositoryImpl extends QBitRemoteRepository {
       return UiResponse(result, "");
     } catch (e) {
       if (e is DioError && e.response?.statusCode == 403) {
-        return await login(serverHost);
+        UiResponse loginResponse = await login(serverHost);
+        return UiResponse([], loginResponse.error);
       }
       return UiResponse([], e.toString());
     }
