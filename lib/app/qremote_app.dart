@@ -13,21 +13,18 @@ class QBitRemoteApp extends StatefulWidget {
 class _QBitRemoteAppState extends State<QBitRemoteApp> {
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-      statusBarColor: AppColors.primary,
-      statusBarBrightness: Brightness.light
-    ));
     return MaterialApp(
       initialRoute: Routes.splashPage,
       routes: Routes.getRoutes(),
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
-      theme: ThemeData(
+      theme: Theme.of(context).copyWith(
           primaryColor: AppColors.primary,
           primaryColorLight: AppColors.primaryLight,
           primaryColorDark: AppColors.primaryDark,
           accentColor: AppColors.primaryAccent,
-          appBarTheme: AppBarTheme(color: AppColors.primary)),
+          appBarTheme: AppBarTheme.of(context)
+              .copyWith(color: AppColors.primary, brightness: Brightness.dark)),
       debugShowCheckedModeBanner: false,
     );
   }
