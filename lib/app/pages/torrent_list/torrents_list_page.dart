@@ -147,6 +147,7 @@ class _TorrentListScreenState extends State<TorrentListScreen> {
   }
 
   GestureDetector buildAppBarBody(BuildContext context) {
+    String title = "";
     return GestureDetector(
       onTap: () {
         Navigator.pushNamed(context, Routes.serverListPage);
@@ -156,25 +157,16 @@ class _TorrentListScreenState extends State<TorrentListScreen> {
           return state is ServerTitle;
         },
         builder: (context, state) {
-          String title = "";
           if (state is ServerTitle) {
             title = state.host.name + "\n" + state.host.host;
           }
-          return Row(
-            children: [
-              Text(
-                title,
-                style: TextStyle(fontSize: 16),
-              ),
-            ],
+          return Text(
+            title,
+            style: TextStyle(fontSize: 16),
           );
         },
         listener: (context, state) {
-          return Row(
-            children: [
-              Text("2"),
-            ],
-          );
+          return SizedBox();
         },
       ),
     );
