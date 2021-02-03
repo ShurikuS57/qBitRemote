@@ -88,8 +88,10 @@ class AddServerBloc extends Bloc<AddServerEvent, AddServerState> {
   }
 
   Stream<AddServerState> _checkConnect(ServerHost server) async* {
+    yield AddServerState.buttonEnable(false);
     UiResponse response = await _repo.login(server);
     yield AddServerState.testConnectResult(response.error.isEmpty);
+    yield AddServerState.buttonEnable(true);
   }
 
   Stream<AddServerState> _invalidateButton(

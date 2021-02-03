@@ -1,9 +1,10 @@
 import 'dart:io';
 
+import 'package:cookie_jar/cookie_jar.dart';
+import 'package:dio/adapter.dart';
 import 'package:dio/dio.dart';
 import 'package:dio_cookie_manager/dio_cookie_manager.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:cookie_jar/cookie_jar.dart';
 
 Dio dio;
 
@@ -14,6 +15,16 @@ Future initConfig() async {
   ));
   var cookieJar = await getPersistCookie();
   dio.interceptors.add(CookieManager(cookieJar));
+
+  // TODO Add support to other platform
+  if (Platform.isAndroid) {
+    (dio.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
+        (client) {
+      client.badCertificateCallback =
+          (X509Certificate cert, String host, int port) => true;
+      return client;
+    };
+  }
 }
 
 Future getPersistCookie() async {

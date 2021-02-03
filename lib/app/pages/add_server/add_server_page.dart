@@ -43,51 +43,56 @@ class _AddServerPageState extends State<AddServerPage> {
         actions: [_buildSaveButton()],
       ),
       backgroundColor: AppColors.primaryBackground,
-      body: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: ListView(
-            shrinkWrap: true,
-            children: [
-              InputText(
-                controller: _nameController,
-                lableText: AppLocalizations.of(context).name,
-                isEnableNextFocus: true,
-                suffixIcon: Icons.title_outlined,
-              ),
-              Container(
-                height: 8,
-              ),
-              InputText(
-                controller: _hostController,
-                lableText: AppLocalizations.of(context).hostname,
-                isEnableNextFocus: true,
-                suffixIcon: Icons.http_outlined,
-              ),
-              Container(
-                height: 8,
-              ),
-              InputText(
-                  controller: _loginController,
-                  lableText: AppLocalizations.of(context).username,
-                  isEnableNextFocus: true,
-                  suffixIcon: Icons.account_circle_outlined),
-              Container(
-                height: 8,
-              ),
-              InputText(
-                  controller: _passwordController,
-                  lableText: AppLocalizations.of(context).password,
-                  isEnableNextFocus: false,
-                  suffixIcon: Icons.lock_outline,
-              obscureText: true,
-              maxLines: 1,),
-              Container(
-                height: 16,
-              ),
-              _buildTestConnectButton()
-            ],
-          )),
+      body: _buildBody(context),
     );
+  }
+
+  Widget _buildBody(BuildContext context) {
+    return Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: ListView(
+          shrinkWrap: true,
+          children: [
+            InputText(
+              controller: _nameController,
+              lableText: AppLocalizations.of(context).name,
+              isEnableNextFocus: true,
+              suffixIcon: Icons.title_outlined,
+            ),
+            Container(
+              height: 8,
+            ),
+            InputText(
+              controller: _hostController,
+              lableText: AppLocalizations.of(context).hostname,
+              isEnableNextFocus: true,
+              suffixIcon: Icons.http_outlined,
+            ),
+            Container(
+              height: 8,
+            ),
+            InputText(
+                controller: _loginController,
+                lableText: AppLocalizations.of(context).username,
+                isEnableNextFocus: true,
+                suffixIcon: Icons.account_circle_outlined),
+            Container(
+              height: 8,
+            ),
+            InputText(
+              controller: _passwordController,
+              lableText: AppLocalizations.of(context).password,
+              isEnableNextFocus: false,
+              suffixIcon: Icons.lock_outline,
+              obscureText: true,
+              maxLines: 1,
+            ),
+            Container(
+              height: 16,
+            ),
+            _buildTestConnectButton()
+          ],
+        ));
   }
 
   Widget _buildTestConnectButton() {
@@ -95,8 +100,8 @@ class _AddServerPageState extends State<AddServerPage> {
       listener: (context, state) {
         if (state is ConnectSuccessResultState) {
           Navigator.pop(context);
-        }
-        if (state is TestConnectState) {
+        } else if (state is TestConnectState) {
+          ScaffoldMessenger.of(context).hideCurrentSnackBar();
           if (state.isConnect) {
             ScaffoldMessenger.of(context).showSnackBar(SnackBar(
               content: Text(AppLocalizations.of(context).connectionSuccessful),

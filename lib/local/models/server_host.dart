@@ -24,6 +24,15 @@ class ServerHost extends HiveObject {
     this.password,
     this.isSelected,
   });
+
+  String getConnectUrl() {
+    final hostTrim = this.host.trim();
+    if (hostTrim.contains("http://") || hostTrim.contains("https://")) {
+      return hostTrim;
+    } else {
+      return "http://" + hostTrim;
+    }
+  }
 }
 
 class ServerHostAdapter extends TypeAdapter<ServerHost> {
