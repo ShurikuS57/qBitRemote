@@ -5,6 +5,7 @@ import 'package:qBitRemote/app/pages/torrent_list/torrents_list_cubit.dart';
 import 'package:qBitRemote/app/utils/format_helper.dart';
 import 'package:qBitRemote/app/utils/path_parser.dart';
 import 'package:qBitRemote/app/utils/state_helper.dart';
+import 'package:qBitRemote/app/widgets/loader_layout.dart';
 import 'package:qBitRemote/commons/colors.dart';
 import 'package:tree_view/tree_view.dart';
 
@@ -16,14 +17,18 @@ class TorrentFilesScreen extends StatefulWidget {
 class _TorrentFilesScreenState extends State<TorrentFilesScreen> {
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<TorrentListCubit, TorrentListState>(
-        listener: (context, state) {},
+    return BlocBuilder<TorrentListCubit, TorrentListState>(
+        buildWhen: (previous, current) =>
+            current is ShowTorrentInfo || current is ShowLoader,
         builder: (context, state) {
           if (state is ShowTorrentInfo) {
             final torrent = state.torrent;
             return TreeView(
               parentList: _prepareTreeViewData(torrent.fileTreeData),
             );
+          }
+          if (state is ShowLoader) {
+            return LoaderLayout();
           } else {
             return Container();
           }
@@ -44,11 +49,13 @@ class _TorrentFilesScreenState extends State<TorrentFilesScreen> {
     final parent = Parent(
         parent: currentNode.fileEntity != null
             ? Container(
-                margin: EdgeInsets.only(left: isRoot ? 8.0 : 8.0 * deepFolderLevel, right: 8),
+                margin: EdgeInsets.only(
+                    left: isRoot ? 8.0 : 8.0 * deepFolderLevel, right: 8),
                 child: _buildFileInfoCard(
                     currentNode.fileEntity, currentNode.path))
             : Container(
-                margin: EdgeInsets.only(left: isRoot ? 0.0 : 8.0 * deepFolderLevel),
+                margin:
+                    EdgeInsets.only(left: isRoot ? 0.0 : 8.0 * deepFolderLevel),
                 child: ListTile(
                   title: Text(currentNode.path),
                   leading: Icon(Icons.folder),

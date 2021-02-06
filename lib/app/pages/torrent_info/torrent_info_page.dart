@@ -4,6 +4,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:qBitRemote/api/models/torrent_entity.dart';
 import 'package:qBitRemote/app/pages/torrent_list/torrents_list_cubit.dart';
 import 'package:qBitRemote/app/utils/state_helper.dart';
+import 'package:qBitRemote/app/widgets/loader_layout.dart';
 import 'package:qBitRemote/commons/colors.dart';
 import 'package:qBitRemote/commons/icons.dart';
 
@@ -13,11 +14,8 @@ class TorrentInfoScreen extends StatefulWidget {
 }
 
 class _TorrentInfoScreenState extends State<TorrentInfoScreen> {
-  String _torrentHash = "";
-
   @override
   Widget build(BuildContext context) {
-    _torrentHash = ModalRoute.of(context).settings.arguments;
     return BlocConsumer<TorrentListCubit, TorrentListState>(
         listener: (context, state) {
       if (state is ShowError) {
@@ -27,14 +25,13 @@ class _TorrentInfoScreenState extends State<TorrentInfoScreen> {
       } else if (state is GoToBackScreen) {
         Navigator.pop(context);
       }
+    }, buildWhen: (previous, current) {
+      return current is TorrentsInitial ||
+          current is ShowLoader ||
+          current is ShowTorrentInfo;
     }, builder: (context, state) {
-      if (state is TorrentsInitial) {
-        context.watch<TorrentListCubit>().loadTorrentInfo(_torrentHash);
-        return Center(
-          child: Container(
-            child: Text(AppLocalizations.of(context).emptyTorrentInfo),
-          ),
-        );
+      if (state is ShowLoader) {
+        return LoaderLayout();
       } else if (state is ShowTorrentInfo) {
         final torrent = state.torrent;
         return ListView(
@@ -63,7 +60,8 @@ class _TorrentInfoScreenState extends State<TorrentInfoScreen> {
                     SizedBox(
                       height: 10,
                     ),
-                    _buildInfoText("Status: " + StateHelper.statusStr(torrent.state)),
+                    _buildInfoText(
+                        "Status: " + StateHelper.statusStr(torrent.state)),
                     SizedBox(
                       height: 20,
                     ),

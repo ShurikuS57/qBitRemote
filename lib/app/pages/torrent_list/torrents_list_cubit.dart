@@ -20,28 +20,30 @@ class DeleteTorrentsSuccess extends TorrentListState {}
 class GoToBackScreen extends TorrentListState {}
 
 class ShowError extends TorrentListState {
-  ShowError(this.error);
-
   final String error;
+
+  ShowError(this.error);
 }
 
 class TorrentsLoaded extends TorrentListState {
-  TorrentsLoaded(this.torrents);
-
   final List<TorrentEntity> torrents;
+
+  TorrentsLoaded(this.torrents);
 }
 
 class ShowTorrentInfo extends TorrentListState {
-  ShowTorrentInfo(this.torrent);
-
   final TorrentEntity torrent;
+
+  ShowTorrentInfo(this.torrent);
 }
 
 class ServerTitle extends TorrentListState {
-  ServerTitle(this.host);
-
   final ServerHost host;
+
+  ServerTitle(this.host);
 }
+
+class ShowLoader extends TorrentListState {}
 
 class TorrentListCubit extends Cubit<TorrentListState> {
   TorrentListCubit(
@@ -49,6 +51,7 @@ class TorrentListCubit extends Cubit<TorrentListState> {
       : super(TorrentsInitial()) {
     loadTorrents();
     loadTitleServer();
+    emit(ShowLoader());
   }
 
   final LocalRepository localRepository;

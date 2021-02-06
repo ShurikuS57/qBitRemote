@@ -6,6 +6,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:focus_detector/focus_detector.dart';
 import 'package:qBitRemote/api/models/torrent_entity.dart';
 import 'package:qBitRemote/app/widgets/MaterialDialog.dart';
+import 'package:qBitRemote/app/widgets/loader_layout.dart';
 import 'package:qBitRemote/app/widgets/multiselect/multi_select_app_bar.dart';
 import 'package:qBitRemote/app/widgets/multiselect/multi_select_cubit.dart';
 import 'package:qBitRemote/app/widgets/popup_submenu_item.dart';
@@ -104,20 +105,22 @@ class _TorrentListScreenState extends State<TorrentListScreen> {
           PopupMenuButton<String>(
             onSelected: _handleSelectedPopupMenuItemClick,
             itemBuilder: (context) {
-            return [
-              PopupMenuItem<String>(value: SelectedPopupMenuType.Delete.value, child: Text(SelectedPopupMenuType.Delete.value)),
-              PopupSubMenuItem<String>(
-                title: SelectedPopupMenuType.QueueGroup.value,
-                items: [
-                  SelectedPopupMenuType.QueueMax.value,
-                  SelectedPopupMenuType.QueueUp.value,
-                  SelectedPopupMenuType.QueueDown.value,
-                  SelectedPopupMenuType.QueueMin.value,
-                ],
-                onSelected: _handleQueuePopupMenuItemClick,
-              ),
-            ];
-          },
+              return [
+                PopupMenuItem<String>(
+                    value: SelectedPopupMenuType.Delete.value,
+                    child: Text(SelectedPopupMenuType.Delete.value)),
+                PopupSubMenuItem<String>(
+                  title: SelectedPopupMenuType.QueueGroup.value,
+                  items: [
+                    SelectedPopupMenuType.QueueMax.value,
+                    SelectedPopupMenuType.QueueUp.value,
+                    SelectedPopupMenuType.QueueDown.value,
+                    SelectedPopupMenuType.QueueMin.value,
+                  ],
+                  onSelected: _handleQueuePopupMenuItemClick,
+                ),
+              ];
+            },
           )
         ],
       ),
@@ -186,20 +189,18 @@ class _TorrentListScreenState extends State<TorrentListScreen> {
         }
     }
   }
-  
+
   void _handleSelectedPopupMenuItemClick(String value) {
     if (value == SelectedPopupMenuType.Delete.value) {
-      final selectedItems = context
-          .read<MultiSelectCubit>()
-          .getSelectedItems<TorrentEntity>();
+      final selectedItems =
+          context.read<MultiSelectCubit>().getSelectedItems<TorrentEntity>();
       _showDeleteDialog(context, selectedItems);
     }
   }
 
   void _handleQueuePopupMenuItemClick(String value) {
-    final selectedItems = context
-        .read<MultiSelectCubit>()
-        .getSelectedItems<TorrentEntity>();
+    final selectedItems =
+        context.read<MultiSelectCubit>().getSelectedItems<TorrentEntity>();
     SelectedPopupMenuType priority;
     if (value == SelectedPopupMenuType.QueueMax.value) {
       priority = SelectedPopupMenuType.QueueMax;
@@ -262,6 +263,8 @@ class _TorrentsScreenView extends StatelessWidget {
           return TorrentsViewerWidget(
             torrents: state.torrents,
           );
+        } else if (state is ShowLoader) {
+          return LoaderLayout();
         } else {
           return Container();
         }
@@ -270,11 +273,18 @@ class _TorrentsScreenView extends StatelessWidget {
   }
 }
 
-enum SelectedPopupMenuType { Delete, QueueGroup, QueueUp, QueueDown, QueueMax, QueueMin }
+enum SelectedPopupMenuType {
+  Delete,
+  QueueGroup,
+  QueueUp,
+  QueueDown,
+  QueueMax,
+  QueueMin
+}
 
 extension SelectedMenuExtention on SelectedPopupMenuType {
   String get value {
-    switch(this) {
+    switch (this) {
       case SelectedPopupMenuType.Delete:
         return "Delete";
       case SelectedPopupMenuType.QueueMax:
