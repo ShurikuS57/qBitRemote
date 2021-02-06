@@ -69,6 +69,11 @@ android {
         release {
             manifestPlaceholders = [analytics_deactivated: "false"]
             signingConfig signingConfigs.release
+            minifyEnabled true
+            useProguard true
+            shrinkResources false
+
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
 }
