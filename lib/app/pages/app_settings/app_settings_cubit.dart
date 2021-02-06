@@ -1,10 +1,9 @@
-import 'package:qBitRemote/api/http.dart';
-import 'package:qBitRemote/api/qbitremote_repository.dart';
-import 'package:qBitRemote/local/models/server_host.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
+import 'package:qBitRemote/api/http.dart';
+import 'package:qBitRemote/api/qbitremote_repository.dart';
 import 'package:qBitRemote/local/models/app_settings.dart';
+import 'package:qBitRemote/local/models/server_host.dart';
 import 'package:qBitRemote/repo/local_repository.dart';
 
 @immutable
@@ -13,25 +12,25 @@ abstract class AppSettingsState {}
 class AppSettingsInitial extends AppSettingsState {}
 
 class SetupSettingUI extends AppSettingsState {
+  final AppSettings settings;
+
   SetupSettingUI({
     this.settings,
   });
-
-  final AppSettings settings;
 }
 
 class InvalidateResult extends AppSettingsState {
+  final bool isEnable;
+
   InvalidateResult({
     this.isEnable,
   });
-
-  final bool isEnable;
 }
 
 class ShowError extends AppSettingsState {
-  ShowError(this.error);
-
   final String error;
+
+  ShowError(this.error);
 }
 
 class SaveSettingsSuccess extends AppSettingsState {}
@@ -51,7 +50,7 @@ class AppSettingsCubit extends Cubit<AppSettingsState> {
   void loadAppSettings() async {
     loadedSettings = await localRepository.loadAppSettings();
 
-    ServerHost currentServer = await localRepository.findSelectedServerHost();
+    ServerHost currentServer = await getCurrentServerHost();
     UiResponse<AppSettings> response = await qBittorentRepository
         .getTorrentSettings(currentServer, loadedSettings);
     if (response.error.isNotEmpty) {
@@ -77,7 +76,7 @@ class AppSettingsCubit extends Cubit<AppSettingsState> {
   void saveNewSettings(AppSettings settings) async {
     loadedSettings.timeoutUpdate = settings.timeoutUpdate;
     await localRepository.saveAppSettings(loadedSettings);
-    ServerHost currentServer = await localRepository.findSelectedServerHost();
+    ServerHost currentServer = await getCurrentServerHost();
     UiResponse response =
         await qBittorentRepository.saveTorrentSettings(currentServer, settings);
     if (response.error.isNotEmpty) {
@@ -85,5 +84,9 @@ class AppSettingsCubit extends Cubit<AppSettingsState> {
     } else {
       return emit(SaveSettingsSuccess());
     }
+  }
+
+  Future<ServerHost> getCurrentServerHost() async {
+    return await localRepository.findSelectedServerHost();
   }
 }

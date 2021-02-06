@@ -58,12 +58,12 @@ class TorrentListCubit extends Cubit<TorrentListState> {
   final QBitRemoteRepository qBitRemoteRepository;
 
   Future<void> loadTitleServer() async {
-    ServerHost currentServer = await localRepository.findSelectedServerHost();
+    ServerHost currentServer = await getCurrentServerHost();
     emit(ServerTitle(currentServer));
   }
 
   Future<void> loadTorrents() async {
-    ServerHost currentServer = await localRepository.findSelectedServerHost();
+    ServerHost currentServer = await getCurrentServerHost();
     if (currentServer != null) {
       UiResponse<List<TorrentEntity>> response =
           await qBitRemoteRepository.getTorrentsInfo(currentServer);
@@ -82,7 +82,7 @@ class TorrentListCubit extends Cubit<TorrentListState> {
   }
 
   Future<void> loadTorrentInfo(String torrentHash) async {
-    ServerHost currentServer = await localRepository.findSelectedServerHost();
+    ServerHost currentServer = await getCurrentServerHost();
     UiResponse<TorrentEntity> response =
         await qBitRemoteRepository.getTorrentInfo(currentServer, torrentHash);
     if (response.error.isNotEmpty) {
@@ -97,7 +97,7 @@ class TorrentListCubit extends Cubit<TorrentListState> {
   }
 
   void deleteTorrents(List<TorrentEntity> list, bool isDeleteWithData) async {
-    ServerHost currentServer = await localRepository.findSelectedServerHost();
+    ServerHost currentServer = await getCurrentServerHost();
     UiResponse response = await qBitRemoteRepository.deleteTorrent(
         currentServer, list, isDeleteWithData);
     if (response.error.isNotEmpty) {
@@ -108,7 +108,7 @@ class TorrentListCubit extends Cubit<TorrentListState> {
   }
 
   void deleteTorrentByHash(String hash, bool isDeleteWithData) async {
-    ServerHost currentServer = await localRepository.findSelectedServerHost();
+    ServerHost currentServer = await getCurrentServerHost();
     UiResponse response = await qBitRemoteRepository.deleteTorrentByHash(
         currentServer, hash, isDeleteWithData);
     if (response.error.isNotEmpty) {
@@ -119,7 +119,7 @@ class TorrentListCubit extends Cubit<TorrentListState> {
   }
 
   void downloadCommand(List<TorrentEntity> selectedItems) async {
-    ServerHost currentServer = await localRepository.findSelectedServerHost();
+    ServerHost currentServer = await getCurrentServerHost();
     UiResponse response = await qBitRemoteRepository.downloadCommand(
         currentServer, selectedItems);
     if (response.error.isNotEmpty) {
@@ -128,7 +128,7 @@ class TorrentListCubit extends Cubit<TorrentListState> {
   }
 
   void pauseCommand(List<TorrentEntity> selectedItems) async {
-    ServerHost currentServer = await localRepository.findSelectedServerHost();
+    ServerHost currentServer = await getCurrentServerHost();
     UiResponse response =
         await qBitRemoteRepository.pauseCommand(currentServer, selectedItems);
     if (response.error.isNotEmpty) {
@@ -137,7 +137,7 @@ class TorrentListCubit extends Cubit<TorrentListState> {
   }
 
   void downloadCommandByHash(String hash) async {
-    ServerHost currentServer = await localRepository.findSelectedServerHost();
+    ServerHost currentServer = await getCurrentServerHost();
     UiResponse response =
         await qBitRemoteRepository.downloadCommandByHash(currentServer, hash);
     if (response.error.isNotEmpty) {
@@ -146,7 +146,7 @@ class TorrentListCubit extends Cubit<TorrentListState> {
   }
 
   void pauseCommandByHash(String hash) async {
-    ServerHost currentServer = await localRepository.findSelectedServerHost();
+    ServerHost currentServer = await getCurrentServerHost();
     UiResponse response =
         await qBitRemoteRepository.pauseCommandByHash(currentServer, hash);
     if (response.error.isNotEmpty) {
@@ -156,7 +156,7 @@ class TorrentListCubit extends Cubit<TorrentListState> {
 
   void changePriority(
       List<TorrentEntity> selectedItems, SelectedPopupMenuType priority) async {
-    ServerHost currentServer = await localRepository.findSelectedServerHost();
+    ServerHost currentServer = await getCurrentServerHost();
     UiResponse response;
     switch (priority) {
       case SelectedPopupMenuType.QueueUp:
@@ -197,5 +197,9 @@ class TorrentListCubit extends Cubit<TorrentListState> {
   Future<int> getUpdateTimeSettings() async {
     AppSettings settings = await localRepository.loadAppSettings();
     return settings.timeoutUpdate;
+  }
+
+  Future<ServerHost> getCurrentServerHost() async {
+    return await localRepository.findSelectedServerHost();
   }
 }

@@ -73,7 +73,7 @@ class ServerListCubit extends Cubit<ServerListState> {
   }
 
   void checkSelectedServer() async {
-    final serverHost = await localRepository.findSelectedServerHost();
+    final serverHost = await getCurrentServerHost();
     if (serverHost == null) {
       return emit(ShowError(""));
     } else {
@@ -87,7 +87,11 @@ class ServerListCubit extends Cubit<ServerListState> {
   }
 
   Future<void> checkIsHaveSelectedServer() async {
-    final serverHost = await localRepository.findSelectedServerHost();
+    final serverHost = await getCurrentServerHost();
     return emit(HaveSelectedServer(serverHost != null));
+  }
+
+  Future<ServerHost> getCurrentServerHost() async {
+    return await localRepository.findSelectedServerHost();
   }
 }
