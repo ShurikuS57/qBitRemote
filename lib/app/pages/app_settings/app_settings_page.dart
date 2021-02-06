@@ -1,16 +1,17 @@
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:package_info/package_info.dart';
 import 'package:qBitRemote/app/pages/app_settings/app_settings_cubit.dart';
 import 'package:qBitRemote/app/utils/format_helper.dart';
+import 'package:qBitRemote/app/utils/url_launcher.dart';
 import 'package:qBitRemote/app/widgets/MaterialDialog.dart';
 import 'package:qBitRemote/app/widgets/action_button.dart';
 import 'package:qBitRemote/app/widgets/custom_track_shape.dart';
 import 'package:qBitRemote/app/widgets/input_text.dart';
 import 'package:qBitRemote/commons/colors.dart';
 import 'package:qBitRemote/local/models/app_settings.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../../routes.dart';
 
@@ -44,6 +45,12 @@ class _AppSettingsScreenState extends State<AppSettingsScreen> {
       appBar: AppBar(
         title: Text(AppLocalizations.of(context).settings),
         actions: [
+          IconButton(
+            icon: Icon(Icons.bug_report_outlined),
+            onPressed: () {
+              UrlLauncher.launchBugReport();
+            },
+          ),
           IconButton(
             icon: Icon(Icons.info),
             onPressed: () {
@@ -293,7 +300,8 @@ class _AppSettingsScreenState extends State<AppSettingsScreen> {
 
   Future<String> _prepareAboutBodyText() async {
     PackageInfo packageInfo = await PackageInfo.fromPlatform();
-    return "A qBittorrent remote client for Android\n\nVersion: " + packageInfo.version;
+    return "A qBittorrent remote client for Android\n\nVersion: " +
+        packageInfo.version;
   }
 
   AppSettings _createSettinsObject() {

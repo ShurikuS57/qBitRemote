@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:qBitRemote/app/pages/server_list/server_list_cubit.dart';
+import 'package:qBitRemote/app/utils/url_launcher.dart';
 import 'package:qBitRemote/commons/colors.dart';
 import 'package:qBitRemote/routes.dart';
 
@@ -20,6 +21,14 @@ class _ServerListPageState extends State<ServerListPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(AppLocalizations.of(context).serverList),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.bug_report_outlined),
+            onPressed: () {
+              UrlLauncher.launchBugReport();
+            },
+          ),
+        ],
       ),
       backgroundColor: AppColors.primaryBackground,
       floatingActionButton: FloatingActionButton(
@@ -59,12 +68,13 @@ class _ServerListView extends StatelessWidget {
               context, Routes.torrentsPage, (route) => false);
         } else if (state is HaveSelectedServer) {
           bool isRootScreen = !Navigator.canPop(context);
-          if(isRootScreen) {
+          if (isRootScreen) {
             SystemChannels.platform.invokeMethod('SystemNavigator.pop');
           } else if (state.isHave) {
             Navigator.pop(context);
           } else {
-            Navigator.pushNamedAndRemoveUntil(context, Routes.serverListPage, (route) => false);
+            Navigator.pushNamedAndRemoveUntil(
+                context, Routes.serverListPage, (route) => false);
           }
         }
       },
