@@ -7,6 +7,7 @@ import 'package:qBitRemote/commons/bloc_observer.dart';
 import 'package:qBitRemote/local/models/server_host.dart';
 
 import 'api/http.dart';
+import 'commons/navigation/locator.dart';
 import 'local/models/app_settings.dart';
 import 'repo/local_repository.dart';
 
@@ -14,6 +15,7 @@ Future<void> main() async {
   await _initHive();
   await initConfig();
   Bloc.observer = Observer();
+  setupLocator();
   runApp(QBitRemoteApp());
 }
 

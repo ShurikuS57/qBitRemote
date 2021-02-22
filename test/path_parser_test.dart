@@ -1,6 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:qBitRemote/api/models/file_entity.dart';
-import 'package:qBitRemote/app/utils/path_parser.dart';
 
 void main() {
   List<FileEntity> files = [
@@ -53,6 +52,6 @@ void main() {
   ];
 
   test('Parse paths node', () {
-    final pathParser = PathParser(files);
+    // final pathParser = PathParser(files);
   });
 }

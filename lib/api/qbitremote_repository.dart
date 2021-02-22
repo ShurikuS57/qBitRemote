@@ -114,8 +114,9 @@ class QBitRemoteRepositoryImpl extends QBitRemoteRepository {
       params["hashes"] = torrentHash;
       final data = FormData.fromMap(params);
 
-      Response response = await dio
-          .post(currentServer.getConnectUrl() + "/api/v2/torrents/info", data: data);
+      Response response = await dio.post(
+          currentServer.getConnectUrl() + "/api/v2/torrents/info",
+          data: data);
       TorrentEntity result = (response.data as List)
           .map((e) => TorrentEntity.fromJson(e))
           .toList()
@@ -160,7 +161,8 @@ class QBitRemoteRepositoryImpl extends QBitRemoteRepository {
         final mp = await MultipartFile.fromFile(item.path, filename: item.name);
         multipartFiles.add(mp);
       }
-      final data = FormData.fromMap({"torrents": multipartFiles});
+      final data = FormData.fromMap(
+          {"torrents": multipartFiles, "savepath": newSavePath});
       await dio.post(url, data: data);
       return UiResponse(true, "");
     } catch (e) {
@@ -342,7 +344,8 @@ class QBitRemoteRepositoryImpl extends QBitRemoteRepository {
     try {
       String hashes = _prepareHashes(selectedItems);
 
-      String url = currentServer.getConnectUrl() + "/api/v2/torrents/increasePrio";
+      String url =
+          currentServer.getConnectUrl() + "/api/v2/torrents/increasePrio";
       Map<String, dynamic> params = HashMap();
       params["hashes"] = hashes;
       await dio.get(url, queryParameters: params);
@@ -358,7 +361,8 @@ class QBitRemoteRepositoryImpl extends QBitRemoteRepository {
     try {
       String hashes = _prepareHashes(selectedItems);
 
-      String url = currentServer.getConnectUrl() + "/api/v2/torrents/decreasePrio";
+      String url =
+          currentServer.getConnectUrl() + "/api/v2/torrents/decreasePrio";
       Map<String, dynamic> params = HashMap();
       params["hashes"] = hashes;
       await dio.get(url, queryParameters: params);
@@ -390,7 +394,8 @@ class QBitRemoteRepositoryImpl extends QBitRemoteRepository {
     try {
       String hashes = _prepareHashes(selectedItems);
 
-      String url = currentServer.getConnectUrl() + "/api/v2/torrents/bottomPrio";
+      String url =
+          currentServer.getConnectUrl() + "/api/v2/torrents/bottomPrio";
       Map<String, dynamic> params = HashMap();
       params["hashes"] = hashes;
       await dio.get(url, queryParameters: params);
@@ -402,7 +407,8 @@ class QBitRemoteRepositoryImpl extends QBitRemoteRepository {
 
   Future<Response> _saveDownloadSpeedSettings(
       ServerHost currentServer, int limit) {
-    String url = currentServer.getConnectUrl() + "/api/v2/transfer/setDownloadLimit";
+    String url =
+        currentServer.getConnectUrl() + "/api/v2/transfer/setDownloadLimit";
     Map<String, dynamic> params = HashMap();
     params["limit"] = limit;
     final data = FormData.fromMap(params);
@@ -411,7 +417,8 @@ class QBitRemoteRepositoryImpl extends QBitRemoteRepository {
 
   Future<Response> _saveUploadSpeedSettings(
       ServerHost currentServer, int limit) {
-    String url = currentServer.getConnectUrl() + "/api/v2/transfer/setUploadLimit";
+    String url =
+        currentServer.getConnectUrl() + "/api/v2/transfer/setUploadLimit";
     Map<String, dynamic> params = HashMap();
     params["limit"] = limit;
     final data = FormData.fromMap(params);
