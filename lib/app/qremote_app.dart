@@ -1,76 +1,42 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_absolute_path/flutter_absolute_path.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:qBitRemote/app/utils/validator_helper.dart';
 import 'package:qBitRemote/commons/colors.dart';
 import 'package:qBitRemote/commons/navigation/locator.dart';
 import 'package:qBitRemote/commons/navigation/navigation_service.dart';
-import 'package:receive_sharing_intent/receive_sharing_intent.dart';
 
 import '../routes.dart';
 import 'pages/add_torrent/add_torrent_page.dart';
 
-class QBitRemoteApp extends StatefulWidget {
-  @override
-  _QBitRemoteAppState createState() => _QBitRemoteAppState();
-}
-
-class _QBitRemoteAppState extends State<QBitRemoteApp> {
+class QBitRemoteApp extends StatelessWidget {
+  static const _methodChannel =
+      const MethodChannel('app.channel.shared.method');
+  static const _messageChannel = const EventChannel('app.channel.shared.data');
   final NavigationService _navigationService = locator<NavigationService>();
-  StreamSubscription _intentDataStreamSubscription;
 
-  @override
-  void initState() {
-    super.initState();
-    // For sharing or opening urls/text coming from outside the app while the app is in the memory
-    _intentDataStreamSubscription =
-        ReceiveSharingIntent.getTextStream().listen((String value) {
-      _catchTorrent(value, true);
-    });
-    // For sharing or opening urls/text coming from outside the app while the app is closed
-    ReceiveSharingIntent.getInitialText().then((String value) {
-      _catchTorrent(value, false);
-    });
+  QBitRemoteApp() {
+    _subscribeMessageChannel();
   }
 
-  @override
-  void dispose() {
-    _intentDataStreamSubscription.cancel();
-    super.dispose();
-  }
-
-  Future<void> _catchTorrent(String path, bool isAppRun) async {
-    if (path == null) {
-      return;
-    } else if (isMagnetLink(path)) {
-      if (!isAppRun) {
-        NavigationService.addTorrentArg = AddTorrentArg(isMagnetLink: true, uri: path);
-      } else {
-        _navigationService.navigateTo(Routes.addTorrentPage,
-            arguments: AddTorrentArg(isMagnetLink: true, uri: path));
-      }
-    } else {
-      String uriToShare = path.replaceFirst("content://", "file://");
-      String filePath = await FlutterAbsolutePath.getAbsolutePath(uriToShare);
-      Uri uri = Uri.file(filePath);
-      if (!uri.hasEmptyPath) {
-        if (!isAppRun) {
-          NavigationService.addTorrentArg =
-              AddTorrentArg(isMagnetLink: false, uri: filePath);
+  void _subscribeMessageChannel() async {
+    _messageChannel.receiveBroadcastStream().listen((event) {
+      if (event != null) {
+        bool isFileLink = event["isFileLink"] == 'true';
+        String path = event["path"];
+        bool isInitLaunch = event["isInitLaunch"] == 'true';
+        final arg = AddTorrentArg(isMagnetLink: !isFileLink, uri: path);
+        if (isInitLaunch) {
+          NavigationService.addTorrentArg = arg;
         } else {
-          _navigationService.navigateTo(Routes.addTorrentPage,
-              arguments: AddTorrentArg(isMagnetLink: false, uri: filePath));
+          _navigationService.navigateTo(Routes.addTorrentPage, arguments: arg);
         }
       }
-    }
+    });
+    await _methodChannel.invokeMethod("getSharedData");
   }
 
   @override
   Widget build(BuildContext context) {
-    print("start MaterialApp");
     return MaterialApp(
       initialRoute: Routes.splashPage,
       routes: Routes.getRoutes(),

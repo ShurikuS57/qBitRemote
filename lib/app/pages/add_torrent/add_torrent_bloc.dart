@@ -4,7 +4,6 @@ import 'package:file_picker/file_picker.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:path/path.dart';
-import 'package:permission_handler/permission_handler.dart';
 import 'package:qBitRemote/api/http.dart';
 import 'package:qBitRemote/api/qbitremote_repository.dart';
 import 'package:qBitRemote/app/utils/validator_helper.dart';
@@ -173,22 +172,16 @@ class AddTorrentBloc extends Bloc<AddTorrentEvent, AddTorrentState> {
         yield AddTorrentState.switchInputType(_isFileSourceSelected);
         yield SetDownloadUrlState(arg.uri);
       } else {
-        PermissionStatus status = await Permission.storage.request();
-        if (status != PermissionStatus.granted) {
-          yield ShowErrorState("Permission storage denied");
-        } else {
-          final file = File(arg.uri);
-          _filesSelectedPath = [
-            PlatformFile(path: file.path, name: basename(file.path))
-          ];
-
-          String fileNames = "";
-          _filesSelectedPath.forEach((element) {
-            fileNames += element.name + "\n";
-          });
-          yield AddTorrentState.fileSelected(fileNames);
-          yield* _invalidateButton();
-        }
+        final file = File(arg.uri);
+        _filesSelectedPath = [
+          PlatformFile(path: file.path, name: basename(file.path))
+        ];
+        String fileNames = "";
+        _filesSelectedPath.forEach((element) {
+          fileNames += element.name + "\n";
+        });
+        yield AddTorrentState.fileSelected(fileNames);
+        yield* _invalidateButton();
       }
     }
   }

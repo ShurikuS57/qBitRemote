@@ -24,10 +24,6 @@ dependencies:
   # file
   path_provider: ^1.6.27
   file_picker: ^2.1.6
-  flutter_absolute_path: ^1.0.6
-  cross_file: ^0.3.0-nullsafety
-  file_selector: ^0.7.0+2
-  permission_handler: ^5.1.0+2
   # analitics
   firebase_analytics: ^7.0.1
   # ui
@@ -43,7 +39,6 @@ dependencies:
   package_info: ^2.0.0
   freezed_annotation: ^0.12.0
   url_launcher: ^6.0.0-nullsafety.6
-  receive_sharing_intent: ^1.4.3
   get_it: ^6.0.0
   cupertino_icons: ^1.0.2
   supercharged: ^1.12.0

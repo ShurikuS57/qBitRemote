@@ -1,17 +1,65 @@
 package ru.taptm.qBitRemote
 
-import android.content.Intent.FLAG_ACTIVITY_NEW_TASK
-import android.os.Bundle
+import android.content.Intent
+import androidx.annotation.NonNull
 import io.flutter.embedding.android.FlutterActivity
+import io.flutter.embedding.engine.FlutterEngine
+import io.flutter.plugin.common.EventChannel
+import io.flutter.plugin.common.MethodChannel
+import io.flutter.plugins.GeneratedPluginRegistrant
 
-class MainActivity: FlutterActivity() {
+class MainActivity : FlutterActivity() {
+    private var sharedIntentData: Map<String, String>? = null
+    private val intentCatcher = TorrentIntentCatcher(context)
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        if (intent.getIntExtra("org.chromium.chrome.extra.TASK_ID", -1) == this.taskId) {
-            this.finish()
-            intent.addFlags(FLAG_ACTIVITY_NEW_TASK);
-            startActivity(intent);
+    override fun onAttachedToWindow() {
+        super.onAttachedToWindow()
+        catchIntent(intent, true)
+    }
+
+    override fun onNewIntent(intent: Intent) {
+        super.onNewIntent(intent)
+        catchIntent(intent, false)
+    }
+
+    private fun catchIntent(intent: Intent, isInitLaunch: Boolean) {
+        val sharedFile = intentCatcher.catchIntent(intent)
+        if (sharedFile.isValidate()) {
+            sharedIntentData = mapOf(
+                    "isFileLink" to sharedFile.isFileLink.toString(),
+                    "path" to sharedFile.path,
+                    "isInitLaunch" to isInitLaunch.toString()
+            )
         }
-        super.onCreate(savedInstanceState)
+        event?.success(sharedIntentData)
+    }
+
+    override fun configureFlutterEngine(@NonNull flutterEngine: FlutterEngine) {
+        GeneratedPluginRegistrant.registerWith(flutterEngine)
+        val eventChannel = EventChannel(flutterEngine.dartExecutor.binaryMessenger, EVENT_CHANNEL_DATA)
+        eventChannel.setStreamHandler(EventStreamPlugin())
+
+        MethodChannel(flutterEngine.dartExecutor.binaryMessenger, METHOD_CHANNEL_CALLBACK)
+                .setMethodCallHandler { call, _ ->
+                    if (call.method?.contentEquals("getSharedData") == true) {
+                        event?.success(sharedIntentData)
+                    }
+                }
+    }
+
+    companion object {
+        var event: EventChannel.EventSink? = null
+        private const val EVENT_CHANNEL_DATA = "app.channel.shared.data"
+        private const val METHOD_CHANNEL_CALLBACK = "app.channel.shared.method"
+    }
+}
+
+class EventStreamPlugin : EventChannel.StreamHandler {
+    override fun onListen(arguments: Any?, events: EventChannel.EventSink?) {
+        MainActivity.event = events
+    }
+
+    override fun onCancel(arguments: Any?) {
+        MainActivity.event = null
     }
 }

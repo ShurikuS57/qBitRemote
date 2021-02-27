@@ -162,13 +162,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.1"
-  cross_file:
-    dependency: "direct main"
-    description:
-      name: cross_file
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.3.0-nullsafety"
   crypto:
     dependency: transitive
     description:
@@ -239,20 +232,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.6"
-  file_selector:
-    dependency: "direct main"
-    description:
-      name: file_selector
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.7.0+2"
-  file_selector_platform_interface:
-    dependency: transitive
-    description:
-      name: file_selector_platform_interface
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.0.1"
   firebase:
     dependency: transitive
     description:
@@ -314,13 +293,6 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-  flutter_absolute_path:
-    dependency: "direct main"
-    description:
-      name: flutter_absolute_path
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.0.6"
   flutter_bloc:
     dependency: "direct main"
     description:
@@ -560,20 +532,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.10.0"
-  permission_handler:
-    dependency: "direct main"
-    description:
-      name: permission_handler
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "5.1.0+2"
-  permission_handler_platform_interface:
-    dependency: transitive
-    description:
-      name: permission_handler_platform_interface
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.0.2"
   platform:
     dependency: transitive
     description:
@@ -630,13 +588,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.5"
-  receive_sharing_intent:
-    dependency: "direct main"
-    description:
-      name: receive_sharing_intent
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.4.3"
   shelf:
     dependency: transitive
     description:
@@ -854,4 +805,4 @@ packages:
     version: "3.0.0"
 sdks:
   dart: ">=2.12.0-259.9.beta <3.0.0"
-  flutter: ">=1.22.0"
+  flutter: ">=1.16.0"
