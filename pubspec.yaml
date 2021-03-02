@@ -25,7 +25,9 @@ dependencies:
   path_provider: ^1.6.27
   file_picker: ^2.1.6
   # analitics
+  firebase_core: "^0.7.0"
   firebase_analytics: ^7.0.1
+  firebase_crashlytics: "^0.4.0+1"
   # ui
   toggle_switch: ^0.1.8
   focus_detector: ^1.1.0+1

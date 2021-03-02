@@ -1,7 +1,9 @@
 package ru.taptm.qBitRemote
 
 import android.content.Intent
+import android.os.Bundle
 import androidx.annotation.NonNull
+import com.google.firebase.crashlytics.FirebaseCrashlytics
 import io.flutter.embedding.android.FlutterActivity
 import io.flutter.embedding.engine.FlutterEngine
 import io.flutter.plugin.common.EventChannel
@@ -11,6 +13,11 @@ import io.flutter.plugins.GeneratedPluginRegistrant
 class MainActivity : FlutterActivity() {
     private var sharedIntentData: Map<String, String>? = null
     private val intentCatcher = TorrentIntentCatcher(context)
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        FirebaseCrashlytics.getInstance().setCrashlyticsCollectionEnabled(!BuildConfig.DEBUG)
+    }
 
     override fun onAttachedToWindow() {
         super.onAttachedToWindow()
