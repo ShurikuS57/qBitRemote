@@ -89,5 +89,9 @@
   "emptyTorrentInfo": "Нет данных",
   "@emptyTorrentInfo": {},
   "savedSuccessfully": "Успешно сохранено",
-  "@savedSuccessfully": {}
+  "@savedSuccessfully": {},
+  "foundMagnetLink": "Найдена magnet ссылка в буфере обмена.",
+  "@foundMagnetLink": {},
+  "add": "Добавить",
+  "@add": {}
 }

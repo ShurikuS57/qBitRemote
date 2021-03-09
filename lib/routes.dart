@@ -13,6 +13,7 @@ import 'package:qBitRemote/repo/local_repository.dart';
 
 import 'app/pages/add_server/add_server_bloc.dart';
 import 'app/pages/add_torrent/add_torrent_bloc.dart';
+import 'app/pages/add_torrent/clipboard_bloc.dart';
 import 'app/pages/server_list/server_list_page.dart';
 import 'app/pages/splash/splash_page.dart';
 import 'app/pages/torrent_info/torrent_details_page.dart';
@@ -74,11 +75,14 @@ class Routes {
             ],
             child: TorrentListScreen(),
           ),
-      Routes.addTorrentPage: (BuildContext context) => BlocProvider(
-            create: (_) =>
-                AddTorrentBloc(_localRepository, _qBittorentRepository),
-            child: AddTorrentScreen(),
-          ),
+      Routes.addTorrentPage: (BuildContext context) =>
+          MultiBlocProvider(providers: [
+            BlocProvider(
+              create: (_) =>
+                  AddTorrentBloc(_localRepository, _qBittorentRepository),
+            ),
+            BlocProvider(create: (_) => ClipboardBloc())
+          ], child: AddTorrentScreen()),
       Routes.torrentInfoPage: (BuildContext context) => MultiBlocProvider(
             providers: [
               BlocProvider(

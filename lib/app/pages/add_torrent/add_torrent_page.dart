@@ -8,6 +8,7 @@ import 'package:qBitRemote/routes.dart';
 import 'package:toggle_switch/toggle_switch.dart';
 
 import 'add_torrent_bloc.dart';
+import 'clipboard_bloc.dart';
 
 class AddTorrentScreen extends StatefulWidget {
   AddTorrentScreen({Key key}) : super(key: key);
@@ -19,6 +20,7 @@ class AddTorrentScreen extends StatefulWidget {
 class _AddTorrentScreenState extends State<AddTorrentScreen> {
   final urlTextController = TextEditingController();
   final savePathTextController = TextEditingController();
+  ScaffoldMessengerState scaffoldMessengerState;
 
   @override
   void initState() {
@@ -34,6 +36,9 @@ class _AddTorrentScreenState extends State<AddTorrentScreen> {
   void dispose() {
     urlTextController.dispose();
     savePathTextController.dispose();
+    if (scaffoldMessengerState != null) {
+      scaffoldMessengerState.hideCurrentSnackBar();
+    }
     super.dispose();
   }
 
@@ -49,41 +54,67 @@ class _AddTorrentScreenState extends State<AddTorrentScreen> {
         title: Text(AppLocalizations.of(context).addTorrent),
       ),
       backgroundColor: AppColors.primaryBackground,
-      body: BlocListener<AddTorrentBloc, AddTorrentState>(
-        listener: (context, state) {
-          if (state is ShowErrorState) {
-            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-              content: Text(state.message),
-            ));
-          } else if (state is AddTorrentSuccessState) {
-            if (Navigator.of(context).canPop()) {
-              Navigator.pop(context);
-            } else {
-              Navigator.pushReplacementNamed(context, Routes.torrentsPage);
+      body: buildBody(context),
+    );
+  }
+
+  Widget buildBody(BuildContext context) {
+    return MultiBlocListener(
+      listeners: [
+        BlocListener<AddTorrentBloc, AddTorrentState>(
+          listener: (context, state) {
+            if (state is ShowErrorState) {
+              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                content: Text(state.message),
+              ));
+            } else if (state is AddTorrentSuccessState) {
+              if (Navigator.of(context).canPop()) {
+                Navigator.pop(context);
+              } else {
+                Navigator.pushReplacementNamed(context, Routes.torrentsPage);
+              }
+            } else if (state is ShowDefaultSavePathState) {
+              savePathTextController.text = state.path;
+            } else if (state is SetDownloadUrlState) {
+              urlTextController.text = state.url;
             }
-          } else if (state is ShowDefaultSavePathState) {
-            savePathTextController.text = state.path;
-          } else if (state is SetDownloadUrlState) {
-            urlTextController.text = state.url;
-          }
-        },
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: ListView(
-            children: [
-              _buildToggleSwitch(context),
-              _buildToggleChoice(),
-              SizedBox(
-                height: 16,
-              ),
-              buildSelectedPathList(),
-              SizedBox(
-                height: 16,
-              ),
-              buildInputSavePath(context),
-              buildStartDownloadButton()
-            ],
-          ),
+          },
+        ),
+        BlocListener<ClipboardBloc, ClipboardState>(
+          listener: (context, state) {
+            if (state is ShowMagnetSnackbarState) {
+              scaffoldMessengerState = ScaffoldMessenger.of(context);
+              scaffoldMessengerState.showSnackBar(SnackBar(
+                content: Text(AppLocalizations.of(context).foundMagnetLink),
+                duration: Duration(seconds: 10),
+                action: SnackBarAction(
+                  label: AppLocalizations.of(context).add.toUpperCase(),
+                  onPressed: () {
+                    context.read<AddTorrentBloc>().add(CheckArgEvent(
+                        AddTorrentArg(isMagnetLink: true, uri: state.url)));
+                  },
+                ),
+              ));
+            }
+          },
+        )
+      ],
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: ListView(
+          children: [
+            _buildToggleSwitch(context),
+            _buildToggleChoice(),
+            SizedBox(
+              height: 16,
+            ),
+            buildSelectedPathList(),
+            SizedBox(
+              height: 16,
+            ),
+            buildInputSavePath(context),
+            buildStartDownloadButton()
+          ],
         ),
       ),
     );
@@ -207,7 +238,5 @@ class AddTorrentArg {
   AddTorrentArg({this.isMagnetLink, this.uri});
 
   AddTorrentArg copyWith({bool isMagnetLink, String uri}) => AddTorrentArg(
-    isMagnetLink: isMagnetLink ?? this.isMagnetLink,
-    uri: uri ?? this.uri
-  );
+      isMagnetLink: isMagnetLink ?? this.isMagnetLink, uri: uri ?? this.uri);
 }

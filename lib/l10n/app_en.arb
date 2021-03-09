@@ -102,5 +102,9 @@
   "emptyTorrentInfo": "Torrent info is empty",
   "@emptyTorrentInfo": {},
   "savedSuccessfully": "Saved successfully",
-  "@savedSuccessfully": {}
+  "@savedSuccessfully": {},
+  "foundMagnetLink": "Found magnet link on the clipboard.",
+  "@foundMagnetLink": {},
+  "add": "Add",
+  "@add": {}
 }
