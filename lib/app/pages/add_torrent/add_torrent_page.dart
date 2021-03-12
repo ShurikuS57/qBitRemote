@@ -54,11 +54,11 @@ class _AddTorrentScreenState extends State<AddTorrentScreen> {
         title: Text(AppLocalizations.of(context).addTorrent),
       ),
       backgroundColor: AppColors.primaryBackground,
-      body: buildBody(context),
+      body: buildBody(context, argSetup),
     );
   }
 
-  Widget buildBody(BuildContext context) {
+  Widget buildBody(BuildContext context, AddTorrentArg argSetup) {
     return MultiBlocListener(
       listeners: [
         BlocListener<AddTorrentBloc, AddTorrentState>(
@@ -82,7 +82,7 @@ class _AddTorrentScreenState extends State<AddTorrentScreen> {
         ),
         BlocListener<ClipboardBloc, ClipboardState>(
           listener: (context, state) {
-            if (state is ShowMagnetSnackbarState) {
+            if (state is ShowMagnetSnackbarState && argSetup == null) {
               scaffoldMessengerState = ScaffoldMessenger.of(context);
               scaffoldMessengerState.showSnackBar(SnackBar(
                 content: Text(AppLocalizations.of(context).foundMagnetLink),
