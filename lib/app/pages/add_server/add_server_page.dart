@@ -4,6 +4,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:qBitRemote/app/pages/add_server/add_server_bloc.dart';
 import 'package:qBitRemote/app/widgets/action_button.dart';
 import 'package:qBitRemote/app/widgets/input_text.dart';
+import 'package:qBitRemote/app/widgets/url_form_field.dart';
 import 'package:qBitRemote/commons/colors.dart';
 import 'package:qBitRemote/local/models/server_host.dart';
 
@@ -14,24 +15,25 @@ class AddServerPage extends StatefulWidget {
 
 class _AddServerPageState extends State<AddServerPage> {
   var _nameController = TextEditingController();
-  var _hostController = TextEditingController();
   var _loginController = TextEditingController();
   var _passwordController = TextEditingController();
+  var _hostController = TextEditingController();
+  var _hostInputController = TextEditingController();
 
   @override
   void initState() {
     super.initState();
     _nameController.addListener(() {
-      _invalidateButton(context);
-    });
-    _hostController.addListener(() {
-      _invalidateButton(context);
+      _invalidateButton();
     });
     _loginController.addListener(() {
-      _invalidateButton(context);
+      _invalidateButton();
     });
     _passwordController.addListener(() {
-      _invalidateButton(context);
+      _invalidateButton();
+    });
+    _hostController.addListener(() {
+      _invalidateButton();
     });
   }
 
@@ -62,12 +64,8 @@ class _AddServerPageState extends State<AddServerPage> {
             Container(
               height: 8,
             ),
-            InputText(
-              controller: _hostController,
-              lableText: AppLocalizations.of(context).hostname,
-              isEnableNextFocus: true,
-              suffixIcon: Icons.http_outlined,
-            ),
+            UrlFormField(_hostController, _hostInputController,
+                labelText: AppLocalizations.of(context).hostname),
             Container(
               height: 8,
             ),
@@ -151,9 +149,9 @@ class _AddServerPageState extends State<AddServerPage> {
       listener: (context, state) {
         if (state is SetupEditModeState) {
           _nameController.text = state.server.name;
-          _hostController.text = state.server.host;
           _loginController.text = state.server.login;
           _passwordController.text = state.server.password;
+          _hostInputController.text = state.server.host;
         }
       },
       builder: (context, state) {
@@ -203,12 +201,13 @@ class _AddServerPageState extends State<AddServerPage> {
   void dispose() {
     _nameController.dispose();
     _hostController.dispose();
+    _hostInputController.dispose();
     _loginController.dispose();
     _passwordController.dispose();
     super.dispose();
   }
 
-  void _invalidateButton(BuildContext context) {
+  void _invalidateButton() {
     final name = _nameController.text;
     final host = _hostController.text;
     final login = _loginController.text;
