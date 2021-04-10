@@ -5,8 +5,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:path/path.dart';
 import 'package:qBitRemote/api/http.dart';
-import 'package:qBitRemote/api/qbitremote_repository.dart';
+import 'package:qBitRemote/api/remote_repository.dart';
 import 'package:qBitRemote/app/utils/validator_helper.dart';
+import 'package:qBitRemote/local/models/app_prefs.dart';
 import 'package:qBitRemote/local/models/server_host.dart';
 import 'package:qBitRemote/repo/local_repository.dart';
 import 'package:string_validator/string_validator.dart';
@@ -16,7 +17,7 @@ import 'add_torrent_page.dart';
 part 'add_torrent_bloc.freezed.dart';
 
 @freezed
-abstract class AddTorrentEvent with _$AddTorrentEvent {
+class AddTorrentEvent with _$AddTorrentEvent {
   const AddTorrentEvent._();
 
   const factory AddTorrentEvent.onSwitchInputSource(bool isFileSourceSelected) =
@@ -24,7 +25,7 @@ abstract class AddTorrentEvent with _$AddTorrentEvent {
 
   const factory AddTorrentEvent.choiceTorrentFile() = ChoiceTorrentFileEvent;
 
-  const factory AddTorrentEvent.startDownload(String savePath) =
+  const factory AddTorrentEvent.startDownload(PrefOptions options) =
       StartDownloadEvent;
 
   const factory AddTorrentEvent.onChangeUrl(String newValue) = ChangeUrlEvent;
@@ -37,10 +38,13 @@ abstract class AddTorrentEvent with _$AddTorrentEvent {
   const factory AddTorrentEvent.loadSetup() = LoadSetupEvent;
 
   const factory AddTorrentEvent.onCheckArg(AddTorrentArg arg) = CheckArgEvent;
+
+  const factory AddTorrentEvent.updateOptions(PrefOptions newValue) =
+      UpdateOptionsEvent;
 }
 
 @freezed
-abstract class AddTorrentState with _$AddTorrentState {
+class AddTorrentState with _$AddTorrentState {
   const AddTorrentState._();
 
   const factory AddTorrentState.initial() = InitialAddTorrentState;
@@ -58,8 +62,8 @@ abstract class AddTorrentState with _$AddTorrentState {
 
   const factory AddTorrentState.addTorrentSuccess() = AddTorrentSuccessState;
 
-  const factory AddTorrentState.showDefaultSavePath(String path) =
-      ShowDefaultSavePathState;
+  const factory AddTorrentState.showPrefsOptions(PrefOptions options) =
+      ShowPrefOptionsState;
 
   const factory AddTorrentState.setDownloadUrl(String url) =
       SetDownloadUrlState;
@@ -67,10 +71,11 @@ abstract class AddTorrentState with _$AddTorrentState {
 
 class AddTorrentBloc extends Bloc<AddTorrentEvent, AddTorrentState> {
   final LocalRepository _localRepository;
-  final QBitRemoteRepository _qBittorentRepository;
+  final RemoteRepository _qBittorentRepository;
   bool _isFileSourceSelected = true;
   List<PlatformFile> _filesSelectedPath = [];
   String _urlLink = "";
+  PrefOptions options = PrefOptions();
 
   AddTorrentBloc(this._localRepository, this._qBittorentRepository)
       : super(const InitialAddTorrentState()) {
@@ -88,6 +93,7 @@ class AddTorrentBloc extends Bloc<AddTorrentEvent, AddTorrentState> {
       selectArgUri: _selectArgUri,
       loadSetup: _loadSetup,
       onCheckArg: _onCheckArg,
+      updateOptions: _updateOptions,
     );
   }
 
@@ -124,22 +130,29 @@ class AddTorrentBloc extends Bloc<AddTorrentEvent, AddTorrentState> {
 
       String fileNames = "";
       _filesSelectedPath.forEach((element) {
-        fileNames += element.name + "\n";
+        String? name = element.name;
+        if (name != null) {
+          fileNames += name + "\n";
+        }
       });
       yield AddTorrentState.fileSelected(fileNames);
       yield* _invalidateButton();
     }
   }
 
-  Stream<AddTorrentState> _startDownload(String savePath) async* {
+  Stream<AddTorrentState> _startDownload(PrefOptions options) async* {
     UiResponse<bool> result = UiResponse(false, "");
     final currentServerHost = await getCurrentServerHost();
+    if (currentServerHost == null) {
+      ShowErrorState("Server no selected");
+      return;
+    }
     if (_isFileSourceSelected) {
       result = await _qBittorentRepository.addTorrentByFile(
-          currentServerHost, _filesSelectedPath, savePath);
+          currentServerHost, _filesSelectedPath, options);
     } else {
       result = await _qBittorentRepository.addTorrentByUrl(
-          currentServerHost, _urlLink, savePath);
+          currentServerHost, _urlLink, options);
     }
     if (result.error.isEmpty) {
       yield AddTorrentState.addTorrentSuccess();
@@ -159,34 +172,59 @@ class AddTorrentBloc extends Bloc<AddTorrentEvent, AddTorrentState> {
 
   Stream<AddTorrentState> _loadSetup() async* {
     final currentServerHost = await getCurrentServerHost();
+    if (currentServerHost == null) {
+      ShowErrorState("Server no selected");
+      return;
+    }
     String path =
         await _qBittorentRepository.getDefaultSavePath(currentServerHost);
-    final savePath = path ?? "";
-    yield ShowDefaultSavePathState(savePath);
+    AppPrefs prefs = await _localRepository.loadAppPrefs();
+    options = PrefOptions(
+        savePath: path,
+        isSequentialDownload: prefs.sequentialDownload,
+        isDownloadFirst: prefs.downloadFirst);
+    yield ShowPrefOptionsState(options);
+  }
+
+  Stream<AddTorrentState> _updateOptions(PrefOptions newOptions) async* {
+    options = newOptions;
+    yield ShowPrefOptionsState(options);
   }
 
   Stream<AddTorrentState> _onCheckArg(AddTorrentArg arg) async* {
-    if (arg != null) {
-      if (arg.isMagnetLink) {
-        _isFileSourceSelected = false;
-        yield AddTorrentState.switchInputType(_isFileSourceSelected);
-        yield SetDownloadUrlState(arg.uri);
-      } else {
-        final file = File(arg.uri);
-        _filesSelectedPath = [
-          PlatformFile(path: file.path, name: basename(file.path))
-        ];
-        String fileNames = "";
-        _filesSelectedPath.forEach((element) {
-          fileNames += element.name + "\n";
-        });
-        yield AddTorrentState.fileSelected(fileNames);
-        yield* _invalidateButton();
-      }
+    if (arg.isMagnetLink) {
+      _isFileSourceSelected = false;
+      yield AddTorrentState.switchInputType(_isFileSourceSelected);
+      yield SetDownloadUrlState(arg.uri);
+    } else {
+      final file = File(arg.uri);
+      _filesSelectedPath = [
+        PlatformFile(path: file.path, name: basename(file.path))
+      ];
+      String fileNames = "";
+      _filesSelectedPath.forEach((element) {
+        String? name = element.name;
+        if (name != null) {
+          fileNames += name + "\n";
+        }
+      });
+      yield AddTorrentState.fileSelected(fileNames);
+      yield* _invalidateButton();
     }
   }
 
-  Future<ServerHost> getCurrentServerHost() async {
+  Future<ServerHost?> getCurrentServerHost() async {
     return await _localRepository.findSelectedServerHost();
   }
+}
+
+class PrefOptions {
+  final String savePath;
+  final bool isSequentialDownload;
+  final bool isDownloadFirst;
+
+  PrefOptions(
+      {this.savePath = "",
+      this.isSequentialDownload = false,
+      this.isDownloadFirst = false});
 }

@@ -10,8 +10,8 @@ class UrlFormField extends StatefulWidget {
   final TextEditingController onHostInputController;
 
   UrlFormField(this.controller, this.onHostInputController,
-      {Key key,
-      this.labelText,
+      {Key? key,
+      this.labelText = "",
       this.decoration = const InputDecoration(),
       this.showIcon = true})
       : super(key: key);
@@ -24,7 +24,7 @@ class _UrlFormFieldState extends State<UrlFormField> {
   var _addressController = TextEditingController();
   var _portController = TextEditingController();
   final List<String> _prefixUrls = ["http://", "https://"];
-  String selectPrefixUrl;
+  String selectPrefixUrl = "";
 
   @override
   void initState() {
@@ -102,9 +102,9 @@ class _UrlFormFieldState extends State<UrlFormField> {
     return DropdownButton(
         value: selectPrefixUrl,
         underline: SizedBox(),
-        onChanged: (String value) {
+        onChanged: (String? value) {
           setState(() {
-            selectPrefixUrl = value;
+            selectPrefixUrl = value ?? "";
           });
           _prepareUrl();
         },

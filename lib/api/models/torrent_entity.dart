@@ -2,8 +2,17 @@ import 'package:qBitRemote/app/utils/format_helper.dart';
 import 'package:qBitRemote/app/utils/path_parser.dart';
 
 class TorrentEntity {
-
-  TorrentEntity({this.name, this.hash, this.state, this.progress, this.fileTreeData, this.size, this.estimateTime, this.downloadSpeed, this.uploadSpeed, this.priority});
+  TorrentEntity(
+      {required this.name,
+      required this.hash,
+      required this.state,
+      required this.progress,
+      required this.fileTreeData,
+      required this.size,
+      required this.estimateTime,
+      required this.downloadSpeed,
+      required this.uploadSpeed,
+      required this.priority});
 
   final String name;
   final String hash;

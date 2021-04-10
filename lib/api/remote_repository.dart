@@ -4,23 +4,24 @@ import 'package:dio/dio.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:qBitRemote/api/models/file_entity.dart';
 import 'package:qBitRemote/api/models/torrent_entity.dart';
+import 'package:qBitRemote/app/pages/add_torrent/add_torrent_bloc.dart';
 import 'package:qBitRemote/app/utils/path_parser.dart';
-import 'package:qBitRemote/local/models/app_settings.dart';
 import 'package:qBitRemote/local/models/server_host.dart';
+import 'package:qBitRemote/local/models/server_preferences.dart';
 
 import 'http.dart';
 
-abstract class QBitRemoteRepository {
+abstract class RemoteRepository {
   Future<UiResponse> login(ServerHost serverHost);
 
   Future<UiResponse<List<TorrentEntity>>> getTorrentsInfo(
       ServerHost serverHost);
 
   Future<UiResponse<bool>> addTorrentByFile(ServerHost serverHost,
-      List<PlatformFile> fileSelectedPath, String newSavePath);
+      List<PlatformFile> fileSelectedPath, PrefOptions options);
 
   Future<UiResponse<bool>> addTorrentByUrl(
-      ServerHost serverHost, String urlLink, String newSavePath);
+      ServerHost serverHost, String urlLink, PrefOptions options);
 
   Future<String> getDefaultSavePath(ServerHost serverHost);
 
@@ -44,11 +45,11 @@ abstract class QBitRemoteRepository {
   Future<UiResponse> deleteTorrentByHash(
       ServerHost currentServer, String hash, bool isDeleteWithData);
 
-  Future<UiResponse<AppSettings>> getTorrentSettings(
-      ServerHost currentServer, AppSettings loadedSettings);
+  Future<UiResponse> saveServerPrefs(
+      ServerHost currentServer, ServerPreferences prefs);
 
-  Future<UiResponse> saveTorrentSettings(
-      ServerHost currentServer, AppSettings settings);
+  Future<UiResponse<ServerPreferences>> getServerPreferences(
+      ServerHost currentServer);
 
   Future<UiResponse> increasePriority(
       ServerHost currentServer, List<TorrentEntity> selectedItems);
@@ -63,8 +64,10 @@ abstract class QBitRemoteRepository {
       ServerHost currentServer, List<TorrentEntity> selectedItems);
 }
 
-class QBitRemoteRepositoryImpl extends QBitRemoteRepository {
-  QBitRemoteRepositoryImpl();
+class RemoteRepositoryImpl extends RemoteRepository {
+  final Dio dio;
+
+  RemoteRepositoryImpl({required this.dio});
 
   @override
   Future<UiResponse> login(ServerHost serverHost) async {
@@ -76,7 +79,9 @@ class QBitRemoteRepositoryImpl extends QBitRemoteRepository {
         "password": serverHost.password
       });
     } catch (e) {
-      if (e is DioError && e.response != null && e.response.statusCode == 403) {
+      if (e is DioError &&
+          e.response != null &&
+          e.response?.statusCode == 403) {
         return UiResponse(
             "", "User's IP is banned for too many failed login attempts");
       }
@@ -125,8 +130,8 @@ class QBitRemoteRepositoryImpl extends QBitRemoteRepository {
           .addAll(await getFilesInfo(currentServer, torrentHash));
       return UiResponse(result, "");
     } catch (e) {
-      if (e is DioError && e.response.statusCode == 403) {
-        return await login(currentServer);
+      if (e is DioError && e.response?.statusCode == 403) {
+        await login(currentServer);
       }
       return UiResponse(null, e.toString());
     }
@@ -153,16 +158,23 @@ class QBitRemoteRepositoryImpl extends QBitRemoteRepository {
 
   @override
   Future<UiResponse<bool>> addTorrentByFile(ServerHost serverHost,
-      List<PlatformFile> fileSelectedPath, String newSavePath) async {
+      List<PlatformFile> fileSelectedPath, PrefOptions options) async {
     try {
       String url = serverHost.getConnectUrl() + "/api/v2/torrents/add";
       List<MultipartFile> multipartFiles = [];
       for (var item in fileSelectedPath) {
-        final mp = await MultipartFile.fromFile(item.path, filename: item.name);
-        multipartFiles.add(mp);
+        String? path = item.path;
+        if (path != null) {
+          final mp = await MultipartFile.fromFile(path, filename: item.name);
+          multipartFiles.add(mp);
+        }
       }
-      final data = FormData.fromMap(
-          {"torrents": multipartFiles, "savepath": newSavePath});
+      final data = FormData.fromMap({
+        "torrents": multipartFiles,
+        "savepath": options.savePath,
+        "sequentialDownload": options.isSequentialDownload,
+        "firstLastPiecePrio": options.isDownloadFirst
+      });
       await dio.post(url, data: data);
       return UiResponse(true, "");
     } catch (e) {
@@ -172,14 +184,16 @@ class QBitRemoteRepositoryImpl extends QBitRemoteRepository {
 
   @override
   Future<UiResponse<bool>> addTorrentByUrl(
-      ServerHost serverHost, String urlLink, String newSavePath) async {
+      ServerHost serverHost, String urlLink, PrefOptions options) async {
     try {
       String url = serverHost.getConnectUrl() + "/api/v2/torrents/add";
       Map<String, dynamic> params = HashMap();
       params["urls"] = urlLink;
-      if (newSavePath.isNotEmpty) {
-        params["savepath"] = newSavePath;
+      if (options.savePath.isNotEmpty) {
+        params["savepath"] = options.savePath;
       }
+      params["sequentialDownload"] = options.isSequentialDownload;
+      params["firstLastPiecePrio"] = options.isDownloadFirst;
       final data = FormData.fromMap(params);
       await dio.post(url, data: data);
       return UiResponse(true, "");
@@ -308,29 +322,30 @@ class QBitRemoteRepositoryImpl extends QBitRemoteRepository {
   }
 
   @override
-  Future<UiResponse<AppSettings>> getTorrentSettings(
-      ServerHost currentServer, AppSettings loadedSettings) async {
+  Future<UiResponse<ServerPreferences>> getServerPreferences(
+      ServerHost currentServer) async {
     try {
       String url = currentServer.getConnectUrl() + "/api/v2/app/preferences";
       Response response = await dio.get(url);
       Map dataMap = response.data as Map;
-      loadedSettings.downloadSpeed = ((dataMap["dl_limit"] ?? 0));
-      loadedSettings.uploadSpeed = ((dataMap["up_limit"] ?? 0));
-
-      print("");
-      return UiResponse(loadedSettings, "");
+      final downloadSpeed = ((dataMap["dl_limit"] ?? 0));
+      final uploadSpeed = ((dataMap["up_limit"] ?? 0));
+      return UiResponse(
+          ServerPreferences(
+              downloadSpeed: downloadSpeed, uploadSpeed: uploadSpeed),
+          "");
     } catch (e) {
       return UiResponse(null, e.toString());
     }
   }
 
   @override
-  Future<UiResponse> saveTorrentSettings(
-      ServerHost currentServer, AppSettings settings) async {
+  Future<UiResponse> saveServerPrefs(
+      ServerHost currentServer, ServerPreferences prefs) async {
     try {
       await Future.wait([
-        _saveDownloadSpeedSettings(currentServer, settings.downloadSpeed),
-        _saveUploadSpeedSettings(currentServer, settings.uploadSpeed)
+        _saveDownloadSpeedSettings(currentServer, prefs.downloadSpeed),
+        _saveUploadSpeedSettings(currentServer, prefs.uploadSpeed)
       ]);
       return UiResponse("", "");
     } catch (e) {

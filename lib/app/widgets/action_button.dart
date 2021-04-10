@@ -1,19 +1,19 @@
-import 'package:qBitRemote/commons/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:qBitRemote/commons/colors.dart';
 
 class ActionButton extends StatefulWidget {
   const ActionButton(
-      {Key key,
-      @required this.text,
+      {Key? key,
+      required this.text,
       this.isTextUpperCase = false,
-      @required this.onPressed,
+      required this.onPressed,
       this.iconData})
       : super(key: key);
 
   final String text;
   final bool isTextUpperCase;
-  final Function() onPressed;
-  final IconData iconData;
+  final Function()? onPressed;
+  final IconData? iconData;
 
   @override
   _ActionButtonState createState() => _ActionButtonState();

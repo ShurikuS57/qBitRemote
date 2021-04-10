@@ -6,13 +6,13 @@ class PathParser {
 
   PathParser(this._files) {
     _files.forEach((item) {
-      FileTreeNode currentLevel;
+      FileTreeNode? currentLevel;
       List<String> split = item.path.split("/");
-        _recursiveOperation(currentLevel, item, split, 0);
+      _recursiveOperation(currentLevel, item, split, 0);
     });
   }
 
-  FileTreeNode _findFromChildren(FileTreeNode currentLevel, String split) {
+  FileTreeNode? _findFromChildren(FileTreeNode currentLevel, String split) {
     for (final item in currentLevel.children) {
       if (item.path == split) {
         return item;
@@ -21,7 +21,7 @@ class PathParser {
     return null;
   }
 
-  FileTreeNode _findFromTreeData(String split) {
+  FileTreeNode? _findFromTreeData(String split) {
     for (final item in treeData) {
       if (item.path == split) {
         return item;
@@ -29,10 +29,11 @@ class PathParser {
     }
     return null;
   }
-  
-  void _recursiveOperation(FileTreeNode currentLevel, FileEntity fileEntity, List<String> split, int currentPosition) {
+
+  void _recursiveOperation(FileTreeNode? currentLevel, FileEntity fileEntity,
+      List<String> split, int currentPosition) {
     if (currentLevel == null && split.length > 0) {
-      FileTreeNode find = _findFromTreeData(split[currentPosition]);
+      FileTreeNode? find = _findFromTreeData(split[currentPosition]);
       if (find != null) {
         currentLevel = find;
       } else {
@@ -40,7 +41,8 @@ class PathParser {
         treeData.add(currentLevel);
       }
     } else {
-      FileTreeNode find = _findFromChildren(currentLevel, split[currentPosition]);
+      FileTreeNode? find =
+          _findFromChildren(currentLevel!, split[currentPosition]);
       if (find != null) {
         currentLevel = find;
       } else {
@@ -51,7 +53,7 @@ class PathParser {
     }
     if (currentPosition + 1 < split.length) {
       _recursiveOperation(currentLevel, fileEntity, split, currentPosition + 1);
-    } else if (currentLevel != null) {
+    } else {
       currentLevel.fileEntity = fileEntity;
     }
   }
@@ -59,12 +61,10 @@ class PathParser {
 
 class FileTreeNode {
   final String path;
-  List<FileTreeNode> children;
-  FileEntity fileEntity;
+  List<FileTreeNode> children = [];
+  FileEntity? fileEntity;
 
-  FileTreeNode(this.path) {
-    children = [];
-  }
+  FileTreeNode(this.path);
 
   @override
   String toString() {

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:qBitRemote/commons/colors.dart';
-import 'package:qBitRemote/commons/navigation/locator.dart';
+import 'package:qBitRemote/commons/dependencies/locator.dart';
 import 'package:qBitRemote/commons/navigation/navigation_service.dart';
 
 import '../routes.dart';
@@ -12,7 +12,7 @@ class QBitRemoteApp extends StatelessWidget {
   static const _methodChannel =
       const MethodChannel('app.channel.shared.method');
   static const _messageChannel = const EventChannel('app.channel.shared.data');
-  final NavigationService _navigationService = locator<NavigationService>();
+  final NavigationService _navigationService = inject<NavigationService>();
 
   QBitRemoteApp() {
     _subscribeMessageChannel();
@@ -42,7 +42,7 @@ class QBitRemoteApp extends StatelessWidget {
       routes: Routes.getRoutes(),
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
-      navigatorKey: locator<NavigationService>().navigatorKey,
+      navigatorKey: inject<NavigationService>().navigatorKey,
       theme: Theme.of(context).copyWith(
           primaryColor: AppColors.primary,
           primaryColorLight: AppColors.primaryLight,

@@ -9,10 +9,10 @@ abstract class MultiSelectState {}
 class MultiSelectInitial extends MultiSelectState {}
 
 class OnSelectedChange extends MultiSelectState {
-  OnSelectedChange({this.isSelected, this.count});
-
   final bool isSelected;
   final int count;
+
+  OnSelectedChange({required this.isSelected, required this.count});
 }
 
 class MultiSelectCubit<T> extends Cubit<MultiSelectState> {

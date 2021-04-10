@@ -7,7 +7,7 @@ class ServerHost extends HiveObject {
 
   @HiveField(1)
   String host;
-  
+
   @HiveField(2)
   String login;
 
@@ -15,14 +15,14 @@ class ServerHost extends HiveObject {
   String password;
 
   @HiveField(4)
-  bool isSelected;
+  bool? isSelected;
 
   ServerHost({
-    this.name,
-    this.host,
-    this.login,
-    this.password,
-    this.isSelected,
+    required this.name,
+    required this.host,
+    required this.login,
+    required this.password,
+    this.isSelected = false,
   });
 
   String getConnectUrl() {
@@ -41,12 +41,13 @@ class ServerHostAdapter extends TypeAdapter<ServerHost> {
 
   @override
   ServerHost read(BinaryReader reader) {
-    return ServerHost(name: '', host: '', login: '', password: '', isSelected: false)
-    ..name = reader.read()
-    ..host = reader.read()
-    ..login = reader.read()
-    ..password = reader.read()
-    ..isSelected = reader.read();
+    return ServerHost(
+        name: '', host: '', login: '', password: '', isSelected: false)
+      ..name = reader.read()
+      ..host = reader.read()
+      ..login = reader.read()
+      ..password = reader.read()
+      ..isSelected = reader.read();
   }
 
   @override

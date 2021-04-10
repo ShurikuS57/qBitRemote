@@ -6,8 +6,8 @@ import 'package:qBitRemote/app/utils/format_helper.dart';
 import 'package:qBitRemote/app/utils/path_parser.dart';
 import 'package:qBitRemote/app/utils/state_helper.dart';
 import 'package:qBitRemote/app/widgets/loader_layout.dart';
+import 'package:qBitRemote/app/widgets/tree_view.dart';
 import 'package:qBitRemote/commons/colors.dart';
-import 'package:tree_view/tree_view.dart';
 
 class TorrentFilesScreen extends StatefulWidget {
   @override
@@ -46,13 +46,13 @@ class _TorrentFilesScreenState extends State<TorrentFilesScreen> {
 
   Parent _recursiveBuildView(
       FileTreeNode currentNode, bool isRoot, int deepFolderLevel) {
+    FileEntity? file = currentNode.fileEntity;
     final parent = Parent(
-        parent: currentNode.fileEntity != null
+        parent: file != null
             ? Container(
                 margin: EdgeInsets.only(
                     left: isRoot ? 8.0 : 8.0 * deepFolderLevel, right: 8),
-                child: _buildFileInfoCard(
-                    currentNode.fileEntity, currentNode.path))
+                child: _buildFileInfoCard(file, currentNode.path))
             : Container(
                 margin:
                     EdgeInsets.only(left: isRoot ? 0.0 : 8.0 * deepFolderLevel),

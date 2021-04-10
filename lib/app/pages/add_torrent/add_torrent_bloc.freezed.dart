@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
 
 part of 'add_torrent_bloc.dart';
 
@@ -9,111 +9,123 @@ part of 'add_torrent_bloc.dart';
 
 T _$identity<T>(T value) => value;
 
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+
 /// @nodoc
 class _$AddTorrentEventTearOff {
   const _$AddTorrentEventTearOff();
 
-// ignore: unused_element
   SwitchInputSourceEvent onSwitchInputSource(bool isFileSourceSelected) {
     return SwitchInputSourceEvent(
       isFileSourceSelected,
     );
   }
 
-// ignore: unused_element
   ChoiceTorrentFileEvent choiceTorrentFile() {
     return const ChoiceTorrentFileEvent();
   }
 
-// ignore: unused_element
-  StartDownloadEvent startDownload(String savePath) {
+  StartDownloadEvent startDownload(PrefOptions options) {
     return StartDownloadEvent(
-      savePath,
+      options,
     );
   }
 
-// ignore: unused_element
   ChangeUrlEvent onChangeUrl(String newValue) {
     return ChangeUrlEvent(
       newValue,
     );
   }
 
-// ignore: unused_element
   CheckDownloadFolderEvent checkDownloadFolder() {
     return const CheckDownloadFolderEvent();
   }
 
-// ignore: unused_element
   SelectArgUri selectArgUri() {
     return const SelectArgUri();
   }
 
-// ignore: unused_element
   LoadSetupEvent loadSetup() {
     return const LoadSetupEvent();
   }
 
-// ignore: unused_element
   CheckArgEvent onCheckArg(AddTorrentArg arg) {
     return CheckArgEvent(
       arg,
     );
   }
+
+  UpdateOptionsEvent updateOptions(PrefOptions newValue) {
+    return UpdateOptionsEvent(
+      newValue,
+    );
+  }
 }
 
 /// @nodoc
-// ignore: unused_element
 const $AddTorrentEvent = _$AddTorrentEventTearOff();
 
 /// @nodoc
 mixin _$AddTorrentEvent {
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult onSwitchInputSource(bool isFileSourceSelected),
-    @required TResult choiceTorrentFile(),
-    @required TResult startDownload(String savePath),
-    @required TResult onChangeUrl(String newValue),
-    @required TResult checkDownloadFolder(),
-    @required TResult selectArgUri(),
-    @required TResult loadSetup(),
-    @required TResult onCheckArg(AddTorrentArg arg),
-  });
+  TResult when<TResult extends Object?>({
+    required TResult Function(bool isFileSourceSelected) onSwitchInputSource,
+    required TResult Function() choiceTorrentFile,
+    required TResult Function(PrefOptions options) startDownload,
+    required TResult Function(String newValue) onChangeUrl,
+    required TResult Function() checkDownloadFolder,
+    required TResult Function() selectArgUri,
+    required TResult Function() loadSetup,
+    required TResult Function(AddTorrentArg arg) onCheckArg,
+    required TResult Function(PrefOptions newValue) updateOptions,
+  }) =>
+      throw _privateConstructorUsedError;
+
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult onSwitchInputSource(bool isFileSourceSelected),
-    TResult choiceTorrentFile(),
-    TResult startDownload(String savePath),
-    TResult onChangeUrl(String newValue),
-    TResult checkDownloadFolder(),
-    TResult selectArgUri(),
-    TResult loadSetup(),
-    TResult onCheckArg(AddTorrentArg arg),
-    @required TResult orElse(),
-  });
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(bool isFileSourceSelected)? onSwitchInputSource,
+    TResult Function()? choiceTorrentFile,
+    TResult Function(PrefOptions options)? startDownload,
+    TResult Function(String newValue)? onChangeUrl,
+    TResult Function()? checkDownloadFolder,
+    TResult Function()? selectArgUri,
+    TResult Function()? loadSetup,
+    TResult Function(AddTorrentArg arg)? onCheckArg,
+    TResult Function(PrefOptions newValue)? updateOptions,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult onSwitchInputSource(SwitchInputSourceEvent value),
-    @required TResult choiceTorrentFile(ChoiceTorrentFileEvent value),
-    @required TResult startDownload(StartDownloadEvent value),
-    @required TResult onChangeUrl(ChangeUrlEvent value),
-    @required TResult checkDownloadFolder(CheckDownloadFolderEvent value),
-    @required TResult selectArgUri(SelectArgUri value),
-    @required TResult loadSetup(LoadSetupEvent value),
-    @required TResult onCheckArg(CheckArgEvent value),
-  });
+  TResult map<TResult extends Object?>({
+    required TResult Function(SwitchInputSourceEvent value) onSwitchInputSource,
+    required TResult Function(ChoiceTorrentFileEvent value) choiceTorrentFile,
+    required TResult Function(StartDownloadEvent value) startDownload,
+    required TResult Function(ChangeUrlEvent value) onChangeUrl,
+    required TResult Function(CheckDownloadFolderEvent value)
+        checkDownloadFolder,
+    required TResult Function(SelectArgUri value) selectArgUri,
+    required TResult Function(LoadSetupEvent value) loadSetup,
+    required TResult Function(CheckArgEvent value) onCheckArg,
+    required TResult Function(UpdateOptionsEvent value) updateOptions,
+  }) =>
+      throw _privateConstructorUsedError;
+
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult onSwitchInputSource(SwitchInputSourceEvent value),
-    TResult choiceTorrentFile(ChoiceTorrentFileEvent value),
-    TResult startDownload(StartDownloadEvent value),
-    TResult onChangeUrl(ChangeUrlEvent value),
-    TResult checkDownloadFolder(CheckDownloadFolderEvent value),
-    TResult selectArgUri(SelectArgUri value),
-    TResult loadSetup(LoadSetupEvent value),
-    TResult onCheckArg(CheckArgEvent value),
-    @required TResult orElse(),
-  });
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(SwitchInputSourceEvent value)? onSwitchInputSource,
+    TResult Function(ChoiceTorrentFileEvent value)? choiceTorrentFile,
+    TResult Function(StartDownloadEvent value)? startDownload,
+    TResult Function(ChangeUrlEvent value)? onChangeUrl,
+    TResult Function(CheckDownloadFolderEvent value)? checkDownloadFolder,
+    TResult Function(SelectArgUri value)? selectArgUri,
+    TResult Function(LoadSetupEvent value)? loadSetup,
+    TResult Function(CheckArgEvent value)? onCheckArg,
+    TResult Function(UpdateOptionsEvent value)? updateOptions,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -154,21 +166,20 @@ class _$SwitchInputSourceEventCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object isFileSourceSelected = freezed,
+    Object? isFileSourceSelected = freezed,
   }) {
     return _then(SwitchInputSourceEvent(
       isFileSourceSelected == freezed
           ? _value.isFileSourceSelected
-          : isFileSourceSelected as bool,
+          : isFileSourceSelected // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
 
 /// @nodoc
 class _$SwitchInputSourceEvent extends SwitchInputSourceEvent {
-  const _$SwitchInputSourceEvent(this.isFileSourceSelected)
-      : assert(isFileSourceSelected != null),
-        super._();
+  const _$SwitchInputSourceEvent(this.isFileSourceSelected) : super._();
 
   @override
   final bool isFileSourceSelected;
@@ -200,41 +211,34 @@ class _$SwitchInputSourceEvent extends SwitchInputSourceEvent {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult onSwitchInputSource(bool isFileSourceSelected),
-    @required TResult choiceTorrentFile(),
-    @required TResult startDownload(String savePath),
-    @required TResult onChangeUrl(String newValue),
-    @required TResult checkDownloadFolder(),
-    @required TResult selectArgUri(),
-    @required TResult loadSetup(),
-    @required TResult onCheckArg(AddTorrentArg arg),
+  TResult when<TResult extends Object?>({
+    required TResult Function(bool isFileSourceSelected) onSwitchInputSource,
+    required TResult Function() choiceTorrentFile,
+    required TResult Function(PrefOptions options) startDownload,
+    required TResult Function(String newValue) onChangeUrl,
+    required TResult Function() checkDownloadFolder,
+    required TResult Function() selectArgUri,
+    required TResult Function() loadSetup,
+    required TResult Function(AddTorrentArg arg) onCheckArg,
+    required TResult Function(PrefOptions newValue) updateOptions,
   }) {
-    assert(onSwitchInputSource != null);
-    assert(choiceTorrentFile != null);
-    assert(startDownload != null);
-    assert(onChangeUrl != null);
-    assert(checkDownloadFolder != null);
-    assert(selectArgUri != null);
-    assert(loadSetup != null);
-    assert(onCheckArg != null);
     return onSwitchInputSource(isFileSourceSelected);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult onSwitchInputSource(bool isFileSourceSelected),
-    TResult choiceTorrentFile(),
-    TResult startDownload(String savePath),
-    TResult onChangeUrl(String newValue),
-    TResult checkDownloadFolder(),
-    TResult selectArgUri(),
-    TResult loadSetup(),
-    TResult onCheckArg(AddTorrentArg arg),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(bool isFileSourceSelected)? onSwitchInputSource,
+    TResult Function()? choiceTorrentFile,
+    TResult Function(PrefOptions options)? startDownload,
+    TResult Function(String newValue)? onChangeUrl,
+    TResult Function()? checkDownloadFolder,
+    TResult Function()? selectArgUri,
+    TResult Function()? loadSetup,
+    TResult Function(AddTorrentArg arg)? onCheckArg,
+    TResult Function(PrefOptions newValue)? updateOptions,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (onSwitchInputSource != null) {
       return onSwitchInputSource(isFileSourceSelected);
     }
@@ -243,41 +247,35 @@ class _$SwitchInputSourceEvent extends SwitchInputSourceEvent {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult onSwitchInputSource(SwitchInputSourceEvent value),
-    @required TResult choiceTorrentFile(ChoiceTorrentFileEvent value),
-    @required TResult startDownload(StartDownloadEvent value),
-    @required TResult onChangeUrl(ChangeUrlEvent value),
-    @required TResult checkDownloadFolder(CheckDownloadFolderEvent value),
-    @required TResult selectArgUri(SelectArgUri value),
-    @required TResult loadSetup(LoadSetupEvent value),
-    @required TResult onCheckArg(CheckArgEvent value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(SwitchInputSourceEvent value) onSwitchInputSource,
+    required TResult Function(ChoiceTorrentFileEvent value) choiceTorrentFile,
+    required TResult Function(StartDownloadEvent value) startDownload,
+    required TResult Function(ChangeUrlEvent value) onChangeUrl,
+    required TResult Function(CheckDownloadFolderEvent value)
+        checkDownloadFolder,
+    required TResult Function(SelectArgUri value) selectArgUri,
+    required TResult Function(LoadSetupEvent value) loadSetup,
+    required TResult Function(CheckArgEvent value) onCheckArg,
+    required TResult Function(UpdateOptionsEvent value) updateOptions,
   }) {
-    assert(onSwitchInputSource != null);
-    assert(choiceTorrentFile != null);
-    assert(startDownload != null);
-    assert(onChangeUrl != null);
-    assert(checkDownloadFolder != null);
-    assert(selectArgUri != null);
-    assert(loadSetup != null);
-    assert(onCheckArg != null);
     return onSwitchInputSource(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult onSwitchInputSource(SwitchInputSourceEvent value),
-    TResult choiceTorrentFile(ChoiceTorrentFileEvent value),
-    TResult startDownload(StartDownloadEvent value),
-    TResult onChangeUrl(ChangeUrlEvent value),
-    TResult checkDownloadFolder(CheckDownloadFolderEvent value),
-    TResult selectArgUri(SelectArgUri value),
-    TResult loadSetup(LoadSetupEvent value),
-    TResult onCheckArg(CheckArgEvent value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(SwitchInputSourceEvent value)? onSwitchInputSource,
+    TResult Function(ChoiceTorrentFileEvent value)? choiceTorrentFile,
+    TResult Function(StartDownloadEvent value)? startDownload,
+    TResult Function(ChangeUrlEvent value)? onChangeUrl,
+    TResult Function(CheckDownloadFolderEvent value)? checkDownloadFolder,
+    TResult Function(SelectArgUri value)? selectArgUri,
+    TResult Function(LoadSetupEvent value)? loadSetup,
+    TResult Function(CheckArgEvent value)? onCheckArg,
+    TResult Function(UpdateOptionsEvent value)? updateOptions,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (onSwitchInputSource != null) {
       return onSwitchInputSource(this);
     }
@@ -286,13 +284,16 @@ class _$SwitchInputSourceEvent extends SwitchInputSourceEvent {
 }
 
 abstract class SwitchInputSourceEvent extends AddTorrentEvent {
-  const SwitchInputSourceEvent._() : super._();
   const factory SwitchInputSourceEvent(bool isFileSourceSelected) =
       _$SwitchInputSourceEvent;
 
-  bool get isFileSourceSelected;
+  const SwitchInputSourceEvent._() : super._();
+
+  bool get isFileSourceSelected => throw _privateConstructorUsedError;
+
   @JsonKey(ignore: true)
-  $SwitchInputSourceEventCopyWith<SwitchInputSourceEvent> get copyWith;
+  $SwitchInputSourceEventCopyWith<SwitchInputSourceEvent> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -333,41 +334,34 @@ class _$ChoiceTorrentFileEvent extends ChoiceTorrentFileEvent {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult onSwitchInputSource(bool isFileSourceSelected),
-    @required TResult choiceTorrentFile(),
-    @required TResult startDownload(String savePath),
-    @required TResult onChangeUrl(String newValue),
-    @required TResult checkDownloadFolder(),
-    @required TResult selectArgUri(),
-    @required TResult loadSetup(),
-    @required TResult onCheckArg(AddTorrentArg arg),
+  TResult when<TResult extends Object?>({
+    required TResult Function(bool isFileSourceSelected) onSwitchInputSource,
+    required TResult Function() choiceTorrentFile,
+    required TResult Function(PrefOptions options) startDownload,
+    required TResult Function(String newValue) onChangeUrl,
+    required TResult Function() checkDownloadFolder,
+    required TResult Function() selectArgUri,
+    required TResult Function() loadSetup,
+    required TResult Function(AddTorrentArg arg) onCheckArg,
+    required TResult Function(PrefOptions newValue) updateOptions,
   }) {
-    assert(onSwitchInputSource != null);
-    assert(choiceTorrentFile != null);
-    assert(startDownload != null);
-    assert(onChangeUrl != null);
-    assert(checkDownloadFolder != null);
-    assert(selectArgUri != null);
-    assert(loadSetup != null);
-    assert(onCheckArg != null);
     return choiceTorrentFile();
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult onSwitchInputSource(bool isFileSourceSelected),
-    TResult choiceTorrentFile(),
-    TResult startDownload(String savePath),
-    TResult onChangeUrl(String newValue),
-    TResult checkDownloadFolder(),
-    TResult selectArgUri(),
-    TResult loadSetup(),
-    TResult onCheckArg(AddTorrentArg arg),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(bool isFileSourceSelected)? onSwitchInputSource,
+    TResult Function()? choiceTorrentFile,
+    TResult Function(PrefOptions options)? startDownload,
+    TResult Function(String newValue)? onChangeUrl,
+    TResult Function()? checkDownloadFolder,
+    TResult Function()? selectArgUri,
+    TResult Function()? loadSetup,
+    TResult Function(AddTorrentArg arg)? onCheckArg,
+    TResult Function(PrefOptions newValue)? updateOptions,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (choiceTorrentFile != null) {
       return choiceTorrentFile();
     }
@@ -376,41 +370,35 @@ class _$ChoiceTorrentFileEvent extends ChoiceTorrentFileEvent {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult onSwitchInputSource(SwitchInputSourceEvent value),
-    @required TResult choiceTorrentFile(ChoiceTorrentFileEvent value),
-    @required TResult startDownload(StartDownloadEvent value),
-    @required TResult onChangeUrl(ChangeUrlEvent value),
-    @required TResult checkDownloadFolder(CheckDownloadFolderEvent value),
-    @required TResult selectArgUri(SelectArgUri value),
-    @required TResult loadSetup(LoadSetupEvent value),
-    @required TResult onCheckArg(CheckArgEvent value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(SwitchInputSourceEvent value) onSwitchInputSource,
+    required TResult Function(ChoiceTorrentFileEvent value) choiceTorrentFile,
+    required TResult Function(StartDownloadEvent value) startDownload,
+    required TResult Function(ChangeUrlEvent value) onChangeUrl,
+    required TResult Function(CheckDownloadFolderEvent value)
+        checkDownloadFolder,
+    required TResult Function(SelectArgUri value) selectArgUri,
+    required TResult Function(LoadSetupEvent value) loadSetup,
+    required TResult Function(CheckArgEvent value) onCheckArg,
+    required TResult Function(UpdateOptionsEvent value) updateOptions,
   }) {
-    assert(onSwitchInputSource != null);
-    assert(choiceTorrentFile != null);
-    assert(startDownload != null);
-    assert(onChangeUrl != null);
-    assert(checkDownloadFolder != null);
-    assert(selectArgUri != null);
-    assert(loadSetup != null);
-    assert(onCheckArg != null);
     return choiceTorrentFile(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult onSwitchInputSource(SwitchInputSourceEvent value),
-    TResult choiceTorrentFile(ChoiceTorrentFileEvent value),
-    TResult startDownload(StartDownloadEvent value),
-    TResult onChangeUrl(ChangeUrlEvent value),
-    TResult checkDownloadFolder(CheckDownloadFolderEvent value),
-    TResult selectArgUri(SelectArgUri value),
-    TResult loadSetup(LoadSetupEvent value),
-    TResult onCheckArg(CheckArgEvent value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(SwitchInputSourceEvent value)? onSwitchInputSource,
+    TResult Function(ChoiceTorrentFileEvent value)? choiceTorrentFile,
+    TResult Function(StartDownloadEvent value)? startDownload,
+    TResult Function(ChangeUrlEvent value)? onChangeUrl,
+    TResult Function(CheckDownloadFolderEvent value)? checkDownloadFolder,
+    TResult Function(SelectArgUri value)? selectArgUri,
+    TResult Function(LoadSetupEvent value)? loadSetup,
+    TResult Function(CheckArgEvent value)? onCheckArg,
+    TResult Function(UpdateOptionsEvent value)? updateOptions,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (choiceTorrentFile != null) {
       return choiceTorrentFile(this);
     }
@@ -419,8 +407,9 @@ class _$ChoiceTorrentFileEvent extends ChoiceTorrentFileEvent {
 }
 
 abstract class ChoiceTorrentFileEvent extends AddTorrentEvent {
-  const ChoiceTorrentFileEvent._() : super._();
   const factory ChoiceTorrentFileEvent() = _$ChoiceTorrentFileEvent;
+
+  const ChoiceTorrentFileEvent._() : super._();
 }
 
 /// @nodoc
@@ -428,7 +417,8 @@ abstract class $StartDownloadEventCopyWith<$Res> {
   factory $StartDownloadEventCopyWith(
           StartDownloadEvent value, $Res Function(StartDownloadEvent) then) =
       _$StartDownloadEventCopyWithImpl<$Res>;
-  $Res call({String savePath});
+
+  $Res call({PrefOptions options});
 }
 
 /// @nodoc
@@ -444,40 +434,40 @@ class _$StartDownloadEventCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object savePath = freezed,
+    Object? options = freezed,
   }) {
     return _then(StartDownloadEvent(
-      savePath == freezed ? _value.savePath : savePath as String,
+      options == freezed
+          ? _value.options
+          : options // ignore: cast_nullable_to_non_nullable
+              as PrefOptions,
     ));
   }
 }
 
 /// @nodoc
 class _$StartDownloadEvent extends StartDownloadEvent {
-  const _$StartDownloadEvent(this.savePath)
-      : assert(savePath != null),
-        super._();
+  const _$StartDownloadEvent(this.options) : super._();
 
   @override
-  final String savePath;
+  final PrefOptions options;
 
   @override
   String toString() {
-    return 'AddTorrentEvent.startDownload(savePath: $savePath)';
+    return 'AddTorrentEvent.startDownload(options: $options)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is StartDownloadEvent &&
-            (identical(other.savePath, savePath) ||
-                const DeepCollectionEquality()
-                    .equals(other.savePath, savePath)));
+            (identical(other.options, options) ||
+                const DeepCollectionEquality().equals(other.options, options)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(savePath);
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(options);
 
   @JsonKey(ignore: true)
   @override
@@ -486,84 +476,71 @@ class _$StartDownloadEvent extends StartDownloadEvent {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult onSwitchInputSource(bool isFileSourceSelected),
-    @required TResult choiceTorrentFile(),
-    @required TResult startDownload(String savePath),
-    @required TResult onChangeUrl(String newValue),
-    @required TResult checkDownloadFolder(),
-    @required TResult selectArgUri(),
-    @required TResult loadSetup(),
-    @required TResult onCheckArg(AddTorrentArg arg),
+  TResult when<TResult extends Object?>({
+    required TResult Function(bool isFileSourceSelected) onSwitchInputSource,
+    required TResult Function() choiceTorrentFile,
+    required TResult Function(PrefOptions options) startDownload,
+    required TResult Function(String newValue) onChangeUrl,
+    required TResult Function() checkDownloadFolder,
+    required TResult Function() selectArgUri,
+    required TResult Function() loadSetup,
+    required TResult Function(AddTorrentArg arg) onCheckArg,
+    required TResult Function(PrefOptions newValue) updateOptions,
   }) {
-    assert(onSwitchInputSource != null);
-    assert(choiceTorrentFile != null);
-    assert(startDownload != null);
-    assert(onChangeUrl != null);
-    assert(checkDownloadFolder != null);
-    assert(selectArgUri != null);
-    assert(loadSetup != null);
-    assert(onCheckArg != null);
-    return startDownload(savePath);
+    return startDownload(options);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult onSwitchInputSource(bool isFileSourceSelected),
-    TResult choiceTorrentFile(),
-    TResult startDownload(String savePath),
-    TResult onChangeUrl(String newValue),
-    TResult checkDownloadFolder(),
-    TResult selectArgUri(),
-    TResult loadSetup(),
-    TResult onCheckArg(AddTorrentArg arg),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(bool isFileSourceSelected)? onSwitchInputSource,
+    TResult Function()? choiceTorrentFile,
+    TResult Function(PrefOptions options)? startDownload,
+    TResult Function(String newValue)? onChangeUrl,
+    TResult Function()? checkDownloadFolder,
+    TResult Function()? selectArgUri,
+    TResult Function()? loadSetup,
+    TResult Function(AddTorrentArg arg)? onCheckArg,
+    TResult Function(PrefOptions newValue)? updateOptions,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (startDownload != null) {
-      return startDownload(savePath);
+      return startDownload(options);
     }
     return orElse();
   }
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult onSwitchInputSource(SwitchInputSourceEvent value),
-    @required TResult choiceTorrentFile(ChoiceTorrentFileEvent value),
-    @required TResult startDownload(StartDownloadEvent value),
-    @required TResult onChangeUrl(ChangeUrlEvent value),
-    @required TResult checkDownloadFolder(CheckDownloadFolderEvent value),
-    @required TResult selectArgUri(SelectArgUri value),
-    @required TResult loadSetup(LoadSetupEvent value),
-    @required TResult onCheckArg(CheckArgEvent value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(SwitchInputSourceEvent value) onSwitchInputSource,
+    required TResult Function(ChoiceTorrentFileEvent value) choiceTorrentFile,
+    required TResult Function(StartDownloadEvent value) startDownload,
+    required TResult Function(ChangeUrlEvent value) onChangeUrl,
+    required TResult Function(CheckDownloadFolderEvent value)
+        checkDownloadFolder,
+    required TResult Function(SelectArgUri value) selectArgUri,
+    required TResult Function(LoadSetupEvent value) loadSetup,
+    required TResult Function(CheckArgEvent value) onCheckArg,
+    required TResult Function(UpdateOptionsEvent value) updateOptions,
   }) {
-    assert(onSwitchInputSource != null);
-    assert(choiceTorrentFile != null);
-    assert(startDownload != null);
-    assert(onChangeUrl != null);
-    assert(checkDownloadFolder != null);
-    assert(selectArgUri != null);
-    assert(loadSetup != null);
-    assert(onCheckArg != null);
     return startDownload(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult onSwitchInputSource(SwitchInputSourceEvent value),
-    TResult choiceTorrentFile(ChoiceTorrentFileEvent value),
-    TResult startDownload(StartDownloadEvent value),
-    TResult onChangeUrl(ChangeUrlEvent value),
-    TResult checkDownloadFolder(CheckDownloadFolderEvent value),
-    TResult selectArgUri(SelectArgUri value),
-    TResult loadSetup(LoadSetupEvent value),
-    TResult onCheckArg(CheckArgEvent value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(SwitchInputSourceEvent value)? onSwitchInputSource,
+    TResult Function(ChoiceTorrentFileEvent value)? choiceTorrentFile,
+    TResult Function(StartDownloadEvent value)? startDownload,
+    TResult Function(ChangeUrlEvent value)? onChangeUrl,
+    TResult Function(CheckDownloadFolderEvent value)? checkDownloadFolder,
+    TResult Function(SelectArgUri value)? selectArgUri,
+    TResult Function(LoadSetupEvent value)? loadSetup,
+    TResult Function(CheckArgEvent value)? onCheckArg,
+    TResult Function(UpdateOptionsEvent value)? updateOptions,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (startDownload != null) {
       return startDownload(this);
     }
@@ -572,12 +549,15 @@ class _$StartDownloadEvent extends StartDownloadEvent {
 }
 
 abstract class StartDownloadEvent extends AddTorrentEvent {
-  const StartDownloadEvent._() : super._();
-  const factory StartDownloadEvent(String savePath) = _$StartDownloadEvent;
+  const factory StartDownloadEvent(PrefOptions options) = _$StartDownloadEvent;
 
-  String get savePath;
+  const StartDownloadEvent._() : super._();
+
+  PrefOptions get options => throw _privateConstructorUsedError;
+
   @JsonKey(ignore: true)
-  $StartDownloadEventCopyWith<StartDownloadEvent> get copyWith;
+  $StartDownloadEventCopyWith<StartDownloadEvent> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -601,19 +581,20 @@ class _$ChangeUrlEventCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object newValue = freezed,
+    Object? newValue = freezed,
   }) {
     return _then(ChangeUrlEvent(
-      newValue == freezed ? _value.newValue : newValue as String,
+      newValue == freezed
+          ? _value.newValue
+          : newValue // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
 
 /// @nodoc
 class _$ChangeUrlEvent extends ChangeUrlEvent {
-  const _$ChangeUrlEvent(this.newValue)
-      : assert(newValue != null),
-        super._();
+  const _$ChangeUrlEvent(this.newValue) : super._();
 
   @override
   final String newValue;
@@ -643,41 +624,34 @@ class _$ChangeUrlEvent extends ChangeUrlEvent {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult onSwitchInputSource(bool isFileSourceSelected),
-    @required TResult choiceTorrentFile(),
-    @required TResult startDownload(String savePath),
-    @required TResult onChangeUrl(String newValue),
-    @required TResult checkDownloadFolder(),
-    @required TResult selectArgUri(),
-    @required TResult loadSetup(),
-    @required TResult onCheckArg(AddTorrentArg arg),
+  TResult when<TResult extends Object?>({
+    required TResult Function(bool isFileSourceSelected) onSwitchInputSource,
+    required TResult Function() choiceTorrentFile,
+    required TResult Function(PrefOptions options) startDownload,
+    required TResult Function(String newValue) onChangeUrl,
+    required TResult Function() checkDownloadFolder,
+    required TResult Function() selectArgUri,
+    required TResult Function() loadSetup,
+    required TResult Function(AddTorrentArg arg) onCheckArg,
+    required TResult Function(PrefOptions newValue) updateOptions,
   }) {
-    assert(onSwitchInputSource != null);
-    assert(choiceTorrentFile != null);
-    assert(startDownload != null);
-    assert(onChangeUrl != null);
-    assert(checkDownloadFolder != null);
-    assert(selectArgUri != null);
-    assert(loadSetup != null);
-    assert(onCheckArg != null);
     return onChangeUrl(newValue);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult onSwitchInputSource(bool isFileSourceSelected),
-    TResult choiceTorrentFile(),
-    TResult startDownload(String savePath),
-    TResult onChangeUrl(String newValue),
-    TResult checkDownloadFolder(),
-    TResult selectArgUri(),
-    TResult loadSetup(),
-    TResult onCheckArg(AddTorrentArg arg),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(bool isFileSourceSelected)? onSwitchInputSource,
+    TResult Function()? choiceTorrentFile,
+    TResult Function(PrefOptions options)? startDownload,
+    TResult Function(String newValue)? onChangeUrl,
+    TResult Function()? checkDownloadFolder,
+    TResult Function()? selectArgUri,
+    TResult Function()? loadSetup,
+    TResult Function(AddTorrentArg arg)? onCheckArg,
+    TResult Function(PrefOptions newValue)? updateOptions,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (onChangeUrl != null) {
       return onChangeUrl(newValue);
     }
@@ -686,41 +660,35 @@ class _$ChangeUrlEvent extends ChangeUrlEvent {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult onSwitchInputSource(SwitchInputSourceEvent value),
-    @required TResult choiceTorrentFile(ChoiceTorrentFileEvent value),
-    @required TResult startDownload(StartDownloadEvent value),
-    @required TResult onChangeUrl(ChangeUrlEvent value),
-    @required TResult checkDownloadFolder(CheckDownloadFolderEvent value),
-    @required TResult selectArgUri(SelectArgUri value),
-    @required TResult loadSetup(LoadSetupEvent value),
-    @required TResult onCheckArg(CheckArgEvent value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(SwitchInputSourceEvent value) onSwitchInputSource,
+    required TResult Function(ChoiceTorrentFileEvent value) choiceTorrentFile,
+    required TResult Function(StartDownloadEvent value) startDownload,
+    required TResult Function(ChangeUrlEvent value) onChangeUrl,
+    required TResult Function(CheckDownloadFolderEvent value)
+        checkDownloadFolder,
+    required TResult Function(SelectArgUri value) selectArgUri,
+    required TResult Function(LoadSetupEvent value) loadSetup,
+    required TResult Function(CheckArgEvent value) onCheckArg,
+    required TResult Function(UpdateOptionsEvent value) updateOptions,
   }) {
-    assert(onSwitchInputSource != null);
-    assert(choiceTorrentFile != null);
-    assert(startDownload != null);
-    assert(onChangeUrl != null);
-    assert(checkDownloadFolder != null);
-    assert(selectArgUri != null);
-    assert(loadSetup != null);
-    assert(onCheckArg != null);
     return onChangeUrl(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult onSwitchInputSource(SwitchInputSourceEvent value),
-    TResult choiceTorrentFile(ChoiceTorrentFileEvent value),
-    TResult startDownload(StartDownloadEvent value),
-    TResult onChangeUrl(ChangeUrlEvent value),
-    TResult checkDownloadFolder(CheckDownloadFolderEvent value),
-    TResult selectArgUri(SelectArgUri value),
-    TResult loadSetup(LoadSetupEvent value),
-    TResult onCheckArg(CheckArgEvent value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(SwitchInputSourceEvent value)? onSwitchInputSource,
+    TResult Function(ChoiceTorrentFileEvent value)? choiceTorrentFile,
+    TResult Function(StartDownloadEvent value)? startDownload,
+    TResult Function(ChangeUrlEvent value)? onChangeUrl,
+    TResult Function(CheckDownloadFolderEvent value)? checkDownloadFolder,
+    TResult Function(SelectArgUri value)? selectArgUri,
+    TResult Function(LoadSetupEvent value)? loadSetup,
+    TResult Function(CheckArgEvent value)? onCheckArg,
+    TResult Function(UpdateOptionsEvent value)? updateOptions,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (onChangeUrl != null) {
       return onChangeUrl(this);
     }
@@ -729,12 +697,15 @@ class _$ChangeUrlEvent extends ChangeUrlEvent {
 }
 
 abstract class ChangeUrlEvent extends AddTorrentEvent {
-  const ChangeUrlEvent._() : super._();
   const factory ChangeUrlEvent(String newValue) = _$ChangeUrlEvent;
 
-  String get newValue;
+  const ChangeUrlEvent._() : super._();
+
+  String get newValue => throw _privateConstructorUsedError;
+
   @JsonKey(ignore: true)
-  $ChangeUrlEventCopyWith<ChangeUrlEvent> get copyWith;
+  $ChangeUrlEventCopyWith<ChangeUrlEvent> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -776,41 +747,34 @@ class _$CheckDownloadFolderEvent extends CheckDownloadFolderEvent {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult onSwitchInputSource(bool isFileSourceSelected),
-    @required TResult choiceTorrentFile(),
-    @required TResult startDownload(String savePath),
-    @required TResult onChangeUrl(String newValue),
-    @required TResult checkDownloadFolder(),
-    @required TResult selectArgUri(),
-    @required TResult loadSetup(),
-    @required TResult onCheckArg(AddTorrentArg arg),
+  TResult when<TResult extends Object?>({
+    required TResult Function(bool isFileSourceSelected) onSwitchInputSource,
+    required TResult Function() choiceTorrentFile,
+    required TResult Function(PrefOptions options) startDownload,
+    required TResult Function(String newValue) onChangeUrl,
+    required TResult Function() checkDownloadFolder,
+    required TResult Function() selectArgUri,
+    required TResult Function() loadSetup,
+    required TResult Function(AddTorrentArg arg) onCheckArg,
+    required TResult Function(PrefOptions newValue) updateOptions,
   }) {
-    assert(onSwitchInputSource != null);
-    assert(choiceTorrentFile != null);
-    assert(startDownload != null);
-    assert(onChangeUrl != null);
-    assert(checkDownloadFolder != null);
-    assert(selectArgUri != null);
-    assert(loadSetup != null);
-    assert(onCheckArg != null);
     return checkDownloadFolder();
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult onSwitchInputSource(bool isFileSourceSelected),
-    TResult choiceTorrentFile(),
-    TResult startDownload(String savePath),
-    TResult onChangeUrl(String newValue),
-    TResult checkDownloadFolder(),
-    TResult selectArgUri(),
-    TResult loadSetup(),
-    TResult onCheckArg(AddTorrentArg arg),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(bool isFileSourceSelected)? onSwitchInputSource,
+    TResult Function()? choiceTorrentFile,
+    TResult Function(PrefOptions options)? startDownload,
+    TResult Function(String newValue)? onChangeUrl,
+    TResult Function()? checkDownloadFolder,
+    TResult Function()? selectArgUri,
+    TResult Function()? loadSetup,
+    TResult Function(AddTorrentArg arg)? onCheckArg,
+    TResult Function(PrefOptions newValue)? updateOptions,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (checkDownloadFolder != null) {
       return checkDownloadFolder();
     }
@@ -819,41 +783,35 @@ class _$CheckDownloadFolderEvent extends CheckDownloadFolderEvent {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult onSwitchInputSource(SwitchInputSourceEvent value),
-    @required TResult choiceTorrentFile(ChoiceTorrentFileEvent value),
-    @required TResult startDownload(StartDownloadEvent value),
-    @required TResult onChangeUrl(ChangeUrlEvent value),
-    @required TResult checkDownloadFolder(CheckDownloadFolderEvent value),
-    @required TResult selectArgUri(SelectArgUri value),
-    @required TResult loadSetup(LoadSetupEvent value),
-    @required TResult onCheckArg(CheckArgEvent value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(SwitchInputSourceEvent value) onSwitchInputSource,
+    required TResult Function(ChoiceTorrentFileEvent value) choiceTorrentFile,
+    required TResult Function(StartDownloadEvent value) startDownload,
+    required TResult Function(ChangeUrlEvent value) onChangeUrl,
+    required TResult Function(CheckDownloadFolderEvent value)
+        checkDownloadFolder,
+    required TResult Function(SelectArgUri value) selectArgUri,
+    required TResult Function(LoadSetupEvent value) loadSetup,
+    required TResult Function(CheckArgEvent value) onCheckArg,
+    required TResult Function(UpdateOptionsEvent value) updateOptions,
   }) {
-    assert(onSwitchInputSource != null);
-    assert(choiceTorrentFile != null);
-    assert(startDownload != null);
-    assert(onChangeUrl != null);
-    assert(checkDownloadFolder != null);
-    assert(selectArgUri != null);
-    assert(loadSetup != null);
-    assert(onCheckArg != null);
     return checkDownloadFolder(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult onSwitchInputSource(SwitchInputSourceEvent value),
-    TResult choiceTorrentFile(ChoiceTorrentFileEvent value),
-    TResult startDownload(StartDownloadEvent value),
-    TResult onChangeUrl(ChangeUrlEvent value),
-    TResult checkDownloadFolder(CheckDownloadFolderEvent value),
-    TResult selectArgUri(SelectArgUri value),
-    TResult loadSetup(LoadSetupEvent value),
-    TResult onCheckArg(CheckArgEvent value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(SwitchInputSourceEvent value)? onSwitchInputSource,
+    TResult Function(ChoiceTorrentFileEvent value)? choiceTorrentFile,
+    TResult Function(StartDownloadEvent value)? startDownload,
+    TResult Function(ChangeUrlEvent value)? onChangeUrl,
+    TResult Function(CheckDownloadFolderEvent value)? checkDownloadFolder,
+    TResult Function(SelectArgUri value)? selectArgUri,
+    TResult Function(LoadSetupEvent value)? loadSetup,
+    TResult Function(CheckArgEvent value)? onCheckArg,
+    TResult Function(UpdateOptionsEvent value)? updateOptions,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (checkDownloadFolder != null) {
       return checkDownloadFolder(this);
     }
@@ -862,8 +820,9 @@ class _$CheckDownloadFolderEvent extends CheckDownloadFolderEvent {
 }
 
 abstract class CheckDownloadFolderEvent extends AddTorrentEvent {
-  const CheckDownloadFolderEvent._() : super._();
   const factory CheckDownloadFolderEvent() = _$CheckDownloadFolderEvent;
+
+  const CheckDownloadFolderEvent._() : super._();
 }
 
 /// @nodoc
@@ -904,41 +863,34 @@ class _$SelectArgUri extends SelectArgUri {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult onSwitchInputSource(bool isFileSourceSelected),
-    @required TResult choiceTorrentFile(),
-    @required TResult startDownload(String savePath),
-    @required TResult onChangeUrl(String newValue),
-    @required TResult checkDownloadFolder(),
-    @required TResult selectArgUri(),
-    @required TResult loadSetup(),
-    @required TResult onCheckArg(AddTorrentArg arg),
+  TResult when<TResult extends Object?>({
+    required TResult Function(bool isFileSourceSelected) onSwitchInputSource,
+    required TResult Function() choiceTorrentFile,
+    required TResult Function(PrefOptions options) startDownload,
+    required TResult Function(String newValue) onChangeUrl,
+    required TResult Function() checkDownloadFolder,
+    required TResult Function() selectArgUri,
+    required TResult Function() loadSetup,
+    required TResult Function(AddTorrentArg arg) onCheckArg,
+    required TResult Function(PrefOptions newValue) updateOptions,
   }) {
-    assert(onSwitchInputSource != null);
-    assert(choiceTorrentFile != null);
-    assert(startDownload != null);
-    assert(onChangeUrl != null);
-    assert(checkDownloadFolder != null);
-    assert(selectArgUri != null);
-    assert(loadSetup != null);
-    assert(onCheckArg != null);
     return selectArgUri();
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult onSwitchInputSource(bool isFileSourceSelected),
-    TResult choiceTorrentFile(),
-    TResult startDownload(String savePath),
-    TResult onChangeUrl(String newValue),
-    TResult checkDownloadFolder(),
-    TResult selectArgUri(),
-    TResult loadSetup(),
-    TResult onCheckArg(AddTorrentArg arg),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(bool isFileSourceSelected)? onSwitchInputSource,
+    TResult Function()? choiceTorrentFile,
+    TResult Function(PrefOptions options)? startDownload,
+    TResult Function(String newValue)? onChangeUrl,
+    TResult Function()? checkDownloadFolder,
+    TResult Function()? selectArgUri,
+    TResult Function()? loadSetup,
+    TResult Function(AddTorrentArg arg)? onCheckArg,
+    TResult Function(PrefOptions newValue)? updateOptions,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (selectArgUri != null) {
       return selectArgUri();
     }
@@ -947,41 +899,35 @@ class _$SelectArgUri extends SelectArgUri {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult onSwitchInputSource(SwitchInputSourceEvent value),
-    @required TResult choiceTorrentFile(ChoiceTorrentFileEvent value),
-    @required TResult startDownload(StartDownloadEvent value),
-    @required TResult onChangeUrl(ChangeUrlEvent value),
-    @required TResult checkDownloadFolder(CheckDownloadFolderEvent value),
-    @required TResult selectArgUri(SelectArgUri value),
-    @required TResult loadSetup(LoadSetupEvent value),
-    @required TResult onCheckArg(CheckArgEvent value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(SwitchInputSourceEvent value) onSwitchInputSource,
+    required TResult Function(ChoiceTorrentFileEvent value) choiceTorrentFile,
+    required TResult Function(StartDownloadEvent value) startDownload,
+    required TResult Function(ChangeUrlEvent value) onChangeUrl,
+    required TResult Function(CheckDownloadFolderEvent value)
+        checkDownloadFolder,
+    required TResult Function(SelectArgUri value) selectArgUri,
+    required TResult Function(LoadSetupEvent value) loadSetup,
+    required TResult Function(CheckArgEvent value) onCheckArg,
+    required TResult Function(UpdateOptionsEvent value) updateOptions,
   }) {
-    assert(onSwitchInputSource != null);
-    assert(choiceTorrentFile != null);
-    assert(startDownload != null);
-    assert(onChangeUrl != null);
-    assert(checkDownloadFolder != null);
-    assert(selectArgUri != null);
-    assert(loadSetup != null);
-    assert(onCheckArg != null);
     return selectArgUri(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult onSwitchInputSource(SwitchInputSourceEvent value),
-    TResult choiceTorrentFile(ChoiceTorrentFileEvent value),
-    TResult startDownload(StartDownloadEvent value),
-    TResult onChangeUrl(ChangeUrlEvent value),
-    TResult checkDownloadFolder(CheckDownloadFolderEvent value),
-    TResult selectArgUri(SelectArgUri value),
-    TResult loadSetup(LoadSetupEvent value),
-    TResult onCheckArg(CheckArgEvent value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(SwitchInputSourceEvent value)? onSwitchInputSource,
+    TResult Function(ChoiceTorrentFileEvent value)? choiceTorrentFile,
+    TResult Function(StartDownloadEvent value)? startDownload,
+    TResult Function(ChangeUrlEvent value)? onChangeUrl,
+    TResult Function(CheckDownloadFolderEvent value)? checkDownloadFolder,
+    TResult Function(SelectArgUri value)? selectArgUri,
+    TResult Function(LoadSetupEvent value)? loadSetup,
+    TResult Function(CheckArgEvent value)? onCheckArg,
+    TResult Function(UpdateOptionsEvent value)? updateOptions,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (selectArgUri != null) {
       return selectArgUri(this);
     }
@@ -990,8 +936,9 @@ class _$SelectArgUri extends SelectArgUri {
 }
 
 abstract class SelectArgUri extends AddTorrentEvent {
-  const SelectArgUri._() : super._();
   const factory SelectArgUri() = _$SelectArgUri;
+
+  const SelectArgUri._() : super._();
 }
 
 /// @nodoc
@@ -1032,41 +979,34 @@ class _$LoadSetupEvent extends LoadSetupEvent {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult onSwitchInputSource(bool isFileSourceSelected),
-    @required TResult choiceTorrentFile(),
-    @required TResult startDownload(String savePath),
-    @required TResult onChangeUrl(String newValue),
-    @required TResult checkDownloadFolder(),
-    @required TResult selectArgUri(),
-    @required TResult loadSetup(),
-    @required TResult onCheckArg(AddTorrentArg arg),
+  TResult when<TResult extends Object?>({
+    required TResult Function(bool isFileSourceSelected) onSwitchInputSource,
+    required TResult Function() choiceTorrentFile,
+    required TResult Function(PrefOptions options) startDownload,
+    required TResult Function(String newValue) onChangeUrl,
+    required TResult Function() checkDownloadFolder,
+    required TResult Function() selectArgUri,
+    required TResult Function() loadSetup,
+    required TResult Function(AddTorrentArg arg) onCheckArg,
+    required TResult Function(PrefOptions newValue) updateOptions,
   }) {
-    assert(onSwitchInputSource != null);
-    assert(choiceTorrentFile != null);
-    assert(startDownload != null);
-    assert(onChangeUrl != null);
-    assert(checkDownloadFolder != null);
-    assert(selectArgUri != null);
-    assert(loadSetup != null);
-    assert(onCheckArg != null);
     return loadSetup();
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult onSwitchInputSource(bool isFileSourceSelected),
-    TResult choiceTorrentFile(),
-    TResult startDownload(String savePath),
-    TResult onChangeUrl(String newValue),
-    TResult checkDownloadFolder(),
-    TResult selectArgUri(),
-    TResult loadSetup(),
-    TResult onCheckArg(AddTorrentArg arg),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(bool isFileSourceSelected)? onSwitchInputSource,
+    TResult Function()? choiceTorrentFile,
+    TResult Function(PrefOptions options)? startDownload,
+    TResult Function(String newValue)? onChangeUrl,
+    TResult Function()? checkDownloadFolder,
+    TResult Function()? selectArgUri,
+    TResult Function()? loadSetup,
+    TResult Function(AddTorrentArg arg)? onCheckArg,
+    TResult Function(PrefOptions newValue)? updateOptions,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (loadSetup != null) {
       return loadSetup();
     }
@@ -1075,41 +1015,35 @@ class _$LoadSetupEvent extends LoadSetupEvent {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult onSwitchInputSource(SwitchInputSourceEvent value),
-    @required TResult choiceTorrentFile(ChoiceTorrentFileEvent value),
-    @required TResult startDownload(StartDownloadEvent value),
-    @required TResult onChangeUrl(ChangeUrlEvent value),
-    @required TResult checkDownloadFolder(CheckDownloadFolderEvent value),
-    @required TResult selectArgUri(SelectArgUri value),
-    @required TResult loadSetup(LoadSetupEvent value),
-    @required TResult onCheckArg(CheckArgEvent value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(SwitchInputSourceEvent value) onSwitchInputSource,
+    required TResult Function(ChoiceTorrentFileEvent value) choiceTorrentFile,
+    required TResult Function(StartDownloadEvent value) startDownload,
+    required TResult Function(ChangeUrlEvent value) onChangeUrl,
+    required TResult Function(CheckDownloadFolderEvent value)
+        checkDownloadFolder,
+    required TResult Function(SelectArgUri value) selectArgUri,
+    required TResult Function(LoadSetupEvent value) loadSetup,
+    required TResult Function(CheckArgEvent value) onCheckArg,
+    required TResult Function(UpdateOptionsEvent value) updateOptions,
   }) {
-    assert(onSwitchInputSource != null);
-    assert(choiceTorrentFile != null);
-    assert(startDownload != null);
-    assert(onChangeUrl != null);
-    assert(checkDownloadFolder != null);
-    assert(selectArgUri != null);
-    assert(loadSetup != null);
-    assert(onCheckArg != null);
     return loadSetup(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult onSwitchInputSource(SwitchInputSourceEvent value),
-    TResult choiceTorrentFile(ChoiceTorrentFileEvent value),
-    TResult startDownload(StartDownloadEvent value),
-    TResult onChangeUrl(ChangeUrlEvent value),
-    TResult checkDownloadFolder(CheckDownloadFolderEvent value),
-    TResult selectArgUri(SelectArgUri value),
-    TResult loadSetup(LoadSetupEvent value),
-    TResult onCheckArg(CheckArgEvent value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(SwitchInputSourceEvent value)? onSwitchInputSource,
+    TResult Function(ChoiceTorrentFileEvent value)? choiceTorrentFile,
+    TResult Function(StartDownloadEvent value)? startDownload,
+    TResult Function(ChangeUrlEvent value)? onChangeUrl,
+    TResult Function(CheckDownloadFolderEvent value)? checkDownloadFolder,
+    TResult Function(SelectArgUri value)? selectArgUri,
+    TResult Function(LoadSetupEvent value)? loadSetup,
+    TResult Function(CheckArgEvent value)? onCheckArg,
+    TResult Function(UpdateOptionsEvent value)? updateOptions,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (loadSetup != null) {
       return loadSetup(this);
     }
@@ -1118,8 +1052,9 @@ class _$LoadSetupEvent extends LoadSetupEvent {
 }
 
 abstract class LoadSetupEvent extends AddTorrentEvent {
-  const LoadSetupEvent._() : super._();
   const factory LoadSetupEvent() = _$LoadSetupEvent;
+
+  const LoadSetupEvent._() : super._();
 }
 
 /// @nodoc
@@ -1143,19 +1078,20 @@ class _$CheckArgEventCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object arg = freezed,
+    Object? arg = freezed,
   }) {
     return _then(CheckArgEvent(
-      arg == freezed ? _value.arg : arg as AddTorrentArg,
+      arg == freezed
+          ? _value.arg
+          : arg // ignore: cast_nullable_to_non_nullable
+              as AddTorrentArg,
     ));
   }
 }
 
 /// @nodoc
 class _$CheckArgEvent extends CheckArgEvent {
-  const _$CheckArgEvent(this.arg)
-      : assert(arg != null),
-        super._();
+  const _$CheckArgEvent(this.arg) : super._();
 
   @override
   final AddTorrentArg arg;
@@ -1184,41 +1120,34 @@ class _$CheckArgEvent extends CheckArgEvent {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult onSwitchInputSource(bool isFileSourceSelected),
-    @required TResult choiceTorrentFile(),
-    @required TResult startDownload(String savePath),
-    @required TResult onChangeUrl(String newValue),
-    @required TResult checkDownloadFolder(),
-    @required TResult selectArgUri(),
-    @required TResult loadSetup(),
-    @required TResult onCheckArg(AddTorrentArg arg),
+  TResult when<TResult extends Object?>({
+    required TResult Function(bool isFileSourceSelected) onSwitchInputSource,
+    required TResult Function() choiceTorrentFile,
+    required TResult Function(PrefOptions options) startDownload,
+    required TResult Function(String newValue) onChangeUrl,
+    required TResult Function() checkDownloadFolder,
+    required TResult Function() selectArgUri,
+    required TResult Function() loadSetup,
+    required TResult Function(AddTorrentArg arg) onCheckArg,
+    required TResult Function(PrefOptions newValue) updateOptions,
   }) {
-    assert(onSwitchInputSource != null);
-    assert(choiceTorrentFile != null);
-    assert(startDownload != null);
-    assert(onChangeUrl != null);
-    assert(checkDownloadFolder != null);
-    assert(selectArgUri != null);
-    assert(loadSetup != null);
-    assert(onCheckArg != null);
     return onCheckArg(arg);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult onSwitchInputSource(bool isFileSourceSelected),
-    TResult choiceTorrentFile(),
-    TResult startDownload(String savePath),
-    TResult onChangeUrl(String newValue),
-    TResult checkDownloadFolder(),
-    TResult selectArgUri(),
-    TResult loadSetup(),
-    TResult onCheckArg(AddTorrentArg arg),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(bool isFileSourceSelected)? onSwitchInputSource,
+    TResult Function()? choiceTorrentFile,
+    TResult Function(PrefOptions options)? startDownload,
+    TResult Function(String newValue)? onChangeUrl,
+    TResult Function()? checkDownloadFolder,
+    TResult Function()? selectArgUri,
+    TResult Function()? loadSetup,
+    TResult Function(AddTorrentArg arg)? onCheckArg,
+    TResult Function(PrefOptions newValue)? updateOptions,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (onCheckArg != null) {
       return onCheckArg(arg);
     }
@@ -1227,41 +1156,35 @@ class _$CheckArgEvent extends CheckArgEvent {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult onSwitchInputSource(SwitchInputSourceEvent value),
-    @required TResult choiceTorrentFile(ChoiceTorrentFileEvent value),
-    @required TResult startDownload(StartDownloadEvent value),
-    @required TResult onChangeUrl(ChangeUrlEvent value),
-    @required TResult checkDownloadFolder(CheckDownloadFolderEvent value),
-    @required TResult selectArgUri(SelectArgUri value),
-    @required TResult loadSetup(LoadSetupEvent value),
-    @required TResult onCheckArg(CheckArgEvent value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(SwitchInputSourceEvent value) onSwitchInputSource,
+    required TResult Function(ChoiceTorrentFileEvent value) choiceTorrentFile,
+    required TResult Function(StartDownloadEvent value) startDownload,
+    required TResult Function(ChangeUrlEvent value) onChangeUrl,
+    required TResult Function(CheckDownloadFolderEvent value)
+        checkDownloadFolder,
+    required TResult Function(SelectArgUri value) selectArgUri,
+    required TResult Function(LoadSetupEvent value) loadSetup,
+    required TResult Function(CheckArgEvent value) onCheckArg,
+    required TResult Function(UpdateOptionsEvent value) updateOptions,
   }) {
-    assert(onSwitchInputSource != null);
-    assert(choiceTorrentFile != null);
-    assert(startDownload != null);
-    assert(onChangeUrl != null);
-    assert(checkDownloadFolder != null);
-    assert(selectArgUri != null);
-    assert(loadSetup != null);
-    assert(onCheckArg != null);
     return onCheckArg(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult onSwitchInputSource(SwitchInputSourceEvent value),
-    TResult choiceTorrentFile(ChoiceTorrentFileEvent value),
-    TResult startDownload(StartDownloadEvent value),
-    TResult onChangeUrl(ChangeUrlEvent value),
-    TResult checkDownloadFolder(CheckDownloadFolderEvent value),
-    TResult selectArgUri(SelectArgUri value),
-    TResult loadSetup(LoadSetupEvent value),
-    TResult onCheckArg(CheckArgEvent value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(SwitchInputSourceEvent value)? onSwitchInputSource,
+    TResult Function(ChoiceTorrentFileEvent value)? choiceTorrentFile,
+    TResult Function(StartDownloadEvent value)? startDownload,
+    TResult Function(ChangeUrlEvent value)? onChangeUrl,
+    TResult Function(CheckDownloadFolderEvent value)? checkDownloadFolder,
+    TResult Function(SelectArgUri value)? selectArgUri,
+    TResult Function(LoadSetupEvent value)? loadSetup,
+    TResult Function(CheckArgEvent value)? onCheckArg,
+    TResult Function(UpdateOptionsEvent value)? updateOptions,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (onCheckArg != null) {
       return onCheckArg(this);
     }
@@ -1270,64 +1193,208 @@ class _$CheckArgEvent extends CheckArgEvent {
 }
 
 abstract class CheckArgEvent extends AddTorrentEvent {
-  const CheckArgEvent._() : super._();
   const factory CheckArgEvent(AddTorrentArg arg) = _$CheckArgEvent;
 
-  AddTorrentArg get arg;
+  const CheckArgEvent._() : super._();
+
+  AddTorrentArg get arg => throw _privateConstructorUsedError;
+
   @JsonKey(ignore: true)
-  $CheckArgEventCopyWith<CheckArgEvent> get copyWith;
+  $CheckArgEventCopyWith<CheckArgEvent> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $UpdateOptionsEventCopyWith<$Res> {
+  factory $UpdateOptionsEventCopyWith(
+          UpdateOptionsEvent value, $Res Function(UpdateOptionsEvent) then) =
+      _$UpdateOptionsEventCopyWithImpl<$Res>;
+
+  $Res call({PrefOptions newValue});
+}
+
+/// @nodoc
+class _$UpdateOptionsEventCopyWithImpl<$Res>
+    extends _$AddTorrentEventCopyWithImpl<$Res>
+    implements $UpdateOptionsEventCopyWith<$Res> {
+  _$UpdateOptionsEventCopyWithImpl(
+      UpdateOptionsEvent _value, $Res Function(UpdateOptionsEvent) _then)
+      : super(_value, (v) => _then(v as UpdateOptionsEvent));
+
+  @override
+  UpdateOptionsEvent get _value => super._value as UpdateOptionsEvent;
+
+  @override
+  $Res call({
+    Object? newValue = freezed,
+  }) {
+    return _then(UpdateOptionsEvent(
+      newValue == freezed
+          ? _value.newValue
+          : newValue // ignore: cast_nullable_to_non_nullable
+              as PrefOptions,
+    ));
+  }
+}
+
+/// @nodoc
+class _$UpdateOptionsEvent extends UpdateOptionsEvent {
+  const _$UpdateOptionsEvent(this.newValue) : super._();
+
+  @override
+  final PrefOptions newValue;
+
+  @override
+  String toString() {
+    return 'AddTorrentEvent.updateOptions(newValue: $newValue)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is UpdateOptionsEvent &&
+            (identical(other.newValue, newValue) ||
+                const DeepCollectionEquality()
+                    .equals(other.newValue, newValue)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(newValue);
+
+  @JsonKey(ignore: true)
+  @override
+  $UpdateOptionsEventCopyWith<UpdateOptionsEvent> get copyWith =>
+      _$UpdateOptionsEventCopyWithImpl<UpdateOptionsEvent>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(bool isFileSourceSelected) onSwitchInputSource,
+    required TResult Function() choiceTorrentFile,
+    required TResult Function(PrefOptions options) startDownload,
+    required TResult Function(String newValue) onChangeUrl,
+    required TResult Function() checkDownloadFolder,
+    required TResult Function() selectArgUri,
+    required TResult Function() loadSetup,
+    required TResult Function(AddTorrentArg arg) onCheckArg,
+    required TResult Function(PrefOptions newValue) updateOptions,
+  }) {
+    return updateOptions(newValue);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(bool isFileSourceSelected)? onSwitchInputSource,
+    TResult Function()? choiceTorrentFile,
+    TResult Function(PrefOptions options)? startDownload,
+    TResult Function(String newValue)? onChangeUrl,
+    TResult Function()? checkDownloadFolder,
+    TResult Function()? selectArgUri,
+    TResult Function()? loadSetup,
+    TResult Function(AddTorrentArg arg)? onCheckArg,
+    TResult Function(PrefOptions newValue)? updateOptions,
+    required TResult orElse(),
+  }) {
+    if (updateOptions != null) {
+      return updateOptions(newValue);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(SwitchInputSourceEvent value) onSwitchInputSource,
+    required TResult Function(ChoiceTorrentFileEvent value) choiceTorrentFile,
+    required TResult Function(StartDownloadEvent value) startDownload,
+    required TResult Function(ChangeUrlEvent value) onChangeUrl,
+    required TResult Function(CheckDownloadFolderEvent value)
+        checkDownloadFolder,
+    required TResult Function(SelectArgUri value) selectArgUri,
+    required TResult Function(LoadSetupEvent value) loadSetup,
+    required TResult Function(CheckArgEvent value) onCheckArg,
+    required TResult Function(UpdateOptionsEvent value) updateOptions,
+  }) {
+    return updateOptions(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(SwitchInputSourceEvent value)? onSwitchInputSource,
+    TResult Function(ChoiceTorrentFileEvent value)? choiceTorrentFile,
+    TResult Function(StartDownloadEvent value)? startDownload,
+    TResult Function(ChangeUrlEvent value)? onChangeUrl,
+    TResult Function(CheckDownloadFolderEvent value)? checkDownloadFolder,
+    TResult Function(SelectArgUri value)? selectArgUri,
+    TResult Function(LoadSetupEvent value)? loadSetup,
+    TResult Function(CheckArgEvent value)? onCheckArg,
+    TResult Function(UpdateOptionsEvent value)? updateOptions,
+    required TResult orElse(),
+  }) {
+    if (updateOptions != null) {
+      return updateOptions(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class UpdateOptionsEvent extends AddTorrentEvent {
+  const factory UpdateOptionsEvent(PrefOptions newValue) = _$UpdateOptionsEvent;
+
+  const UpdateOptionsEvent._() : super._();
+
+  PrefOptions get newValue => throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $UpdateOptionsEventCopyWith<UpdateOptionsEvent> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 class _$AddTorrentStateTearOff {
   const _$AddTorrentStateTearOff();
 
-// ignore: unused_element
   InitialAddTorrentState initial() {
     return const InitialAddTorrentState();
   }
 
-// ignore: unused_element
   ShowErrorState showError(String message) {
     return ShowErrorState(
       message,
     );
   }
 
-// ignore: unused_element
   SwitchInputTypeState switchInputType(bool isFileSelected) {
     return SwitchInputTypeState(
       isFileSelected,
     );
   }
 
-// ignore: unused_element
   EnableDownloadButtonState isEnableDownloadButton(bool isEnable) {
     return EnableDownloadButtonState(
       isEnable,
     );
   }
 
-// ignore: unused_element
   FileSelectedState fileSelected(String selectedFiles) {
     return FileSelectedState(
       selectedFiles,
     );
   }
 
-// ignore: unused_element
   AddTorrentSuccessState addTorrentSuccess() {
     return const AddTorrentSuccessState();
   }
 
-// ignore: unused_element
-  ShowDefaultSavePathState showDefaultSavePath(String path) {
-    return ShowDefaultSavePathState(
-      path,
+  ShowPrefOptionsState showPrefsOptions(PrefOptions options) {
+    return ShowPrefOptionsState(
+      options,
     );
   }
 
-// ignore: unused_element
   SetDownloadUrlState setDownloadUrl(String url) {
     return SetDownloadUrlState(
       url,
@@ -1336,57 +1403,64 @@ class _$AddTorrentStateTearOff {
 }
 
 /// @nodoc
-// ignore: unused_element
 const $AddTorrentState = _$AddTorrentStateTearOff();
 
 /// @nodoc
 mixin _$AddTorrentState {
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult initial(),
-    @required TResult showError(String message),
-    @required TResult switchInputType(bool isFileSelected),
-    @required TResult isEnableDownloadButton(bool isEnable),
-    @required TResult fileSelected(String selectedFiles),
-    @required TResult addTorrentSuccess(),
-    @required TResult showDefaultSavePath(String path),
-    @required TResult setDownloadUrl(String url),
-  });
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(String message) showError,
+    required TResult Function(bool isFileSelected) switchInputType,
+    required TResult Function(bool isEnable) isEnableDownloadButton,
+    required TResult Function(String selectedFiles) fileSelected,
+    required TResult Function() addTorrentSuccess,
+    required TResult Function(PrefOptions options) showPrefsOptions,
+    required TResult Function(String url) setDownloadUrl,
+  }) =>
+      throw _privateConstructorUsedError;
+
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult initial(),
-    TResult showError(String message),
-    TResult switchInputType(bool isFileSelected),
-    TResult isEnableDownloadButton(bool isEnable),
-    TResult fileSelected(String selectedFiles),
-    TResult addTorrentSuccess(),
-    TResult showDefaultSavePath(String path),
-    TResult setDownloadUrl(String url),
-    @required TResult orElse(),
-  });
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(String message)? showError,
+    TResult Function(bool isFileSelected)? switchInputType,
+    TResult Function(bool isEnable)? isEnableDownloadButton,
+    TResult Function(String selectedFiles)? fileSelected,
+    TResult Function()? addTorrentSuccess,
+    TResult Function(PrefOptions options)? showPrefsOptions,
+    TResult Function(String url)? setDownloadUrl,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult initial(InitialAddTorrentState value),
-    @required TResult showError(ShowErrorState value),
-    @required TResult switchInputType(SwitchInputTypeState value),
-    @required TResult isEnableDownloadButton(EnableDownloadButtonState value),
-    @required TResult fileSelected(FileSelectedState value),
-    @required TResult addTorrentSuccess(AddTorrentSuccessState value),
-    @required TResult showDefaultSavePath(ShowDefaultSavePathState value),
-    @required TResult setDownloadUrl(SetDownloadUrlState value),
-  });
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitialAddTorrentState value) initial,
+    required TResult Function(ShowErrorState value) showError,
+    required TResult Function(SwitchInputTypeState value) switchInputType,
+    required TResult Function(EnableDownloadButtonState value)
+        isEnableDownloadButton,
+    required TResult Function(FileSelectedState value) fileSelected,
+    required TResult Function(AddTorrentSuccessState value) addTorrentSuccess,
+    required TResult Function(ShowPrefOptionsState value) showPrefsOptions,
+    required TResult Function(SetDownloadUrlState value) setDownloadUrl,
+  }) =>
+      throw _privateConstructorUsedError;
+
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult initial(InitialAddTorrentState value),
-    TResult showError(ShowErrorState value),
-    TResult switchInputType(SwitchInputTypeState value),
-    TResult isEnableDownloadButton(EnableDownloadButtonState value),
-    TResult fileSelected(FileSelectedState value),
-    TResult addTorrentSuccess(AddTorrentSuccessState value),
-    TResult showDefaultSavePath(ShowDefaultSavePathState value),
-    TResult setDownloadUrl(SetDownloadUrlState value),
-    @required TResult orElse(),
-  });
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitialAddTorrentState value)? initial,
+    TResult Function(ShowErrorState value)? showError,
+    TResult Function(SwitchInputTypeState value)? switchInputType,
+    TResult Function(EnableDownloadButtonState value)? isEnableDownloadButton,
+    TResult Function(FileSelectedState value)? fileSelected,
+    TResult Function(AddTorrentSuccessState value)? addTorrentSuccess,
+    TResult Function(ShowPrefOptionsState value)? showPrefsOptions,
+    TResult Function(SetDownloadUrlState value)? setDownloadUrl,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1444,41 +1518,32 @@ class _$InitialAddTorrentState extends InitialAddTorrentState {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult initial(),
-    @required TResult showError(String message),
-    @required TResult switchInputType(bool isFileSelected),
-    @required TResult isEnableDownloadButton(bool isEnable),
-    @required TResult fileSelected(String selectedFiles),
-    @required TResult addTorrentSuccess(),
-    @required TResult showDefaultSavePath(String path),
-    @required TResult setDownloadUrl(String url),
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(String message) showError,
+    required TResult Function(bool isFileSelected) switchInputType,
+    required TResult Function(bool isEnable) isEnableDownloadButton,
+    required TResult Function(String selectedFiles) fileSelected,
+    required TResult Function() addTorrentSuccess,
+    required TResult Function(PrefOptions options) showPrefsOptions,
+    required TResult Function(String url) setDownloadUrl,
   }) {
-    assert(initial != null);
-    assert(showError != null);
-    assert(switchInputType != null);
-    assert(isEnableDownloadButton != null);
-    assert(fileSelected != null);
-    assert(addTorrentSuccess != null);
-    assert(showDefaultSavePath != null);
-    assert(setDownloadUrl != null);
     return initial();
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult initial(),
-    TResult showError(String message),
-    TResult switchInputType(bool isFileSelected),
-    TResult isEnableDownloadButton(bool isEnable),
-    TResult fileSelected(String selectedFiles),
-    TResult addTorrentSuccess(),
-    TResult showDefaultSavePath(String path),
-    TResult setDownloadUrl(String url),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(String message)? showError,
+    TResult Function(bool isFileSelected)? switchInputType,
+    TResult Function(bool isEnable)? isEnableDownloadButton,
+    TResult Function(String selectedFiles)? fileSelected,
+    TResult Function()? addTorrentSuccess,
+    TResult Function(PrefOptions options)? showPrefsOptions,
+    TResult Function(String url)? setDownloadUrl,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (initial != null) {
       return initial();
     }
@@ -1487,41 +1552,33 @@ class _$InitialAddTorrentState extends InitialAddTorrentState {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult initial(InitialAddTorrentState value),
-    @required TResult showError(ShowErrorState value),
-    @required TResult switchInputType(SwitchInputTypeState value),
-    @required TResult isEnableDownloadButton(EnableDownloadButtonState value),
-    @required TResult fileSelected(FileSelectedState value),
-    @required TResult addTorrentSuccess(AddTorrentSuccessState value),
-    @required TResult showDefaultSavePath(ShowDefaultSavePathState value),
-    @required TResult setDownloadUrl(SetDownloadUrlState value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitialAddTorrentState value) initial,
+    required TResult Function(ShowErrorState value) showError,
+    required TResult Function(SwitchInputTypeState value) switchInputType,
+    required TResult Function(EnableDownloadButtonState value)
+        isEnableDownloadButton,
+    required TResult Function(FileSelectedState value) fileSelected,
+    required TResult Function(AddTorrentSuccessState value) addTorrentSuccess,
+    required TResult Function(ShowPrefOptionsState value) showPrefsOptions,
+    required TResult Function(SetDownloadUrlState value) setDownloadUrl,
   }) {
-    assert(initial != null);
-    assert(showError != null);
-    assert(switchInputType != null);
-    assert(isEnableDownloadButton != null);
-    assert(fileSelected != null);
-    assert(addTorrentSuccess != null);
-    assert(showDefaultSavePath != null);
-    assert(setDownloadUrl != null);
     return initial(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult initial(InitialAddTorrentState value),
-    TResult showError(ShowErrorState value),
-    TResult switchInputType(SwitchInputTypeState value),
-    TResult isEnableDownloadButton(EnableDownloadButtonState value),
-    TResult fileSelected(FileSelectedState value),
-    TResult addTorrentSuccess(AddTorrentSuccessState value),
-    TResult showDefaultSavePath(ShowDefaultSavePathState value),
-    TResult setDownloadUrl(SetDownloadUrlState value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitialAddTorrentState value)? initial,
+    TResult Function(ShowErrorState value)? showError,
+    TResult Function(SwitchInputTypeState value)? switchInputType,
+    TResult Function(EnableDownloadButtonState value)? isEnableDownloadButton,
+    TResult Function(FileSelectedState value)? fileSelected,
+    TResult Function(AddTorrentSuccessState value)? addTorrentSuccess,
+    TResult Function(ShowPrefOptionsState value)? showPrefsOptions,
+    TResult Function(SetDownloadUrlState value)? setDownloadUrl,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (initial != null) {
       return initial(this);
     }
@@ -1530,8 +1587,9 @@ class _$InitialAddTorrentState extends InitialAddTorrentState {
 }
 
 abstract class InitialAddTorrentState extends AddTorrentState {
-  const InitialAddTorrentState._() : super._();
   const factory InitialAddTorrentState() = _$InitialAddTorrentState;
+
+  const InitialAddTorrentState._() : super._();
 }
 
 /// @nodoc
@@ -1555,19 +1613,20 @@ class _$ShowErrorStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object message = freezed,
+    Object? message = freezed,
   }) {
     return _then(ShowErrorState(
-      message == freezed ? _value.message : message as String,
+      message == freezed
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
 
 /// @nodoc
 class _$ShowErrorState extends ShowErrorState {
-  const _$ShowErrorState(this.message)
-      : assert(message != null),
-        super._();
+  const _$ShowErrorState(this.message) : super._();
 
   @override
   final String message;
@@ -1596,41 +1655,32 @@ class _$ShowErrorState extends ShowErrorState {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult initial(),
-    @required TResult showError(String message),
-    @required TResult switchInputType(bool isFileSelected),
-    @required TResult isEnableDownloadButton(bool isEnable),
-    @required TResult fileSelected(String selectedFiles),
-    @required TResult addTorrentSuccess(),
-    @required TResult showDefaultSavePath(String path),
-    @required TResult setDownloadUrl(String url),
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(String message) showError,
+    required TResult Function(bool isFileSelected) switchInputType,
+    required TResult Function(bool isEnable) isEnableDownloadButton,
+    required TResult Function(String selectedFiles) fileSelected,
+    required TResult Function() addTorrentSuccess,
+    required TResult Function(PrefOptions options) showPrefsOptions,
+    required TResult Function(String url) setDownloadUrl,
   }) {
-    assert(initial != null);
-    assert(showError != null);
-    assert(switchInputType != null);
-    assert(isEnableDownloadButton != null);
-    assert(fileSelected != null);
-    assert(addTorrentSuccess != null);
-    assert(showDefaultSavePath != null);
-    assert(setDownloadUrl != null);
     return showError(message);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult initial(),
-    TResult showError(String message),
-    TResult switchInputType(bool isFileSelected),
-    TResult isEnableDownloadButton(bool isEnable),
-    TResult fileSelected(String selectedFiles),
-    TResult addTorrentSuccess(),
-    TResult showDefaultSavePath(String path),
-    TResult setDownloadUrl(String url),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(String message)? showError,
+    TResult Function(bool isFileSelected)? switchInputType,
+    TResult Function(bool isEnable)? isEnableDownloadButton,
+    TResult Function(String selectedFiles)? fileSelected,
+    TResult Function()? addTorrentSuccess,
+    TResult Function(PrefOptions options)? showPrefsOptions,
+    TResult Function(String url)? setDownloadUrl,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (showError != null) {
       return showError(message);
     }
@@ -1639,41 +1689,33 @@ class _$ShowErrorState extends ShowErrorState {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult initial(InitialAddTorrentState value),
-    @required TResult showError(ShowErrorState value),
-    @required TResult switchInputType(SwitchInputTypeState value),
-    @required TResult isEnableDownloadButton(EnableDownloadButtonState value),
-    @required TResult fileSelected(FileSelectedState value),
-    @required TResult addTorrentSuccess(AddTorrentSuccessState value),
-    @required TResult showDefaultSavePath(ShowDefaultSavePathState value),
-    @required TResult setDownloadUrl(SetDownloadUrlState value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitialAddTorrentState value) initial,
+    required TResult Function(ShowErrorState value) showError,
+    required TResult Function(SwitchInputTypeState value) switchInputType,
+    required TResult Function(EnableDownloadButtonState value)
+        isEnableDownloadButton,
+    required TResult Function(FileSelectedState value) fileSelected,
+    required TResult Function(AddTorrentSuccessState value) addTorrentSuccess,
+    required TResult Function(ShowPrefOptionsState value) showPrefsOptions,
+    required TResult Function(SetDownloadUrlState value) setDownloadUrl,
   }) {
-    assert(initial != null);
-    assert(showError != null);
-    assert(switchInputType != null);
-    assert(isEnableDownloadButton != null);
-    assert(fileSelected != null);
-    assert(addTorrentSuccess != null);
-    assert(showDefaultSavePath != null);
-    assert(setDownloadUrl != null);
     return showError(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult initial(InitialAddTorrentState value),
-    TResult showError(ShowErrorState value),
-    TResult switchInputType(SwitchInputTypeState value),
-    TResult isEnableDownloadButton(EnableDownloadButtonState value),
-    TResult fileSelected(FileSelectedState value),
-    TResult addTorrentSuccess(AddTorrentSuccessState value),
-    TResult showDefaultSavePath(ShowDefaultSavePathState value),
-    TResult setDownloadUrl(SetDownloadUrlState value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitialAddTorrentState value)? initial,
+    TResult Function(ShowErrorState value)? showError,
+    TResult Function(SwitchInputTypeState value)? switchInputType,
+    TResult Function(EnableDownloadButtonState value)? isEnableDownloadButton,
+    TResult Function(FileSelectedState value)? fileSelected,
+    TResult Function(AddTorrentSuccessState value)? addTorrentSuccess,
+    TResult Function(ShowPrefOptionsState value)? showPrefsOptions,
+    TResult Function(SetDownloadUrlState value)? setDownloadUrl,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (showError != null) {
       return showError(this);
     }
@@ -1682,12 +1724,15 @@ class _$ShowErrorState extends ShowErrorState {
 }
 
 abstract class ShowErrorState extends AddTorrentState {
-  const ShowErrorState._() : super._();
   const factory ShowErrorState(String message) = _$ShowErrorState;
 
-  String get message;
+  const ShowErrorState._() : super._();
+
+  String get message => throw _privateConstructorUsedError;
+
   @JsonKey(ignore: true)
-  $ShowErrorStateCopyWith<ShowErrorState> get copyWith;
+  $ShowErrorStateCopyWith<ShowErrorState> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1711,21 +1756,20 @@ class _$SwitchInputTypeStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object isFileSelected = freezed,
+    Object? isFileSelected = freezed,
   }) {
     return _then(SwitchInputTypeState(
       isFileSelected == freezed
           ? _value.isFileSelected
-          : isFileSelected as bool,
+          : isFileSelected // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
 
 /// @nodoc
 class _$SwitchInputTypeState extends SwitchInputTypeState {
-  const _$SwitchInputTypeState(this.isFileSelected)
-      : assert(isFileSelected != null),
-        super._();
+  const _$SwitchInputTypeState(this.isFileSelected) : super._();
 
   @override
   final bool isFileSelected;
@@ -1757,41 +1801,32 @@ class _$SwitchInputTypeState extends SwitchInputTypeState {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult initial(),
-    @required TResult showError(String message),
-    @required TResult switchInputType(bool isFileSelected),
-    @required TResult isEnableDownloadButton(bool isEnable),
-    @required TResult fileSelected(String selectedFiles),
-    @required TResult addTorrentSuccess(),
-    @required TResult showDefaultSavePath(String path),
-    @required TResult setDownloadUrl(String url),
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(String message) showError,
+    required TResult Function(bool isFileSelected) switchInputType,
+    required TResult Function(bool isEnable) isEnableDownloadButton,
+    required TResult Function(String selectedFiles) fileSelected,
+    required TResult Function() addTorrentSuccess,
+    required TResult Function(PrefOptions options) showPrefsOptions,
+    required TResult Function(String url) setDownloadUrl,
   }) {
-    assert(initial != null);
-    assert(showError != null);
-    assert(switchInputType != null);
-    assert(isEnableDownloadButton != null);
-    assert(fileSelected != null);
-    assert(addTorrentSuccess != null);
-    assert(showDefaultSavePath != null);
-    assert(setDownloadUrl != null);
     return switchInputType(isFileSelected);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult initial(),
-    TResult showError(String message),
-    TResult switchInputType(bool isFileSelected),
-    TResult isEnableDownloadButton(bool isEnable),
-    TResult fileSelected(String selectedFiles),
-    TResult addTorrentSuccess(),
-    TResult showDefaultSavePath(String path),
-    TResult setDownloadUrl(String url),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(String message)? showError,
+    TResult Function(bool isFileSelected)? switchInputType,
+    TResult Function(bool isEnable)? isEnableDownloadButton,
+    TResult Function(String selectedFiles)? fileSelected,
+    TResult Function()? addTorrentSuccess,
+    TResult Function(PrefOptions options)? showPrefsOptions,
+    TResult Function(String url)? setDownloadUrl,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (switchInputType != null) {
       return switchInputType(isFileSelected);
     }
@@ -1800,41 +1835,33 @@ class _$SwitchInputTypeState extends SwitchInputTypeState {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult initial(InitialAddTorrentState value),
-    @required TResult showError(ShowErrorState value),
-    @required TResult switchInputType(SwitchInputTypeState value),
-    @required TResult isEnableDownloadButton(EnableDownloadButtonState value),
-    @required TResult fileSelected(FileSelectedState value),
-    @required TResult addTorrentSuccess(AddTorrentSuccessState value),
-    @required TResult showDefaultSavePath(ShowDefaultSavePathState value),
-    @required TResult setDownloadUrl(SetDownloadUrlState value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitialAddTorrentState value) initial,
+    required TResult Function(ShowErrorState value) showError,
+    required TResult Function(SwitchInputTypeState value) switchInputType,
+    required TResult Function(EnableDownloadButtonState value)
+        isEnableDownloadButton,
+    required TResult Function(FileSelectedState value) fileSelected,
+    required TResult Function(AddTorrentSuccessState value) addTorrentSuccess,
+    required TResult Function(ShowPrefOptionsState value) showPrefsOptions,
+    required TResult Function(SetDownloadUrlState value) setDownloadUrl,
   }) {
-    assert(initial != null);
-    assert(showError != null);
-    assert(switchInputType != null);
-    assert(isEnableDownloadButton != null);
-    assert(fileSelected != null);
-    assert(addTorrentSuccess != null);
-    assert(showDefaultSavePath != null);
-    assert(setDownloadUrl != null);
     return switchInputType(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult initial(InitialAddTorrentState value),
-    TResult showError(ShowErrorState value),
-    TResult switchInputType(SwitchInputTypeState value),
-    TResult isEnableDownloadButton(EnableDownloadButtonState value),
-    TResult fileSelected(FileSelectedState value),
-    TResult addTorrentSuccess(AddTorrentSuccessState value),
-    TResult showDefaultSavePath(ShowDefaultSavePathState value),
-    TResult setDownloadUrl(SetDownloadUrlState value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitialAddTorrentState value)? initial,
+    TResult Function(ShowErrorState value)? showError,
+    TResult Function(SwitchInputTypeState value)? switchInputType,
+    TResult Function(EnableDownloadButtonState value)? isEnableDownloadButton,
+    TResult Function(FileSelectedState value)? fileSelected,
+    TResult Function(AddTorrentSuccessState value)? addTorrentSuccess,
+    TResult Function(ShowPrefOptionsState value)? showPrefsOptions,
+    TResult Function(SetDownloadUrlState value)? setDownloadUrl,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (switchInputType != null) {
       return switchInputType(this);
     }
@@ -1843,13 +1870,16 @@ class _$SwitchInputTypeState extends SwitchInputTypeState {
 }
 
 abstract class SwitchInputTypeState extends AddTorrentState {
-  const SwitchInputTypeState._() : super._();
   const factory SwitchInputTypeState(bool isFileSelected) =
       _$SwitchInputTypeState;
 
-  bool get isFileSelected;
+  const SwitchInputTypeState._() : super._();
+
+  bool get isFileSelected => throw _privateConstructorUsedError;
+
   @JsonKey(ignore: true)
-  $SwitchInputTypeStateCopyWith<SwitchInputTypeState> get copyWith;
+  $SwitchInputTypeStateCopyWith<SwitchInputTypeState> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1874,19 +1904,20 @@ class _$EnableDownloadButtonStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object isEnable = freezed,
+    Object? isEnable = freezed,
   }) {
     return _then(EnableDownloadButtonState(
-      isEnable == freezed ? _value.isEnable : isEnable as bool,
+      isEnable == freezed
+          ? _value.isEnable
+          : isEnable // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
 
 /// @nodoc
 class _$EnableDownloadButtonState extends EnableDownloadButtonState {
-  const _$EnableDownloadButtonState(this.isEnable)
-      : assert(isEnable != null),
-        super._();
+  const _$EnableDownloadButtonState(this.isEnable) : super._();
 
   @override
   final bool isEnable;
@@ -1917,41 +1948,32 @@ class _$EnableDownloadButtonState extends EnableDownloadButtonState {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult initial(),
-    @required TResult showError(String message),
-    @required TResult switchInputType(bool isFileSelected),
-    @required TResult isEnableDownloadButton(bool isEnable),
-    @required TResult fileSelected(String selectedFiles),
-    @required TResult addTorrentSuccess(),
-    @required TResult showDefaultSavePath(String path),
-    @required TResult setDownloadUrl(String url),
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(String message) showError,
+    required TResult Function(bool isFileSelected) switchInputType,
+    required TResult Function(bool isEnable) isEnableDownloadButton,
+    required TResult Function(String selectedFiles) fileSelected,
+    required TResult Function() addTorrentSuccess,
+    required TResult Function(PrefOptions options) showPrefsOptions,
+    required TResult Function(String url) setDownloadUrl,
   }) {
-    assert(initial != null);
-    assert(showError != null);
-    assert(switchInputType != null);
-    assert(isEnableDownloadButton != null);
-    assert(fileSelected != null);
-    assert(addTorrentSuccess != null);
-    assert(showDefaultSavePath != null);
-    assert(setDownloadUrl != null);
     return isEnableDownloadButton(isEnable);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult initial(),
-    TResult showError(String message),
-    TResult switchInputType(bool isFileSelected),
-    TResult isEnableDownloadButton(bool isEnable),
-    TResult fileSelected(String selectedFiles),
-    TResult addTorrentSuccess(),
-    TResult showDefaultSavePath(String path),
-    TResult setDownloadUrl(String url),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(String message)? showError,
+    TResult Function(bool isFileSelected)? switchInputType,
+    TResult Function(bool isEnable)? isEnableDownloadButton,
+    TResult Function(String selectedFiles)? fileSelected,
+    TResult Function()? addTorrentSuccess,
+    TResult Function(PrefOptions options)? showPrefsOptions,
+    TResult Function(String url)? setDownloadUrl,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (isEnableDownloadButton != null) {
       return isEnableDownloadButton(isEnable);
     }
@@ -1960,41 +1982,33 @@ class _$EnableDownloadButtonState extends EnableDownloadButtonState {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult initial(InitialAddTorrentState value),
-    @required TResult showError(ShowErrorState value),
-    @required TResult switchInputType(SwitchInputTypeState value),
-    @required TResult isEnableDownloadButton(EnableDownloadButtonState value),
-    @required TResult fileSelected(FileSelectedState value),
-    @required TResult addTorrentSuccess(AddTorrentSuccessState value),
-    @required TResult showDefaultSavePath(ShowDefaultSavePathState value),
-    @required TResult setDownloadUrl(SetDownloadUrlState value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitialAddTorrentState value) initial,
+    required TResult Function(ShowErrorState value) showError,
+    required TResult Function(SwitchInputTypeState value) switchInputType,
+    required TResult Function(EnableDownloadButtonState value)
+        isEnableDownloadButton,
+    required TResult Function(FileSelectedState value) fileSelected,
+    required TResult Function(AddTorrentSuccessState value) addTorrentSuccess,
+    required TResult Function(ShowPrefOptionsState value) showPrefsOptions,
+    required TResult Function(SetDownloadUrlState value) setDownloadUrl,
   }) {
-    assert(initial != null);
-    assert(showError != null);
-    assert(switchInputType != null);
-    assert(isEnableDownloadButton != null);
-    assert(fileSelected != null);
-    assert(addTorrentSuccess != null);
-    assert(showDefaultSavePath != null);
-    assert(setDownloadUrl != null);
     return isEnableDownloadButton(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult initial(InitialAddTorrentState value),
-    TResult showError(ShowErrorState value),
-    TResult switchInputType(SwitchInputTypeState value),
-    TResult isEnableDownloadButton(EnableDownloadButtonState value),
-    TResult fileSelected(FileSelectedState value),
-    TResult addTorrentSuccess(AddTorrentSuccessState value),
-    TResult showDefaultSavePath(ShowDefaultSavePathState value),
-    TResult setDownloadUrl(SetDownloadUrlState value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitialAddTorrentState value)? initial,
+    TResult Function(ShowErrorState value)? showError,
+    TResult Function(SwitchInputTypeState value)? switchInputType,
+    TResult Function(EnableDownloadButtonState value)? isEnableDownloadButton,
+    TResult Function(FileSelectedState value)? fileSelected,
+    TResult Function(AddTorrentSuccessState value)? addTorrentSuccess,
+    TResult Function(ShowPrefOptionsState value)? showPrefsOptions,
+    TResult Function(SetDownloadUrlState value)? setDownloadUrl,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (isEnableDownloadButton != null) {
       return isEnableDownloadButton(this);
     }
@@ -2003,13 +2017,16 @@ class _$EnableDownloadButtonState extends EnableDownloadButtonState {
 }
 
 abstract class EnableDownloadButtonState extends AddTorrentState {
-  const EnableDownloadButtonState._() : super._();
   const factory EnableDownloadButtonState(bool isEnable) =
       _$EnableDownloadButtonState;
 
-  bool get isEnable;
+  const EnableDownloadButtonState._() : super._();
+
+  bool get isEnable => throw _privateConstructorUsedError;
+
   @JsonKey(ignore: true)
-  $EnableDownloadButtonStateCopyWith<EnableDownloadButtonState> get copyWith;
+  $EnableDownloadButtonStateCopyWith<EnableDownloadButtonState> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -2033,19 +2050,20 @@ class _$FileSelectedStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object selectedFiles = freezed,
+    Object? selectedFiles = freezed,
   }) {
     return _then(FileSelectedState(
-      selectedFiles == freezed ? _value.selectedFiles : selectedFiles as String,
+      selectedFiles == freezed
+          ? _value.selectedFiles
+          : selectedFiles // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
 
 /// @nodoc
 class _$FileSelectedState extends FileSelectedState {
-  const _$FileSelectedState(this.selectedFiles)
-      : assert(selectedFiles != null),
-        super._();
+  const _$FileSelectedState(this.selectedFiles) : super._();
 
   @override
   final String selectedFiles;
@@ -2075,41 +2093,32 @@ class _$FileSelectedState extends FileSelectedState {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult initial(),
-    @required TResult showError(String message),
-    @required TResult switchInputType(bool isFileSelected),
-    @required TResult isEnableDownloadButton(bool isEnable),
-    @required TResult fileSelected(String selectedFiles),
-    @required TResult addTorrentSuccess(),
-    @required TResult showDefaultSavePath(String path),
-    @required TResult setDownloadUrl(String url),
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(String message) showError,
+    required TResult Function(bool isFileSelected) switchInputType,
+    required TResult Function(bool isEnable) isEnableDownloadButton,
+    required TResult Function(String selectedFiles) fileSelected,
+    required TResult Function() addTorrentSuccess,
+    required TResult Function(PrefOptions options) showPrefsOptions,
+    required TResult Function(String url) setDownloadUrl,
   }) {
-    assert(initial != null);
-    assert(showError != null);
-    assert(switchInputType != null);
-    assert(isEnableDownloadButton != null);
-    assert(fileSelected != null);
-    assert(addTorrentSuccess != null);
-    assert(showDefaultSavePath != null);
-    assert(setDownloadUrl != null);
     return fileSelected(selectedFiles);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult initial(),
-    TResult showError(String message),
-    TResult switchInputType(bool isFileSelected),
-    TResult isEnableDownloadButton(bool isEnable),
-    TResult fileSelected(String selectedFiles),
-    TResult addTorrentSuccess(),
-    TResult showDefaultSavePath(String path),
-    TResult setDownloadUrl(String url),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(String message)? showError,
+    TResult Function(bool isFileSelected)? switchInputType,
+    TResult Function(bool isEnable)? isEnableDownloadButton,
+    TResult Function(String selectedFiles)? fileSelected,
+    TResult Function()? addTorrentSuccess,
+    TResult Function(PrefOptions options)? showPrefsOptions,
+    TResult Function(String url)? setDownloadUrl,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (fileSelected != null) {
       return fileSelected(selectedFiles);
     }
@@ -2118,41 +2127,33 @@ class _$FileSelectedState extends FileSelectedState {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult initial(InitialAddTorrentState value),
-    @required TResult showError(ShowErrorState value),
-    @required TResult switchInputType(SwitchInputTypeState value),
-    @required TResult isEnableDownloadButton(EnableDownloadButtonState value),
-    @required TResult fileSelected(FileSelectedState value),
-    @required TResult addTorrentSuccess(AddTorrentSuccessState value),
-    @required TResult showDefaultSavePath(ShowDefaultSavePathState value),
-    @required TResult setDownloadUrl(SetDownloadUrlState value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitialAddTorrentState value) initial,
+    required TResult Function(ShowErrorState value) showError,
+    required TResult Function(SwitchInputTypeState value) switchInputType,
+    required TResult Function(EnableDownloadButtonState value)
+        isEnableDownloadButton,
+    required TResult Function(FileSelectedState value) fileSelected,
+    required TResult Function(AddTorrentSuccessState value) addTorrentSuccess,
+    required TResult Function(ShowPrefOptionsState value) showPrefsOptions,
+    required TResult Function(SetDownloadUrlState value) setDownloadUrl,
   }) {
-    assert(initial != null);
-    assert(showError != null);
-    assert(switchInputType != null);
-    assert(isEnableDownloadButton != null);
-    assert(fileSelected != null);
-    assert(addTorrentSuccess != null);
-    assert(showDefaultSavePath != null);
-    assert(setDownloadUrl != null);
     return fileSelected(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult initial(InitialAddTorrentState value),
-    TResult showError(ShowErrorState value),
-    TResult switchInputType(SwitchInputTypeState value),
-    TResult isEnableDownloadButton(EnableDownloadButtonState value),
-    TResult fileSelected(FileSelectedState value),
-    TResult addTorrentSuccess(AddTorrentSuccessState value),
-    TResult showDefaultSavePath(ShowDefaultSavePathState value),
-    TResult setDownloadUrl(SetDownloadUrlState value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitialAddTorrentState value)? initial,
+    TResult Function(ShowErrorState value)? showError,
+    TResult Function(SwitchInputTypeState value)? switchInputType,
+    TResult Function(EnableDownloadButtonState value)? isEnableDownloadButton,
+    TResult Function(FileSelectedState value)? fileSelected,
+    TResult Function(AddTorrentSuccessState value)? addTorrentSuccess,
+    TResult Function(ShowPrefOptionsState value)? showPrefsOptions,
+    TResult Function(SetDownloadUrlState value)? setDownloadUrl,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (fileSelected != null) {
       return fileSelected(this);
     }
@@ -2161,12 +2162,15 @@ class _$FileSelectedState extends FileSelectedState {
 }
 
 abstract class FileSelectedState extends AddTorrentState {
-  const FileSelectedState._() : super._();
   const factory FileSelectedState(String selectedFiles) = _$FileSelectedState;
 
-  String get selectedFiles;
+  const FileSelectedState._() : super._();
+
+  String get selectedFiles => throw _privateConstructorUsedError;
+
   @JsonKey(ignore: true)
-  $FileSelectedStateCopyWith<FileSelectedState> get copyWith;
+  $FileSelectedStateCopyWith<FileSelectedState> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -2207,41 +2211,32 @@ class _$AddTorrentSuccessState extends AddTorrentSuccessState {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult initial(),
-    @required TResult showError(String message),
-    @required TResult switchInputType(bool isFileSelected),
-    @required TResult isEnableDownloadButton(bool isEnable),
-    @required TResult fileSelected(String selectedFiles),
-    @required TResult addTorrentSuccess(),
-    @required TResult showDefaultSavePath(String path),
-    @required TResult setDownloadUrl(String url),
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(String message) showError,
+    required TResult Function(bool isFileSelected) switchInputType,
+    required TResult Function(bool isEnable) isEnableDownloadButton,
+    required TResult Function(String selectedFiles) fileSelected,
+    required TResult Function() addTorrentSuccess,
+    required TResult Function(PrefOptions options) showPrefsOptions,
+    required TResult Function(String url) setDownloadUrl,
   }) {
-    assert(initial != null);
-    assert(showError != null);
-    assert(switchInputType != null);
-    assert(isEnableDownloadButton != null);
-    assert(fileSelected != null);
-    assert(addTorrentSuccess != null);
-    assert(showDefaultSavePath != null);
-    assert(setDownloadUrl != null);
     return addTorrentSuccess();
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult initial(),
-    TResult showError(String message),
-    TResult switchInputType(bool isFileSelected),
-    TResult isEnableDownloadButton(bool isEnable),
-    TResult fileSelected(String selectedFiles),
-    TResult addTorrentSuccess(),
-    TResult showDefaultSavePath(String path),
-    TResult setDownloadUrl(String url),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(String message)? showError,
+    TResult Function(bool isFileSelected)? switchInputType,
+    TResult Function(bool isEnable)? isEnableDownloadButton,
+    TResult Function(String selectedFiles)? fileSelected,
+    TResult Function()? addTorrentSuccess,
+    TResult Function(PrefOptions options)? showPrefsOptions,
+    TResult Function(String url)? setDownloadUrl,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (addTorrentSuccess != null) {
       return addTorrentSuccess();
     }
@@ -2250,41 +2245,33 @@ class _$AddTorrentSuccessState extends AddTorrentSuccessState {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult initial(InitialAddTorrentState value),
-    @required TResult showError(ShowErrorState value),
-    @required TResult switchInputType(SwitchInputTypeState value),
-    @required TResult isEnableDownloadButton(EnableDownloadButtonState value),
-    @required TResult fileSelected(FileSelectedState value),
-    @required TResult addTorrentSuccess(AddTorrentSuccessState value),
-    @required TResult showDefaultSavePath(ShowDefaultSavePathState value),
-    @required TResult setDownloadUrl(SetDownloadUrlState value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitialAddTorrentState value) initial,
+    required TResult Function(ShowErrorState value) showError,
+    required TResult Function(SwitchInputTypeState value) switchInputType,
+    required TResult Function(EnableDownloadButtonState value)
+        isEnableDownloadButton,
+    required TResult Function(FileSelectedState value) fileSelected,
+    required TResult Function(AddTorrentSuccessState value) addTorrentSuccess,
+    required TResult Function(ShowPrefOptionsState value) showPrefsOptions,
+    required TResult Function(SetDownloadUrlState value) setDownloadUrl,
   }) {
-    assert(initial != null);
-    assert(showError != null);
-    assert(switchInputType != null);
-    assert(isEnableDownloadButton != null);
-    assert(fileSelected != null);
-    assert(addTorrentSuccess != null);
-    assert(showDefaultSavePath != null);
-    assert(setDownloadUrl != null);
     return addTorrentSuccess(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult initial(InitialAddTorrentState value),
-    TResult showError(ShowErrorState value),
-    TResult switchInputType(SwitchInputTypeState value),
-    TResult isEnableDownloadButton(EnableDownloadButtonState value),
-    TResult fileSelected(FileSelectedState value),
-    TResult addTorrentSuccess(AddTorrentSuccessState value),
-    TResult showDefaultSavePath(ShowDefaultSavePathState value),
-    TResult setDownloadUrl(SetDownloadUrlState value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitialAddTorrentState value)? initial,
+    TResult Function(ShowErrorState value)? showError,
+    TResult Function(SwitchInputTypeState value)? switchInputType,
+    TResult Function(EnableDownloadButtonState value)? isEnableDownloadButton,
+    TResult Function(FileSelectedState value)? fileSelected,
+    TResult Function(AddTorrentSuccessState value)? addTorrentSuccess,
+    TResult Function(ShowPrefOptionsState value)? showPrefsOptions,
+    TResult Function(SetDownloadUrlState value)? setDownloadUrl,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (addTorrentSuccess != null) {
       return addTorrentSuccess(this);
     }
@@ -2293,167 +2280,155 @@ class _$AddTorrentSuccessState extends AddTorrentSuccessState {
 }
 
 abstract class AddTorrentSuccessState extends AddTorrentState {
-  const AddTorrentSuccessState._() : super._();
   const factory AddTorrentSuccessState() = _$AddTorrentSuccessState;
+
+  const AddTorrentSuccessState._() : super._();
 }
 
 /// @nodoc
-abstract class $ShowDefaultSavePathStateCopyWith<$Res> {
-  factory $ShowDefaultSavePathStateCopyWith(ShowDefaultSavePathState value,
-          $Res Function(ShowDefaultSavePathState) then) =
-      _$ShowDefaultSavePathStateCopyWithImpl<$Res>;
-  $Res call({String path});
+abstract class $ShowPrefOptionsStateCopyWith<$Res> {
+  factory $ShowPrefOptionsStateCopyWith(ShowPrefOptionsState value,
+          $Res Function(ShowPrefOptionsState) then) =
+      _$ShowPrefOptionsStateCopyWithImpl<$Res>;
+
+  $Res call({PrefOptions options});
 }
 
 /// @nodoc
-class _$ShowDefaultSavePathStateCopyWithImpl<$Res>
+class _$ShowPrefOptionsStateCopyWithImpl<$Res>
     extends _$AddTorrentStateCopyWithImpl<$Res>
-    implements $ShowDefaultSavePathStateCopyWith<$Res> {
-  _$ShowDefaultSavePathStateCopyWithImpl(ShowDefaultSavePathState _value,
-      $Res Function(ShowDefaultSavePathState) _then)
-      : super(_value, (v) => _then(v as ShowDefaultSavePathState));
+    implements $ShowPrefOptionsStateCopyWith<$Res> {
+  _$ShowPrefOptionsStateCopyWithImpl(
+      ShowPrefOptionsState _value, $Res Function(ShowPrefOptionsState) _then)
+      : super(_value, (v) => _then(v as ShowPrefOptionsState));
 
   @override
-  ShowDefaultSavePathState get _value =>
-      super._value as ShowDefaultSavePathState;
+  ShowPrefOptionsState get _value => super._value as ShowPrefOptionsState;
 
   @override
   $Res call({
-    Object path = freezed,
+    Object? options = freezed,
   }) {
-    return _then(ShowDefaultSavePathState(
-      path == freezed ? _value.path : path as String,
+    return _then(ShowPrefOptionsState(
+      options == freezed
+          ? _value.options
+          : options // ignore: cast_nullable_to_non_nullable
+              as PrefOptions,
     ));
   }
 }
 
 /// @nodoc
-class _$ShowDefaultSavePathState extends ShowDefaultSavePathState {
-  const _$ShowDefaultSavePathState(this.path)
-      : assert(path != null),
-        super._();
+class _$ShowPrefOptionsState extends ShowPrefOptionsState {
+  const _$ShowPrefOptionsState(this.options) : super._();
 
   @override
-  final String path;
+  final PrefOptions options;
 
   @override
   String toString() {
-    return 'AddTorrentState.showDefaultSavePath(path: $path)';
+    return 'AddTorrentState.showPrefsOptions(options: $options)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is ShowDefaultSavePathState &&
-            (identical(other.path, path) ||
-                const DeepCollectionEquality().equals(other.path, path)));
+        (other is ShowPrefOptionsState &&
+            (identical(other.options, options) ||
+                const DeepCollectionEquality().equals(other.options, options)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(path);
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(options);
 
   @JsonKey(ignore: true)
   @override
-  $ShowDefaultSavePathStateCopyWith<ShowDefaultSavePathState> get copyWith =>
-      _$ShowDefaultSavePathStateCopyWithImpl<ShowDefaultSavePathState>(
+  $ShowPrefOptionsStateCopyWith<ShowPrefOptionsState> get copyWith =>
+      _$ShowPrefOptionsStateCopyWithImpl<ShowPrefOptionsState>(
           this, _$identity);
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult initial(),
-    @required TResult showError(String message),
-    @required TResult switchInputType(bool isFileSelected),
-    @required TResult isEnableDownloadButton(bool isEnable),
-    @required TResult fileSelected(String selectedFiles),
-    @required TResult addTorrentSuccess(),
-    @required TResult showDefaultSavePath(String path),
-    @required TResult setDownloadUrl(String url),
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(String message) showError,
+    required TResult Function(bool isFileSelected) switchInputType,
+    required TResult Function(bool isEnable) isEnableDownloadButton,
+    required TResult Function(String selectedFiles) fileSelected,
+    required TResult Function() addTorrentSuccess,
+    required TResult Function(PrefOptions options) showPrefsOptions,
+    required TResult Function(String url) setDownloadUrl,
   }) {
-    assert(initial != null);
-    assert(showError != null);
-    assert(switchInputType != null);
-    assert(isEnableDownloadButton != null);
-    assert(fileSelected != null);
-    assert(addTorrentSuccess != null);
-    assert(showDefaultSavePath != null);
-    assert(setDownloadUrl != null);
-    return showDefaultSavePath(path);
+    return showPrefsOptions(options);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult initial(),
-    TResult showError(String message),
-    TResult switchInputType(bool isFileSelected),
-    TResult isEnableDownloadButton(bool isEnable),
-    TResult fileSelected(String selectedFiles),
-    TResult addTorrentSuccess(),
-    TResult showDefaultSavePath(String path),
-    TResult setDownloadUrl(String url),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(String message)? showError,
+    TResult Function(bool isFileSelected)? switchInputType,
+    TResult Function(bool isEnable)? isEnableDownloadButton,
+    TResult Function(String selectedFiles)? fileSelected,
+    TResult Function()? addTorrentSuccess,
+    TResult Function(PrefOptions options)? showPrefsOptions,
+    TResult Function(String url)? setDownloadUrl,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
-    if (showDefaultSavePath != null) {
-      return showDefaultSavePath(path);
+    if (showPrefsOptions != null) {
+      return showPrefsOptions(options);
     }
     return orElse();
   }
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult initial(InitialAddTorrentState value),
-    @required TResult showError(ShowErrorState value),
-    @required TResult switchInputType(SwitchInputTypeState value),
-    @required TResult isEnableDownloadButton(EnableDownloadButtonState value),
-    @required TResult fileSelected(FileSelectedState value),
-    @required TResult addTorrentSuccess(AddTorrentSuccessState value),
-    @required TResult showDefaultSavePath(ShowDefaultSavePathState value),
-    @required TResult setDownloadUrl(SetDownloadUrlState value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitialAddTorrentState value) initial,
+    required TResult Function(ShowErrorState value) showError,
+    required TResult Function(SwitchInputTypeState value) switchInputType,
+    required TResult Function(EnableDownloadButtonState value)
+        isEnableDownloadButton,
+    required TResult Function(FileSelectedState value) fileSelected,
+    required TResult Function(AddTorrentSuccessState value) addTorrentSuccess,
+    required TResult Function(ShowPrefOptionsState value) showPrefsOptions,
+    required TResult Function(SetDownloadUrlState value) setDownloadUrl,
   }) {
-    assert(initial != null);
-    assert(showError != null);
-    assert(switchInputType != null);
-    assert(isEnableDownloadButton != null);
-    assert(fileSelected != null);
-    assert(addTorrentSuccess != null);
-    assert(showDefaultSavePath != null);
-    assert(setDownloadUrl != null);
-    return showDefaultSavePath(this);
+    return showPrefsOptions(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult initial(InitialAddTorrentState value),
-    TResult showError(ShowErrorState value),
-    TResult switchInputType(SwitchInputTypeState value),
-    TResult isEnableDownloadButton(EnableDownloadButtonState value),
-    TResult fileSelected(FileSelectedState value),
-    TResult addTorrentSuccess(AddTorrentSuccessState value),
-    TResult showDefaultSavePath(ShowDefaultSavePathState value),
-    TResult setDownloadUrl(SetDownloadUrlState value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitialAddTorrentState value)? initial,
+    TResult Function(ShowErrorState value)? showError,
+    TResult Function(SwitchInputTypeState value)? switchInputType,
+    TResult Function(EnableDownloadButtonState value)? isEnableDownloadButton,
+    TResult Function(FileSelectedState value)? fileSelected,
+    TResult Function(AddTorrentSuccessState value)? addTorrentSuccess,
+    TResult Function(ShowPrefOptionsState value)? showPrefsOptions,
+    TResult Function(SetDownloadUrlState value)? setDownloadUrl,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
-    if (showDefaultSavePath != null) {
-      return showDefaultSavePath(this);
+    if (showPrefsOptions != null) {
+      return showPrefsOptions(this);
     }
     return orElse();
   }
 }
 
-abstract class ShowDefaultSavePathState extends AddTorrentState {
-  const ShowDefaultSavePathState._() : super._();
-  const factory ShowDefaultSavePathState(String path) =
-      _$ShowDefaultSavePathState;
+abstract class ShowPrefOptionsState extends AddTorrentState {
+  const factory ShowPrefOptionsState(PrefOptions options) =
+      _$ShowPrefOptionsState;
 
-  String get path;
+  const ShowPrefOptionsState._() : super._();
+
+  PrefOptions get options => throw _privateConstructorUsedError;
+
   @JsonKey(ignore: true)
-  $ShowDefaultSavePathStateCopyWith<ShowDefaultSavePathState> get copyWith;
+  $ShowPrefOptionsStateCopyWith<ShowPrefOptionsState> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -2477,19 +2452,20 @@ class _$SetDownloadUrlStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object url = freezed,
+    Object? url = freezed,
   }) {
     return _then(SetDownloadUrlState(
-      url == freezed ? _value.url : url as String,
+      url == freezed
+          ? _value.url
+          : url // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
 
 /// @nodoc
 class _$SetDownloadUrlState extends SetDownloadUrlState {
-  const _$SetDownloadUrlState(this.url)
-      : assert(url != null),
-        super._();
+  const _$SetDownloadUrlState(this.url) : super._();
 
   @override
   final String url;
@@ -2518,41 +2494,32 @@ class _$SetDownloadUrlState extends SetDownloadUrlState {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult initial(),
-    @required TResult showError(String message),
-    @required TResult switchInputType(bool isFileSelected),
-    @required TResult isEnableDownloadButton(bool isEnable),
-    @required TResult fileSelected(String selectedFiles),
-    @required TResult addTorrentSuccess(),
-    @required TResult showDefaultSavePath(String path),
-    @required TResult setDownloadUrl(String url),
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(String message) showError,
+    required TResult Function(bool isFileSelected) switchInputType,
+    required TResult Function(bool isEnable) isEnableDownloadButton,
+    required TResult Function(String selectedFiles) fileSelected,
+    required TResult Function() addTorrentSuccess,
+    required TResult Function(PrefOptions options) showPrefsOptions,
+    required TResult Function(String url) setDownloadUrl,
   }) {
-    assert(initial != null);
-    assert(showError != null);
-    assert(switchInputType != null);
-    assert(isEnableDownloadButton != null);
-    assert(fileSelected != null);
-    assert(addTorrentSuccess != null);
-    assert(showDefaultSavePath != null);
-    assert(setDownloadUrl != null);
     return setDownloadUrl(url);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult initial(),
-    TResult showError(String message),
-    TResult switchInputType(bool isFileSelected),
-    TResult isEnableDownloadButton(bool isEnable),
-    TResult fileSelected(String selectedFiles),
-    TResult addTorrentSuccess(),
-    TResult showDefaultSavePath(String path),
-    TResult setDownloadUrl(String url),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(String message)? showError,
+    TResult Function(bool isFileSelected)? switchInputType,
+    TResult Function(bool isEnable)? isEnableDownloadButton,
+    TResult Function(String selectedFiles)? fileSelected,
+    TResult Function()? addTorrentSuccess,
+    TResult Function(PrefOptions options)? showPrefsOptions,
+    TResult Function(String url)? setDownloadUrl,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (setDownloadUrl != null) {
       return setDownloadUrl(url);
     }
@@ -2561,41 +2528,33 @@ class _$SetDownloadUrlState extends SetDownloadUrlState {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult initial(InitialAddTorrentState value),
-    @required TResult showError(ShowErrorState value),
-    @required TResult switchInputType(SwitchInputTypeState value),
-    @required TResult isEnableDownloadButton(EnableDownloadButtonState value),
-    @required TResult fileSelected(FileSelectedState value),
-    @required TResult addTorrentSuccess(AddTorrentSuccessState value),
-    @required TResult showDefaultSavePath(ShowDefaultSavePathState value),
-    @required TResult setDownloadUrl(SetDownloadUrlState value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitialAddTorrentState value) initial,
+    required TResult Function(ShowErrorState value) showError,
+    required TResult Function(SwitchInputTypeState value) switchInputType,
+    required TResult Function(EnableDownloadButtonState value)
+        isEnableDownloadButton,
+    required TResult Function(FileSelectedState value) fileSelected,
+    required TResult Function(AddTorrentSuccessState value) addTorrentSuccess,
+    required TResult Function(ShowPrefOptionsState value) showPrefsOptions,
+    required TResult Function(SetDownloadUrlState value) setDownloadUrl,
   }) {
-    assert(initial != null);
-    assert(showError != null);
-    assert(switchInputType != null);
-    assert(isEnableDownloadButton != null);
-    assert(fileSelected != null);
-    assert(addTorrentSuccess != null);
-    assert(showDefaultSavePath != null);
-    assert(setDownloadUrl != null);
     return setDownloadUrl(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult initial(InitialAddTorrentState value),
-    TResult showError(ShowErrorState value),
-    TResult switchInputType(SwitchInputTypeState value),
-    TResult isEnableDownloadButton(EnableDownloadButtonState value),
-    TResult fileSelected(FileSelectedState value),
-    TResult addTorrentSuccess(AddTorrentSuccessState value),
-    TResult showDefaultSavePath(ShowDefaultSavePathState value),
-    TResult setDownloadUrl(SetDownloadUrlState value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitialAddTorrentState value)? initial,
+    TResult Function(ShowErrorState value)? showError,
+    TResult Function(SwitchInputTypeState value)? switchInputType,
+    TResult Function(EnableDownloadButtonState value)? isEnableDownloadButton,
+    TResult Function(FileSelectedState value)? fileSelected,
+    TResult Function(AddTorrentSuccessState value)? addTorrentSuccess,
+    TResult Function(ShowPrefOptionsState value)? showPrefsOptions,
+    TResult Function(SetDownloadUrlState value)? setDownloadUrl,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (setDownloadUrl != null) {
       return setDownloadUrl(this);
     }
@@ -2604,10 +2563,13 @@ class _$SetDownloadUrlState extends SetDownloadUrlState {
 }
 
 abstract class SetDownloadUrlState extends AddTorrentState {
-  const SetDownloadUrlState._() : super._();
   const factory SetDownloadUrlState(String url) = _$SetDownloadUrlState;
 
-  String get url;
+  const SetDownloadUrlState._() : super._();
+
+  String get url => throw _privateConstructorUsedError;
+
   @JsonKey(ignore: true)
-  $SetDownloadUrlStateCopyWith<SetDownloadUrlState> get copyWith;
+  $SetDownloadUrlStateCopyWith<SetDownloadUrlState> get copyWith =>
+      throw _privateConstructorUsedError;
 }

@@ -8,13 +8,13 @@ class MaterialDialog {
   TextStyle bodyTextStyle = TextStyle();
   String positiveButtonText = "";
   TextStyle positiveButtonTextStyle = TextStyle();
-  Function(MaterialDialog) _positiveButtonClick;
+  Function(MaterialDialog)? _positiveButtonClick;
   String negativeButtonText = "";
   TextStyle negativeButtonTextStyle = TextStyle();
-  Function(MaterialDialog) _negativeButtonClick;
+  Function(MaterialDialog)? _negativeButtonClick;
   bool isAutoCloseable = true;
   bool isButtonTextCaps = true;
-  Widget bodyWidget;
+  Widget? bodyWidget;
   List<CheckboxEntity> checkboxList = [];
 
   MaterialDialog(this._context);
@@ -30,7 +30,11 @@ class MaterialDialog {
   Widget _buildPositiveButton() {
     if (positiveButtonText.isNotEmpty) {
       return TextButton(
-        child: Text(isButtonTextCaps ? positiveButtonText.toUpperCase() : positiveButtonText, style: positiveButtonTextStyle),
+        child: Text(
+            isButtonTextCaps
+                ? positiveButtonText.toUpperCase()
+                : positiveButtonText,
+            style: positiveButtonTextStyle),
         onPressed: () {
           _positiveButtonClick?.call(this);
           if (this.isAutoCloseable) {
@@ -46,7 +50,11 @@ class MaterialDialog {
   Widget _buildNegativeButton() {
     if (negativeButtonText.isNotEmpty) {
       return TextButton(
-        child: Text(isButtonTextCaps ? negativeButtonText.toUpperCase() : negativeButtonText, style: negativeButtonTextStyle),
+        child: Text(
+            isButtonTextCaps
+                ? negativeButtonText.toUpperCase()
+                : negativeButtonText,
+            style: negativeButtonTextStyle),
         onPressed: () {
           _negativeButtonClick?.call(this);
           if (this.isAutoCloseable) {
@@ -60,8 +68,9 @@ class MaterialDialog {
   }
 
   Widget _buildBodyWidget() {
-    if (bodyWidget != null) {
-      return bodyWidget;
+    final body = bodyWidget;
+    if (body != null) {
+      return body;
     } else {
       return SizedBox();
     }
@@ -74,18 +83,17 @@ class MaterialDialog {
       itemBuilder: (BuildContext ctxt, int index) {
         final item = checkboxList[index];
         return StatefulBuilder(
-          builder: (BuildContext context, StateSetter setState) {
-            return CheckboxListTile(
-                value: item.isChecked,
-                title: item.title,
-                contentPadding: EdgeInsets.zero,
-                onChanged: (newValue) {
-                  setState(() {
-                    item.isChecked = newValue;
-                  });
+            builder: (BuildContext context, StateSetter setState) {
+          return CheckboxListTile(
+              value: item.isChecked,
+              title: item.title,
+              contentPadding: EdgeInsets.zero,
+              onChanged: (newValue) {
+                setState(() {
+                  item.isChecked = newValue ?? false;
                 });
-          }
-        );
+              });
+        });
       },
     );
   }
@@ -104,7 +112,11 @@ class MaterialDialog {
             width: double.maxFinite,
             child: SingleChildScrollView(
               child: ListBody(
-                children: [Text(body, style: bodyTextStyle), _buildBodyWidget(), _buildCheckboxList()],
+                children: [
+                  Text(body, style: bodyTextStyle),
+                  _buildBodyWidget(),
+                  _buildCheckboxList()
+                ],
               ),
             ),
           ),
@@ -124,5 +136,9 @@ class CheckboxEntity {
   bool isChecked;
   bool isEnable;
 
-  CheckboxEntity({@required this.id, @required this.title, this.isChecked = false, this.isEnable = true});
+  CheckboxEntity(
+      {required this.id,
+      required this.title,
+      this.isChecked = false,
+      this.isEnable = true});
 }

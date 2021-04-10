@@ -8,7 +8,7 @@ import 'package:qBitRemote/commons/colors.dart';
 import 'package:qBitRemote/routes.dart';
 
 class TorrentsViewerWidget extends StatefulWidget {
-  TorrentsViewerWidget({Key key, @required this.torrents}) : super(key: key);
+  TorrentsViewerWidget({Key? key, required this.torrents}) : super(key: key);
 
   final List<TorrentEntity> torrents;
 
@@ -48,9 +48,9 @@ class _TorrentsViewerWidgetState extends State<TorrentsViewerWidget> {
 }
 
 class TorrentItem extends StatelessWidget {
-  TorrentItem({this.item});
-
   final TorrentEntity item;
+
+  TorrentItem({required this.item});
 
   @override
   Widget build(BuildContext context) {

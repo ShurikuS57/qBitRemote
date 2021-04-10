@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'multi_select_cubit.dart';
 
 class ListViewSelected<Widget> extends StatefulWidget {
-  ListViewSelected(
-      {this.items,
-      this.selectedColor,
-      this.onChangeSelected,
-      this.onTabItem});
-
   final List<Widget> items;
   final Color selectedColor;
   final Function(Widget, bool) onChangeSelected;
   final Function(Widget) onTabItem;
+
+  ListViewSelected(
+      {required this.items,
+      required this.selectedColor,
+      required this.onChangeSelected,
+      required this.onTabItem});
 
   @override
   _ListViewSelectedState createState() => _ListViewSelectedState();
@@ -50,7 +51,11 @@ class SelectedItem extends StatefulWidget {
   final ValueChanged<Widget> onTapItem;
 
   SelectedItem(
-      {this.key, this.itemWidget, this.selectedColor, this.isSelected, this.onTapItem});
+      {required this.key,
+      required this.itemWidget,
+      required this.selectedColor,
+      required this.isSelected,
+      required this.onTapItem});
 
   @override
   _SelectedItemState createState() => _SelectedItemState();

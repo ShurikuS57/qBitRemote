@@ -1,15 +1,15 @@
-
 import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:focus_detector/focus_detector.dart';
 import 'package:qBitRemote/app/pages/torrent_info/torrent_file_page.dart';
 import 'package:qBitRemote/app/pages/torrent_list/torrents_list_cubit.dart';
 import 'package:qBitRemote/app/widgets/MaterialDialog.dart';
 import 'package:qBitRemote/app/widgets/multiselect/multi_select_app_bar.dart';
 import 'package:qBitRemote/commons/colors.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:qBitRemote/commons/extensions/build_context_ext.dart';
 
 import 'torrent_info_page.dart';
 
@@ -19,7 +19,7 @@ class TorrentDetailsScreen extends StatefulWidget {
 }
 
 class _TorrentDetailsScreenState extends State<TorrentDetailsScreen> {
-  Timer _updateTimer;
+  Timer? _updateTimer;
   String _torrentHash = "";
   final _resumeDetectorKey = UniqueKey();
 
@@ -32,7 +32,8 @@ class _TorrentDetailsScreenState extends State<TorrentDetailsScreen> {
   void _restartUpdateTimer() async {
     context.read<TorrentListCubit>().loadTorrentInfo(_torrentHash);
     _updateTimer?.cancel();
-    int updateSeconds = await context.read<TorrentListCubit>().getUpdateTimeSettings();
+    int updateSeconds =
+        await context.read<TorrentListCubit>().getUpdateTimeSettings();
     _updateTimer = Timer.periodic(Duration(seconds: updateSeconds), (timer) {
       _restartUpdateTimer();
     });
@@ -40,13 +41,13 @@ class _TorrentDetailsScreenState extends State<TorrentDetailsScreen> {
 
   @override
   void dispose() {
-    _updateTimer.cancel();
+    _updateTimer?.cancel();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    _torrentHash = ModalRoute.of(context).settings.arguments;
+    _torrentHash = context.catchArgs();
     return DefaultTabController(
       length: 2,
       child: Scaffold(
@@ -57,10 +58,7 @@ class _TorrentDetailsScreenState extends State<TorrentDetailsScreen> {
         body: FocusDetector(
           key: _resumeDetectorKey,
           child: TabBarView(
-            children: [
-              TorrentInfoScreen(),
-              TorrentFilesScreen()
-            ],
+            children: [TorrentInfoScreen(), TorrentFilesScreen()],
           ),
           onFocusGained: () {
             _restartUpdateTimer();
@@ -75,7 +73,7 @@ class _TorrentDetailsScreenState extends State<TorrentDetailsScreen> {
 
   AppBar _buildAppBar(BuildContext context) {
     return AppBar(
-      title: Text(AppLocalizations.of(context).torrentInfo),
+      title: Text(AppLocalizations.of(context)?.torrentInfo ?? ""),
       actions: [
         IconButton(
           icon: Icon(Icons.play_arrow),
@@ -100,8 +98,12 @@ class _TorrentDetailsScreenState extends State<TorrentDetailsScreen> {
       ],
       bottom: TabBar(
         tabs: [
-          Tab(text: "Info".toUpperCase(),),
-          Tab(text: "Files".toUpperCase(),),
+          Tab(
+            text: "Info".toUpperCase(),
+          ),
+          Tab(
+            text: "Files".toUpperCase(),
+          ),
         ],
       ),
     );
@@ -109,10 +111,10 @@ class _TorrentDetailsScreenState extends State<TorrentDetailsScreen> {
 
   void _showDeleteDialog(BuildContext context, String _hash) {
     MaterialDialog(context)
-      ..title = AppLocalizations.of(context).questionDeleteTorrent
-      ..body = AppLocalizations.of(context).questionSureDelete
-      ..positiveButtonText = AppLocalizations.of(context).delete
-      ..negativeButtonText = AppLocalizations.of(context).cancel
+      ..title = AppLocalizations.of(context)?.questionDeleteTorrent ?? ""
+      ..body = AppLocalizations.of(context)?.questionSureDelete ?? ""
+      ..positiveButtonText = AppLocalizations.of(context)?.delete ?? ""
+      ..negativeButtonText = AppLocalizations.of(context)?.cancel ?? ""
       ..setPositiveButtonCallback((dialog) {
         final isDeleteAllData = dialog.checkboxList.first.isChecked;
         context
@@ -122,9 +124,9 @@ class _TorrentDetailsScreenState extends State<TorrentDetailsScreen> {
       ..checkboxList = [
         CheckboxEntity(
             id: "1",
-            title: Text(AppLocalizations.of(context).questionDeleteWithData))
+            title: Text(
+                AppLocalizations.of(context)?.questionDeleteWithData ?? ""))
       ]
       ..show();
   }
 }
-

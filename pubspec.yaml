@@ -6,7 +6,7 @@ publish_to: 'none'
 version: 0.7.0+8
 
 environment:
-  sdk: ">=2.7.0 <3.0.0"
+  sdk: ">=2.12.0 <3.0.0"
 
 module:
   androidX: true
@@ -19,42 +19,37 @@ dependencies:
   intl: ^0.17.0
 
   # architecture
-  flutter_bloc: ^6.1.2
-  provider: ^4.3.3
+  flutter_bloc: ^7.0.0
+  provider: ^5.0.0
   # file
-  path_provider: ^1.6.27
-  file_picker: ^2.1.6
+  path_provider: ^2.0.1
+  file_picker: ^3.0.1
   # analitics
-  firebase_core: ^0.7.0
-  firebase_analytics: ^7.0.1
-  firebase_crashlytics: ^0.4.0+1
+  firebase_core: ^1.0.3
+  firebase_analytics: ^8.0.0-dev.1
+  firebase_crashlytics: ^2.0.0
   # ui
-  toggle_switch: ^0.1.8
-  focus_detector: ^1.1.0+1
-  tree_view: ^0.0.5
+  toggle_switch: ^0.1.9
+  focus_detector: ^2.0.0
   # other
-  dio: ^3.0.10
-  dio_cookie_manager: 1.0.0
-  hive: ^1.4.4+1
-  hive_flutter: ^0.3.1
-  string_validator: ^0.1.4
+  dio: ^4.0.0
+  dio_cookie_manager: ^2.0.0
+  hive: ^2.0.2
+  hive_flutter: ^1.0.0
+  string_validator: ^0.3.0
   package_info: ^2.0.0
-  freezed_annotation: ^0.12.0
+  freezed_annotation: ^0.14.1
   url_launcher: ^6.0.0-nullsafety.6
   get_it: ^6.0.0
   cupertino_icons: ^1.0.2
-  supercharged: ^1.12.0
-
-#dependency_overrides:
-# path: 1.7.0
-# dartx: ">=0.2.0 <1.0.0"
+  supercharged: ^2.0.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  hive_generator: ^0.8.2
-  build_runner: ^1.11.5
-  freezed: ^0.12.7
+  hive_generator: ^1.0.1
+  build_runner: ^1.12.2
+  freezed: ^0.14.1+2
 
 analyzer:
   exclude:

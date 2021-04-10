@@ -2,7 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:qBitRemote/api/http.dart';
-import 'package:qBitRemote/api/qbitremote_repository.dart';
+import 'package:qBitRemote/api/remote_repository.dart';
 import 'package:qBitRemote/local/models/server_host.dart';
 import 'package:qBitRemote/repo/local_repository.dart';
 import 'package:string_validator/string_validator.dart';
@@ -10,7 +10,7 @@ import 'package:string_validator/string_validator.dart';
 part 'add_server_bloc.freezed.dart';
 
 @freezed
-abstract class AddServerEvent with _$AddServerEvent {
+class AddServerEvent with _$AddServerEvent {
   const AddServerEvent._();
 
   const factory AddServerEvent.save(ServerHost server) = SaveServerEvent;
@@ -27,7 +27,7 @@ abstract class AddServerEvent with _$AddServerEvent {
 }
 
 @freezed
-abstract class AddServerState with _$AddServerState {
+class AddServerState with _$AddServerState {
   const AddServerState._();
 
   const factory AddServerState.initial() = InitialAddServerState;
@@ -35,8 +35,7 @@ abstract class AddServerState with _$AddServerState {
   const factory AddServerState.setupEditMode(ServerHost server) =
       SetupEditModeState;
 
-  const factory AddServerState.buttonEnable(bool isEnable) =
-      ButtoinEnableState;
+  const factory AddServerState.buttonEnable(bool isEnable) = ButtoinEnableState;
 
   const factory AddServerState.connectSuccessResult() =
       ConnectSuccessResultState;
@@ -48,8 +47,8 @@ abstract class AddServerState with _$AddServerState {
 
 class AddServerBloc extends Bloc<AddServerEvent, AddServerState> {
   final LocalRepository _localRepository;
-  final QBitRemoteRepository _repo;
-  ServerHost _editServer;
+  final RemoteRepository _repo;
+  ServerHost? _editServer;
 
   AddServerBloc(this._repo, this._localRepository)
       : super(const InitialAddServerState());
@@ -67,11 +66,11 @@ class AddServerBloc extends Bloc<AddServerEvent, AddServerState> {
 
   Stream<AddServerState> _save(ServerHost server) async* {
     if (_editServer != null) {
-      _editServer.name = server.name;
-      _editServer.host = server.host;
-      _editServer.login = server.login;
-      _editServer.password = server.password;
-      await _localRepository.saveServerHostList(_editServer);
+      _editServer?.name = server.name;
+      _editServer?.host = server.host;
+      _editServer?.login = server.login;
+      _editServer?.password = server.password;
+      await _localRepository.saveServerHostList(_editServer!);
       yield const AddServerState.connectSuccessResult();
     } else {
       await _localRepository.saveServerHostList(server);
@@ -80,7 +79,7 @@ class AddServerBloc extends Bloc<AddServerEvent, AddServerState> {
   }
 
   Stream<AddServerState> _setEditMode(int editId) async* {
-    ServerHost server = await _localRepository.findServerHostById(editId);
+    ServerHost? server = await _localRepository.findServerHostById(editId);
     if (server != null) {
       _editServer = server;
       yield AddServerState.setupEditMode(server);

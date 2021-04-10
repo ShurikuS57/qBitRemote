@@ -1,22 +1,22 @@
 import 'package:flutter/material.dart';
 
 class PopupSubMenuItem<T> extends PopupMenuEntry<T> {
-  const PopupSubMenuItem({
-    @required this.title,
-    @required this.items,
-    this.onSelected,
-  });
-
   final String title;
   final List<T> items;
   final Function(T) onSelected;
+
+  const PopupSubMenuItem({
+    required this.title,
+    required this.items,
+    required this.onSelected,
+  });
 
   @override
   double get height =>
       kMinInteractiveDimension; //Does not actually affect anything
 
   @override
-  bool represents(T value) =>
+  bool represents(T? value) =>
       false; //Our submenu does not represent any specific value for the parent menu
 
   @override
@@ -36,7 +36,10 @@ class _PopupSubMenuState<T> extends State<PopupSubMenuItem<T>> {
           mainAxisSize: MainAxisSize.max,
           children: <Widget>[
             Expanded(
-              child: Text(widget.title, style: TextStyle(fontSize: 16),),
+              child: Text(
+                widget.title,
+                style: TextStyle(fontSize: 16),
+              ),
             ),
             Icon(
               Icons.arrow_right,
@@ -55,7 +58,7 @@ class _PopupSubMenuState<T> extends State<PopupSubMenuItem<T>> {
         if (Navigator.canPop(context)) {
           Navigator.pop(context);
         }
-        widget.onSelected?.call(value);
+        widget.onSelected.call(value);
       },
       offset: Offset.zero,
       itemBuilder: (BuildContext context) {

@@ -1,7 +1,11 @@
 import 'dart:convert';
 
 class FileEntity {
-  FileEntity({this.path, this.size, this.progress, this.priority});
+  FileEntity(
+      {required this.path,
+      required this.size,
+      required this.progress,
+      required this.priority});
 
   final String path;
   final int size;
@@ -18,8 +22,6 @@ class FileEntity {
   }
 
   factory FileEntity.fromMap(Map<String, dynamic> map) {
-    if (map == null) return null;
-  
     return FileEntity(
       path: map['name'],
       size: map['size'],
@@ -30,5 +32,6 @@ class FileEntity {
 
   String toJson() => json.encode(toMap());
 
-  factory FileEntity.fromJson(String source) => FileEntity.fromMap(json.decode(source));
+  factory FileEntity.fromJson(String source) =>
+      FileEntity.fromMap(json.decode(source));
 }

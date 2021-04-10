@@ -66,12 +66,11 @@ class _TorrentInfoScreenState extends State<TorrentInfoScreen> {
                       height: 20,
                     ),
                     _buildInfoText(
-                      AppLocalizations.of(context).fullSize +
-                          " " +
-                          torrent.size,
+                      AppLocalizations.of(context)?.fullSize ??
+                          "" + " " + torrent.size,
                     ),
-                    _buildInfoText(
-                        AppLocalizations.of(context).hash + " " + torrent.hash),
+                    _buildInfoText(AppLocalizations.of(context)?.hash ??
+                        "" + " " + torrent.hash),
                   ],
                 ),
               ),
@@ -81,7 +80,7 @@ class _TorrentInfoScreenState extends State<TorrentInfoScreen> {
       } else {
         return Center(
           child: Container(
-            child: Text(AppLocalizations.of(context).emptyTorrentInfo),
+            child: Text(AppLocalizations.of(context)?.emptyTorrentInfo ?? ""),
           ),
         );
       }
@@ -139,7 +138,7 @@ class _TorrentInfoScreenState extends State<TorrentInfoScreen> {
     return Row(
       children: [
         Text(
-          AppLocalizations.of(context)
+          AppLocalizations.of(context)!
               .percentToComplete((torrent.progress * 100).toInt())
               .toUpperCase(),
           style: TextStyle(

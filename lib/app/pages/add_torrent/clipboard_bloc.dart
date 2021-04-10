@@ -6,14 +6,14 @@ import 'package:qBitRemote/app/utils/validator_helper.dart';
 part 'clipboard_bloc.freezed.dart';
 
 @freezed
-abstract class ClipboardEvent with _$ClipboardEvent {
+class ClipboardEvent with _$ClipboardEvent {
   const ClipboardEvent._();
 
   const factory ClipboardEvent.catchClipboard() = CatchClipboardEvent;
 }
 
 @freezed
-abstract class ClipboardState with _$ClipboardState {
+class ClipboardState with _$ClipboardState {
   const ClipboardState._();
 
   const factory ClipboardState.initial() = ClipboardInitialState;
@@ -35,9 +35,10 @@ class ClipboardBloc extends Bloc<ClipboardEvent, ClipboardState> {
   }
 
   Stream<ClipboardState> _catchClipboard() async* {
-    ClipboardData data = await Clipboard.getData('text/plain');
-    if (isMagnetLink(data.text)) {
-      yield ShowMagnetSnackbarState(data.text);
+    ClipboardData? data = await Clipboard.getData('text/plain');
+    String? text = data?.text;
+    if (text != null && isMagnetLink(text)) {
+      yield ShowMagnetSnackbarState(text);
     }
   }
 }

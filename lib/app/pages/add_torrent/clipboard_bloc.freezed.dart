@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
 
 part of 'clipboard_bloc.dart';
 
@@ -9,40 +9,48 @@ part of 'clipboard_bloc.dart';
 
 T _$identity<T>(T value) => value;
 
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+
 /// @nodoc
 class _$ClipboardEventTearOff {
   const _$ClipboardEventTearOff();
 
-// ignore: unused_element
   CatchClipboardEvent catchClipboard() {
     return const CatchClipboardEvent();
   }
 }
 
 /// @nodoc
-// ignore: unused_element
 const $ClipboardEvent = _$ClipboardEventTearOff();
 
 /// @nodoc
 mixin _$ClipboardEvent {
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult catchClipboard(),
-  });
+  TResult when<TResult extends Object?>({
+    required TResult Function() catchClipboard,
+  }) =>
+      throw _privateConstructorUsedError;
+
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult catchClipboard(),
-    @required TResult orElse(),
-  });
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? catchClipboard,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult catchClipboard(CatchClipboardEvent value),
-  });
+  TResult map<TResult extends Object?>({
+    required TResult Function(CatchClipboardEvent value) catchClipboard,
+  }) =>
+      throw _privateConstructorUsedError;
+
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult catchClipboard(CatchClipboardEvent value),
-    @required TResult orElse(),
-  });
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(CatchClipboardEvent value)? catchClipboard,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -100,20 +108,18 @@ class _$CatchClipboardEvent extends CatchClipboardEvent {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult catchClipboard(),
+  TResult when<TResult extends Object?>({
+    required TResult Function() catchClipboard,
   }) {
-    assert(catchClipboard != null);
     return catchClipboard();
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult catchClipboard(),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? catchClipboard,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (catchClipboard != null) {
       return catchClipboard();
     }
@@ -122,20 +128,18 @@ class _$CatchClipboardEvent extends CatchClipboardEvent {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult catchClipboard(CatchClipboardEvent value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(CatchClipboardEvent value) catchClipboard,
   }) {
-    assert(catchClipboard != null);
     return catchClipboard(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult catchClipboard(CatchClipboardEvent value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(CatchClipboardEvent value)? catchClipboard,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (catchClipboard != null) {
       return catchClipboard(this);
     }
@@ -144,20 +148,19 @@ class _$CatchClipboardEvent extends CatchClipboardEvent {
 }
 
 abstract class CatchClipboardEvent extends ClipboardEvent {
-  const CatchClipboardEvent._() : super._();
   const factory CatchClipboardEvent() = _$CatchClipboardEvent;
+
+  const CatchClipboardEvent._() : super._();
 }
 
 /// @nodoc
 class _$ClipboardStateTearOff {
   const _$ClipboardStateTearOff();
 
-// ignore: unused_element
   ClipboardInitialState initial() {
     return const ClipboardInitialState();
   }
 
-// ignore: unused_element
   ShowMagnetSnackbarState showMagnetSnackbar(String url) {
     return ShowMagnetSnackbarState(
       url,
@@ -166,33 +169,39 @@ class _$ClipboardStateTearOff {
 }
 
 /// @nodoc
-// ignore: unused_element
 const $ClipboardState = _$ClipboardStateTearOff();
 
 /// @nodoc
 mixin _$ClipboardState {
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult initial(),
-    @required TResult showMagnetSnackbar(String url),
-  });
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(String url) showMagnetSnackbar,
+  }) =>
+      throw _privateConstructorUsedError;
+
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult initial(),
-    TResult showMagnetSnackbar(String url),
-    @required TResult orElse(),
-  });
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(String url)? showMagnetSnackbar,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult initial(ClipboardInitialState value),
-    @required TResult showMagnetSnackbar(ShowMagnetSnackbarState value),
-  });
+  TResult map<TResult extends Object?>({
+    required TResult Function(ClipboardInitialState value) initial,
+    required TResult Function(ShowMagnetSnackbarState value) showMagnetSnackbar,
+  }) =>
+      throw _privateConstructorUsedError;
+
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult initial(ClipboardInitialState value),
-    TResult showMagnetSnackbar(ShowMagnetSnackbarState value),
-    @required TResult orElse(),
-  });
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ClipboardInitialState value)? initial,
+    TResult Function(ShowMagnetSnackbarState value)? showMagnetSnackbar,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -250,23 +259,20 @@ class _$ClipboardInitialState extends ClipboardInitialState {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult initial(),
-    @required TResult showMagnetSnackbar(String url),
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(String url) showMagnetSnackbar,
   }) {
-    assert(initial != null);
-    assert(showMagnetSnackbar != null);
     return initial();
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult initial(),
-    TResult showMagnetSnackbar(String url),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(String url)? showMagnetSnackbar,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (initial != null) {
       return initial();
     }
@@ -275,23 +281,20 @@ class _$ClipboardInitialState extends ClipboardInitialState {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult initial(ClipboardInitialState value),
-    @required TResult showMagnetSnackbar(ShowMagnetSnackbarState value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(ClipboardInitialState value) initial,
+    required TResult Function(ShowMagnetSnackbarState value) showMagnetSnackbar,
   }) {
-    assert(initial != null);
-    assert(showMagnetSnackbar != null);
     return initial(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult initial(ClipboardInitialState value),
-    TResult showMagnetSnackbar(ShowMagnetSnackbarState value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ClipboardInitialState value)? initial,
+    TResult Function(ShowMagnetSnackbarState value)? showMagnetSnackbar,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (initial != null) {
       return initial(this);
     }
@@ -300,8 +303,9 @@ class _$ClipboardInitialState extends ClipboardInitialState {
 }
 
 abstract class ClipboardInitialState extends ClipboardState {
-  const ClipboardInitialState._() : super._();
   const factory ClipboardInitialState() = _$ClipboardInitialState;
+
+  const ClipboardInitialState._() : super._();
 }
 
 /// @nodoc
@@ -325,19 +329,20 @@ class _$ShowMagnetSnackbarStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object url = freezed,
+    Object? url = freezed,
   }) {
     return _then(ShowMagnetSnackbarState(
-      url == freezed ? _value.url : url as String,
+      url == freezed
+          ? _value.url
+          : url // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
 
 /// @nodoc
 class _$ShowMagnetSnackbarState extends ShowMagnetSnackbarState {
-  const _$ShowMagnetSnackbarState(this.url)
-      : assert(url != null),
-        super._();
+  const _$ShowMagnetSnackbarState(this.url) : super._();
 
   @override
   final String url;
@@ -367,23 +372,20 @@ class _$ShowMagnetSnackbarState extends ShowMagnetSnackbarState {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult initial(),
-    @required TResult showMagnetSnackbar(String url),
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(String url) showMagnetSnackbar,
   }) {
-    assert(initial != null);
-    assert(showMagnetSnackbar != null);
     return showMagnetSnackbar(url);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult initial(),
-    TResult showMagnetSnackbar(String url),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(String url)? showMagnetSnackbar,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (showMagnetSnackbar != null) {
       return showMagnetSnackbar(url);
     }
@@ -392,23 +394,20 @@ class _$ShowMagnetSnackbarState extends ShowMagnetSnackbarState {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult initial(ClipboardInitialState value),
-    @required TResult showMagnetSnackbar(ShowMagnetSnackbarState value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(ClipboardInitialState value) initial,
+    required TResult Function(ShowMagnetSnackbarState value) showMagnetSnackbar,
   }) {
-    assert(initial != null);
-    assert(showMagnetSnackbar != null);
     return showMagnetSnackbar(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult initial(ClipboardInitialState value),
-    TResult showMagnetSnackbar(ShowMagnetSnackbarState value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ClipboardInitialState value)? initial,
+    TResult Function(ShowMagnetSnackbarState value)? showMagnetSnackbar,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (showMagnetSnackbar != null) {
       return showMagnetSnackbar(this);
     }
@@ -417,10 +416,13 @@ class _$ShowMagnetSnackbarState extends ShowMagnetSnackbarState {
 }
 
 abstract class ShowMagnetSnackbarState extends ClipboardState {
-  const ShowMagnetSnackbarState._() : super._();
   const factory ShowMagnetSnackbarState(String url) = _$ShowMagnetSnackbarState;
 
-  String get url;
+  const ShowMagnetSnackbarState._() : super._();
+
+  String get url => throw _privateConstructorUsedError;
+
   @JsonKey(ignore: true)
-  $ShowMagnetSnackbarStateCopyWith<ShowMagnetSnackbarState> get copyWith;
+  $ShowMagnetSnackbarStateCopyWith<ShowMagnetSnackbarState> get copyWith =>
+      throw _privateConstructorUsedError;
 }

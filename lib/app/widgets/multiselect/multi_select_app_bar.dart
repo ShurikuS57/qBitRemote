@@ -4,11 +4,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'multi_select_cubit.dart';
 
 class MultiselectAppBar extends StatefulWidget implements PreferredSizeWidget {
-  const MultiselectAppBar({Key key, this.appBar, this.selectingActions})
-      : super(key: key);
-
   final AppBar appBar;
-  final List<Widget> selectingActions;
+  final List<Widget>? selectingActions;
+
+  const MultiselectAppBar(
+      {Key? key, required this.appBar, this.selectingActions})
+      : super(key: key);
 
   @override
   _MultiselectAppBarState createState() => _MultiselectAppBarState();

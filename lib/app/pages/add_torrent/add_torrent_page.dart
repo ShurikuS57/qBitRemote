@@ -4,6 +4,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:qBitRemote/app/widgets/action_button.dart';
 import 'package:qBitRemote/app/widgets/input_text.dart';
 import 'package:qBitRemote/commons/colors.dart';
+import 'package:qBitRemote/commons/extensions/build_context_ext.dart';
 import 'package:qBitRemote/routes.dart';
 import 'package:toggle_switch/toggle_switch.dart';
 
@@ -11,7 +12,7 @@ import 'add_torrent_bloc.dart';
 import 'clipboard_bloc.dart';
 
 class AddTorrentScreen extends StatefulWidget {
-  AddTorrentScreen({Key key}) : super(key: key);
+  AddTorrentScreen({Key? key}) : super(key: key);
 
   @override
   _AddTorrentScreenState createState() => _AddTorrentScreenState();
@@ -20,7 +21,9 @@ class AddTorrentScreen extends StatefulWidget {
 class _AddTorrentScreenState extends State<AddTorrentScreen> {
   final urlTextController = TextEditingController();
   final savePathTextController = TextEditingController();
-  ScaffoldMessengerState scaffoldMessengerState;
+  bool _isSequentialDownload = false;
+  bool _isDownloadFirst = false;
+  ScaffoldMessengerState? scaffoldMessengerState;
 
   @override
   void initState() {
@@ -37,28 +40,29 @@ class _AddTorrentScreenState extends State<AddTorrentScreen> {
     urlTextController.dispose();
     savePathTextController.dispose();
     if (scaffoldMessengerState != null) {
-      scaffoldMessengerState.hideCurrentSnackBar();
+      scaffoldMessengerState?.hideCurrentSnackBar();
     }
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    final AddTorrentArg argSetup = ModalRoute.of(context).settings.arguments;
+    AddTorrentArg? argSetup = context.catchArgs();
+
     if (argSetup != null) {
       context.read<AddTorrentBloc>().add(CheckArgEvent(argSetup));
     }
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(AppLocalizations.of(context).addTorrent),
+        title: Text(AppLocalizations.of(context)?.addTorrent ?? ""),
       ),
       backgroundColor: AppColors.primaryBackground,
       body: buildBody(context, argSetup),
     );
   }
 
-  Widget buildBody(BuildContext context, AddTorrentArg argSetup) {
+  Widget buildBody(BuildContext context, AddTorrentArg? argSetup) {
     return MultiBlocListener(
       listeners: [
         BlocListener<AddTorrentBloc, AddTorrentState>(
@@ -73,8 +77,8 @@ class _AddTorrentScreenState extends State<AddTorrentScreen> {
               } else {
                 Navigator.pushReplacementNamed(context, Routes.torrentsPage);
               }
-            } else if (state is ShowDefaultSavePathState) {
-              savePathTextController.text = state.path;
+            } else if (state is ShowPrefOptionsState) {
+              savePathTextController.text = state.options.savePath;
             } else if (state is SetDownloadUrlState) {
               urlTextController.text = state.url;
             }
@@ -84,11 +88,12 @@ class _AddTorrentScreenState extends State<AddTorrentScreen> {
           listener: (context, state) {
             if (state is ShowMagnetSnackbarState && argSetup == null) {
               scaffoldMessengerState = ScaffoldMessenger.of(context);
-              scaffoldMessengerState.showSnackBar(SnackBar(
-                content: Text(AppLocalizations.of(context).foundMagnetLink),
+              scaffoldMessengerState?.showSnackBar(SnackBar(
+                content:
+                    Text(AppLocalizations.of(context)?.foundMagnetLink ?? ""),
                 duration: Duration(seconds: 10),
                 action: SnackBarAction(
-                  label: AppLocalizations.of(context).add.toUpperCase(),
+                  label: AppLocalizations.of(context)?.add.toUpperCase() ?? "",
                   onPressed: () {
                     context.read<AddTorrentBloc>().add(CheckArgEvent(
                         AddTorrentArg(isMagnetLink: true, uri: state.url)));
@@ -99,23 +104,64 @@ class _AddTorrentScreenState extends State<AddTorrentScreen> {
           },
         )
       ],
-      child: Padding(
+      child: ListView(
         padding: const EdgeInsets.all(16.0),
-        child: ListView(
-          children: [
-            _buildToggleSwitch(context),
-            _buildToggleChoice(),
-            SizedBox(
-              height: 16,
-            ),
-            buildSelectedPathList(),
-            SizedBox(
-              height: 16,
-            ),
-            buildInputSavePath(context),
-            buildStartDownloadButton()
-          ],
-        ),
+        children: [
+          _buildToggleSwitch(context),
+          _buildToggleChoice(),
+          SizedBox(
+            height: 16,
+          ),
+          buildSelectedPathList(),
+          SizedBox(
+            height: 16,
+          ),
+          BlocBuilder<AddTorrentBloc, AddTorrentState>(
+            // buildWhen: (previous, current) => current is ShowPrefOptionsState,
+            builder: (context, state) {
+              if (state is ShowPrefOptionsState) {
+                _isSequentialDownload = state.options.isSequentialDownload;
+                _isDownloadFirst = state.options.isDownloadFirst;
+              }
+              return ExpansionTile(
+                title: Text("Options"),
+                children: [
+                  SizedBox(
+                    height: 8,
+                  ),
+                  buildInputSavePath(context),
+                  CheckboxListTile(
+                    title: Text("Sequential download"),
+                    value: _isSequentialDownload,
+                    onChanged: (bool? value) {
+                      _isSequentialDownload = value ?? false;
+                      context
+                          .read<AddTorrentBloc>()
+                          .add(UpdateOptionsEvent(_prepareOptions()));
+                    },
+                  ),
+                  CheckboxListTile(
+                    title: Text("Download first and last pieces first"),
+                    value: _isDownloadFirst,
+                    onChanged: (bool? value) {
+                      _isDownloadFirst = value ?? false;
+                      context
+                          .read<AddTorrentBloc>()
+                          .add(UpdateOptionsEvent(_prepareOptions()));
+                    },
+                  ),
+                  SizedBox(
+                    height: 8,
+                  ),
+                ],
+              );
+            },
+          ),
+          SizedBox(
+            height: 8,
+          ),
+          buildStartDownloadButton()
+        ],
       ),
     );
   }
@@ -129,12 +175,12 @@ class _AddTorrentScreenState extends State<AddTorrentScreen> {
           isEnableButton = state.isEnable;
         }
         return ActionButton(
-            text: AppLocalizations.of(context).startDownload,
+            text: AppLocalizations.of(context)?.startDownload ?? "",
             onPressed: isEnableButton
                 ? () {
-                    context.read<AddTorrentBloc>().add(
-                        AddTorrentEvent.startDownload(
-                            savePathTextController.text));
+                    context
+                        .read<AddTorrentBloc>()
+                        .add(AddTorrentEvent.startDownload(_prepareOptions()));
                   }
                 : null);
       },
@@ -144,7 +190,7 @@ class _AddTorrentScreenState extends State<AddTorrentScreen> {
   Widget buildInputSavePath(BuildContext context) {
     return InputText(
       controller: savePathTextController,
-      lableText: AppLocalizations.of(context).saveToPath,
+      lableText: AppLocalizations.of(context)?.saveToPath ?? "",
     );
   }
 
@@ -180,8 +226,8 @@ class _AddTorrentScreenState extends State<AddTorrentScreen> {
               inactiveBgColor: AppColors.actionButtonBackgroundDisableColor,
               inactiveFgColor: AppColors.actionButtonTextColor,
               labels: [
-                AppLocalizations.of(context).file,
-                AppLocalizations.of(context).url
+                AppLocalizations.of(context)?.file ?? "",
+                AppLocalizations.of(context)?.url ?? ""
               ],
               icons: [Icons.file_upload, Icons.link],
               initialLabelIndex: _isChoiceFile ? 0 : 1,
@@ -209,7 +255,7 @@ class _AddTorrentScreenState extends State<AddTorrentScreen> {
             ? Padding(
                 padding: const EdgeInsets.only(top: 16),
                 child: ActionButton(
-                  text: AppLocalizations.of(context).selectedFile,
+                  text: AppLocalizations.of(context)?.selectedFile ?? "",
                   onPressed: () {
                     context
                         .read<AddTorrentBloc>()
@@ -221,7 +267,7 @@ class _AddTorrentScreenState extends State<AddTorrentScreen> {
                 padding: const EdgeInsets.only(top: 16),
                 child: InputText(
                   controller: urlTextController,
-                  lableText: AppLocalizations.of(context).marginUrl,
+                  lableText: AppLocalizations.of(context)?.marginUrl ?? "",
                   minLines: 3,
                   maxLines: 3,
                 ),
@@ -229,14 +275,21 @@ class _AddTorrentScreenState extends State<AddTorrentScreen> {
       },
     );
   }
+
+  PrefOptions _prepareOptions() {
+    return PrefOptions(
+        savePath: savePathTextController.text,
+        isDownloadFirst: _isDownloadFirst,
+        isSequentialDownload: _isSequentialDownload);
+  }
 }
 
 class AddTorrentArg {
   final bool isMagnetLink;
   final String uri;
 
-  AddTorrentArg({this.isMagnetLink, this.uri});
+  AddTorrentArg({required this.isMagnetLink, required this.uri});
 
-  AddTorrentArg copyWith({bool isMagnetLink, String uri}) => AddTorrentArg(
+  AddTorrentArg copyWith({bool? isMagnetLink, String? uri}) => AddTorrentArg(
       isMagnetLink: isMagnetLink ?? this.isMagnetLink, uri: uri ?? this.uri);
 }

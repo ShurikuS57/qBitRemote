@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
 
 part of 'add_server_bloc.dart';
 
@@ -9,18 +9,19 @@ part of 'add_server_bloc.dart';
 
 T _$identity<T>(T value) => value;
 
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+
 /// @nodoc
 class _$AddServerEventTearOff {
   const _$AddServerEventTearOff();
 
-// ignore: unused_element
   SaveServerEvent save(ServerHost server) {
     return SaveServerEvent(
       server,
     );
   }
 
-// ignore: unused_element
   InvalidateButtonEvent invalidateButton(
       String name, String host, String login, String password) {
     return InvalidateButtonEvent(
@@ -31,21 +32,18 @@ class _$AddServerEventTearOff {
     );
   }
 
-// ignore: unused_element
   SetEditModeEvent setEditMode(int editId) {
     return SetEditModeEvent(
       editId,
     );
   }
 
-// ignore: unused_element
   CheckConnectEvent checkConnect(ServerHost server) {
     return CheckConnectEvent(
       server,
     );
   }
 
-// ignore: unused_element
   SetAppBarTitleEvent setAppBarTitle(String title) {
     return SetAppBarTitleEvent(
       title,
@@ -54,48 +52,54 @@ class _$AddServerEventTearOff {
 }
 
 /// @nodoc
-// ignore: unused_element
 const $AddServerEvent = _$AddServerEventTearOff();
 
 /// @nodoc
 mixin _$AddServerEvent {
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult save(ServerHost server),
-    @required
-        TResult invalidateButton(
-            String name, String host, String login, String password),
-    @required TResult setEditMode(int editId),
-    @required TResult checkConnect(ServerHost server),
-    @required TResult setAppBarTitle(String title),
-  });
+  TResult when<TResult extends Object?>({
+    required TResult Function(ServerHost server) save,
+    required TResult Function(
+            String name, String host, String login, String password)
+        invalidateButton,
+    required TResult Function(int editId) setEditMode,
+    required TResult Function(ServerHost server) checkConnect,
+    required TResult Function(String title) setAppBarTitle,
+  }) =>
+      throw _privateConstructorUsedError;
+
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult save(ServerHost server),
-    TResult invalidateButton(
-        String name, String host, String login, String password),
-    TResult setEditMode(int editId),
-    TResult checkConnect(ServerHost server),
-    TResult setAppBarTitle(String title),
-    @required TResult orElse(),
-  });
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(ServerHost server)? save,
+    TResult Function(String name, String host, String login, String password)?
+        invalidateButton,
+    TResult Function(int editId)? setEditMode,
+    TResult Function(ServerHost server)? checkConnect,
+    TResult Function(String title)? setAppBarTitle,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult save(SaveServerEvent value),
-    @required TResult invalidateButton(InvalidateButtonEvent value),
-    @required TResult setEditMode(SetEditModeEvent value),
-    @required TResult checkConnect(CheckConnectEvent value),
-    @required TResult setAppBarTitle(SetAppBarTitleEvent value),
-  });
+  TResult map<TResult extends Object?>({
+    required TResult Function(SaveServerEvent value) save,
+    required TResult Function(InvalidateButtonEvent value) invalidateButton,
+    required TResult Function(SetEditModeEvent value) setEditMode,
+    required TResult Function(CheckConnectEvent value) checkConnect,
+    required TResult Function(SetAppBarTitleEvent value) setAppBarTitle,
+  }) =>
+      throw _privateConstructorUsedError;
+
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult save(SaveServerEvent value),
-    TResult invalidateButton(InvalidateButtonEvent value),
-    TResult setEditMode(SetEditModeEvent value),
-    TResult checkConnect(CheckConnectEvent value),
-    TResult setAppBarTitle(SetAppBarTitleEvent value),
-    @required TResult orElse(),
-  });
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(SaveServerEvent value)? save,
+    TResult Function(InvalidateButtonEvent value)? invalidateButton,
+    TResult Function(SetEditModeEvent value)? setEditMode,
+    TResult Function(CheckConnectEvent value)? checkConnect,
+    TResult Function(SetAppBarTitleEvent value)? setAppBarTitle,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -136,19 +140,20 @@ class _$SaveServerEventCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object server = freezed,
+    Object? server = freezed,
   }) {
     return _then(SaveServerEvent(
-      server == freezed ? _value.server : server as ServerHost,
+      server == freezed
+          ? _value.server
+          : server // ignore: cast_nullable_to_non_nullable
+              as ServerHost,
     ));
   }
 }
 
 /// @nodoc
 class _$SaveServerEvent extends SaveServerEvent with DiagnosticableTreeMixin {
-  const _$SaveServerEvent(this.server)
-      : assert(server != null),
-        super._();
+  const _$SaveServerEvent(this.server) : super._();
 
   @override
   final ServerHost server;
@@ -185,35 +190,29 @@ class _$SaveServerEvent extends SaveServerEvent with DiagnosticableTreeMixin {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult save(ServerHost server),
-    @required
-        TResult invalidateButton(
-            String name, String host, String login, String password),
-    @required TResult setEditMode(int editId),
-    @required TResult checkConnect(ServerHost server),
-    @required TResult setAppBarTitle(String title),
+  TResult when<TResult extends Object?>({
+    required TResult Function(ServerHost server) save,
+    required TResult Function(
+            String name, String host, String login, String password)
+        invalidateButton,
+    required TResult Function(int editId) setEditMode,
+    required TResult Function(ServerHost server) checkConnect,
+    required TResult Function(String title) setAppBarTitle,
   }) {
-    assert(save != null);
-    assert(invalidateButton != null);
-    assert(setEditMode != null);
-    assert(checkConnect != null);
-    assert(setAppBarTitle != null);
     return save(server);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult save(ServerHost server),
-    TResult invalidateButton(
-        String name, String host, String login, String password),
-    TResult setEditMode(int editId),
-    TResult checkConnect(ServerHost server),
-    TResult setAppBarTitle(String title),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(ServerHost server)? save,
+    TResult Function(String name, String host, String login, String password)?
+        invalidateButton,
+    TResult Function(int editId)? setEditMode,
+    TResult Function(ServerHost server)? checkConnect,
+    TResult Function(String title)? setAppBarTitle,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (save != null) {
       return save(server);
     }
@@ -222,32 +221,26 @@ class _$SaveServerEvent extends SaveServerEvent with DiagnosticableTreeMixin {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult save(SaveServerEvent value),
-    @required TResult invalidateButton(InvalidateButtonEvent value),
-    @required TResult setEditMode(SetEditModeEvent value),
-    @required TResult checkConnect(CheckConnectEvent value),
-    @required TResult setAppBarTitle(SetAppBarTitleEvent value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(SaveServerEvent value) save,
+    required TResult Function(InvalidateButtonEvent value) invalidateButton,
+    required TResult Function(SetEditModeEvent value) setEditMode,
+    required TResult Function(CheckConnectEvent value) checkConnect,
+    required TResult Function(SetAppBarTitleEvent value) setAppBarTitle,
   }) {
-    assert(save != null);
-    assert(invalidateButton != null);
-    assert(setEditMode != null);
-    assert(checkConnect != null);
-    assert(setAppBarTitle != null);
     return save(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult save(SaveServerEvent value),
-    TResult invalidateButton(InvalidateButtonEvent value),
-    TResult setEditMode(SetEditModeEvent value),
-    TResult checkConnect(CheckConnectEvent value),
-    TResult setAppBarTitle(SetAppBarTitleEvent value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(SaveServerEvent value)? save,
+    TResult Function(InvalidateButtonEvent value)? invalidateButton,
+    TResult Function(SetEditModeEvent value)? setEditMode,
+    TResult Function(CheckConnectEvent value)? checkConnect,
+    TResult Function(SetAppBarTitleEvent value)? setAppBarTitle,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (save != null) {
       return save(this);
     }
@@ -256,12 +249,15 @@ class _$SaveServerEvent extends SaveServerEvent with DiagnosticableTreeMixin {
 }
 
 abstract class SaveServerEvent extends AddServerEvent {
-  const SaveServerEvent._() : super._();
   const factory SaveServerEvent(ServerHost server) = _$SaveServerEvent;
 
-  ServerHost get server;
+  const SaveServerEvent._() : super._();
+
+  ServerHost get server => throw _privateConstructorUsedError;
+
   @JsonKey(ignore: true)
-  $SaveServerEventCopyWith<SaveServerEvent> get copyWith;
+  $SaveServerEventCopyWith<SaveServerEvent> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -285,16 +281,28 @@ class _$InvalidateButtonEventCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object name = freezed,
-    Object host = freezed,
-    Object login = freezed,
-    Object password = freezed,
+    Object? name = freezed,
+    Object? host = freezed,
+    Object? login = freezed,
+    Object? password = freezed,
   }) {
     return _then(InvalidateButtonEvent(
-      name == freezed ? _value.name : name as String,
-      host == freezed ? _value.host : host as String,
-      login == freezed ? _value.login : login as String,
-      password == freezed ? _value.password : password as String,
+      name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      host == freezed
+          ? _value.host
+          : host // ignore: cast_nullable_to_non_nullable
+              as String,
+      login == freezed
+          ? _value.login
+          : login // ignore: cast_nullable_to_non_nullable
+              as String,
+      password == freezed
+          ? _value.password
+          : password // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -303,11 +311,7 @@ class _$InvalidateButtonEventCopyWithImpl<$Res>
 class _$InvalidateButtonEvent extends InvalidateButtonEvent
     with DiagnosticableTreeMixin {
   const _$InvalidateButtonEvent(this.name, this.host, this.login, this.password)
-      : assert(name != null),
-        assert(host != null),
-        assert(login != null),
-        assert(password != null),
-        super._();
+      : super._();
 
   @override
   final String name;
@@ -365,35 +369,29 @@ class _$InvalidateButtonEvent extends InvalidateButtonEvent
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult save(ServerHost server),
-    @required
-        TResult invalidateButton(
-            String name, String host, String login, String password),
-    @required TResult setEditMode(int editId),
-    @required TResult checkConnect(ServerHost server),
-    @required TResult setAppBarTitle(String title),
+  TResult when<TResult extends Object?>({
+    required TResult Function(ServerHost server) save,
+    required TResult Function(
+            String name, String host, String login, String password)
+        invalidateButton,
+    required TResult Function(int editId) setEditMode,
+    required TResult Function(ServerHost server) checkConnect,
+    required TResult Function(String title) setAppBarTitle,
   }) {
-    assert(save != null);
-    assert(invalidateButton != null);
-    assert(setEditMode != null);
-    assert(checkConnect != null);
-    assert(setAppBarTitle != null);
     return invalidateButton(name, host, login, password);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult save(ServerHost server),
-    TResult invalidateButton(
-        String name, String host, String login, String password),
-    TResult setEditMode(int editId),
-    TResult checkConnect(ServerHost server),
-    TResult setAppBarTitle(String title),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(ServerHost server)? save,
+    TResult Function(String name, String host, String login, String password)?
+        invalidateButton,
+    TResult Function(int editId)? setEditMode,
+    TResult Function(ServerHost server)? checkConnect,
+    TResult Function(String title)? setAppBarTitle,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (invalidateButton != null) {
       return invalidateButton(name, host, login, password);
     }
@@ -402,32 +400,26 @@ class _$InvalidateButtonEvent extends InvalidateButtonEvent
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult save(SaveServerEvent value),
-    @required TResult invalidateButton(InvalidateButtonEvent value),
-    @required TResult setEditMode(SetEditModeEvent value),
-    @required TResult checkConnect(CheckConnectEvent value),
-    @required TResult setAppBarTitle(SetAppBarTitleEvent value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(SaveServerEvent value) save,
+    required TResult Function(InvalidateButtonEvent value) invalidateButton,
+    required TResult Function(SetEditModeEvent value) setEditMode,
+    required TResult Function(CheckConnectEvent value) checkConnect,
+    required TResult Function(SetAppBarTitleEvent value) setAppBarTitle,
   }) {
-    assert(save != null);
-    assert(invalidateButton != null);
-    assert(setEditMode != null);
-    assert(checkConnect != null);
-    assert(setAppBarTitle != null);
     return invalidateButton(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult save(SaveServerEvent value),
-    TResult invalidateButton(InvalidateButtonEvent value),
-    TResult setEditMode(SetEditModeEvent value),
-    TResult checkConnect(CheckConnectEvent value),
-    TResult setAppBarTitle(SetAppBarTitleEvent value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(SaveServerEvent value)? save,
+    TResult Function(InvalidateButtonEvent value)? invalidateButton,
+    TResult Function(SetEditModeEvent value)? setEditMode,
+    TResult Function(CheckConnectEvent value)? checkConnect,
+    TResult Function(SetAppBarTitleEvent value)? setAppBarTitle,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (invalidateButton != null) {
       return invalidateButton(this);
     }
@@ -436,17 +428,23 @@ class _$InvalidateButtonEvent extends InvalidateButtonEvent
 }
 
 abstract class InvalidateButtonEvent extends AddServerEvent {
-  const InvalidateButtonEvent._() : super._();
   const factory InvalidateButtonEvent(
           String name, String host, String login, String password) =
       _$InvalidateButtonEvent;
 
-  String get name;
-  String get host;
-  String get login;
-  String get password;
+  const InvalidateButtonEvent._() : super._();
+
+  String get name => throw _privateConstructorUsedError;
+
+  String get host => throw _privateConstructorUsedError;
+
+  String get login => throw _privateConstructorUsedError;
+
+  String get password => throw _privateConstructorUsedError;
+
   @JsonKey(ignore: true)
-  $InvalidateButtonEventCopyWith<InvalidateButtonEvent> get copyWith;
+  $InvalidateButtonEventCopyWith<InvalidateButtonEvent> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -470,19 +468,20 @@ class _$SetEditModeEventCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object editId = freezed,
+    Object? editId = freezed,
   }) {
     return _then(SetEditModeEvent(
-      editId == freezed ? _value.editId : editId as int,
+      editId == freezed
+          ? _value.editId
+          : editId // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
 
 /// @nodoc
 class _$SetEditModeEvent extends SetEditModeEvent with DiagnosticableTreeMixin {
-  const _$SetEditModeEvent(this.editId)
-      : assert(editId != null),
-        super._();
+  const _$SetEditModeEvent(this.editId) : super._();
 
   @override
   final int editId;
@@ -519,35 +518,29 @@ class _$SetEditModeEvent extends SetEditModeEvent with DiagnosticableTreeMixin {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult save(ServerHost server),
-    @required
-        TResult invalidateButton(
-            String name, String host, String login, String password),
-    @required TResult setEditMode(int editId),
-    @required TResult checkConnect(ServerHost server),
-    @required TResult setAppBarTitle(String title),
+  TResult when<TResult extends Object?>({
+    required TResult Function(ServerHost server) save,
+    required TResult Function(
+            String name, String host, String login, String password)
+        invalidateButton,
+    required TResult Function(int editId) setEditMode,
+    required TResult Function(ServerHost server) checkConnect,
+    required TResult Function(String title) setAppBarTitle,
   }) {
-    assert(save != null);
-    assert(invalidateButton != null);
-    assert(setEditMode != null);
-    assert(checkConnect != null);
-    assert(setAppBarTitle != null);
     return setEditMode(editId);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult save(ServerHost server),
-    TResult invalidateButton(
-        String name, String host, String login, String password),
-    TResult setEditMode(int editId),
-    TResult checkConnect(ServerHost server),
-    TResult setAppBarTitle(String title),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(ServerHost server)? save,
+    TResult Function(String name, String host, String login, String password)?
+        invalidateButton,
+    TResult Function(int editId)? setEditMode,
+    TResult Function(ServerHost server)? checkConnect,
+    TResult Function(String title)? setAppBarTitle,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (setEditMode != null) {
       return setEditMode(editId);
     }
@@ -556,32 +549,26 @@ class _$SetEditModeEvent extends SetEditModeEvent with DiagnosticableTreeMixin {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult save(SaveServerEvent value),
-    @required TResult invalidateButton(InvalidateButtonEvent value),
-    @required TResult setEditMode(SetEditModeEvent value),
-    @required TResult checkConnect(CheckConnectEvent value),
-    @required TResult setAppBarTitle(SetAppBarTitleEvent value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(SaveServerEvent value) save,
+    required TResult Function(InvalidateButtonEvent value) invalidateButton,
+    required TResult Function(SetEditModeEvent value) setEditMode,
+    required TResult Function(CheckConnectEvent value) checkConnect,
+    required TResult Function(SetAppBarTitleEvent value) setAppBarTitle,
   }) {
-    assert(save != null);
-    assert(invalidateButton != null);
-    assert(setEditMode != null);
-    assert(checkConnect != null);
-    assert(setAppBarTitle != null);
     return setEditMode(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult save(SaveServerEvent value),
-    TResult invalidateButton(InvalidateButtonEvent value),
-    TResult setEditMode(SetEditModeEvent value),
-    TResult checkConnect(CheckConnectEvent value),
-    TResult setAppBarTitle(SetAppBarTitleEvent value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(SaveServerEvent value)? save,
+    TResult Function(InvalidateButtonEvent value)? invalidateButton,
+    TResult Function(SetEditModeEvent value)? setEditMode,
+    TResult Function(CheckConnectEvent value)? checkConnect,
+    TResult Function(SetAppBarTitleEvent value)? setAppBarTitle,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (setEditMode != null) {
       return setEditMode(this);
     }
@@ -590,12 +577,15 @@ class _$SetEditModeEvent extends SetEditModeEvent with DiagnosticableTreeMixin {
 }
 
 abstract class SetEditModeEvent extends AddServerEvent {
-  const SetEditModeEvent._() : super._();
   const factory SetEditModeEvent(int editId) = _$SetEditModeEvent;
 
-  int get editId;
+  const SetEditModeEvent._() : super._();
+
+  int get editId => throw _privateConstructorUsedError;
+
   @JsonKey(ignore: true)
-  $SetEditModeEventCopyWith<SetEditModeEvent> get copyWith;
+  $SetEditModeEventCopyWith<SetEditModeEvent> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -619,10 +609,13 @@ class _$CheckConnectEventCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object server = freezed,
+    Object? server = freezed,
   }) {
     return _then(CheckConnectEvent(
-      server == freezed ? _value.server : server as ServerHost,
+      server == freezed
+          ? _value.server
+          : server // ignore: cast_nullable_to_non_nullable
+              as ServerHost,
     ));
   }
 }
@@ -630,9 +623,7 @@ class _$CheckConnectEventCopyWithImpl<$Res>
 /// @nodoc
 class _$CheckConnectEvent extends CheckConnectEvent
     with DiagnosticableTreeMixin {
-  const _$CheckConnectEvent(this.server)
-      : assert(server != null),
-        super._();
+  const _$CheckConnectEvent(this.server) : super._();
 
   @override
   final ServerHost server;
@@ -669,35 +660,29 @@ class _$CheckConnectEvent extends CheckConnectEvent
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult save(ServerHost server),
-    @required
-        TResult invalidateButton(
-            String name, String host, String login, String password),
-    @required TResult setEditMode(int editId),
-    @required TResult checkConnect(ServerHost server),
-    @required TResult setAppBarTitle(String title),
+  TResult when<TResult extends Object?>({
+    required TResult Function(ServerHost server) save,
+    required TResult Function(
+            String name, String host, String login, String password)
+        invalidateButton,
+    required TResult Function(int editId) setEditMode,
+    required TResult Function(ServerHost server) checkConnect,
+    required TResult Function(String title) setAppBarTitle,
   }) {
-    assert(save != null);
-    assert(invalidateButton != null);
-    assert(setEditMode != null);
-    assert(checkConnect != null);
-    assert(setAppBarTitle != null);
     return checkConnect(server);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult save(ServerHost server),
-    TResult invalidateButton(
-        String name, String host, String login, String password),
-    TResult setEditMode(int editId),
-    TResult checkConnect(ServerHost server),
-    TResult setAppBarTitle(String title),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(ServerHost server)? save,
+    TResult Function(String name, String host, String login, String password)?
+        invalidateButton,
+    TResult Function(int editId)? setEditMode,
+    TResult Function(ServerHost server)? checkConnect,
+    TResult Function(String title)? setAppBarTitle,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (checkConnect != null) {
       return checkConnect(server);
     }
@@ -706,32 +691,26 @@ class _$CheckConnectEvent extends CheckConnectEvent
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult save(SaveServerEvent value),
-    @required TResult invalidateButton(InvalidateButtonEvent value),
-    @required TResult setEditMode(SetEditModeEvent value),
-    @required TResult checkConnect(CheckConnectEvent value),
-    @required TResult setAppBarTitle(SetAppBarTitleEvent value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(SaveServerEvent value) save,
+    required TResult Function(InvalidateButtonEvent value) invalidateButton,
+    required TResult Function(SetEditModeEvent value) setEditMode,
+    required TResult Function(CheckConnectEvent value) checkConnect,
+    required TResult Function(SetAppBarTitleEvent value) setAppBarTitle,
   }) {
-    assert(save != null);
-    assert(invalidateButton != null);
-    assert(setEditMode != null);
-    assert(checkConnect != null);
-    assert(setAppBarTitle != null);
     return checkConnect(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult save(SaveServerEvent value),
-    TResult invalidateButton(InvalidateButtonEvent value),
-    TResult setEditMode(SetEditModeEvent value),
-    TResult checkConnect(CheckConnectEvent value),
-    TResult setAppBarTitle(SetAppBarTitleEvent value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(SaveServerEvent value)? save,
+    TResult Function(InvalidateButtonEvent value)? invalidateButton,
+    TResult Function(SetEditModeEvent value)? setEditMode,
+    TResult Function(CheckConnectEvent value)? checkConnect,
+    TResult Function(SetAppBarTitleEvent value)? setAppBarTitle,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (checkConnect != null) {
       return checkConnect(this);
     }
@@ -740,12 +719,15 @@ class _$CheckConnectEvent extends CheckConnectEvent
 }
 
 abstract class CheckConnectEvent extends AddServerEvent {
-  const CheckConnectEvent._() : super._();
   const factory CheckConnectEvent(ServerHost server) = _$CheckConnectEvent;
 
-  ServerHost get server;
+  const CheckConnectEvent._() : super._();
+
+  ServerHost get server => throw _privateConstructorUsedError;
+
   @JsonKey(ignore: true)
-  $CheckConnectEventCopyWith<CheckConnectEvent> get copyWith;
+  $CheckConnectEventCopyWith<CheckConnectEvent> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -769,10 +751,13 @@ class _$SetAppBarTitleEventCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object title = freezed,
+    Object? title = freezed,
   }) {
     return _then(SetAppBarTitleEvent(
-      title == freezed ? _value.title : title as String,
+      title == freezed
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -780,9 +765,7 @@ class _$SetAppBarTitleEventCopyWithImpl<$Res>
 /// @nodoc
 class _$SetAppBarTitleEvent extends SetAppBarTitleEvent
     with DiagnosticableTreeMixin {
-  const _$SetAppBarTitleEvent(this.title)
-      : assert(title != null),
-        super._();
+  const _$SetAppBarTitleEvent(this.title) : super._();
 
   @override
   final String title;
@@ -819,35 +802,29 @@ class _$SetAppBarTitleEvent extends SetAppBarTitleEvent
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult save(ServerHost server),
-    @required
-        TResult invalidateButton(
-            String name, String host, String login, String password),
-    @required TResult setEditMode(int editId),
-    @required TResult checkConnect(ServerHost server),
-    @required TResult setAppBarTitle(String title),
+  TResult when<TResult extends Object?>({
+    required TResult Function(ServerHost server) save,
+    required TResult Function(
+            String name, String host, String login, String password)
+        invalidateButton,
+    required TResult Function(int editId) setEditMode,
+    required TResult Function(ServerHost server) checkConnect,
+    required TResult Function(String title) setAppBarTitle,
   }) {
-    assert(save != null);
-    assert(invalidateButton != null);
-    assert(setEditMode != null);
-    assert(checkConnect != null);
-    assert(setAppBarTitle != null);
     return setAppBarTitle(title);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult save(ServerHost server),
-    TResult invalidateButton(
-        String name, String host, String login, String password),
-    TResult setEditMode(int editId),
-    TResult checkConnect(ServerHost server),
-    TResult setAppBarTitle(String title),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(ServerHost server)? save,
+    TResult Function(String name, String host, String login, String password)?
+        invalidateButton,
+    TResult Function(int editId)? setEditMode,
+    TResult Function(ServerHost server)? checkConnect,
+    TResult Function(String title)? setAppBarTitle,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (setAppBarTitle != null) {
       return setAppBarTitle(title);
     }
@@ -856,32 +833,26 @@ class _$SetAppBarTitleEvent extends SetAppBarTitleEvent
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult save(SaveServerEvent value),
-    @required TResult invalidateButton(InvalidateButtonEvent value),
-    @required TResult setEditMode(SetEditModeEvent value),
-    @required TResult checkConnect(CheckConnectEvent value),
-    @required TResult setAppBarTitle(SetAppBarTitleEvent value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(SaveServerEvent value) save,
+    required TResult Function(InvalidateButtonEvent value) invalidateButton,
+    required TResult Function(SetEditModeEvent value) setEditMode,
+    required TResult Function(CheckConnectEvent value) checkConnect,
+    required TResult Function(SetAppBarTitleEvent value) setAppBarTitle,
   }) {
-    assert(save != null);
-    assert(invalidateButton != null);
-    assert(setEditMode != null);
-    assert(checkConnect != null);
-    assert(setAppBarTitle != null);
     return setAppBarTitle(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult save(SaveServerEvent value),
-    TResult invalidateButton(InvalidateButtonEvent value),
-    TResult setEditMode(SetEditModeEvent value),
-    TResult checkConnect(CheckConnectEvent value),
-    TResult setAppBarTitle(SetAppBarTitleEvent value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(SaveServerEvent value)? save,
+    TResult Function(InvalidateButtonEvent value)? invalidateButton,
+    TResult Function(SetEditModeEvent value)? setEditMode,
+    TResult Function(CheckConnectEvent value)? checkConnect,
+    TResult Function(SetAppBarTitleEvent value)? setAppBarTitle,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (setAppBarTitle != null) {
       return setAppBarTitle(this);
     }
@@ -890,50 +861,47 @@ class _$SetAppBarTitleEvent extends SetAppBarTitleEvent
 }
 
 abstract class SetAppBarTitleEvent extends AddServerEvent {
-  const SetAppBarTitleEvent._() : super._();
   const factory SetAppBarTitleEvent(String title) = _$SetAppBarTitleEvent;
 
-  String get title;
+  const SetAppBarTitleEvent._() : super._();
+
+  String get title => throw _privateConstructorUsedError;
+
   @JsonKey(ignore: true)
-  $SetAppBarTitleEventCopyWith<SetAppBarTitleEvent> get copyWith;
+  $SetAppBarTitleEventCopyWith<SetAppBarTitleEvent> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 class _$AddServerStateTearOff {
   const _$AddServerStateTearOff();
 
-// ignore: unused_element
   InitialAddServerState initial() {
     return const InitialAddServerState();
   }
 
-// ignore: unused_element
   SetupEditModeState setupEditMode(ServerHost server) {
     return SetupEditModeState(
       server,
     );
   }
 
-// ignore: unused_element
   ButtoinEnableState buttonEnable(bool isEnable) {
     return ButtoinEnableState(
       isEnable,
     );
   }
 
-// ignore: unused_element
   ConnectSuccessResultState connectSuccessResult() {
     return const ConnectSuccessResultState();
   }
 
-// ignore: unused_element
   TestConnectState testConnectResult(bool isConnect) {
     return TestConnectState(
       isConnect,
     );
   }
 
-// ignore: unused_element
   AppBarTitleState setupAppBarTitle(String title) {
     return AppBarTitleState(
       title,
@@ -942,49 +910,56 @@ class _$AddServerStateTearOff {
 }
 
 /// @nodoc
-// ignore: unused_element
 const $AddServerState = _$AddServerStateTearOff();
 
 /// @nodoc
 mixin _$AddServerState {
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult initial(),
-    @required TResult setupEditMode(ServerHost server),
-    @required TResult buttonEnable(bool isEnable),
-    @required TResult connectSuccessResult(),
-    @required TResult testConnectResult(bool isConnect),
-    @required TResult setupAppBarTitle(String title),
-  });
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(ServerHost server) setupEditMode,
+    required TResult Function(bool isEnable) buttonEnable,
+    required TResult Function() connectSuccessResult,
+    required TResult Function(bool isConnect) testConnectResult,
+    required TResult Function(String title) setupAppBarTitle,
+  }) =>
+      throw _privateConstructorUsedError;
+
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult initial(),
-    TResult setupEditMode(ServerHost server),
-    TResult buttonEnable(bool isEnable),
-    TResult connectSuccessResult(),
-    TResult testConnectResult(bool isConnect),
-    TResult setupAppBarTitle(String title),
-    @required TResult orElse(),
-  });
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(ServerHost server)? setupEditMode,
+    TResult Function(bool isEnable)? buttonEnable,
+    TResult Function()? connectSuccessResult,
+    TResult Function(bool isConnect)? testConnectResult,
+    TResult Function(String title)? setupAppBarTitle,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult initial(InitialAddServerState value),
-    @required TResult setupEditMode(SetupEditModeState value),
-    @required TResult buttonEnable(ButtoinEnableState value),
-    @required TResult connectSuccessResult(ConnectSuccessResultState value),
-    @required TResult testConnectResult(TestConnectState value),
-    @required TResult setupAppBarTitle(AppBarTitleState value),
-  });
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitialAddServerState value) initial,
+    required TResult Function(SetupEditModeState value) setupEditMode,
+    required TResult Function(ButtoinEnableState value) buttonEnable,
+    required TResult Function(ConnectSuccessResultState value)
+        connectSuccessResult,
+    required TResult Function(TestConnectState value) testConnectResult,
+    required TResult Function(AppBarTitleState value) setupAppBarTitle,
+  }) =>
+      throw _privateConstructorUsedError;
+
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult initial(InitialAddServerState value),
-    TResult setupEditMode(SetupEditModeState value),
-    TResult buttonEnable(ButtoinEnableState value),
-    TResult connectSuccessResult(ConnectSuccessResultState value),
-    TResult testConnectResult(TestConnectState value),
-    TResult setupAppBarTitle(AppBarTitleState value),
-    @required TResult orElse(),
-  });
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitialAddServerState value)? initial,
+    TResult Function(SetupEditModeState value)? setupEditMode,
+    TResult Function(ButtoinEnableState value)? buttonEnable,
+    TResult Function(ConnectSuccessResultState value)? connectSuccessResult,
+    TResult Function(TestConnectState value)? testConnectResult,
+    TResult Function(AppBarTitleState value)? setupAppBarTitle,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1049,35 +1024,28 @@ class _$InitialAddServerState extends InitialAddServerState
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult initial(),
-    @required TResult setupEditMode(ServerHost server),
-    @required TResult buttonEnable(bool isEnable),
-    @required TResult connectSuccessResult(),
-    @required TResult testConnectResult(bool isConnect),
-    @required TResult setupAppBarTitle(String title),
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(ServerHost server) setupEditMode,
+    required TResult Function(bool isEnable) buttonEnable,
+    required TResult Function() connectSuccessResult,
+    required TResult Function(bool isConnect) testConnectResult,
+    required TResult Function(String title) setupAppBarTitle,
   }) {
-    assert(initial != null);
-    assert(setupEditMode != null);
-    assert(buttonEnable != null);
-    assert(connectSuccessResult != null);
-    assert(testConnectResult != null);
-    assert(setupAppBarTitle != null);
     return initial();
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult initial(),
-    TResult setupEditMode(ServerHost server),
-    TResult buttonEnable(bool isEnable),
-    TResult connectSuccessResult(),
-    TResult testConnectResult(bool isConnect),
-    TResult setupAppBarTitle(String title),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(ServerHost server)? setupEditMode,
+    TResult Function(bool isEnable)? buttonEnable,
+    TResult Function()? connectSuccessResult,
+    TResult Function(bool isConnect)? testConnectResult,
+    TResult Function(String title)? setupAppBarTitle,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (initial != null) {
       return initial();
     }
@@ -1086,35 +1054,29 @@ class _$InitialAddServerState extends InitialAddServerState
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult initial(InitialAddServerState value),
-    @required TResult setupEditMode(SetupEditModeState value),
-    @required TResult buttonEnable(ButtoinEnableState value),
-    @required TResult connectSuccessResult(ConnectSuccessResultState value),
-    @required TResult testConnectResult(TestConnectState value),
-    @required TResult setupAppBarTitle(AppBarTitleState value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitialAddServerState value) initial,
+    required TResult Function(SetupEditModeState value) setupEditMode,
+    required TResult Function(ButtoinEnableState value) buttonEnable,
+    required TResult Function(ConnectSuccessResultState value)
+        connectSuccessResult,
+    required TResult Function(TestConnectState value) testConnectResult,
+    required TResult Function(AppBarTitleState value) setupAppBarTitle,
   }) {
-    assert(initial != null);
-    assert(setupEditMode != null);
-    assert(buttonEnable != null);
-    assert(connectSuccessResult != null);
-    assert(testConnectResult != null);
-    assert(setupAppBarTitle != null);
     return initial(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult initial(InitialAddServerState value),
-    TResult setupEditMode(SetupEditModeState value),
-    TResult buttonEnable(ButtoinEnableState value),
-    TResult connectSuccessResult(ConnectSuccessResultState value),
-    TResult testConnectResult(TestConnectState value),
-    TResult setupAppBarTitle(AppBarTitleState value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitialAddServerState value)? initial,
+    TResult Function(SetupEditModeState value)? setupEditMode,
+    TResult Function(ButtoinEnableState value)? buttonEnable,
+    TResult Function(ConnectSuccessResultState value)? connectSuccessResult,
+    TResult Function(TestConnectState value)? testConnectResult,
+    TResult Function(AppBarTitleState value)? setupAppBarTitle,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (initial != null) {
       return initial(this);
     }
@@ -1123,8 +1085,9 @@ class _$InitialAddServerState extends InitialAddServerState
 }
 
 abstract class InitialAddServerState extends AddServerState {
-  const InitialAddServerState._() : super._();
   const factory InitialAddServerState() = _$InitialAddServerState;
+
+  const InitialAddServerState._() : super._();
 }
 
 /// @nodoc
@@ -1148,10 +1111,13 @@ class _$SetupEditModeStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object server = freezed,
+    Object? server = freezed,
   }) {
     return _then(SetupEditModeState(
-      server == freezed ? _value.server : server as ServerHost,
+      server == freezed
+          ? _value.server
+          : server // ignore: cast_nullable_to_non_nullable
+              as ServerHost,
     ));
   }
 }
@@ -1159,9 +1125,7 @@ class _$SetupEditModeStateCopyWithImpl<$Res>
 /// @nodoc
 class _$SetupEditModeState extends SetupEditModeState
     with DiagnosticableTreeMixin {
-  const _$SetupEditModeState(this.server)
-      : assert(server != null),
-        super._();
+  const _$SetupEditModeState(this.server) : super._();
 
   @override
   final ServerHost server;
@@ -1198,35 +1162,28 @@ class _$SetupEditModeState extends SetupEditModeState
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult initial(),
-    @required TResult setupEditMode(ServerHost server),
-    @required TResult buttonEnable(bool isEnable),
-    @required TResult connectSuccessResult(),
-    @required TResult testConnectResult(bool isConnect),
-    @required TResult setupAppBarTitle(String title),
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(ServerHost server) setupEditMode,
+    required TResult Function(bool isEnable) buttonEnable,
+    required TResult Function() connectSuccessResult,
+    required TResult Function(bool isConnect) testConnectResult,
+    required TResult Function(String title) setupAppBarTitle,
   }) {
-    assert(initial != null);
-    assert(setupEditMode != null);
-    assert(buttonEnable != null);
-    assert(connectSuccessResult != null);
-    assert(testConnectResult != null);
-    assert(setupAppBarTitle != null);
     return setupEditMode(server);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult initial(),
-    TResult setupEditMode(ServerHost server),
-    TResult buttonEnable(bool isEnable),
-    TResult connectSuccessResult(),
-    TResult testConnectResult(bool isConnect),
-    TResult setupAppBarTitle(String title),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(ServerHost server)? setupEditMode,
+    TResult Function(bool isEnable)? buttonEnable,
+    TResult Function()? connectSuccessResult,
+    TResult Function(bool isConnect)? testConnectResult,
+    TResult Function(String title)? setupAppBarTitle,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (setupEditMode != null) {
       return setupEditMode(server);
     }
@@ -1235,35 +1192,29 @@ class _$SetupEditModeState extends SetupEditModeState
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult initial(InitialAddServerState value),
-    @required TResult setupEditMode(SetupEditModeState value),
-    @required TResult buttonEnable(ButtoinEnableState value),
-    @required TResult connectSuccessResult(ConnectSuccessResultState value),
-    @required TResult testConnectResult(TestConnectState value),
-    @required TResult setupAppBarTitle(AppBarTitleState value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitialAddServerState value) initial,
+    required TResult Function(SetupEditModeState value) setupEditMode,
+    required TResult Function(ButtoinEnableState value) buttonEnable,
+    required TResult Function(ConnectSuccessResultState value)
+        connectSuccessResult,
+    required TResult Function(TestConnectState value) testConnectResult,
+    required TResult Function(AppBarTitleState value) setupAppBarTitle,
   }) {
-    assert(initial != null);
-    assert(setupEditMode != null);
-    assert(buttonEnable != null);
-    assert(connectSuccessResult != null);
-    assert(testConnectResult != null);
-    assert(setupAppBarTitle != null);
     return setupEditMode(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult initial(InitialAddServerState value),
-    TResult setupEditMode(SetupEditModeState value),
-    TResult buttonEnable(ButtoinEnableState value),
-    TResult connectSuccessResult(ConnectSuccessResultState value),
-    TResult testConnectResult(TestConnectState value),
-    TResult setupAppBarTitle(AppBarTitleState value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitialAddServerState value)? initial,
+    TResult Function(SetupEditModeState value)? setupEditMode,
+    TResult Function(ButtoinEnableState value)? buttonEnable,
+    TResult Function(ConnectSuccessResultState value)? connectSuccessResult,
+    TResult Function(TestConnectState value)? testConnectResult,
+    TResult Function(AppBarTitleState value)? setupAppBarTitle,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (setupEditMode != null) {
       return setupEditMode(this);
     }
@@ -1272,12 +1223,15 @@ class _$SetupEditModeState extends SetupEditModeState
 }
 
 abstract class SetupEditModeState extends AddServerState {
-  const SetupEditModeState._() : super._();
   const factory SetupEditModeState(ServerHost server) = _$SetupEditModeState;
 
-  ServerHost get server;
+  const SetupEditModeState._() : super._();
+
+  ServerHost get server => throw _privateConstructorUsedError;
+
   @JsonKey(ignore: true)
-  $SetupEditModeStateCopyWith<SetupEditModeState> get copyWith;
+  $SetupEditModeStateCopyWith<SetupEditModeState> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1301,10 +1255,13 @@ class _$ButtoinEnableStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object isEnable = freezed,
+    Object? isEnable = freezed,
   }) {
     return _then(ButtoinEnableState(
-      isEnable == freezed ? _value.isEnable : isEnable as bool,
+      isEnable == freezed
+          ? _value.isEnable
+          : isEnable // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -1312,9 +1269,7 @@ class _$ButtoinEnableStateCopyWithImpl<$Res>
 /// @nodoc
 class _$ButtoinEnableState extends ButtoinEnableState
     with DiagnosticableTreeMixin {
-  const _$ButtoinEnableState(this.isEnable)
-      : assert(isEnable != null),
-        super._();
+  const _$ButtoinEnableState(this.isEnable) : super._();
 
   @override
   final bool isEnable;
@@ -1352,35 +1307,28 @@ class _$ButtoinEnableState extends ButtoinEnableState
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult initial(),
-    @required TResult setupEditMode(ServerHost server),
-    @required TResult buttonEnable(bool isEnable),
-    @required TResult connectSuccessResult(),
-    @required TResult testConnectResult(bool isConnect),
-    @required TResult setupAppBarTitle(String title),
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(ServerHost server) setupEditMode,
+    required TResult Function(bool isEnable) buttonEnable,
+    required TResult Function() connectSuccessResult,
+    required TResult Function(bool isConnect) testConnectResult,
+    required TResult Function(String title) setupAppBarTitle,
   }) {
-    assert(initial != null);
-    assert(setupEditMode != null);
-    assert(buttonEnable != null);
-    assert(connectSuccessResult != null);
-    assert(testConnectResult != null);
-    assert(setupAppBarTitle != null);
     return buttonEnable(isEnable);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult initial(),
-    TResult setupEditMode(ServerHost server),
-    TResult buttonEnable(bool isEnable),
-    TResult connectSuccessResult(),
-    TResult testConnectResult(bool isConnect),
-    TResult setupAppBarTitle(String title),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(ServerHost server)? setupEditMode,
+    TResult Function(bool isEnable)? buttonEnable,
+    TResult Function()? connectSuccessResult,
+    TResult Function(bool isConnect)? testConnectResult,
+    TResult Function(String title)? setupAppBarTitle,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (buttonEnable != null) {
       return buttonEnable(isEnable);
     }
@@ -1389,35 +1337,29 @@ class _$ButtoinEnableState extends ButtoinEnableState
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult initial(InitialAddServerState value),
-    @required TResult setupEditMode(SetupEditModeState value),
-    @required TResult buttonEnable(ButtoinEnableState value),
-    @required TResult connectSuccessResult(ConnectSuccessResultState value),
-    @required TResult testConnectResult(TestConnectState value),
-    @required TResult setupAppBarTitle(AppBarTitleState value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitialAddServerState value) initial,
+    required TResult Function(SetupEditModeState value) setupEditMode,
+    required TResult Function(ButtoinEnableState value) buttonEnable,
+    required TResult Function(ConnectSuccessResultState value)
+        connectSuccessResult,
+    required TResult Function(TestConnectState value) testConnectResult,
+    required TResult Function(AppBarTitleState value) setupAppBarTitle,
   }) {
-    assert(initial != null);
-    assert(setupEditMode != null);
-    assert(buttonEnable != null);
-    assert(connectSuccessResult != null);
-    assert(testConnectResult != null);
-    assert(setupAppBarTitle != null);
     return buttonEnable(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult initial(InitialAddServerState value),
-    TResult setupEditMode(SetupEditModeState value),
-    TResult buttonEnable(ButtoinEnableState value),
-    TResult connectSuccessResult(ConnectSuccessResultState value),
-    TResult testConnectResult(TestConnectState value),
-    TResult setupAppBarTitle(AppBarTitleState value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitialAddServerState value)? initial,
+    TResult Function(SetupEditModeState value)? setupEditMode,
+    TResult Function(ButtoinEnableState value)? buttonEnable,
+    TResult Function(ConnectSuccessResultState value)? connectSuccessResult,
+    TResult Function(TestConnectState value)? testConnectResult,
+    TResult Function(AppBarTitleState value)? setupAppBarTitle,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (buttonEnable != null) {
       return buttonEnable(this);
     }
@@ -1426,12 +1368,15 @@ class _$ButtoinEnableState extends ButtoinEnableState
 }
 
 abstract class ButtoinEnableState extends AddServerState {
-  const ButtoinEnableState._() : super._();
   const factory ButtoinEnableState(bool isEnable) = _$ButtoinEnableState;
 
-  bool get isEnable;
+  const ButtoinEnableState._() : super._();
+
+  bool get isEnable => throw _privateConstructorUsedError;
+
   @JsonKey(ignore: true)
-  $ButtoinEnableStateCopyWith<ButtoinEnableState> get copyWith;
+  $ButtoinEnableStateCopyWith<ButtoinEnableState> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1481,35 +1426,28 @@ class _$ConnectSuccessResultState extends ConnectSuccessResultState
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult initial(),
-    @required TResult setupEditMode(ServerHost server),
-    @required TResult buttonEnable(bool isEnable),
-    @required TResult connectSuccessResult(),
-    @required TResult testConnectResult(bool isConnect),
-    @required TResult setupAppBarTitle(String title),
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(ServerHost server) setupEditMode,
+    required TResult Function(bool isEnable) buttonEnable,
+    required TResult Function() connectSuccessResult,
+    required TResult Function(bool isConnect) testConnectResult,
+    required TResult Function(String title) setupAppBarTitle,
   }) {
-    assert(initial != null);
-    assert(setupEditMode != null);
-    assert(buttonEnable != null);
-    assert(connectSuccessResult != null);
-    assert(testConnectResult != null);
-    assert(setupAppBarTitle != null);
     return connectSuccessResult();
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult initial(),
-    TResult setupEditMode(ServerHost server),
-    TResult buttonEnable(bool isEnable),
-    TResult connectSuccessResult(),
-    TResult testConnectResult(bool isConnect),
-    TResult setupAppBarTitle(String title),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(ServerHost server)? setupEditMode,
+    TResult Function(bool isEnable)? buttonEnable,
+    TResult Function()? connectSuccessResult,
+    TResult Function(bool isConnect)? testConnectResult,
+    TResult Function(String title)? setupAppBarTitle,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (connectSuccessResult != null) {
       return connectSuccessResult();
     }
@@ -1518,35 +1456,29 @@ class _$ConnectSuccessResultState extends ConnectSuccessResultState
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult initial(InitialAddServerState value),
-    @required TResult setupEditMode(SetupEditModeState value),
-    @required TResult buttonEnable(ButtoinEnableState value),
-    @required TResult connectSuccessResult(ConnectSuccessResultState value),
-    @required TResult testConnectResult(TestConnectState value),
-    @required TResult setupAppBarTitle(AppBarTitleState value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitialAddServerState value) initial,
+    required TResult Function(SetupEditModeState value) setupEditMode,
+    required TResult Function(ButtoinEnableState value) buttonEnable,
+    required TResult Function(ConnectSuccessResultState value)
+        connectSuccessResult,
+    required TResult Function(TestConnectState value) testConnectResult,
+    required TResult Function(AppBarTitleState value) setupAppBarTitle,
   }) {
-    assert(initial != null);
-    assert(setupEditMode != null);
-    assert(buttonEnable != null);
-    assert(connectSuccessResult != null);
-    assert(testConnectResult != null);
-    assert(setupAppBarTitle != null);
     return connectSuccessResult(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult initial(InitialAddServerState value),
-    TResult setupEditMode(SetupEditModeState value),
-    TResult buttonEnable(ButtoinEnableState value),
-    TResult connectSuccessResult(ConnectSuccessResultState value),
-    TResult testConnectResult(TestConnectState value),
-    TResult setupAppBarTitle(AppBarTitleState value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitialAddServerState value)? initial,
+    TResult Function(SetupEditModeState value)? setupEditMode,
+    TResult Function(ButtoinEnableState value)? buttonEnable,
+    TResult Function(ConnectSuccessResultState value)? connectSuccessResult,
+    TResult Function(TestConnectState value)? testConnectResult,
+    TResult Function(AppBarTitleState value)? setupAppBarTitle,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (connectSuccessResult != null) {
       return connectSuccessResult(this);
     }
@@ -1555,8 +1487,9 @@ class _$ConnectSuccessResultState extends ConnectSuccessResultState
 }
 
 abstract class ConnectSuccessResultState extends AddServerState {
-  const ConnectSuccessResultState._() : super._();
   const factory ConnectSuccessResultState() = _$ConnectSuccessResultState;
+
+  const ConnectSuccessResultState._() : super._();
 }
 
 /// @nodoc
@@ -1580,19 +1513,20 @@ class _$TestConnectStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object isConnect = freezed,
+    Object? isConnect = freezed,
   }) {
     return _then(TestConnectState(
-      isConnect == freezed ? _value.isConnect : isConnect as bool,
+      isConnect == freezed
+          ? _value.isConnect
+          : isConnect // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
 
 /// @nodoc
 class _$TestConnectState extends TestConnectState with DiagnosticableTreeMixin {
-  const _$TestConnectState(this.isConnect)
-      : assert(isConnect != null),
-        super._();
+  const _$TestConnectState(this.isConnect) : super._();
 
   @override
   final bool isConnect;
@@ -1630,35 +1564,28 @@ class _$TestConnectState extends TestConnectState with DiagnosticableTreeMixin {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult initial(),
-    @required TResult setupEditMode(ServerHost server),
-    @required TResult buttonEnable(bool isEnable),
-    @required TResult connectSuccessResult(),
-    @required TResult testConnectResult(bool isConnect),
-    @required TResult setupAppBarTitle(String title),
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(ServerHost server) setupEditMode,
+    required TResult Function(bool isEnable) buttonEnable,
+    required TResult Function() connectSuccessResult,
+    required TResult Function(bool isConnect) testConnectResult,
+    required TResult Function(String title) setupAppBarTitle,
   }) {
-    assert(initial != null);
-    assert(setupEditMode != null);
-    assert(buttonEnable != null);
-    assert(connectSuccessResult != null);
-    assert(testConnectResult != null);
-    assert(setupAppBarTitle != null);
     return testConnectResult(isConnect);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult initial(),
-    TResult setupEditMode(ServerHost server),
-    TResult buttonEnable(bool isEnable),
-    TResult connectSuccessResult(),
-    TResult testConnectResult(bool isConnect),
-    TResult setupAppBarTitle(String title),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(ServerHost server)? setupEditMode,
+    TResult Function(bool isEnable)? buttonEnable,
+    TResult Function()? connectSuccessResult,
+    TResult Function(bool isConnect)? testConnectResult,
+    TResult Function(String title)? setupAppBarTitle,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (testConnectResult != null) {
       return testConnectResult(isConnect);
     }
@@ -1667,35 +1594,29 @@ class _$TestConnectState extends TestConnectState with DiagnosticableTreeMixin {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult initial(InitialAddServerState value),
-    @required TResult setupEditMode(SetupEditModeState value),
-    @required TResult buttonEnable(ButtoinEnableState value),
-    @required TResult connectSuccessResult(ConnectSuccessResultState value),
-    @required TResult testConnectResult(TestConnectState value),
-    @required TResult setupAppBarTitle(AppBarTitleState value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitialAddServerState value) initial,
+    required TResult Function(SetupEditModeState value) setupEditMode,
+    required TResult Function(ButtoinEnableState value) buttonEnable,
+    required TResult Function(ConnectSuccessResultState value)
+        connectSuccessResult,
+    required TResult Function(TestConnectState value) testConnectResult,
+    required TResult Function(AppBarTitleState value) setupAppBarTitle,
   }) {
-    assert(initial != null);
-    assert(setupEditMode != null);
-    assert(buttonEnable != null);
-    assert(connectSuccessResult != null);
-    assert(testConnectResult != null);
-    assert(setupAppBarTitle != null);
     return testConnectResult(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult initial(InitialAddServerState value),
-    TResult setupEditMode(SetupEditModeState value),
-    TResult buttonEnable(ButtoinEnableState value),
-    TResult connectSuccessResult(ConnectSuccessResultState value),
-    TResult testConnectResult(TestConnectState value),
-    TResult setupAppBarTitle(AppBarTitleState value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitialAddServerState value)? initial,
+    TResult Function(SetupEditModeState value)? setupEditMode,
+    TResult Function(ButtoinEnableState value)? buttonEnable,
+    TResult Function(ConnectSuccessResultState value)? connectSuccessResult,
+    TResult Function(TestConnectState value)? testConnectResult,
+    TResult Function(AppBarTitleState value)? setupAppBarTitle,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (testConnectResult != null) {
       return testConnectResult(this);
     }
@@ -1704,12 +1625,15 @@ class _$TestConnectState extends TestConnectState with DiagnosticableTreeMixin {
 }
 
 abstract class TestConnectState extends AddServerState {
-  const TestConnectState._() : super._();
   const factory TestConnectState(bool isConnect) = _$TestConnectState;
 
-  bool get isConnect;
+  const TestConnectState._() : super._();
+
+  bool get isConnect => throw _privateConstructorUsedError;
+
   @JsonKey(ignore: true)
-  $TestConnectStateCopyWith<TestConnectState> get copyWith;
+  $TestConnectStateCopyWith<TestConnectState> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1733,19 +1657,20 @@ class _$AppBarTitleStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object title = freezed,
+    Object? title = freezed,
   }) {
     return _then(AppBarTitleState(
-      title == freezed ? _value.title : title as String,
+      title == freezed
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
 
 /// @nodoc
 class _$AppBarTitleState extends AppBarTitleState with DiagnosticableTreeMixin {
-  const _$AppBarTitleState(this.title)
-      : assert(title != null),
-        super._();
+  const _$AppBarTitleState(this.title) : super._();
 
   @override
   final String title;
@@ -1782,35 +1707,28 @@ class _$AppBarTitleState extends AppBarTitleState with DiagnosticableTreeMixin {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult initial(),
-    @required TResult setupEditMode(ServerHost server),
-    @required TResult buttonEnable(bool isEnable),
-    @required TResult connectSuccessResult(),
-    @required TResult testConnectResult(bool isConnect),
-    @required TResult setupAppBarTitle(String title),
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(ServerHost server) setupEditMode,
+    required TResult Function(bool isEnable) buttonEnable,
+    required TResult Function() connectSuccessResult,
+    required TResult Function(bool isConnect) testConnectResult,
+    required TResult Function(String title) setupAppBarTitle,
   }) {
-    assert(initial != null);
-    assert(setupEditMode != null);
-    assert(buttonEnable != null);
-    assert(connectSuccessResult != null);
-    assert(testConnectResult != null);
-    assert(setupAppBarTitle != null);
     return setupAppBarTitle(title);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult initial(),
-    TResult setupEditMode(ServerHost server),
-    TResult buttonEnable(bool isEnable),
-    TResult connectSuccessResult(),
-    TResult testConnectResult(bool isConnect),
-    TResult setupAppBarTitle(String title),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(ServerHost server)? setupEditMode,
+    TResult Function(bool isEnable)? buttonEnable,
+    TResult Function()? connectSuccessResult,
+    TResult Function(bool isConnect)? testConnectResult,
+    TResult Function(String title)? setupAppBarTitle,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (setupAppBarTitle != null) {
       return setupAppBarTitle(title);
     }
@@ -1819,35 +1737,29 @@ class _$AppBarTitleState extends AppBarTitleState with DiagnosticableTreeMixin {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult initial(InitialAddServerState value),
-    @required TResult setupEditMode(SetupEditModeState value),
-    @required TResult buttonEnable(ButtoinEnableState value),
-    @required TResult connectSuccessResult(ConnectSuccessResultState value),
-    @required TResult testConnectResult(TestConnectState value),
-    @required TResult setupAppBarTitle(AppBarTitleState value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitialAddServerState value) initial,
+    required TResult Function(SetupEditModeState value) setupEditMode,
+    required TResult Function(ButtoinEnableState value) buttonEnable,
+    required TResult Function(ConnectSuccessResultState value)
+        connectSuccessResult,
+    required TResult Function(TestConnectState value) testConnectResult,
+    required TResult Function(AppBarTitleState value) setupAppBarTitle,
   }) {
-    assert(initial != null);
-    assert(setupEditMode != null);
-    assert(buttonEnable != null);
-    assert(connectSuccessResult != null);
-    assert(testConnectResult != null);
-    assert(setupAppBarTitle != null);
     return setupAppBarTitle(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult initial(InitialAddServerState value),
-    TResult setupEditMode(SetupEditModeState value),
-    TResult buttonEnable(ButtoinEnableState value),
-    TResult connectSuccessResult(ConnectSuccessResultState value),
-    TResult testConnectResult(TestConnectState value),
-    TResult setupAppBarTitle(AppBarTitleState value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitialAddServerState value)? initial,
+    TResult Function(SetupEditModeState value)? setupEditMode,
+    TResult Function(ButtoinEnableState value)? buttonEnable,
+    TResult Function(ConnectSuccessResultState value)? connectSuccessResult,
+    TResult Function(TestConnectState value)? testConnectResult,
+    TResult Function(AppBarTitleState value)? setupAppBarTitle,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (setupAppBarTitle != null) {
       return setupAppBarTitle(this);
     }
@@ -1856,10 +1768,13 @@ class _$AppBarTitleState extends AppBarTitleState with DiagnosticableTreeMixin {
 }
 
 abstract class AppBarTitleState extends AddServerState {
-  const AppBarTitleState._() : super._();
   const factory AppBarTitleState(String title) = _$AppBarTitleState;
 
-  String get title;
+  const AppBarTitleState._() : super._();
+
+  String get title => throw _privateConstructorUsedError;
+
   @JsonKey(ignore: true)
-  $AppBarTitleStateCopyWith<AppBarTitleState> get copyWith;
+  $AppBarTitleStateCopyWith<AppBarTitleState> get copyWith =>
+      throw _privateConstructorUsedError;
 }

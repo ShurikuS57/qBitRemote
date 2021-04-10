@@ -20,7 +20,7 @@ class _ServerListPageState extends State<ServerListPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(AppLocalizations.of(context).serverList),
+        title: Text(AppLocalizations.of(context)?.serverList ?? ""),
         actions: [
           IconButton(
             icon: Icon(Icons.bug_report_outlined),
@@ -50,7 +50,7 @@ class _ServerListPageState extends State<ServerListPage> {
 }
 
 class _ServerListView extends StatelessWidget {
-  const _ServerListView({Key key}) : super(key: key);
+  const _ServerListView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

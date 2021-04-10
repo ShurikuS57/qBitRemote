@@ -24,7 +24,7 @@ class TorrentListScreen extends StatefulWidget {
 }
 
 class _TorrentListScreenState extends State<TorrentListScreen> {
-  Timer _updateTimer;
+  Timer? _updateTimer;
   final _resumeDetectorKey = UniqueKey();
 
   @override
@@ -155,23 +155,18 @@ class _TorrentListScreenState extends State<TorrentListScreen> {
       onTap: () {
         Navigator.pushNamed(context, Routes.serverListPage);
       },
-      child: BlocConsumer<TorrentListCubit, TorrentListState>(
-        buildWhen: (context, state) {
-          return state is ServerTitle;
-        },
-        builder: (context, state) {
-          if (state is ServerTitle) {
-            title = state.host.name + "\n" + state.host.host;
-          }
-          return Text(
-            title,
-            style: TextStyle(fontSize: 16),
-          );
-        },
-        listener: (context, state) {
-          return SizedBox();
-        },
-      ),
+      child: BlocBuilder<TorrentListCubit, TorrentListState>(
+          buildWhen: (context, state) {
+        return state is ServerTitle;
+      }, builder: (context, state) {
+        if (state is ServerTitle) {
+          title = state.host.name + "\n" + state.host.host;
+        }
+        return Text(
+          title,
+          style: TextStyle(fontSize: 16),
+        );
+      }),
     );
   }
 
@@ -201,7 +196,7 @@ class _TorrentListScreenState extends State<TorrentListScreen> {
   void _handleQueuePopupMenuItemClick(String value) {
     final selectedItems =
         context.read<MultiSelectCubit>().getSelectedItems<TorrentEntity>();
-    SelectedPopupMenuType priority;
+    SelectedPopupMenuType priority = SelectedPopupMenuType.QueueMax;
     if (value == SelectedPopupMenuType.QueueMax.value) {
       priority = SelectedPopupMenuType.QueueMax;
     } else if (value == SelectedPopupMenuType.QueueUp.value) {
@@ -217,10 +212,10 @@ class _TorrentListScreenState extends State<TorrentListScreen> {
 
   void _showDeleteDialog(BuildContext context, List<TorrentEntity> list) {
     MaterialDialog(context)
-      ..title = AppLocalizations.of(context).questionDelete
-      ..body = AppLocalizations.of(context).questionDeleteItems
-      ..positiveButtonText = AppLocalizations.of(context).delete
-      ..negativeButtonText = AppLocalizations.of(context).cancel
+      ..title = AppLocalizations.of(context)?.questionDelete ?? ""
+      ..body = AppLocalizations.of(context)?.questionDeleteItems ?? ""
+      ..positiveButtonText = AppLocalizations.of(context)?.delete ?? ""
+      ..negativeButtonText = AppLocalizations.of(context)?.cancel ?? ""
       ..setPositiveButtonCallback((dialog) {
         final isDeleteAllData = dialog.checkboxList.first.isChecked;
         context.read<TorrentListCubit>().deleteTorrents(list, isDeleteAllData);
@@ -229,14 +224,15 @@ class _TorrentListScreenState extends State<TorrentListScreen> {
       ..checkboxList = [
         CheckboxEntity(
             id: "1",
-            title: Text(AppLocalizations.of(context).questionDeleteWithData))
+            title: Text(
+                AppLocalizations.of(context)?.questionDeleteWithData ?? ""))
       ]
       ..show();
   }
 }
 
 class _TorrentsScreenView extends StatelessWidget {
-  const _TorrentsScreenView({Key key}) : super(key: key);
+  const _TorrentsScreenView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

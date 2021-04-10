@@ -18,7 +18,7 @@ class SplashPage extends StatelessWidget {
         } else if (state is ServerConnectSuccess) {
           if (NavigationService.addTorrentArg != null) {
             Navigator.pushReplacementNamed(context, Routes.addTorrentPage,
-                arguments: NavigationService.addTorrentArg.copyWith());
+                arguments: NavigationService.addTorrentArg?.copyWith());
             NavigationService.addTorrentArg = null;
           } else {
             Navigator.pushReplacementNamed(context, Routes.torrentsPage);

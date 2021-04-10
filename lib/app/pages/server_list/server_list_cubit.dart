@@ -5,7 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:qBitRemote/api/http.dart';
-import 'package:qBitRemote/api/qbitremote_repository.dart';
+import 'package:qBitRemote/api/remote_repository.dart';
 import 'package:qBitRemote/local/models/server_host.dart';
 import 'package:qBitRemote/repo/local_repository.dart';
 
@@ -36,7 +36,7 @@ class HaveSelectedServer extends ServerListState {
 
 class ServerListCubit extends Cubit<ServerListState> {
   ServerListCubit(
-      {@required this.localRepository, @required this.qBittorentRepository})
+      {required this.localRepository, required this.qBittorentRepository})
       : super(ServerListInitial()) {
     loadServerList();
 
@@ -47,7 +47,7 @@ class ServerListCubit extends Cubit<ServerListState> {
   }
 
   final LocalRepository localRepository;
-  final QBitRemoteRepository qBittorentRepository;
+  final RemoteRepository qBittorentRepository;
 
   Future<void> loadServerList() async {
     List<ServerHost> servers = await localRepository.loadServerHostList();
@@ -91,7 +91,7 @@ class ServerListCubit extends Cubit<ServerListState> {
     return emit(HaveSelectedServer(serverHost != null));
   }
 
-  Future<ServerHost> getCurrentServerHost() async {
+  Future<ServerHost?> getCurrentServerHost() async {
     return await localRepository.findSelectedServerHost();
   }
 }
