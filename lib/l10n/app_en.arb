@@ -106,5 +106,17 @@
   "foundMagnetLink": "Found magnet link on the clipboard.",
   "@foundMagnetLink": {},
   "add": "Add",
-  "@add": {}
+  "@add": {},
+  "appPrefs": "Application preferences",
+  "@appPrefs": {},
+  "serverPrefs": "Server preferences",
+  "@serverPrefs": {},
+  "defaultSettings": "Default settings",
+  "@defaultSettings": {},
+  "sequentialDownload": "Sequential download",
+  "@sequentialDownload": {},
+  "downloadFirst": "Download first and last pieces first",
+  "@downloadFirst": {},
+  "options": "Options",
+  "@options": {}
 }

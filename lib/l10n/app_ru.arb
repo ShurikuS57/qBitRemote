@@ -93,5 +93,17 @@
   "foundMagnetLink": "Найдена magnet ссылка в буфере обмена.",
   "@foundMagnetLink": {},
   "add": "Добавить",
-  "@add": {}
+  "@add": {},
+  "appPrefs": "Настройки приложения",
+  "@appPrefs": {},
+  "serverPrefs": "Настройки сервера",
+  "@serverPrefs": {},
+  "defaultSettings": "Настройки по умолчанию",
+  "@defaultSettings": {},
+  "sequentialDownload": "Последовательная загрузка",
+  "@sequentialDownload": {},
+  "downloadFirst": "Сначала загрузите первую и последнюю части",
+  "@downloadFirst": {},
+  "options": "Опции",
+  "@options": {}
 }

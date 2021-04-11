@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:focus_detector/focus_detector.dart';
 import 'package:qBitRemote/app/pages/torrent_info/torrent_file_page.dart';
 import 'package:qBitRemote/app/pages/torrent_list/torrents_list_cubit.dart';
@@ -73,7 +72,7 @@ class _TorrentDetailsScreenState extends State<TorrentDetailsScreen> {
 
   AppBar _buildAppBar(BuildContext context) {
     return AppBar(
-      title: Text(AppLocalizations.of(context)?.torrentInfo ?? ""),
+      title: Text(context.intl().torrentInfo),
       actions: [
         IconButton(
           icon: Icon(Icons.play_arrow),
@@ -111,10 +110,10 @@ class _TorrentDetailsScreenState extends State<TorrentDetailsScreen> {
 
   void _showDeleteDialog(BuildContext context, String _hash) {
     MaterialDialog(context)
-      ..title = AppLocalizations.of(context)?.questionDeleteTorrent ?? ""
-      ..body = AppLocalizations.of(context)?.questionSureDelete ?? ""
-      ..positiveButtonText = AppLocalizations.of(context)?.delete ?? ""
-      ..negativeButtonText = AppLocalizations.of(context)?.cancel ?? ""
+      ..title = context.intl().questionDeleteTorrent
+      ..body = context.intl().questionSureDelete
+      ..positiveButtonText = context.intl().delete
+      ..negativeButtonText = context.intl().cancel
       ..setPositiveButtonCallback((dialog) {
         final isDeleteAllData = dialog.checkboxList.first.isChecked;
         context
@@ -123,9 +122,7 @@ class _TorrentDetailsScreenState extends State<TorrentDetailsScreen> {
       })
       ..checkboxList = [
         CheckboxEntity(
-            id: "1",
-            title: Text(
-                AppLocalizations.of(context)?.questionDeleteWithData ?? ""))
+            id: "1", title: Text(context.intl().questionDeleteWithData))
       ]
       ..show();
   }

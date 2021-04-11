@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:qBitRemote/app/pages/app_settings/local/app_prefs_bloc.dart';
 import 'package:qBitRemote/app/widgets/checkbox/check_box_tile.dart';
 import 'package:qBitRemote/app/widgets/input_text.dart';
 import 'package:qBitRemote/commons/colors.dart';
+import 'package:qBitRemote/commons/extensions/build_context_ext.dart';
 import 'package:qBitRemote/local/models/app_prefs.dart';
 
 class AppPrefsPage extends StatefulWidget {
@@ -30,23 +30,23 @@ class _AppPrefsPageState extends State<AppPrefsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Local settings"),
+        title: Text(context.intl().appPrefs),
       ),
       backgroundColor: AppColors.primaryBackground,
-      body: _buildBody(),
+      body: _buildBody(context),
     );
   }
 
-  Widget _buildBody() {
+  Widget _buildBody(BuildContext context) {
     return ListView(
       padding: const EdgeInsets.all(8.0),
       children: [
-        _buildAppSettingsCard(),
+        _buildAppSettingsCard(context),
       ],
     );
   }
 
-  Widget _buildAppSettingsCard() {
+  Widget _buildAppSettingsCard(BuildContext context) {
     return Card(
       child: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -61,7 +61,7 @@ class _AppPrefsPageState extends State<AppPrefsPage> {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Text(
-                  AppLocalizations.of(context)?.applicationSettings ?? "",
+                  context.intl().applicationSettings,
                   style: TextStyle(
                       fontWeight: FontWeight.w700,
                       fontSize: 20,
@@ -70,7 +70,7 @@ class _AppPrefsPageState extends State<AppPrefsPage> {
                 SizedBox(
                   height: 8,
                 ),
-                Text(AppLocalizations.of(context)?.timeoutUpdate ?? "",
+                Text(context.intl().timeoutUpdate,
                     style: TextStyle(
                         fontWeight: FontWeight.w400,
                         fontSize: 14,
@@ -88,7 +88,7 @@ class _AppPrefsPageState extends State<AppPrefsPage> {
                 SizedBox(
                   height: 8,
                 ),
-                Text("Default settings",
+                Text(context.intl().defaultSettings,
                     style: TextStyle(
                         fontWeight: FontWeight.w700,
                         fontSize: 20,
@@ -96,7 +96,7 @@ class _AppPrefsPageState extends State<AppPrefsPage> {
                 CheckBoxTile(
                   contentPadding:
                       EdgeInsets.symmetric(horizontal: 8, vertical: 0),
-                  title: Text("Sequential download",
+                  title: Text(context.intl().sequentialDownload,
                       style: TextStyle(
                           fontWeight: FontWeight.w400,
                           fontSize: 14,
@@ -110,7 +110,7 @@ class _AppPrefsPageState extends State<AppPrefsPage> {
                 CheckBoxTile(
                   contentPadding:
                       EdgeInsets.symmetric(horizontal: 8, vertical: 0),
-                  title: Text("Download first and last pieces first",
+                  title: Text(context.intl().downloadFirst,
                       style: TextStyle(
                           fontWeight: FontWeight.w400,
                           fontSize: 14,

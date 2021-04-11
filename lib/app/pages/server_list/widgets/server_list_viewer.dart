@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:qBitRemote/app/pages/add_server/add_server_page.dart';
 import 'package:qBitRemote/app/pages/server_list/server_list_cubit.dart';
 import 'package:qBitRemote/app/widgets/MaterialDialog.dart';
 import 'package:qBitRemote/commons/colors.dart';
+import 'package:qBitRemote/commons/extensions/build_context_ext.dart';
 import 'package:qBitRemote/local/models/server_host.dart';
 
 import '../../../../routes.dart';
@@ -76,13 +76,9 @@ class ServerListViewer extends StatelessWidget {
                         itemBuilder: (BuildContext context) =>
                         <PopupMenuEntry<int>>[
                           PopupMenuItem<int>(
-                              value: 1,
-                              child: Text(
-                                  AppLocalizations.of(context)?.edit ?? "")),
+                              value: 1, child: Text(context.intl().edit)),
                           PopupMenuItem<int>(
-                              value: 2,
-                              child: Text(
-                                  AppLocalizations.of(context)?.delete ?? "")),
+                              value: 2, child: Text(context.intl().delete)),
                         ],
                       ),
                     ],
@@ -96,11 +92,10 @@ class ServerListViewer extends StatelessWidget {
 
   void _showDeleteDialog(BuildContext context, ServerHost server) {
     MaterialDialog(context)
-      ..title = AppLocalizations.of(context)?.delete ?? ""
-      ..body =
-          AppLocalizations.of(context)?.questionYouWantDelete(server.name) ?? ""
-      ..positiveButtonText = AppLocalizations.of(context)?.ok ?? ""
-      ..negativeButtonText = AppLocalizations.of(context)?.cancel ?? ""
+      ..title = context.intl().delete
+      ..body = context.intl().questionYouWantDelete(server.name)
+      ..positiveButtonText = context.intl().ok
+      ..negativeButtonText = context.intl().cancel
       ..setPositiveButtonCallback((dialog) {
         context.read<ServerListCubit>().deleteServer(server);
       })

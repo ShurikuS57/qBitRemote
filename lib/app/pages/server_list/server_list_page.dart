@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:qBitRemote/app/pages/server_list/server_list_cubit.dart';
 import 'package:qBitRemote/app/utils/url_launcher.dart';
 import 'package:qBitRemote/commons/colors.dart';
+import 'package:qBitRemote/commons/extensions/build_context_ext.dart';
 import 'package:qBitRemote/routes.dart';
 
 import 'widgets/server_list_empty.dart';
@@ -20,7 +20,7 @@ class _ServerListPageState extends State<ServerListPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(AppLocalizations.of(context)?.serverList ?? ""),
+        title: Text(context.intl().serverList),
         actions: [
           IconButton(
             icon: Icon(Icons.bug_report_outlined),

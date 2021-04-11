@@ -6,6 +6,7 @@ import 'package:qBitRemote/app/pages/torrent_list/torrents_list_cubit.dart';
 import 'package:qBitRemote/app/utils/state_helper.dart';
 import 'package:qBitRemote/app/widgets/loader_layout.dart';
 import 'package:qBitRemote/commons/colors.dart';
+import 'package:qBitRemote/commons/extensions/build_context_ext.dart';
 import 'package:qBitRemote/commons/icons.dart';
 
 class TorrentInfoScreen extends StatefulWidget {
@@ -66,11 +67,9 @@ class _TorrentInfoScreenState extends State<TorrentInfoScreen> {
                       height: 20,
                     ),
                     _buildInfoText(
-                      AppLocalizations.of(context)?.fullSize ??
-                          "" + " " + torrent.size,
+                      context.intl().fullSize + " " + torrent.size,
                     ),
-                    _buildInfoText(AppLocalizations.of(context)?.hash ??
-                        "" + " " + torrent.hash),
+                    _buildInfoText(context.intl().hash + " " + torrent.hash),
                   ],
                 ),
               ),
@@ -80,7 +79,7 @@ class _TorrentInfoScreenState extends State<TorrentInfoScreen> {
       } else {
         return Center(
           child: Container(
-            child: Text(AppLocalizations.of(context)?.emptyTorrentInfo ?? ""),
+            child: Text(context.intl().emptyTorrentInfo),
           ),
         );
       }

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:qBitRemote/app/pages/add_server/add_server_bloc.dart';
 import 'package:qBitRemote/app/widgets/action_button.dart';
 import 'package:qBitRemote/app/widgets/input_text.dart';
@@ -58,7 +57,7 @@ class _AddServerPageState extends State<AddServerPage> {
           children: [
             InputText(
               controller: _nameController,
-              lableText: AppLocalizations.of(context)?.name ?? "",
+              lableText: context.intl().name,
               isEnableNextFocus: true,
               suffixIcon: Icons.title_outlined,
             ),
@@ -66,13 +65,13 @@ class _AddServerPageState extends State<AddServerPage> {
               height: 8,
             ),
             UrlFormField(_hostController, _hostInputController,
-                labelText: AppLocalizations.of(context)?.hostname ?? ""),
+                labelText: context.intl().hostname),
             Container(
               height: 8,
             ),
             InputText(
                 controller: _loginController,
-                lableText: AppLocalizations.of(context)?.username ?? "",
+                lableText: context.intl().username,
                 isEnableNextFocus: true,
                 suffixIcon: Icons.account_circle_outlined),
             Container(
@@ -80,7 +79,7 @@ class _AddServerPageState extends State<AddServerPage> {
             ),
             InputText(
               controller: _passwordController,
-              lableText: AppLocalizations.of(context)?.password ?? "",
+              lableText: context.intl().password,
               isEnableNextFocus: false,
               suffixIcon: Icons.lock_outline,
               obscureText: true,
@@ -103,13 +102,11 @@ class _AddServerPageState extends State<AddServerPage> {
           ScaffoldMessenger.of(context).hideCurrentSnackBar();
           if (state.isConnect) {
             ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-              content: Text(
-                  AppLocalizations.of(context)?.connectionSuccessful ?? ""),
+              content: Text(context.intl().connectionSuccessful),
             ));
           } else {
             ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-              content:
-                  Text(AppLocalizations.of(context)?.connectionError ?? ""),
+              content: Text(context.intl().connectionError),
             ));
           }
         }
@@ -125,7 +122,7 @@ class _AddServerPageState extends State<AddServerPage> {
           child: Wrap(
             children: [
               ActionButton(
-                text: AppLocalizations.of(context)?.testConnect ?? "",
+                text: context.intl().testConnect,
                 isTextUpperCase: true,
                 onPressed: !isSaveButtonEnable
                     ? null
@@ -223,15 +220,13 @@ class _AddServerPageState extends State<AddServerPage> {
   void _checkEditMode(BuildContext context) {
     AddServerArguments? args = context.catchArgs<AddServerArguments?>();
     if (args != null && args.isEditMode) {
-      context.select((AddServerBloc bloc) => bloc.add(
-          AddServerEvent.setAppBarTitle(
-              AppLocalizations.of(context)?.editServer ?? "")));
+      context.select((AddServerBloc bloc) =>
+          bloc.add(AddServerEvent.setAppBarTitle(context.intl().editServer)));
       context.select((AddServerBloc bloc) =>
           bloc.add(AddServerEvent.setEditMode(args.editId)));
     } else {
-      context.select((AddServerBloc bloc) => bloc.add(
-          AddServerEvent.setAppBarTitle(
-              AppLocalizations.of(context)?.addNewServer ?? "")));
+      context.select((AddServerBloc bloc) =>
+          bloc.add(AddServerEvent.setAppBarTitle(context.intl().addNewServer)));
     }
   }
 }

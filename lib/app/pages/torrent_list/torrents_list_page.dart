@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:focus_detector/focus_detector.dart';
 import 'package:qBitRemote/api/models/torrent_entity.dart';
 import 'package:qBitRemote/app/widgets/MaterialDialog.dart';
@@ -11,6 +10,7 @@ import 'package:qBitRemote/app/widgets/multiselect/multi_select_app_bar.dart';
 import 'package:qBitRemote/app/widgets/multiselect/multi_select_cubit.dart';
 import 'package:qBitRemote/app/widgets/popup_submenu_item.dart';
 import 'package:qBitRemote/commons/colors.dart';
+import 'package:qBitRemote/commons/extensions/build_context_ext.dart';
 import 'package:qBitRemote/routes.dart';
 
 import 'torrents_list_cubit.dart';
@@ -212,10 +212,10 @@ class _TorrentListScreenState extends State<TorrentListScreen> {
 
   void _showDeleteDialog(BuildContext context, List<TorrentEntity> list) {
     MaterialDialog(context)
-      ..title = AppLocalizations.of(context)?.questionDelete ?? ""
-      ..body = AppLocalizations.of(context)?.questionDeleteItems ?? ""
-      ..positiveButtonText = AppLocalizations.of(context)?.delete ?? ""
-      ..negativeButtonText = AppLocalizations.of(context)?.cancel ?? ""
+      ..title = context.intl().questionDelete
+      ..body = context.intl().questionDeleteItems
+      ..positiveButtonText = context.intl().delete
+      ..negativeButtonText = context.intl().cancel
       ..setPositiveButtonCallback((dialog) {
         final isDeleteAllData = dialog.checkboxList.first.isChecked;
         context.read<TorrentListCubit>().deleteTorrents(list, isDeleteAllData);
@@ -223,9 +223,7 @@ class _TorrentListScreenState extends State<TorrentListScreen> {
       })
       ..checkboxList = [
         CheckboxEntity(
-            id: "1",
-            title: Text(
-                AppLocalizations.of(context)?.questionDeleteWithData ?? ""))
+            id: "1", title: Text(context.intl().questionDeleteWithData))
       ]
       ..show();
   }

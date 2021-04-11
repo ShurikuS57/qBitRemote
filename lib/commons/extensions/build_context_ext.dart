@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 extension Arguments<T> on BuildContext {
   T? catchArgs<T>() {
@@ -11,4 +12,14 @@ extension Arguments<T> on BuildContext {
   }
 
   double get height => MediaQuery.of(this).size.height;
+
+  // AppLocalizations.of(context)?.
+
+  AppLocalizations intl() {
+    final appLocale = AppLocalizations.of(this);
+    if (appLocale == null) {
+      throw ("Not found localization from context");
+    }
+    return appLocale;
+  }
 }

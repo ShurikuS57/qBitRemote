@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:package_info/package_info.dart';
 import 'package:qBitRemote/app/utils/url_launcher.dart';
 import 'package:qBitRemote/app/widgets/MaterialDialog.dart';
-import 'package:qBitRemote/app/widgets/action_button.dart';
 import 'package:qBitRemote/commons/colors.dart';
+import 'package:qBitRemote/commons/extensions/build_context_ext.dart';
 
 import '../../../routes.dart';
 
@@ -18,7 +17,7 @@ class _AppSettingsScreenState extends State<AppSettingsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text(AppLocalizations.of(context)?.settings ?? ""),
+          title: Text(context.intl().settings),
           actions: [
             IconButton(
               icon: Icon(Icons.bug_report_outlined),
@@ -38,19 +37,26 @@ class _AppSettingsScreenState extends State<AppSettingsScreen> {
         body: ListView(
           padding: const EdgeInsets.all(8.0),
           children: [
-            buildActionButton(context),
-            SizedBox(
-              height: 16,
+            _buildServerListButton(
+                context, Icons.list_outlined, context.intl().serverList, () {
+              Navigator.pushNamed(context, Routes.serverListPage);
+            }),
+            Divider(
+              height: 1,
             ),
-            ListTile(
-              title: Text("Local"),
-              onTap: () =>
-                  Navigator.pushNamed(context, Routes.localSettingsPage),
+            _buildServerListButton(context, Icons.phonelink_setup_outlined,
+                context.intl().appPrefs, () {
+              Navigator.pushNamed(context, Routes.localSettingsPage);
+            }),
+            Divider(
+              height: 1,
             ),
-            ListTile(
-              title: Text("Host"),
-              onTap: () =>
-                  Navigator.pushNamed(context, Routes.hostSettingsPage),
+            _buildServerListButton(
+                context, Icons.router_outlined, context.intl().serverPrefs, () {
+              Navigator.pushNamed(context, Routes.hostSettingsPage);
+            }),
+            Divider(
+              height: 1,
             ),
             SizedBox(
               height: 8,
@@ -59,14 +65,25 @@ class _AppSettingsScreenState extends State<AppSettingsScreen> {
         ));
   }
 
-  ActionButton buildActionButton(BuildContext context) {
-    return ActionButton(
-      text: AppLocalizations.of(context)?.serverList ?? "",
-      isTextUpperCase: true,
-      iconData: Icons.list_outlined,
-      onPressed: () {
-        Navigator.pushNamed(context, Routes.serverListPage);
+  InkWell _buildServerListButton(BuildContext context, IconData icon,
+      String text, GestureTapCallback onTap) {
+    return InkWell(
+      onTap: () {
+        onTap.call();
       },
+      child: ListTile(
+          title: Text(
+            text,
+            style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.w400,
+                color: AppColors.textTitle1Color),
+          ),
+          leading: Icon(
+            icon,
+            color: AppColors.primaryAccent,
+            size: 32,
+          )),
     );
   }
 
@@ -75,7 +92,7 @@ class _AppSettingsScreenState extends State<AppSettingsScreen> {
     MaterialDialog(context)
       ..title = "About qBitRemote"
       ..body = bodyText
-      ..positiveButtonText = AppLocalizations.of(context)?.ok ?? ""
+      ..positiveButtonText = context.intl().ok
       ..show();
   }
 

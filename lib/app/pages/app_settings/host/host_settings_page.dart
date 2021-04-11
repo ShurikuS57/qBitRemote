@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:qBitRemote/app/widgets/loader_layout.dart';
 import 'package:qBitRemote/app/widgets/slider/speed_slider.dart';
 import 'package:qBitRemote/commons/colors.dart';
+import 'package:qBitRemote/commons/extensions/build_context_ext.dart';
 import 'package:qBitRemote/local/models/server_preferences.dart';
 
 import 'host_settings_bloc.dart';
@@ -21,7 +21,7 @@ class _HostSettingPageState extends State<HostSettingPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Server preferences"),
+        title: Text(context.intl().serverPrefs),
       ),
       backgroundColor: AppColors.primaryBackground,
       body: _buildBody(context),
@@ -53,7 +53,7 @@ class _HostSettingPageState extends State<HostSettingPage> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Text(
-                      AppLocalizations.of(context)?.qBittorentSettings ?? "",
+                      context.intl().qBittorentSettings,
                       style: TextStyle(
                           fontWeight: FontWeight.w700,
                           fontSize: 20,
@@ -62,8 +62,7 @@ class _HostSettingPageState extends State<HostSettingPage> {
                     SizedBox(
                       height: 8,
                     ),
-                    Text(
-                        AppLocalizations.of(context)?.globalDownloadSpeed ?? "",
+                    Text(context.intl().globalDownloadSpeed,
                         style: TextStyle(
                             fontWeight: FontWeight.w400,
                             fontSize: 14,
@@ -86,7 +85,7 @@ class _HostSettingPageState extends State<HostSettingPage> {
                     SizedBox(
                       height: 8,
                     ),
-                    Text(AppLocalizations.of(context)?.globalUploadSpeed ?? "",
+                    Text(context.intl().globalUploadSpeed,
                         style: TextStyle(
                             fontWeight: FontWeight.w400,
                             fontSize: 14,

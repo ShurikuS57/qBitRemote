@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:qBitRemote/commons/extensions/build_context_ext.dart';
 
 class ServerListEmpty extends StatelessWidget {
   const ServerListEmpty({Key? key}) : super(key: key);
@@ -7,7 +7,7 @@ class ServerListEmpty extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Text(AppLocalizations.of(context)?.emptyList ?? ""),
+      child: Text(context.intl().emptyList),
     );
   }
 }
