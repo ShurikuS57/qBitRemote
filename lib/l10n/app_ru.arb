@@ -105,5 +105,21 @@
   "downloadFirst": "Сначала загрузите первую и последнюю части",
   "@downloadFirst": {},
   "options": "Опции",
-  "@options": {}
+  "@options": {},
+  "resumeAll": "Возобновить все",
+  "@resumeAll": {},
+  "pauseAll": "Всё на паузу",
+  "@pauseAll": {},
+  "all": "Всё",
+  "@all": {},
+  "moveToTop": "Переместить в начало",
+  "@moveToTop": {},
+  "moveUp": "Поднять на вверх",
+  "@moveUp": {},
+  "moveDown": "Опустить вниз",
+  "@moveDown": {},
+  "moveToBottom": "Переместить в конец",
+  "@moveToBottom": {},
+  "queue": "Очередь",
+  "@queue": {}
 }

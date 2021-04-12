@@ -5,6 +5,7 @@ import 'package:qBitRemote/app/utils/state_helper.dart';
 import 'package:qBitRemote/app/widgets/multiselect/multi_select_cubit.dart';
 import 'package:qBitRemote/app/widgets/multiselect/multi_select_list_view.dart';
 import 'package:qBitRemote/commons/colors.dart';
+import 'package:qBitRemote/commons/extensions/build_context_ext.dart';
 import 'package:qBitRemote/routes.dart';
 
 class TorrentsViewerWidget extends StatefulWidget {
@@ -21,29 +22,33 @@ class _TorrentsViewerWidgetState extends State<TorrentsViewerWidget> {
   Widget build(BuildContext context) {
     List<TorrentItem> items =
         widget.torrents.map((e) => TorrentItem(item: e)).toList();
-    return ListViewSelected(
-      items: items,
-      selectedColor: AppColors.multiselectionItem.withAlpha(100),
-      onChangeSelected: (widget, isSelected) {
-        if (widget is TorrentItem) {
-          if (isSelected) {
-            context
-                .read<MultiSelectCubit>()
-                .addSelectedItem(widget.item.hash, widget.item);
-          } else {
-            context
-                .read<MultiSelectCubit>()
-                .removeSelectedItem(widget.item.hash, widget.item);
+    if (items.length > 0) {
+      return ListViewSelected(
+        items: items,
+        selectedColor: AppColors.multiselectionItem.withAlpha(100),
+        onChangeSelected: (widget, isSelected) {
+          if (widget is TorrentItem) {
+            if (isSelected) {
+              context
+                  .read<MultiSelectCubit>()
+                  .addSelectedItem(widget.item.hash, widget.item);
+            } else {
+              context
+                  .read<MultiSelectCubit>()
+                  .removeSelectedItem(widget.item.hash, widget.item);
+            }
           }
-        }
-      },
-      onTabItem: (widget) {
-        if (widget is TorrentItem) {
-          Navigator.pushNamed(context, Routes.torrentInfoPage,
-              arguments: widget.item.hash);
-        }
-      },
-    );
+        },
+        onTabItem: (widget) {
+          if (widget is TorrentItem) {
+            Navigator.pushNamed(context, Routes.torrentInfoPage,
+                arguments: widget.item.hash);
+          }
+        },
+      );
+    } else {
+      return Center(child: Text(context.intl().emptyList));
+    }
   }
 }
 

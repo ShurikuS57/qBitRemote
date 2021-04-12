@@ -118,5 +118,21 @@
   "downloadFirst": "Download first and last pieces first",
   "@downloadFirst": {},
   "options": "Options",
-  "@options": {}
+  "@options": {},
+  "resumeAll": "Resume all",
+  "@resumeAll": {},
+  "pauseAll": "Pause all",
+  "@pauseAll": {},
+  "all": "All",
+  "@all": {},
+  "moveToTop": "Move to top",
+  "@moveToTop": {},
+  "moveUp": "Move up",
+  "@moveUp": {},
+  "moveDown": "Move down",
+  "@moveDown": {},
+  "moveToBottom": "Move to bottom",
+  "@moveToBottom": {},
+  "queue": "Queue",
+  "@queue": {}
 }

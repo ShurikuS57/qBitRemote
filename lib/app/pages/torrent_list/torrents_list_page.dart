@@ -69,9 +69,10 @@ class _TorrentListScreenState extends State<TorrentListScreen> {
               },
             ),
             PopupMenuButton<String>(
-              onSelected: _handleMainPopupMenuItemClick,
+              onSelected: (value) =>
+                  _handleMainPopupMenuItemClick(context, value),
               itemBuilder: (BuildContext context) {
-                return {"Resume all", "Pause all"}
+                return {context.intl().resumeAll, context.intl().pauseAll}
                     .map((e) => PopupMenuItem<String>(
                           value: e,
                           child: Text(e),
@@ -107,15 +108,15 @@ class _TorrentListScreenState extends State<TorrentListScreen> {
             itemBuilder: (context) {
               return [
                 PopupMenuItem<String>(
-                    value: SelectedPopupMenuType.Delete.value,
-                    child: Text(SelectedPopupMenuType.Delete.value)),
+                    value: getValue(SelectedPopupMenuType.Delete),
+                    child: Text(getValue(SelectedPopupMenuType.Delete))),
                 PopupSubMenuItem<String>(
-                  title: SelectedPopupMenuType.QueueGroup.value,
+                  title: getValue(SelectedPopupMenuType.QueueGroup),
                   items: [
-                    SelectedPopupMenuType.QueueMax.value,
-                    SelectedPopupMenuType.QueueUp.value,
-                    SelectedPopupMenuType.QueueDown.value,
-                    SelectedPopupMenuType.QueueMin.value,
+                    getValue(SelectedPopupMenuType.QueueMax),
+                    getValue(SelectedPopupMenuType.QueueUp),
+                    getValue(SelectedPopupMenuType.QueueDown),
+                    getValue(SelectedPopupMenuType.QueueMin),
                   ],
                   onSelected: _handleQueuePopupMenuItemClick,
                 ),
@@ -170,23 +171,18 @@ class _TorrentListScreenState extends State<TorrentListScreen> {
     );
   }
 
-  void _handleMainPopupMenuItemClick(String value) {
-    switch (value) {
-      case "Resume all":
-        {
-          context.read<TorrentListCubit>().downloadCommandByHash("all");
-          break;
-        }
-      case "Pause all":
-        {
-          context.read<TorrentListCubit>().pauseCommandByHash("all");
-          break;
-        }
+  void _handleMainPopupMenuItemClick(BuildContext context, String value) {
+    String resumeAllStr = context.intl().resumeAll;
+    String pauseAllStr = context.intl().pauseAll;
+    if (value == resumeAllStr) {
+      context.read<TorrentListCubit>().downloadCommandByHash("all");
+    } else if (value == pauseAllStr) {
+      context.read<TorrentListCubit>().pauseCommandByHash("all");
     }
   }
 
   void _handleSelectedPopupMenuItemClick(String value) {
-    if (value == SelectedPopupMenuType.Delete.value) {
+    if (value == getValue(SelectedPopupMenuType.Delete)) {
       final selectedItems =
           context.read<MultiSelectCubit>().getSelectedItems<TorrentEntity>();
       _showDeleteDialog(context, selectedItems);
@@ -197,13 +193,13 @@ class _TorrentListScreenState extends State<TorrentListScreen> {
     final selectedItems =
         context.read<MultiSelectCubit>().getSelectedItems<TorrentEntity>();
     SelectedPopupMenuType priority = SelectedPopupMenuType.QueueMax;
-    if (value == SelectedPopupMenuType.QueueMax.value) {
+    if (value == getValue(SelectedPopupMenuType.QueueMax)) {
       priority = SelectedPopupMenuType.QueueMax;
-    } else if (value == SelectedPopupMenuType.QueueUp.value) {
+    } else if (value == getValue(SelectedPopupMenuType.QueueUp)) {
       priority = SelectedPopupMenuType.QueueUp;
-    } else if (value == SelectedPopupMenuType.QueueDown.value) {
+    } else if (value == getValue(SelectedPopupMenuType.QueueDown)) {
       priority = SelectedPopupMenuType.QueueDown;
-    } else if (value == SelectedPopupMenuType.QueueMin.value) {
+    } else if (value == getValue(SelectedPopupMenuType.QueueMin)) {
       priority = SelectedPopupMenuType.QueueMin;
     }
     context.read<TorrentListCubit>().changePriority(selectedItems, priority);
@@ -226,6 +222,25 @@ class _TorrentListScreenState extends State<TorrentListScreen> {
             id: "1", title: Text(context.intl().questionDeleteWithData))
       ]
       ..show();
+  }
+
+  String getValue(SelectedPopupMenuType type) {
+    switch (type) {
+      case SelectedPopupMenuType.Delete:
+        return context.intl().delete;
+      case SelectedPopupMenuType.QueueMax:
+        return context.intl().moveToTop;
+      case SelectedPopupMenuType.QueueUp:
+        return context.intl().moveUp;
+      case SelectedPopupMenuType.QueueDown:
+        return context.intl().moveDown;
+      case SelectedPopupMenuType.QueueMin:
+        return context.intl().moveToBottom;
+      case SelectedPopupMenuType.QueueGroup:
+        return context.intl().queue;
+      default:
+        return "";
+    }
   }
 }
 
@@ -274,25 +289,4 @@ enum SelectedPopupMenuType {
   QueueDown,
   QueueMax,
   QueueMin
-}
-
-extension SelectedMenuExtention on SelectedPopupMenuType {
-  String get value {
-    switch (this) {
-      case SelectedPopupMenuType.Delete:
-        return "Delete";
-      case SelectedPopupMenuType.QueueMax:
-        return "Move to top";
-      case SelectedPopupMenuType.QueueUp:
-        return "Move up";
-      case SelectedPopupMenuType.QueueDown:
-        return "Move down";
-      case SelectedPopupMenuType.QueueMin:
-        return "Move to bottom";
-      case SelectedPopupMenuType.QueueGroup:
-        return "Queue";
-      default:
-        return "";
-    }
-  }
 }
