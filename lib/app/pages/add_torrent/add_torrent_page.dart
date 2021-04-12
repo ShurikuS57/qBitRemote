@@ -55,6 +55,7 @@ class _AddTorrentScreenState extends State<AddTorrentScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text(context.intl().addTorrent),
+        actions: [buildStartDownloadButton()],
       ),
       backgroundColor: AppColors.primaryBackground,
       body: buildBody(context, argSetup),
@@ -123,6 +124,7 @@ class _AddTorrentScreenState extends State<AddTorrentScreen> {
               }
               return ExpansionTile(
                 title: Text(context.intl().options),
+                initiallyExpanded: true,
                 children: [
                   SizedBox(
                     height: 8,
@@ -158,7 +160,6 @@ class _AddTorrentScreenState extends State<AddTorrentScreen> {
           SizedBox(
             height: 8,
           ),
-          buildStartDownloadButton()
         ],
       ),
     );
@@ -172,8 +173,8 @@ class _AddTorrentScreenState extends State<AddTorrentScreen> {
         if (state is EnableDownloadButtonState) {
           isEnableButton = state.isEnable;
         }
-        return ActionButton(
-            text: context.intl().startDownload,
+        return IconButton(
+            icon: Icon(Icons.download_outlined),
             onPressed: isEnableButton
                 ? () {
                     context

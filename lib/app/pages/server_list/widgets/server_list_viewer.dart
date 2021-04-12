@@ -74,7 +74,7 @@ class ServerListViewer extends StatelessWidget {
                           }
                         },
                         itemBuilder: (BuildContext context) =>
-                        <PopupMenuEntry<int>>[
+                            <PopupMenuEntry<int>>[
                           PopupMenuItem<int>(
                               value: 1, child: Text(context.intl().edit)),
                           PopupMenuItem<int>(
