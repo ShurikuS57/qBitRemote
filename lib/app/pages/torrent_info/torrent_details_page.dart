@@ -88,12 +88,21 @@ class _TorrentDetailsScreenState extends State<TorrentDetailsScreen> {
             context.read<TorrentListCubit>().pauseCommandByHash(_torrentHash);
           },
         ),
-        IconButton(
-          icon: Icon(Icons.delete),
-          onPressed: () {
-            _showDeleteDialog(context, _torrentHash);
+        PopupMenuButton<String>(
+          onSelected: (value) => _handleMainPopupMenuItemClick(context, value),
+          itemBuilder: (BuildContext context) {
+            return {
+              context.intl().forceResume,
+              context.intl().forceRecheck,
+              context.intl().delete
+            }
+                .map((e) => PopupMenuItem<String>(
+                      value: e,
+                      child: Text(e),
+                    ))
+                .toList();
           },
-        )
+        ),
       ],
       bottom: TabBar(
         tabs: [
@@ -125,5 +134,15 @@ class _TorrentDetailsScreenState extends State<TorrentDetailsScreen> {
             id: "1", title: Text(context.intl().questionDeleteWithData))
       ]
       ..show();
+  }
+
+  _handleMainPopupMenuItemClick(BuildContext context, String value) {
+    if (value == context.intl().delete) {
+      _showDeleteDialog(context, _torrentHash);
+    } else if (value == context.intl().forceResume) {
+      context.read<TorrentListCubit>().forceResume([_torrentHash]);
+    } else if (value == context.intl().forceRecheck) {
+      context.read<TorrentListCubit>().forceRecheck([_torrentHash]);
+    }
   }
 }

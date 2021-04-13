@@ -47,7 +47,7 @@ class _TorrentsViewerWidgetState extends State<TorrentsViewerWidget> {
         },
       );
     } else {
-      return Center(child: Text(context.intl().emptyList));
+      return Center(child: Text(context.intl().emptyTorrentList));
     }
   }
 }

@@ -238,4 +238,30 @@ class TorrentListCubit extends Cubit<TorrentListState> {
   Future<ServerHost?> getCurrentServerHost() async {
     return await localRepository.findSelectedServerHost();
   }
+
+  void forceResume(List<String> hashes) async {
+    ServerHost? currentServer = await getCurrentServerHost();
+    if (currentServer == null) {
+      emit(ShowError("Server no selected"));
+      return;
+    }
+    UiResponse response =
+        await qBitRemoteRepository.forceStart(currentServer, hashes);
+    if (response.error.isNotEmpty) {
+      return emit(ShowError(response.error));
+    }
+  }
+
+  void forceRecheck(List<String> hashes) async {
+    ServerHost? currentServer = await getCurrentServerHost();
+    if (currentServer == null) {
+      emit(ShowError("Server no selected"));
+      return;
+    }
+    UiResponse response =
+        await qBitRemoteRepository.forceRecheck(currentServer, hashes);
+    if (response.error.isNotEmpty) {
+      return emit(ShowError(response.error));
+    }
+  }
 }

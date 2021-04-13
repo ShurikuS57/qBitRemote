@@ -134,5 +134,9 @@
   "moveToBottom": "Move to bottom",
   "@moveToBottom": {},
   "queue": "Queue",
-  "@queue": {}
+  "@queue": {},
+  "forceResume": "Force resume",
+  "@forceResume": {},
+  "forceRecheck": "Force recheck",
+  "@forceRecheck": {}
 }

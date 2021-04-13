@@ -121,5 +121,9 @@
   "moveToBottom": "Переместить в конец",
   "@moveToBottom": {},
   "queue": "Очередь",
-  "@queue": {}
+  "@queue": {},
+  "forceResume": "Возобновить принудительно",
+  "@forceResume": {},
+  "forceRecheck": "Проверить принудительно",
+  "@forceRecheck": {}
 }

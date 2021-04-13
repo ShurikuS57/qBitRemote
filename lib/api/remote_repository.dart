@@ -51,17 +51,22 @@ abstract class RemoteRepository {
   Future<UiResponse<ServerPreferences>> getServerPreferences(
       ServerHost currentServer);
 
-  Future<UiResponse> increasePriority(
-      ServerHost currentServer, List<TorrentEntity> selectedItems);
+  Future<UiResponse> increasePriority(ServerHost currentServer,
+      List<TorrentEntity> selectedItems);
 
-  Future<UiResponse> decreasePriority(
-      ServerHost currentServer, List<TorrentEntity> selectedItems);
+  Future<UiResponse> decreasePriority(ServerHost currentServer,
+      List<TorrentEntity> selectedItems);
 
-  Future<UiResponse> maxPriority(
-      ServerHost currentServer, List<TorrentEntity> selectedItems);
+  Future<UiResponse> maxPriority(ServerHost currentServer,
+      List<TorrentEntity> selectedItems);
 
-  Future<UiResponse> minPriority(
-      ServerHost currentServer, List<TorrentEntity> selectedItems);
+  Future<UiResponse> minPriority(ServerHost currentServer,
+      List<TorrentEntity> selectedItems);
+
+  Future<UiResponse> forceStart(ServerHost currentServer, List<String> hashes);
+
+  Future<UiResponse> forceRecheck(ServerHost currentServer,
+      List<String> hashes);
 }
 
 class RemoteRepositoryImpl extends RemoteRepository {
@@ -321,6 +326,17 @@ class RemoteRepositoryImpl extends RemoteRepository {
     return hashes;
   }
 
+  String _prepareHashesFromStrings(List<String> list) {
+    String hashes = "";
+    for (var i = 0; i < list.length; i++) {
+      hashes += list[i];
+      if (i < list.length - 1) {
+        hashes += "|";
+      }
+    }
+    return hashes;
+  }
+
   @override
   Future<UiResponse<ServerPreferences>> getServerPreferences(
       ServerHost currentServer) async {
@@ -413,6 +429,38 @@ class RemoteRepositoryImpl extends RemoteRepository {
           currentServer.getConnectUrl() + "/api/v2/torrents/bottomPrio";
       Map<String, dynamic> params = HashMap();
       params["hashes"] = hashes;
+      await dio.get(url, queryParameters: params);
+      return UiResponse("", "");
+    } catch (e) {
+      return UiResponse("", e.toString());
+    }
+  }
+
+  @override
+  Future<UiResponse> forceStart(
+      ServerHost currentServer, List<String> hashes) async {
+    try {
+      String hashesStr = _prepareHashesFromStrings(hashes);
+      String url =
+          currentServer.getConnectUrl() + "/api/v2/torrents/setForceStart";
+      Map<String, dynamic> params = HashMap();
+      params["hashes"] = hashesStr;
+      params["value"] = true;
+      await dio.get(url, queryParameters: params);
+      return UiResponse("", "");
+    } catch (e) {
+      return UiResponse("", e.toString());
+    }
+  }
+
+  @override
+  Future<UiResponse> forceRecheck(
+      ServerHost currentServer, List<String> hashes) async {
+    try {
+      String hashesStr = _prepareHashesFromStrings(hashes);
+      String url = currentServer.getConnectUrl() + "/api/v2/torrents/recheck";
+      Map<String, dynamic> params = HashMap();
+      params["hashes"] = hashesStr;
       await dio.get(url, queryParameters: params);
       return UiResponse("", "");
     } catch (e) {
