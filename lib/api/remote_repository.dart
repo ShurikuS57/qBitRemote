@@ -51,22 +51,22 @@ abstract class RemoteRepository {
   Future<UiResponse<ServerPreferences>> getServerPreferences(
       ServerHost currentServer);
 
-  Future<UiResponse> increasePriority(ServerHost currentServer,
-      List<TorrentEntity> selectedItems);
+  Future<UiResponse> increasePriority(
+      ServerHost currentServer, List<TorrentEntity> selectedItems);
 
-  Future<UiResponse> decreasePriority(ServerHost currentServer,
-      List<TorrentEntity> selectedItems);
+  Future<UiResponse> decreasePriority(
+      ServerHost currentServer, List<TorrentEntity> selectedItems);
 
-  Future<UiResponse> maxPriority(ServerHost currentServer,
-      List<TorrentEntity> selectedItems);
+  Future<UiResponse> maxPriority(
+      ServerHost currentServer, List<TorrentEntity> selectedItems);
 
-  Future<UiResponse> minPriority(ServerHost currentServer,
-      List<TorrentEntity> selectedItems);
+  Future<UiResponse> minPriority(
+      ServerHost currentServer, List<TorrentEntity> selectedItems);
 
   Future<UiResponse> forceStart(ServerHost currentServer, List<String> hashes);
 
-  Future<UiResponse> forceRecheck(ServerHost currentServer,
-      List<String> hashes);
+  Future<UiResponse> forceRecheck(
+      ServerHost currentServer, List<String> hashes);
 }
 
 class RemoteRepositoryImpl extends RemoteRepository {
