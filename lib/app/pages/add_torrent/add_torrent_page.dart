@@ -179,10 +179,10 @@ class _AddTorrentScreenState extends State<AddTorrentScreen> {
             icon: Icon(Icons.download_outlined),
             onPressed: isEnableButton
                 ? () {
-              context
-                  .read<AddTorrentBloc>()
-                  .add(AddTorrentEvent.startDownload(_prepareOptions()));
-            }
+                    context
+                        .read<AddTorrentBloc>()
+                        .add(AddTorrentEvent.startDownload(_prepareOptions()));
+                  }
                 : null);
       },
     );
@@ -274,25 +274,25 @@ class _AddTorrentScreenState extends State<AddTorrentScreen> {
         }
         return _isChoiceFile
             ? Padding(
-          padding: const EdgeInsets.only(top: 16),
-          child: ActionButton(
-            text: context.intl().selectedFile,
-            onPressed: () {
-              context
-                  .read<AddTorrentBloc>()
-                  .add(AddTorrentEvent.choiceTorrentFile());
-            },
-          ),
-        )
+                padding: const EdgeInsets.only(top: 16),
+                child: ActionButton(
+                  text: context.intl().selectedFile,
+                  onPressed: () {
+                    context
+                        .read<AddTorrentBloc>()
+                        .add(AddTorrentEvent.choiceTorrentFile());
+                  },
+                ),
+              )
             : Padding(
-          padding: const EdgeInsets.only(top: 16),
-          child: InputText(
-            controller: urlTextController,
-            lableText: context.intl().marginUrl,
-            minLines: 3,
-            maxLines: 3,
-          ),
-        );
+                padding: const EdgeInsets.only(top: 16),
+                child: InputText(
+                  controller: urlTextController,
+                  lableText: context.intl().marginUrl,
+                  minLines: 3,
+                  maxLines: 3,
+                ),
+              );
       },
     );
   }
