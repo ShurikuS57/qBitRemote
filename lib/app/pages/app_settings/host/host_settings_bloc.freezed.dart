@@ -38,7 +38,6 @@ mixin _$HostSettingsEvent {
     required TResult Function(ServerPreferences prefs) savePref,
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loadSetup,
@@ -46,14 +45,12 @@ mixin _$HostSettingsEvent {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(LoadSetupEvent value) loadSetup,
     required TResult Function(SavePrefEvent value) savePref,
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(LoadSetupEvent value)? loadSetup,
@@ -76,7 +73,6 @@ class _$HostSettingsEventCopyWithImpl<$Res>
   _$HostSettingsEventCopyWithImpl(this._value, this._then);
 
   final HostSettingsEvent _value;
-
   // ignore: unused_field
   final $Res Function(HostSettingsEvent) _then;
 }
@@ -164,7 +160,6 @@ class _$LoadSetupEvent extends LoadSetupEvent {
 
 abstract class LoadSetupEvent extends HostSettingsEvent {
   const factory LoadSetupEvent() = _$LoadSetupEvent;
-
   const LoadSetupEvent._() : super._();
 }
 
@@ -173,7 +168,6 @@ abstract class $SavePrefEventCopyWith<$Res> {
   factory $SavePrefEventCopyWith(
           SavePrefEvent value, $Res Function(SavePrefEvent) then) =
       _$SavePrefEventCopyWithImpl<$Res>;
-
   $Res call({ServerPreferences prefs});
 }
 
@@ -277,11 +271,9 @@ class _$SavePrefEvent extends SavePrefEvent {
 
 abstract class SavePrefEvent extends HostSettingsEvent {
   const factory SavePrefEvent(ServerPreferences prefs) = _$SavePrefEvent;
-
   const SavePrefEvent._() : super._();
 
   ServerPreferences get prefs => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
   $SavePrefEventCopyWith<SavePrefEvent> get copyWith =>
       throw _privateConstructorUsedError;
@@ -327,7 +319,6 @@ mixin _$HostSettingsState {
     required TResult Function(String msg) showToast,
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
@@ -337,7 +328,6 @@ mixin _$HostSettingsState {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(InitialHostSettingsState value) initial,
@@ -346,7 +336,6 @@ mixin _$HostSettingsState {
     required TResult Function(ShowToastState value) showToast,
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitialHostSettingsState value)? initial,
@@ -371,7 +360,6 @@ class _$HostSettingsStateCopyWithImpl<$Res>
   _$HostSettingsStateCopyWithImpl(this._value, this._then);
 
   final HostSettingsState _value;
-
   // ignore: unused_field
   final $Res Function(HostSettingsState) _then;
 }
@@ -468,7 +456,6 @@ class _$InitialHostSettingsState extends InitialHostSettingsState {
 
 abstract class InitialHostSettingsState extends HostSettingsState {
   const factory InitialHostSettingsState() = _$InitialHostSettingsState;
-
   const InitialHostSettingsState._() : super._();
 }
 
@@ -477,7 +464,6 @@ abstract class $ShowErrorStateCopyWith<$Res> {
   factory $ShowErrorStateCopyWith(
           ShowErrorState value, $Res Function(ShowErrorState) then) =
       _$ShowErrorStateCopyWithImpl<$Res>;
-
   $Res call({String msg});
 }
 
@@ -589,11 +575,9 @@ class _$ShowErrorState extends ShowErrorState {
 
 abstract class ShowErrorState extends HostSettingsState {
   const factory ShowErrorState(String msg) = _$ShowErrorState;
-
   const ShowErrorState._() : super._();
 
   String get msg => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
   $ShowErrorStateCopyWith<ShowErrorState> get copyWith =>
       throw _privateConstructorUsedError;
@@ -604,7 +588,6 @@ abstract class $ShowPreferencesStateCopyWith<$Res> {
   factory $ShowPreferencesStateCopyWith(ShowPreferencesState value,
           $Res Function(ShowPreferencesState) then) =
       _$ShowPreferencesStateCopyWithImpl<$Res>;
-
   $Res call({ServerPreferences prefs});
 }
 
@@ -718,11 +701,9 @@ class _$ShowPreferencesState extends ShowPreferencesState {
 abstract class ShowPreferencesState extends HostSettingsState {
   const factory ShowPreferencesState(ServerPreferences prefs) =
       _$ShowPreferencesState;
-
   const ShowPreferencesState._() : super._();
 
   ServerPreferences get prefs => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
   $ShowPreferencesStateCopyWith<ShowPreferencesState> get copyWith =>
       throw _privateConstructorUsedError;
@@ -733,7 +714,6 @@ abstract class $ShowToastStateCopyWith<$Res> {
   factory $ShowToastStateCopyWith(
           ShowToastState value, $Res Function(ShowToastState) then) =
       _$ShowToastStateCopyWithImpl<$Res>;
-
   $Res call({String msg});
 }
 
@@ -845,11 +825,9 @@ class _$ShowToastState extends ShowToastState {
 
 abstract class ShowToastState extends HostSettingsState {
   const factory ShowToastState(String msg) = _$ShowToastState;
-
   const ShowToastState._() : super._();
 
   String get msg => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
   $ShowToastStateCopyWith<ShowToastState> get copyWith =>
       throw _privateConstructorUsedError;

@@ -61,6 +61,12 @@ class _$AddTorrentEventTearOff {
       newValue,
     );
   }
+
+  RemoveTorrentFile removeTorrentFile(String file) {
+    return RemoveTorrentFile(
+      file,
+    );
+  }
 }
 
 /// @nodoc
@@ -79,9 +85,9 @@ mixin _$AddTorrentEvent {
     required TResult Function() loadSetup,
     required TResult Function(AddTorrentArg arg) onCheckArg,
     required TResult Function(PrefOptions newValue) updateOptions,
+    required TResult Function(String file) removeTorrentFile,
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(bool isFileSourceSelected)? onSwitchInputSource,
@@ -93,10 +99,10 @@ mixin _$AddTorrentEvent {
     TResult Function()? loadSetup,
     TResult Function(AddTorrentArg arg)? onCheckArg,
     TResult Function(PrefOptions newValue)? updateOptions,
+    TResult Function(String file)? removeTorrentFile,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(SwitchInputSourceEvent value) onSwitchInputSource,
@@ -109,9 +115,9 @@ mixin _$AddTorrentEvent {
     required TResult Function(LoadSetupEvent value) loadSetup,
     required TResult Function(CheckArgEvent value) onCheckArg,
     required TResult Function(UpdateOptionsEvent value) updateOptions,
+    required TResult Function(RemoveTorrentFile value) removeTorrentFile,
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(SwitchInputSourceEvent value)? onSwitchInputSource,
@@ -123,6 +129,7 @@ mixin _$AddTorrentEvent {
     TResult Function(LoadSetupEvent value)? loadSetup,
     TResult Function(CheckArgEvent value)? onCheckArg,
     TResult Function(UpdateOptionsEvent value)? updateOptions,
+    TResult Function(RemoveTorrentFile value)? removeTorrentFile,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -221,6 +228,7 @@ class _$SwitchInputSourceEvent extends SwitchInputSourceEvent {
     required TResult Function() loadSetup,
     required TResult Function(AddTorrentArg arg) onCheckArg,
     required TResult Function(PrefOptions newValue) updateOptions,
+    required TResult Function(String file) removeTorrentFile,
   }) {
     return onSwitchInputSource(isFileSourceSelected);
   }
@@ -237,6 +245,7 @@ class _$SwitchInputSourceEvent extends SwitchInputSourceEvent {
     TResult Function()? loadSetup,
     TResult Function(AddTorrentArg arg)? onCheckArg,
     TResult Function(PrefOptions newValue)? updateOptions,
+    TResult Function(String file)? removeTorrentFile,
     required TResult orElse(),
   }) {
     if (onSwitchInputSource != null) {
@@ -258,6 +267,7 @@ class _$SwitchInputSourceEvent extends SwitchInputSourceEvent {
     required TResult Function(LoadSetupEvent value) loadSetup,
     required TResult Function(CheckArgEvent value) onCheckArg,
     required TResult Function(UpdateOptionsEvent value) updateOptions,
+    required TResult Function(RemoveTorrentFile value) removeTorrentFile,
   }) {
     return onSwitchInputSource(this);
   }
@@ -274,6 +284,7 @@ class _$SwitchInputSourceEvent extends SwitchInputSourceEvent {
     TResult Function(LoadSetupEvent value)? loadSetup,
     TResult Function(CheckArgEvent value)? onCheckArg,
     TResult Function(UpdateOptionsEvent value)? updateOptions,
+    TResult Function(RemoveTorrentFile value)? removeTorrentFile,
     required TResult orElse(),
   }) {
     if (onSwitchInputSource != null) {
@@ -286,11 +297,9 @@ class _$SwitchInputSourceEvent extends SwitchInputSourceEvent {
 abstract class SwitchInputSourceEvent extends AddTorrentEvent {
   const factory SwitchInputSourceEvent(bool isFileSourceSelected) =
       _$SwitchInputSourceEvent;
-
   const SwitchInputSourceEvent._() : super._();
 
   bool get isFileSourceSelected => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
   $SwitchInputSourceEventCopyWith<SwitchInputSourceEvent> get copyWith =>
       throw _privateConstructorUsedError;
@@ -344,6 +353,7 @@ class _$ChoiceTorrentFileEvent extends ChoiceTorrentFileEvent {
     required TResult Function() loadSetup,
     required TResult Function(AddTorrentArg arg) onCheckArg,
     required TResult Function(PrefOptions newValue) updateOptions,
+    required TResult Function(String file) removeTorrentFile,
   }) {
     return choiceTorrentFile();
   }
@@ -360,6 +370,7 @@ class _$ChoiceTorrentFileEvent extends ChoiceTorrentFileEvent {
     TResult Function()? loadSetup,
     TResult Function(AddTorrentArg arg)? onCheckArg,
     TResult Function(PrefOptions newValue)? updateOptions,
+    TResult Function(String file)? removeTorrentFile,
     required TResult orElse(),
   }) {
     if (choiceTorrentFile != null) {
@@ -381,6 +392,7 @@ class _$ChoiceTorrentFileEvent extends ChoiceTorrentFileEvent {
     required TResult Function(LoadSetupEvent value) loadSetup,
     required TResult Function(CheckArgEvent value) onCheckArg,
     required TResult Function(UpdateOptionsEvent value) updateOptions,
+    required TResult Function(RemoveTorrentFile value) removeTorrentFile,
   }) {
     return choiceTorrentFile(this);
   }
@@ -397,6 +409,7 @@ class _$ChoiceTorrentFileEvent extends ChoiceTorrentFileEvent {
     TResult Function(LoadSetupEvent value)? loadSetup,
     TResult Function(CheckArgEvent value)? onCheckArg,
     TResult Function(UpdateOptionsEvent value)? updateOptions,
+    TResult Function(RemoveTorrentFile value)? removeTorrentFile,
     required TResult orElse(),
   }) {
     if (choiceTorrentFile != null) {
@@ -408,7 +421,6 @@ class _$ChoiceTorrentFileEvent extends ChoiceTorrentFileEvent {
 
 abstract class ChoiceTorrentFileEvent extends AddTorrentEvent {
   const factory ChoiceTorrentFileEvent() = _$ChoiceTorrentFileEvent;
-
   const ChoiceTorrentFileEvent._() : super._();
 }
 
@@ -417,7 +429,6 @@ abstract class $StartDownloadEventCopyWith<$Res> {
   factory $StartDownloadEventCopyWith(
           StartDownloadEvent value, $Res Function(StartDownloadEvent) then) =
       _$StartDownloadEventCopyWithImpl<$Res>;
-
   $Res call({PrefOptions options});
 }
 
@@ -486,6 +497,7 @@ class _$StartDownloadEvent extends StartDownloadEvent {
     required TResult Function() loadSetup,
     required TResult Function(AddTorrentArg arg) onCheckArg,
     required TResult Function(PrefOptions newValue) updateOptions,
+    required TResult Function(String file) removeTorrentFile,
   }) {
     return startDownload(options);
   }
@@ -502,6 +514,7 @@ class _$StartDownloadEvent extends StartDownloadEvent {
     TResult Function()? loadSetup,
     TResult Function(AddTorrentArg arg)? onCheckArg,
     TResult Function(PrefOptions newValue)? updateOptions,
+    TResult Function(String file)? removeTorrentFile,
     required TResult orElse(),
   }) {
     if (startDownload != null) {
@@ -523,6 +536,7 @@ class _$StartDownloadEvent extends StartDownloadEvent {
     required TResult Function(LoadSetupEvent value) loadSetup,
     required TResult Function(CheckArgEvent value) onCheckArg,
     required TResult Function(UpdateOptionsEvent value) updateOptions,
+    required TResult Function(RemoveTorrentFile value) removeTorrentFile,
   }) {
     return startDownload(this);
   }
@@ -539,6 +553,7 @@ class _$StartDownloadEvent extends StartDownloadEvent {
     TResult Function(LoadSetupEvent value)? loadSetup,
     TResult Function(CheckArgEvent value)? onCheckArg,
     TResult Function(UpdateOptionsEvent value)? updateOptions,
+    TResult Function(RemoveTorrentFile value)? removeTorrentFile,
     required TResult orElse(),
   }) {
     if (startDownload != null) {
@@ -550,11 +565,9 @@ class _$StartDownloadEvent extends StartDownloadEvent {
 
 abstract class StartDownloadEvent extends AddTorrentEvent {
   const factory StartDownloadEvent(PrefOptions options) = _$StartDownloadEvent;
-
   const StartDownloadEvent._() : super._();
 
   PrefOptions get options => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
   $StartDownloadEventCopyWith<StartDownloadEvent> get copyWith =>
       throw _privateConstructorUsedError;
@@ -634,6 +647,7 @@ class _$ChangeUrlEvent extends ChangeUrlEvent {
     required TResult Function() loadSetup,
     required TResult Function(AddTorrentArg arg) onCheckArg,
     required TResult Function(PrefOptions newValue) updateOptions,
+    required TResult Function(String file) removeTorrentFile,
   }) {
     return onChangeUrl(newValue);
   }
@@ -650,6 +664,7 @@ class _$ChangeUrlEvent extends ChangeUrlEvent {
     TResult Function()? loadSetup,
     TResult Function(AddTorrentArg arg)? onCheckArg,
     TResult Function(PrefOptions newValue)? updateOptions,
+    TResult Function(String file)? removeTorrentFile,
     required TResult orElse(),
   }) {
     if (onChangeUrl != null) {
@@ -671,6 +686,7 @@ class _$ChangeUrlEvent extends ChangeUrlEvent {
     required TResult Function(LoadSetupEvent value) loadSetup,
     required TResult Function(CheckArgEvent value) onCheckArg,
     required TResult Function(UpdateOptionsEvent value) updateOptions,
+    required TResult Function(RemoveTorrentFile value) removeTorrentFile,
   }) {
     return onChangeUrl(this);
   }
@@ -687,6 +703,7 @@ class _$ChangeUrlEvent extends ChangeUrlEvent {
     TResult Function(LoadSetupEvent value)? loadSetup,
     TResult Function(CheckArgEvent value)? onCheckArg,
     TResult Function(UpdateOptionsEvent value)? updateOptions,
+    TResult Function(RemoveTorrentFile value)? removeTorrentFile,
     required TResult orElse(),
   }) {
     if (onChangeUrl != null) {
@@ -698,11 +715,9 @@ class _$ChangeUrlEvent extends ChangeUrlEvent {
 
 abstract class ChangeUrlEvent extends AddTorrentEvent {
   const factory ChangeUrlEvent(String newValue) = _$ChangeUrlEvent;
-
   const ChangeUrlEvent._() : super._();
 
   String get newValue => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
   $ChangeUrlEventCopyWith<ChangeUrlEvent> get copyWith =>
       throw _privateConstructorUsedError;
@@ -757,6 +772,7 @@ class _$CheckDownloadFolderEvent extends CheckDownloadFolderEvent {
     required TResult Function() loadSetup,
     required TResult Function(AddTorrentArg arg) onCheckArg,
     required TResult Function(PrefOptions newValue) updateOptions,
+    required TResult Function(String file) removeTorrentFile,
   }) {
     return checkDownloadFolder();
   }
@@ -773,6 +789,7 @@ class _$CheckDownloadFolderEvent extends CheckDownloadFolderEvent {
     TResult Function()? loadSetup,
     TResult Function(AddTorrentArg arg)? onCheckArg,
     TResult Function(PrefOptions newValue)? updateOptions,
+    TResult Function(String file)? removeTorrentFile,
     required TResult orElse(),
   }) {
     if (checkDownloadFolder != null) {
@@ -794,6 +811,7 @@ class _$CheckDownloadFolderEvent extends CheckDownloadFolderEvent {
     required TResult Function(LoadSetupEvent value) loadSetup,
     required TResult Function(CheckArgEvent value) onCheckArg,
     required TResult Function(UpdateOptionsEvent value) updateOptions,
+    required TResult Function(RemoveTorrentFile value) removeTorrentFile,
   }) {
     return checkDownloadFolder(this);
   }
@@ -810,6 +828,7 @@ class _$CheckDownloadFolderEvent extends CheckDownloadFolderEvent {
     TResult Function(LoadSetupEvent value)? loadSetup,
     TResult Function(CheckArgEvent value)? onCheckArg,
     TResult Function(UpdateOptionsEvent value)? updateOptions,
+    TResult Function(RemoveTorrentFile value)? removeTorrentFile,
     required TResult orElse(),
   }) {
     if (checkDownloadFolder != null) {
@@ -821,7 +840,6 @@ class _$CheckDownloadFolderEvent extends CheckDownloadFolderEvent {
 
 abstract class CheckDownloadFolderEvent extends AddTorrentEvent {
   const factory CheckDownloadFolderEvent() = _$CheckDownloadFolderEvent;
-
   const CheckDownloadFolderEvent._() : super._();
 }
 
@@ -873,6 +891,7 @@ class _$SelectArgUri extends SelectArgUri {
     required TResult Function() loadSetup,
     required TResult Function(AddTorrentArg arg) onCheckArg,
     required TResult Function(PrefOptions newValue) updateOptions,
+    required TResult Function(String file) removeTorrentFile,
   }) {
     return selectArgUri();
   }
@@ -889,6 +908,7 @@ class _$SelectArgUri extends SelectArgUri {
     TResult Function()? loadSetup,
     TResult Function(AddTorrentArg arg)? onCheckArg,
     TResult Function(PrefOptions newValue)? updateOptions,
+    TResult Function(String file)? removeTorrentFile,
     required TResult orElse(),
   }) {
     if (selectArgUri != null) {
@@ -910,6 +930,7 @@ class _$SelectArgUri extends SelectArgUri {
     required TResult Function(LoadSetupEvent value) loadSetup,
     required TResult Function(CheckArgEvent value) onCheckArg,
     required TResult Function(UpdateOptionsEvent value) updateOptions,
+    required TResult Function(RemoveTorrentFile value) removeTorrentFile,
   }) {
     return selectArgUri(this);
   }
@@ -926,6 +947,7 @@ class _$SelectArgUri extends SelectArgUri {
     TResult Function(LoadSetupEvent value)? loadSetup,
     TResult Function(CheckArgEvent value)? onCheckArg,
     TResult Function(UpdateOptionsEvent value)? updateOptions,
+    TResult Function(RemoveTorrentFile value)? removeTorrentFile,
     required TResult orElse(),
   }) {
     if (selectArgUri != null) {
@@ -937,7 +959,6 @@ class _$SelectArgUri extends SelectArgUri {
 
 abstract class SelectArgUri extends AddTorrentEvent {
   const factory SelectArgUri() = _$SelectArgUri;
-
   const SelectArgUri._() : super._();
 }
 
@@ -989,6 +1010,7 @@ class _$LoadSetupEvent extends LoadSetupEvent {
     required TResult Function() loadSetup,
     required TResult Function(AddTorrentArg arg) onCheckArg,
     required TResult Function(PrefOptions newValue) updateOptions,
+    required TResult Function(String file) removeTorrentFile,
   }) {
     return loadSetup();
   }
@@ -1005,6 +1027,7 @@ class _$LoadSetupEvent extends LoadSetupEvent {
     TResult Function()? loadSetup,
     TResult Function(AddTorrentArg arg)? onCheckArg,
     TResult Function(PrefOptions newValue)? updateOptions,
+    TResult Function(String file)? removeTorrentFile,
     required TResult orElse(),
   }) {
     if (loadSetup != null) {
@@ -1026,6 +1049,7 @@ class _$LoadSetupEvent extends LoadSetupEvent {
     required TResult Function(LoadSetupEvent value) loadSetup,
     required TResult Function(CheckArgEvent value) onCheckArg,
     required TResult Function(UpdateOptionsEvent value) updateOptions,
+    required TResult Function(RemoveTorrentFile value) removeTorrentFile,
   }) {
     return loadSetup(this);
   }
@@ -1042,6 +1066,7 @@ class _$LoadSetupEvent extends LoadSetupEvent {
     TResult Function(LoadSetupEvent value)? loadSetup,
     TResult Function(CheckArgEvent value)? onCheckArg,
     TResult Function(UpdateOptionsEvent value)? updateOptions,
+    TResult Function(RemoveTorrentFile value)? removeTorrentFile,
     required TResult orElse(),
   }) {
     if (loadSetup != null) {
@@ -1053,7 +1078,6 @@ class _$LoadSetupEvent extends LoadSetupEvent {
 
 abstract class LoadSetupEvent extends AddTorrentEvent {
   const factory LoadSetupEvent() = _$LoadSetupEvent;
-
   const LoadSetupEvent._() : super._();
 }
 
@@ -1130,6 +1154,7 @@ class _$CheckArgEvent extends CheckArgEvent {
     required TResult Function() loadSetup,
     required TResult Function(AddTorrentArg arg) onCheckArg,
     required TResult Function(PrefOptions newValue) updateOptions,
+    required TResult Function(String file) removeTorrentFile,
   }) {
     return onCheckArg(arg);
   }
@@ -1146,6 +1171,7 @@ class _$CheckArgEvent extends CheckArgEvent {
     TResult Function()? loadSetup,
     TResult Function(AddTorrentArg arg)? onCheckArg,
     TResult Function(PrefOptions newValue)? updateOptions,
+    TResult Function(String file)? removeTorrentFile,
     required TResult orElse(),
   }) {
     if (onCheckArg != null) {
@@ -1167,6 +1193,7 @@ class _$CheckArgEvent extends CheckArgEvent {
     required TResult Function(LoadSetupEvent value) loadSetup,
     required TResult Function(CheckArgEvent value) onCheckArg,
     required TResult Function(UpdateOptionsEvent value) updateOptions,
+    required TResult Function(RemoveTorrentFile value) removeTorrentFile,
   }) {
     return onCheckArg(this);
   }
@@ -1183,6 +1210,7 @@ class _$CheckArgEvent extends CheckArgEvent {
     TResult Function(LoadSetupEvent value)? loadSetup,
     TResult Function(CheckArgEvent value)? onCheckArg,
     TResult Function(UpdateOptionsEvent value)? updateOptions,
+    TResult Function(RemoveTorrentFile value)? removeTorrentFile,
     required TResult orElse(),
   }) {
     if (onCheckArg != null) {
@@ -1194,11 +1222,9 @@ class _$CheckArgEvent extends CheckArgEvent {
 
 abstract class CheckArgEvent extends AddTorrentEvent {
   const factory CheckArgEvent(AddTorrentArg arg) = _$CheckArgEvent;
-
   const CheckArgEvent._() : super._();
 
   AddTorrentArg get arg => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
   $CheckArgEventCopyWith<CheckArgEvent> get copyWith =>
       throw _privateConstructorUsedError;
@@ -1209,7 +1235,6 @@ abstract class $UpdateOptionsEventCopyWith<$Res> {
   factory $UpdateOptionsEventCopyWith(
           UpdateOptionsEvent value, $Res Function(UpdateOptionsEvent) then) =
       _$UpdateOptionsEventCopyWithImpl<$Res>;
-
   $Res call({PrefOptions newValue});
 }
 
@@ -1279,6 +1304,7 @@ class _$UpdateOptionsEvent extends UpdateOptionsEvent {
     required TResult Function() loadSetup,
     required TResult Function(AddTorrentArg arg) onCheckArg,
     required TResult Function(PrefOptions newValue) updateOptions,
+    required TResult Function(String file) removeTorrentFile,
   }) {
     return updateOptions(newValue);
   }
@@ -1295,6 +1321,7 @@ class _$UpdateOptionsEvent extends UpdateOptionsEvent {
     TResult Function()? loadSetup,
     TResult Function(AddTorrentArg arg)? onCheckArg,
     TResult Function(PrefOptions newValue)? updateOptions,
+    TResult Function(String file)? removeTorrentFile,
     required TResult orElse(),
   }) {
     if (updateOptions != null) {
@@ -1316,6 +1343,7 @@ class _$UpdateOptionsEvent extends UpdateOptionsEvent {
     required TResult Function(LoadSetupEvent value) loadSetup,
     required TResult Function(CheckArgEvent value) onCheckArg,
     required TResult Function(UpdateOptionsEvent value) updateOptions,
+    required TResult Function(RemoveTorrentFile value) removeTorrentFile,
   }) {
     return updateOptions(this);
   }
@@ -1332,6 +1360,7 @@ class _$UpdateOptionsEvent extends UpdateOptionsEvent {
     TResult Function(LoadSetupEvent value)? loadSetup,
     TResult Function(CheckArgEvent value)? onCheckArg,
     TResult Function(UpdateOptionsEvent value)? updateOptions,
+    TResult Function(RemoveTorrentFile value)? removeTorrentFile,
     required TResult orElse(),
   }) {
     if (updateOptions != null) {
@@ -1350,6 +1379,158 @@ abstract class UpdateOptionsEvent extends AddTorrentEvent {
 
   @JsonKey(ignore: true)
   $UpdateOptionsEventCopyWith<UpdateOptionsEvent> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $RemoveTorrentFileCopyWith<$Res> {
+  factory $RemoveTorrentFileCopyWith(
+          RemoveTorrentFile value, $Res Function(RemoveTorrentFile) then) =
+      _$RemoveTorrentFileCopyWithImpl<$Res>;
+
+  $Res call({String file});
+}
+
+/// @nodoc
+class _$RemoveTorrentFileCopyWithImpl<$Res>
+    extends _$AddTorrentEventCopyWithImpl<$Res>
+    implements $RemoveTorrentFileCopyWith<$Res> {
+  _$RemoveTorrentFileCopyWithImpl(
+      RemoveTorrentFile _value, $Res Function(RemoveTorrentFile) _then)
+      : super(_value, (v) => _then(v as RemoveTorrentFile));
+
+  @override
+  RemoveTorrentFile get _value => super._value as RemoveTorrentFile;
+
+  @override
+  $Res call({
+    Object? file = freezed,
+  }) {
+    return _then(RemoveTorrentFile(
+      file == freezed
+          ? _value.file
+          : file // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+class _$RemoveTorrentFile extends RemoveTorrentFile {
+  const _$RemoveTorrentFile(this.file) : super._();
+
+  @override
+  final String file;
+
+  @override
+  String toString() {
+    return 'AddTorrentEvent.removeTorrentFile(file: $file)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is RemoveTorrentFile &&
+            (identical(other.file, file) ||
+                const DeepCollectionEquality().equals(other.file, file)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(file);
+
+  @JsonKey(ignore: true)
+  @override
+  $RemoveTorrentFileCopyWith<RemoveTorrentFile> get copyWith =>
+      _$RemoveTorrentFileCopyWithImpl<RemoveTorrentFile>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(bool isFileSourceSelected) onSwitchInputSource,
+    required TResult Function() choiceTorrentFile,
+    required TResult Function(PrefOptions options) startDownload,
+    required TResult Function(String newValue) onChangeUrl,
+    required TResult Function() checkDownloadFolder,
+    required TResult Function() selectArgUri,
+    required TResult Function() loadSetup,
+    required TResult Function(AddTorrentArg arg) onCheckArg,
+    required TResult Function(PrefOptions newValue) updateOptions,
+    required TResult Function(String file) removeTorrentFile,
+  }) {
+    return removeTorrentFile(file);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(bool isFileSourceSelected)? onSwitchInputSource,
+    TResult Function()? choiceTorrentFile,
+    TResult Function(PrefOptions options)? startDownload,
+    TResult Function(String newValue)? onChangeUrl,
+    TResult Function()? checkDownloadFolder,
+    TResult Function()? selectArgUri,
+    TResult Function()? loadSetup,
+    TResult Function(AddTorrentArg arg)? onCheckArg,
+    TResult Function(PrefOptions newValue)? updateOptions,
+    TResult Function(String file)? removeTorrentFile,
+    required TResult orElse(),
+  }) {
+    if (removeTorrentFile != null) {
+      return removeTorrentFile(file);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(SwitchInputSourceEvent value) onSwitchInputSource,
+    required TResult Function(ChoiceTorrentFileEvent value) choiceTorrentFile,
+    required TResult Function(StartDownloadEvent value) startDownload,
+    required TResult Function(ChangeUrlEvent value) onChangeUrl,
+    required TResult Function(CheckDownloadFolderEvent value)
+        checkDownloadFolder,
+    required TResult Function(SelectArgUri value) selectArgUri,
+    required TResult Function(LoadSetupEvent value) loadSetup,
+    required TResult Function(CheckArgEvent value) onCheckArg,
+    required TResult Function(UpdateOptionsEvent value) updateOptions,
+    required TResult Function(RemoveTorrentFile value) removeTorrentFile,
+  }) {
+    return removeTorrentFile(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(SwitchInputSourceEvent value)? onSwitchInputSource,
+    TResult Function(ChoiceTorrentFileEvent value)? choiceTorrentFile,
+    TResult Function(StartDownloadEvent value)? startDownload,
+    TResult Function(ChangeUrlEvent value)? onChangeUrl,
+    TResult Function(CheckDownloadFolderEvent value)? checkDownloadFolder,
+    TResult Function(SelectArgUri value)? selectArgUri,
+    TResult Function(LoadSetupEvent value)? loadSetup,
+    TResult Function(CheckArgEvent value)? onCheckArg,
+    TResult Function(UpdateOptionsEvent value)? updateOptions,
+    TResult Function(RemoveTorrentFile value)? removeTorrentFile,
+    required TResult orElse(),
+  }) {
+    if (removeTorrentFile != null) {
+      return removeTorrentFile(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class RemoveTorrentFile extends AddTorrentEvent {
+  const factory RemoveTorrentFile(String file) = _$RemoveTorrentFile;
+
+  const RemoveTorrentFile._() : super._();
+
+  String get file => throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $RemoveTorrentFileCopyWith<RemoveTorrentFile> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -1379,7 +1560,7 @@ class _$AddTorrentStateTearOff {
     );
   }
 
-  FileSelectedState fileSelected(String selectedFiles) {
+  FileSelectedState fileSelected(List<String> selectedFiles) {
     return FileSelectedState(
       selectedFiles,
     );
@@ -1413,27 +1594,25 @@ mixin _$AddTorrentState {
     required TResult Function(String message) showError,
     required TResult Function(bool isFileSelected) switchInputType,
     required TResult Function(bool isEnable) isEnableDownloadButton,
-    required TResult Function(String selectedFiles) fileSelected,
+    required TResult Function(List<String> selectedFiles) fileSelected,
     required TResult Function() addTorrentSuccess,
     required TResult Function(PrefOptions options) showPrefsOptions,
     required TResult Function(String url) setDownloadUrl,
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(String message)? showError,
     TResult Function(bool isFileSelected)? switchInputType,
     TResult Function(bool isEnable)? isEnableDownloadButton,
-    TResult Function(String selectedFiles)? fileSelected,
+    TResult Function(List<String> selectedFiles)? fileSelected,
     TResult Function()? addTorrentSuccess,
     TResult Function(PrefOptions options)? showPrefsOptions,
     TResult Function(String url)? setDownloadUrl,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(InitialAddTorrentState value) initial,
@@ -1447,7 +1626,6 @@ mixin _$AddTorrentState {
     required TResult Function(SetDownloadUrlState value) setDownloadUrl,
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitialAddTorrentState value)? initial,
@@ -1523,7 +1701,7 @@ class _$InitialAddTorrentState extends InitialAddTorrentState {
     required TResult Function(String message) showError,
     required TResult Function(bool isFileSelected) switchInputType,
     required TResult Function(bool isEnable) isEnableDownloadButton,
-    required TResult Function(String selectedFiles) fileSelected,
+    required TResult Function(List<String> selectedFiles) fileSelected,
     required TResult Function() addTorrentSuccess,
     required TResult Function(PrefOptions options) showPrefsOptions,
     required TResult Function(String url) setDownloadUrl,
@@ -1538,7 +1716,7 @@ class _$InitialAddTorrentState extends InitialAddTorrentState {
     TResult Function(String message)? showError,
     TResult Function(bool isFileSelected)? switchInputType,
     TResult Function(bool isEnable)? isEnableDownloadButton,
-    TResult Function(String selectedFiles)? fileSelected,
+    TResult Function(List<String> selectedFiles)? fileSelected,
     TResult Function()? addTorrentSuccess,
     TResult Function(PrefOptions options)? showPrefsOptions,
     TResult Function(String url)? setDownloadUrl,
@@ -1588,7 +1766,6 @@ class _$InitialAddTorrentState extends InitialAddTorrentState {
 
 abstract class InitialAddTorrentState extends AddTorrentState {
   const factory InitialAddTorrentState() = _$InitialAddTorrentState;
-
   const InitialAddTorrentState._() : super._();
 }
 
@@ -1660,7 +1837,7 @@ class _$ShowErrorState extends ShowErrorState {
     required TResult Function(String message) showError,
     required TResult Function(bool isFileSelected) switchInputType,
     required TResult Function(bool isEnable) isEnableDownloadButton,
-    required TResult Function(String selectedFiles) fileSelected,
+    required TResult Function(List<String> selectedFiles) fileSelected,
     required TResult Function() addTorrentSuccess,
     required TResult Function(PrefOptions options) showPrefsOptions,
     required TResult Function(String url) setDownloadUrl,
@@ -1675,7 +1852,7 @@ class _$ShowErrorState extends ShowErrorState {
     TResult Function(String message)? showError,
     TResult Function(bool isFileSelected)? switchInputType,
     TResult Function(bool isEnable)? isEnableDownloadButton,
-    TResult Function(String selectedFiles)? fileSelected,
+    TResult Function(List<String> selectedFiles)? fileSelected,
     TResult Function()? addTorrentSuccess,
     TResult Function(PrefOptions options)? showPrefsOptions,
     TResult Function(String url)? setDownloadUrl,
@@ -1725,11 +1902,9 @@ class _$ShowErrorState extends ShowErrorState {
 
 abstract class ShowErrorState extends AddTorrentState {
   const factory ShowErrorState(String message) = _$ShowErrorState;
-
   const ShowErrorState._() : super._();
 
   String get message => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
   $ShowErrorStateCopyWith<ShowErrorState> get copyWith =>
       throw _privateConstructorUsedError;
@@ -1806,7 +1981,7 @@ class _$SwitchInputTypeState extends SwitchInputTypeState {
     required TResult Function(String message) showError,
     required TResult Function(bool isFileSelected) switchInputType,
     required TResult Function(bool isEnable) isEnableDownloadButton,
-    required TResult Function(String selectedFiles) fileSelected,
+    required TResult Function(List<String> selectedFiles) fileSelected,
     required TResult Function() addTorrentSuccess,
     required TResult Function(PrefOptions options) showPrefsOptions,
     required TResult Function(String url) setDownloadUrl,
@@ -1821,7 +1996,7 @@ class _$SwitchInputTypeState extends SwitchInputTypeState {
     TResult Function(String message)? showError,
     TResult Function(bool isFileSelected)? switchInputType,
     TResult Function(bool isEnable)? isEnableDownloadButton,
-    TResult Function(String selectedFiles)? fileSelected,
+    TResult Function(List<String> selectedFiles)? fileSelected,
     TResult Function()? addTorrentSuccess,
     TResult Function(PrefOptions options)? showPrefsOptions,
     TResult Function(String url)? setDownloadUrl,
@@ -1872,11 +2047,9 @@ class _$SwitchInputTypeState extends SwitchInputTypeState {
 abstract class SwitchInputTypeState extends AddTorrentState {
   const factory SwitchInputTypeState(bool isFileSelected) =
       _$SwitchInputTypeState;
-
   const SwitchInputTypeState._() : super._();
 
   bool get isFileSelected => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
   $SwitchInputTypeStateCopyWith<SwitchInputTypeState> get copyWith =>
       throw _privateConstructorUsedError;
@@ -1953,7 +2126,7 @@ class _$EnableDownloadButtonState extends EnableDownloadButtonState {
     required TResult Function(String message) showError,
     required TResult Function(bool isFileSelected) switchInputType,
     required TResult Function(bool isEnable) isEnableDownloadButton,
-    required TResult Function(String selectedFiles) fileSelected,
+    required TResult Function(List<String> selectedFiles) fileSelected,
     required TResult Function() addTorrentSuccess,
     required TResult Function(PrefOptions options) showPrefsOptions,
     required TResult Function(String url) setDownloadUrl,
@@ -1968,7 +2141,7 @@ class _$EnableDownloadButtonState extends EnableDownloadButtonState {
     TResult Function(String message)? showError,
     TResult Function(bool isFileSelected)? switchInputType,
     TResult Function(bool isEnable)? isEnableDownloadButton,
-    TResult Function(String selectedFiles)? fileSelected,
+    TResult Function(List<String> selectedFiles)? fileSelected,
     TResult Function()? addTorrentSuccess,
     TResult Function(PrefOptions options)? showPrefsOptions,
     TResult Function(String url)? setDownloadUrl,
@@ -2019,11 +2192,9 @@ class _$EnableDownloadButtonState extends EnableDownloadButtonState {
 abstract class EnableDownloadButtonState extends AddTorrentState {
   const factory EnableDownloadButtonState(bool isEnable) =
       _$EnableDownloadButtonState;
-
   const EnableDownloadButtonState._() : super._();
 
   bool get isEnable => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
   $EnableDownloadButtonStateCopyWith<EnableDownloadButtonState> get copyWith =>
       throw _privateConstructorUsedError;
@@ -2034,7 +2205,8 @@ abstract class $FileSelectedStateCopyWith<$Res> {
   factory $FileSelectedStateCopyWith(
           FileSelectedState value, $Res Function(FileSelectedState) then) =
       _$FileSelectedStateCopyWithImpl<$Res>;
-  $Res call({String selectedFiles});
+
+  $Res call({List<String> selectedFiles});
 }
 
 /// @nodoc
@@ -2056,7 +2228,7 @@ class _$FileSelectedStateCopyWithImpl<$Res>
       selectedFiles == freezed
           ? _value.selectedFiles
           : selectedFiles // ignore: cast_nullable_to_non_nullable
-              as String,
+              as List<String>,
     ));
   }
 }
@@ -2066,7 +2238,7 @@ class _$FileSelectedState extends FileSelectedState {
   const _$FileSelectedState(this.selectedFiles) : super._();
 
   @override
-  final String selectedFiles;
+  final List<String> selectedFiles;
 
   @override
   String toString() {
@@ -2098,7 +2270,7 @@ class _$FileSelectedState extends FileSelectedState {
     required TResult Function(String message) showError,
     required TResult Function(bool isFileSelected) switchInputType,
     required TResult Function(bool isEnable) isEnableDownloadButton,
-    required TResult Function(String selectedFiles) fileSelected,
+    required TResult Function(List<String> selectedFiles) fileSelected,
     required TResult Function() addTorrentSuccess,
     required TResult Function(PrefOptions options) showPrefsOptions,
     required TResult Function(String url) setDownloadUrl,
@@ -2113,7 +2285,7 @@ class _$FileSelectedState extends FileSelectedState {
     TResult Function(String message)? showError,
     TResult Function(bool isFileSelected)? switchInputType,
     TResult Function(bool isEnable)? isEnableDownloadButton,
-    TResult Function(String selectedFiles)? fileSelected,
+    TResult Function(List<String> selectedFiles)? fileSelected,
     TResult Function()? addTorrentSuccess,
     TResult Function(PrefOptions options)? showPrefsOptions,
     TResult Function(String url)? setDownloadUrl,
@@ -2162,11 +2334,12 @@ class _$FileSelectedState extends FileSelectedState {
 }
 
 abstract class FileSelectedState extends AddTorrentState {
-  const factory FileSelectedState(String selectedFiles) = _$FileSelectedState;
+  const factory FileSelectedState(List<String> selectedFiles) =
+      _$FileSelectedState;
 
   const FileSelectedState._() : super._();
 
-  String get selectedFiles => throw _privateConstructorUsedError;
+  List<String> get selectedFiles => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $FileSelectedStateCopyWith<FileSelectedState> get copyWith =>
@@ -2216,7 +2389,7 @@ class _$AddTorrentSuccessState extends AddTorrentSuccessState {
     required TResult Function(String message) showError,
     required TResult Function(bool isFileSelected) switchInputType,
     required TResult Function(bool isEnable) isEnableDownloadButton,
-    required TResult Function(String selectedFiles) fileSelected,
+    required TResult Function(List<String> selectedFiles) fileSelected,
     required TResult Function() addTorrentSuccess,
     required TResult Function(PrefOptions options) showPrefsOptions,
     required TResult Function(String url) setDownloadUrl,
@@ -2231,7 +2404,7 @@ class _$AddTorrentSuccessState extends AddTorrentSuccessState {
     TResult Function(String message)? showError,
     TResult Function(bool isFileSelected)? switchInputType,
     TResult Function(bool isEnable)? isEnableDownloadButton,
-    TResult Function(String selectedFiles)? fileSelected,
+    TResult Function(List<String> selectedFiles)? fileSelected,
     TResult Function()? addTorrentSuccess,
     TResult Function(PrefOptions options)? showPrefsOptions,
     TResult Function(String url)? setDownloadUrl,
@@ -2281,7 +2454,6 @@ class _$AddTorrentSuccessState extends AddTorrentSuccessState {
 
 abstract class AddTorrentSuccessState extends AddTorrentState {
   const factory AddTorrentSuccessState() = _$AddTorrentSuccessState;
-
   const AddTorrentSuccessState._() : super._();
 }
 
@@ -2290,7 +2462,6 @@ abstract class $ShowPrefOptionsStateCopyWith<$Res> {
   factory $ShowPrefOptionsStateCopyWith(ShowPrefOptionsState value,
           $Res Function(ShowPrefOptionsState) then) =
       _$ShowPrefOptionsStateCopyWithImpl<$Res>;
-
   $Res call({PrefOptions options});
 }
 
@@ -2355,7 +2526,7 @@ class _$ShowPrefOptionsState extends ShowPrefOptionsState {
     required TResult Function(String message) showError,
     required TResult Function(bool isFileSelected) switchInputType,
     required TResult Function(bool isEnable) isEnableDownloadButton,
-    required TResult Function(String selectedFiles) fileSelected,
+    required TResult Function(List<String> selectedFiles) fileSelected,
     required TResult Function() addTorrentSuccess,
     required TResult Function(PrefOptions options) showPrefsOptions,
     required TResult Function(String url) setDownloadUrl,
@@ -2370,7 +2541,7 @@ class _$ShowPrefOptionsState extends ShowPrefOptionsState {
     TResult Function(String message)? showError,
     TResult Function(bool isFileSelected)? switchInputType,
     TResult Function(bool isEnable)? isEnableDownloadButton,
-    TResult Function(String selectedFiles)? fileSelected,
+    TResult Function(List<String> selectedFiles)? fileSelected,
     TResult Function()? addTorrentSuccess,
     TResult Function(PrefOptions options)? showPrefsOptions,
     TResult Function(String url)? setDownloadUrl,
@@ -2421,11 +2592,9 @@ class _$ShowPrefOptionsState extends ShowPrefOptionsState {
 abstract class ShowPrefOptionsState extends AddTorrentState {
   const factory ShowPrefOptionsState(PrefOptions options) =
       _$ShowPrefOptionsState;
-
   const ShowPrefOptionsState._() : super._();
 
   PrefOptions get options => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
   $ShowPrefOptionsStateCopyWith<ShowPrefOptionsState> get copyWith =>
       throw _privateConstructorUsedError;
@@ -2499,7 +2668,7 @@ class _$SetDownloadUrlState extends SetDownloadUrlState {
     required TResult Function(String message) showError,
     required TResult Function(bool isFileSelected) switchInputType,
     required TResult Function(bool isEnable) isEnableDownloadButton,
-    required TResult Function(String selectedFiles) fileSelected,
+    required TResult Function(List<String> selectedFiles) fileSelected,
     required TResult Function() addTorrentSuccess,
     required TResult Function(PrefOptions options) showPrefsOptions,
     required TResult Function(String url) setDownloadUrl,
@@ -2514,7 +2683,7 @@ class _$SetDownloadUrlState extends SetDownloadUrlState {
     TResult Function(String message)? showError,
     TResult Function(bool isFileSelected)? switchInputType,
     TResult Function(bool isEnable)? isEnableDownloadButton,
-    TResult Function(String selectedFiles)? fileSelected,
+    TResult Function(List<String> selectedFiles)? fileSelected,
     TResult Function()? addTorrentSuccess,
     TResult Function(PrefOptions options)? showPrefsOptions,
     TResult Function(String url)? setDownloadUrl,
@@ -2564,11 +2733,9 @@ class _$SetDownloadUrlState extends SetDownloadUrlState {
 
 abstract class SetDownloadUrlState extends AddTorrentState {
   const factory SetDownloadUrlState(String url) = _$SetDownloadUrlState;
-
   const SetDownloadUrlState._() : super._();
 
   String get url => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
   $SetDownloadUrlStateCopyWith<SetDownloadUrlState> get copyWith =>
       throw _privateConstructorUsedError;

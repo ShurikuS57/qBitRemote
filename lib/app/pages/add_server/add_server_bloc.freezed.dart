@@ -67,7 +67,6 @@ mixin _$AddServerEvent {
     required TResult Function(String title) setAppBarTitle,
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(ServerHost server)? save,
@@ -79,7 +78,6 @@ mixin _$AddServerEvent {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(SaveServerEvent value) save,
@@ -89,7 +87,6 @@ mixin _$AddServerEvent {
     required TResult Function(SetAppBarTitleEvent value) setAppBarTitle,
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(SaveServerEvent value)? save,
@@ -250,11 +247,9 @@ class _$SaveServerEvent extends SaveServerEvent with DiagnosticableTreeMixin {
 
 abstract class SaveServerEvent extends AddServerEvent {
   const factory SaveServerEvent(ServerHost server) = _$SaveServerEvent;
-
   const SaveServerEvent._() : super._();
 
   ServerHost get server => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
   $SaveServerEventCopyWith<SaveServerEvent> get copyWith =>
       throw _privateConstructorUsedError;
@@ -431,17 +426,12 @@ abstract class InvalidateButtonEvent extends AddServerEvent {
   const factory InvalidateButtonEvent(
           String name, String host, String login, String password) =
       _$InvalidateButtonEvent;
-
   const InvalidateButtonEvent._() : super._();
 
   String get name => throw _privateConstructorUsedError;
-
   String get host => throw _privateConstructorUsedError;
-
   String get login => throw _privateConstructorUsedError;
-
   String get password => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
   $InvalidateButtonEventCopyWith<InvalidateButtonEvent> get copyWith =>
       throw _privateConstructorUsedError;
@@ -578,11 +568,9 @@ class _$SetEditModeEvent extends SetEditModeEvent with DiagnosticableTreeMixin {
 
 abstract class SetEditModeEvent extends AddServerEvent {
   const factory SetEditModeEvent(int editId) = _$SetEditModeEvent;
-
   const SetEditModeEvent._() : super._();
 
   int get editId => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
   $SetEditModeEventCopyWith<SetEditModeEvent> get copyWith =>
       throw _privateConstructorUsedError;
@@ -720,11 +708,9 @@ class _$CheckConnectEvent extends CheckConnectEvent
 
 abstract class CheckConnectEvent extends AddServerEvent {
   const factory CheckConnectEvent(ServerHost server) = _$CheckConnectEvent;
-
   const CheckConnectEvent._() : super._();
 
   ServerHost get server => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
   $CheckConnectEventCopyWith<CheckConnectEvent> get copyWith =>
       throw _privateConstructorUsedError;
@@ -862,11 +848,9 @@ class _$SetAppBarTitleEvent extends SetAppBarTitleEvent
 
 abstract class SetAppBarTitleEvent extends AddServerEvent {
   const factory SetAppBarTitleEvent(String title) = _$SetAppBarTitleEvent;
-
   const SetAppBarTitleEvent._() : super._();
 
   String get title => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
   $SetAppBarTitleEventCopyWith<SetAppBarTitleEvent> get copyWith =>
       throw _privateConstructorUsedError;
@@ -924,7 +908,6 @@ mixin _$AddServerState {
     required TResult Function(String title) setupAppBarTitle,
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
@@ -936,7 +919,6 @@ mixin _$AddServerState {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(InitialAddServerState value) initial,
@@ -948,7 +930,6 @@ mixin _$AddServerState {
     required TResult Function(AppBarTitleState value) setupAppBarTitle,
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitialAddServerState value)? initial,
@@ -1086,7 +1067,6 @@ class _$InitialAddServerState extends InitialAddServerState
 
 abstract class InitialAddServerState extends AddServerState {
   const factory InitialAddServerState() = _$InitialAddServerState;
-
   const InitialAddServerState._() : super._();
 }
 
@@ -1224,11 +1204,9 @@ class _$SetupEditModeState extends SetupEditModeState
 
 abstract class SetupEditModeState extends AddServerState {
   const factory SetupEditModeState(ServerHost server) = _$SetupEditModeState;
-
   const SetupEditModeState._() : super._();
 
   ServerHost get server => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
   $SetupEditModeStateCopyWith<SetupEditModeState> get copyWith =>
       throw _privateConstructorUsedError;
@@ -1369,11 +1347,9 @@ class _$ButtoinEnableState extends ButtoinEnableState
 
 abstract class ButtoinEnableState extends AddServerState {
   const factory ButtoinEnableState(bool isEnable) = _$ButtoinEnableState;
-
   const ButtoinEnableState._() : super._();
 
   bool get isEnable => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
   $ButtoinEnableStateCopyWith<ButtoinEnableState> get copyWith =>
       throw _privateConstructorUsedError;
@@ -1488,7 +1464,6 @@ class _$ConnectSuccessResultState extends ConnectSuccessResultState
 
 abstract class ConnectSuccessResultState extends AddServerState {
   const factory ConnectSuccessResultState() = _$ConnectSuccessResultState;
-
   const ConnectSuccessResultState._() : super._();
 }
 
@@ -1626,11 +1601,9 @@ class _$TestConnectState extends TestConnectState with DiagnosticableTreeMixin {
 
 abstract class TestConnectState extends AddServerState {
   const factory TestConnectState(bool isConnect) = _$TestConnectState;
-
   const TestConnectState._() : super._();
 
   bool get isConnect => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
   $TestConnectStateCopyWith<TestConnectState> get copyWith =>
       throw _privateConstructorUsedError;
@@ -1769,11 +1742,9 @@ class _$AppBarTitleState extends AppBarTitleState with DiagnosticableTreeMixin {
 
 abstract class AppBarTitleState extends AddServerState {
   const factory AppBarTitleState(String title) = _$AppBarTitleState;
-
   const AppBarTitleState._() : super._();
 
   String get title => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
   $AppBarTitleStateCopyWith<AppBarTitleState> get copyWith =>
       throw _privateConstructorUsedError;

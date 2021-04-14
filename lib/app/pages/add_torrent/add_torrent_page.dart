@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:qBitRemote/app/widgets/action_button.dart';
 import 'package:qBitRemote/app/widgets/input_text.dart';
@@ -177,10 +179,10 @@ class _AddTorrentScreenState extends State<AddTorrentScreen> {
             icon: Icon(Icons.download_outlined),
             onPressed: isEnableButton
                 ? () {
-                    context
-                        .read<AddTorrentBloc>()
-                        .add(AddTorrentEvent.startDownload(_prepareOptions()));
-                  }
+              context
+                  .read<AddTorrentBloc>()
+                  .add(AddTorrentEvent.startDownload(_prepareOptions()));
+            }
                 : null);
       },
     );
@@ -197,11 +199,34 @@ class _AddTorrentScreenState extends State<AddTorrentScreen> {
     return BlocBuilder<AddTorrentBloc, AddTorrentState>(
       buildWhen: (previous, current) => current is FileSelectedState,
       builder: (context, state) {
-        String selectedFiles = "";
+        List<String> selectedFiles = [];
         if (state is FileSelectedState) {
           selectedFiles = state.selectedFiles;
         }
-        return Text(selectedFiles);
+        return ListView.builder(
+            shrinkWrap: true,
+            itemCount: selectedFiles.length,
+            itemBuilder: (context, index) => Row(
+                  children: [
+                    Text(
+                      selectedFiles[index],
+                      style: TextStyle(
+                          fontSize: 16, color: AppColors.textTitle1Color),
+                    ),
+                    Spacer(),
+                    IconButton(
+                      icon: Icon(
+                        Icons.cancel_rounded,
+                        color: AppColors.textSubtitle1Color,
+                      ),
+                      onPressed: () {
+                        context
+                            .read<AddTorrentBloc>()
+                            .add(RemoveTorrentFile(selectedFiles[index]));
+                      },
+                    )
+                  ],
+                ));
       },
     );
   }
@@ -249,25 +274,25 @@ class _AddTorrentScreenState extends State<AddTorrentScreen> {
         }
         return _isChoiceFile
             ? Padding(
-                padding: const EdgeInsets.only(top: 16),
-                child: ActionButton(
-                  text: context.intl().selectedFile,
-                  onPressed: () {
-                    context
-                        .read<AddTorrentBloc>()
-                        .add(AddTorrentEvent.choiceTorrentFile());
-                  },
-                ),
-              )
+          padding: const EdgeInsets.only(top: 16),
+          child: ActionButton(
+            text: context.intl().selectedFile,
+            onPressed: () {
+              context
+                  .read<AddTorrentBloc>()
+                  .add(AddTorrentEvent.choiceTorrentFile());
+            },
+          ),
+        )
             : Padding(
-                padding: const EdgeInsets.only(top: 16),
-                child: InputText(
-                  controller: urlTextController,
-                  lableText: context.intl().marginUrl,
-                  minLines: 3,
-                  maxLines: 3,
-                ),
-              );
+          padding: const EdgeInsets.only(top: 16),
+          child: InputText(
+            controller: urlTextController,
+            lableText: context.intl().marginUrl,
+            minLines: 3,
+            maxLines: 3,
+          ),
+        );
       },
     );
   }

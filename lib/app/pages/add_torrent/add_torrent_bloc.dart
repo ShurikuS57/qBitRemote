@@ -41,6 +41,9 @@ class AddTorrentEvent with _$AddTorrentEvent {
 
   const factory AddTorrentEvent.updateOptions(PrefOptions newValue) =
       UpdateOptionsEvent;
+
+  const factory AddTorrentEvent.removeTorrentFile(String file) =
+      RemoveTorrentFile;
 }
 
 @freezed
@@ -57,7 +60,7 @@ class AddTorrentState with _$AddTorrentState {
   const factory AddTorrentState.isEnableDownloadButton(bool isEnable) =
       EnableDownloadButtonState;
 
-  const factory AddTorrentState.fileSelected(String selectedFiles) =
+  const factory AddTorrentState.fileSelected(List<String> selectedFiles) =
       FileSelectedState;
 
   const factory AddTorrentState.addTorrentSuccess() = AddTorrentSuccessState;
@@ -85,21 +88,26 @@ class AddTorrentBloc extends Bloc<AddTorrentEvent, AddTorrentState> {
   @override
   Stream<AddTorrentState> mapEventToState(AddTorrentEvent event) {
     return event.when<Stream<AddTorrentState>>(
-      onSwitchInputSource: _onSwitchInputSource,
-      choiceTorrentFile: _choiceTorrentFile,
-      startDownload: _startDownload,
-      onChangeUrl: _onChangeUrl,
-      checkDownloadFolder: _checkDownloadFolder,
-      selectArgUri: _selectArgUri,
-      loadSetup: _loadSetup,
-      onCheckArg: _onCheckArg,
-      updateOptions: _updateOptions,
-    );
+        onSwitchInputSource: _onSwitchInputSource,
+        choiceTorrentFile: _choiceTorrentFile,
+        startDownload: _startDownload,
+        onChangeUrl: _onChangeUrl,
+        checkDownloadFolder: _checkDownloadFolder,
+        selectArgUri: _selectArgUri,
+        loadSetup: _loadSetup,
+        onCheckArg: _onCheckArg,
+        updateOptions: _updateOptions,
+        removeTorrentFile: _removeTorrentFile);
   }
 
   Stream<AddTorrentState> _onSwitchInputSource(
       bool isFileSourceSelected) async* {
     _isFileSourceSelected = isFileSourceSelected;
+    if (!_isFileSourceSelected) {
+      _filesSelectedPath.clear();
+      List<String> fileNames = prepareFileNameList();
+      yield AddTorrentState.fileSelected(fileNames);
+    }
     yield AddTorrentState.switchInputType(_isFileSourceSelected);
     yield* _invalidateButton();
   }
@@ -123,18 +131,18 @@ class AddTorrentBloc extends Bloc<AddTorrentEvent, AddTorrentState> {
         allowedExtensions: ["torrent"],
         allowMultiple: true);
     if (fileResult != null && fileResult.files.length > 0) {
-      _filesSelectedPath.clear();
-      fileResult.files.forEach((element) {
-        _filesSelectedPath.add(element);
-      });
-
-      String fileNames = "";
-      _filesSelectedPath.forEach((element) {
-        String? name = element.name;
-        if (name != null) {
-          fileNames += name + "\n";
+      fileResult.files.forEach((selectedFile) {
+        var isInclude = false;
+        _filesSelectedPath.forEach((item) {
+          if (selectedFile.name == item.name) {
+            isInclude = true;
+          }
+        });
+        if (!isInclude) {
+          _filesSelectedPath.add(selectedFile);
         }
       });
+      List<String> fileNames = prepareFileNameList();
       yield AddTorrentState.fileSelected(fileNames);
       yield* _invalidateButton();
     }
@@ -201,16 +209,33 @@ class AddTorrentBloc extends Bloc<AddTorrentEvent, AddTorrentState> {
       _filesSelectedPath = [
         PlatformFile(path: file.path, name: basename(file.path))
       ];
-      String fileNames = "";
-      _filesSelectedPath.forEach((element) {
-        String? name = element.name;
-        if (name != null) {
-          fileNames += name + "\n";
-        }
-      });
+      List<String> fileNames = prepareFileNameList();
       yield AddTorrentState.fileSelected(fileNames);
       yield* _invalidateButton();
     }
+  }
+
+  Stream<AddTorrentState> _removeTorrentFile(String removeFileName) async* {
+    for (int i = 0; i < _filesSelectedPath.length; i++) {
+      if (_filesSelectedPath[i].name == removeFileName) {
+        _filesSelectedPath.removeAt(i);
+        break;
+      }
+    }
+    List<String> fileNames = prepareFileNameList();
+    yield AddTorrentState.fileSelected(fileNames);
+    yield* _invalidateButton();
+  }
+
+  List<String> prepareFileNameList() {
+    List<String> fileNames = [];
+    _filesSelectedPath.forEach((element) {
+      String? name = element.name;
+      if (name != null) {
+        fileNames.add(name);
+      }
+    });
+    return fileNames;
   }
 
   Future<ServerHost?> getCurrentServerHost() async {

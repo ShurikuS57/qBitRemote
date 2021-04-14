@@ -38,7 +38,6 @@ mixin _$AppPrefsEvent {
     required TResult Function(AppPrefs prefs) saveAppPref,
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loadSetup,
@@ -46,14 +45,12 @@ mixin _$AppPrefsEvent {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(LoadSetupEvent value) loadSetup,
     required TResult Function(SaveAppPrefEvent value) saveAppPref,
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(LoadSetupEvent value)? loadSetup,
@@ -76,7 +73,6 @@ class _$AppPrefsEventCopyWithImpl<$Res>
   _$AppPrefsEventCopyWithImpl(this._value, this._then);
 
   final AppPrefsEvent _value;
-
   // ignore: unused_field
   final $Res Function(AppPrefsEvent) _then;
 }
@@ -164,7 +160,6 @@ class _$LoadSetupEvent extends LoadSetupEvent {
 
 abstract class LoadSetupEvent extends AppPrefsEvent {
   const factory LoadSetupEvent() = _$LoadSetupEvent;
-
   const LoadSetupEvent._() : super._();
 }
 
@@ -173,7 +168,6 @@ abstract class $SaveAppPrefEventCopyWith<$Res> {
   factory $SaveAppPrefEventCopyWith(
           SaveAppPrefEvent value, $Res Function(SaveAppPrefEvent) then) =
       _$SaveAppPrefEventCopyWithImpl<$Res>;
-
   $Res call({AppPrefs prefs});
 }
 
@@ -277,11 +271,9 @@ class _$SaveAppPrefEvent extends SaveAppPrefEvent {
 
 abstract class SaveAppPrefEvent extends AppPrefsEvent {
   const factory SaveAppPrefEvent(AppPrefs prefs) = _$SaveAppPrefEvent;
-
   const SaveAppPrefEvent._() : super._();
 
   AppPrefs get prefs => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
   $SaveAppPrefEventCopyWith<SaveAppPrefEvent> get copyWith =>
       throw _privateConstructorUsedError;
@@ -313,7 +305,6 @@ mixin _$AppPrefsState {
     required TResult Function(AppPrefs prefs) showSettingsData,
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
@@ -321,14 +312,12 @@ mixin _$AppPrefsState {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(InitialLAppPrefsState value) initial,
     required TResult Function(ShowSettingsData value) showSettingsData,
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitialLAppPrefsState value)? initial,
@@ -351,7 +340,6 @@ class _$AppPrefsStateCopyWithImpl<$Res>
   _$AppPrefsStateCopyWithImpl(this._value, this._then);
 
   final AppPrefsState _value;
-
   // ignore: unused_field
   final $Res Function(AppPrefsState) _then;
 }
@@ -439,7 +427,6 @@ class _$InitialLAppPrefsState extends InitialLAppPrefsState {
 
 abstract class InitialLAppPrefsState extends AppPrefsState {
   const factory InitialLAppPrefsState() = _$InitialLAppPrefsState;
-
   const InitialLAppPrefsState._() : super._();
 }
 
@@ -448,7 +435,6 @@ abstract class $ShowSettingsDataCopyWith<$Res> {
   factory $ShowSettingsDataCopyWith(
           ShowSettingsData value, $Res Function(ShowSettingsData) then) =
       _$ShowSettingsDataCopyWithImpl<$Res>;
-
   $Res call({AppPrefs prefs});
 }
 
@@ -552,11 +538,9 @@ class _$ShowSettingsData extends ShowSettingsData {
 
 abstract class ShowSettingsData extends AppPrefsState {
   const factory ShowSettingsData(AppPrefs prefs) = _$ShowSettingsData;
-
   const ShowSettingsData._() : super._();
 
   AppPrefs get prefs => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
   $ShowSettingsDataCopyWith<ShowSettingsData> get copyWith =>
       throw _privateConstructorUsedError;
