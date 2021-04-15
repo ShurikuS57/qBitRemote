@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:qBitRemote/commons/extensions/build_context_ext.dart';
 
 class StateHelper {
   static IconData getIconByTorrentState(String state) {
@@ -47,90 +48,110 @@ class StateHelper {
     }
   }
 
-  static String convertPriority(int priority) {
+  static String convertPriority(BuildContext context, int priority) {
     switch (priority) {
       case 0:
         {
-          return "Do not download";
+          return context.intl().doNotDownload;
         }
       case 1:
+      case 4:
         {
-          return "Normal priority";
+          return context.intl().normal;
         }
       case 6:
         {
-          return "High priority";
+          return context.intl().high;
         }
       case 7:
         {
-          return "Maximal priority";
+          return context.intl().maximal;
         }
       default:
         {
-          return "None";
+          return context.intl().none;
         }
     }
   }
 
   static String statusStr(String state) {
-    switch(state) {
-      case "error": {
-        return "Error";
-      }
-      case "missingFiles": {
-        return "Files Missing";
-      }
-      case "uploading": {
-        return "Seeding";
-      }
-      case "pausedUP": {
-        return "Paused / Done";
-      }
-      case "queuedUP": {
-        return "Queued For Seeding";
-      }
-      case "stalledUP": {
-        return "Available for Seeding";
-      }
-      case "checkingUP": {
-        return "Checking Files";
-      }
-      case "forcedUP": {
-        return "Force Uploading";
-      }
-      case "allocating": {
-        return "Allocating Space";
-      }
-      case "downloading": {
-        return "Downloading";
-      }
-      case "metaDL": {
-        return "Fetching Metadata";
-      }
-      case "pausedDL": {
-        return "Paused";
-      }
-      case "queuedDL": {
-        return "Queued for Download";
-      }
-      case "stalledDL": {
-        return "Stalled";
-      }
-      case "checkingDL": {
-        return "Checking Files";
-      }
-      case "forceDL": {
-        return "Force Downloading";
-      }
-      case "checkingResumeData": {
-        return "Checking Resume";
-      }
-      case "moving": {
-        return "Moving Location";
-      }
-      default: {
-        return "Unknown";
-      }
+    switch (state) {
+      case "error":
+        {
+          return "Error";
+        }
+      case "missingFiles":
+        {
+          return "Files Missing";
+        }
+      case "uploading":
+        {
+          return "Seeding";
+        }
+      case "pausedUP":
+        {
+          return "Paused / Done";
+        }
+      case "queuedUP":
+        {
+          return "Queued For Seeding";
+        }
+      case "stalledUP":
+        {
+          return "Available for Seeding";
+        }
+      case "checkingUP":
+        {
+          return "Checking Files";
+        }
+      case "forcedUP":
+        {
+          return "Force Uploading";
+        }
+      case "allocating":
+        {
+          return "Allocating Space";
+        }
+      case "downloading":
+        {
+          return "Downloading";
+        }
+      case "metaDL":
+        {
+          return "Fetching Metadata";
+        }
+      case "pausedDL":
+        {
+          return "Paused";
+        }
+      case "queuedDL":
+        {
+          return "Queued for Download";
+        }
+      case "stalledDL":
+        {
+          return "Stalled";
+        }
+      case "checkingDL":
+        {
+          return "Checking Files";
+        }
+      case "forceDL":
+        {
+          return "Force Downloading";
+        }
+      case "checkingResumeData":
+        {
+          return "Checking Resume";
+        }
+      case "moving":
+        {
+          return "Moving Location";
+        }
+      default:
+        {
+          return "Unknown";
+        }
     }
   }
 }

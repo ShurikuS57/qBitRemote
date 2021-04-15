@@ -11,6 +11,7 @@ class FileEntity {
   final int size;
   final double progress;
   final int priority;
+  int position = 0;
 
   Map<String, dynamic> toMap() {
     return {

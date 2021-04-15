@@ -67,6 +67,9 @@ abstract class RemoteRepository {
 
   Future<UiResponse> forceRecheck(
       ServerHost currentServer, List<String> hashes);
+
+  Future<UiResponse> changePriorityFile(ServerHost currentServer,
+      String hashTorrent, String fileId, int priority);
 }
 
 class RemoteRepositoryImpl extends RemoteRepository {
@@ -461,6 +464,22 @@ class RemoteRepositoryImpl extends RemoteRepository {
       String url = currentServer.getConnectUrl() + "/api/v2/torrents/recheck";
       Map<String, dynamic> params = HashMap();
       params["hashes"] = hashesStr;
+      await dio.get(url, queryParameters: params);
+      return UiResponse("", "");
+    } catch (e) {
+      return UiResponse("", e.toString());
+    }
+  }
+
+  @override
+  Future<UiResponse> changePriorityFile(ServerHost currentServer,
+      String hashTorrent, String fileId, int priority) async {
+    try {
+      String url = currentServer.getConnectUrl() + "/api/v2/torrents/filePrio";
+      Map<String, dynamic> params = HashMap();
+      params["hash"] = hashTorrent;
+      params["id"] = fileId;
+      params["priority"] = priority;
       await dio.get(url, queryParameters: params);
       return UiResponse("", "");
     } catch (e) {

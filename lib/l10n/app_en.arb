@@ -138,5 +138,17 @@
   "forceResume": "Force resume",
   "@forceResume": {},
   "forceRecheck": "Force recheck",
-  "@forceRecheck": {}
+  "@forceRecheck": {},
+  "doNotDownload": "Do not download",
+  "@doNotDownload": {},
+  "normal": "Normal",
+  "@normal": {},
+  "high": "High",
+  "@high": {},
+  "maximal": "Maximal",
+  "@maximal": {},
+  "none": "None",
+  "@none": {},
+  "selectPriority": "Select priority",
+  "@selectPriority": {}
 }

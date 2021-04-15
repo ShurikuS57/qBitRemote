@@ -8,6 +8,7 @@ import 'package:qBitRemote/app/utils/state_helper.dart';
 import 'package:qBitRemote/app/widgets/loader_layout.dart';
 import 'package:qBitRemote/app/widgets/tree_view.dart';
 import 'package:qBitRemote/commons/colors.dart';
+import 'package:qBitRemote/commons/extensions/build_context_ext.dart';
 
 class TorrentFilesScreen extends StatefulWidget {
   @override
@@ -15,6 +16,9 @@ class TorrentFilesScreen extends StatefulWidget {
 }
 
 class _TorrentFilesScreenState extends State<TorrentFilesScreen> {
+  var _positionFile = 0;
+  var _torrentHash = "";
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<TorrentListCubit, TorrentListState>(
@@ -23,6 +27,8 @@ class _TorrentFilesScreenState extends State<TorrentFilesScreen> {
         builder: (context, state) {
           if (state is ShowTorrentInfo) {
             final torrent = state.torrent;
+            _torrentHash = torrent.hash;
+            _positionFile = 0;
             return TreeView(
               parentList: _prepareTreeViewData(torrent.fileTreeData),
             );
@@ -44,15 +50,76 @@ class _TorrentFilesScreenState extends State<TorrentFilesScreen> {
     return result;
   }
 
+  Future<void> _askedToLead(FileEntity file) async {
+    int? result = await showDialog<int>(
+        context: context,
+        builder: (BuildContext context) {
+          return SimpleDialog(
+            title: Text(context.intl().selectPriority),
+            children: <Widget>[
+              SimpleDialogOption(
+                onPressed: () {
+                  Navigator.pop(context, 0);
+                },
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 30, vertical: 18),
+                child: Text(StateHelper.convertPriority(context, 0)),
+              ),
+              SimpleDialogOption(
+                onPressed: () {
+                  Navigator.pop(context, 1);
+                },
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 30, vertical: 18),
+                child: Text(StateHelper.convertPriority(context, 1)),
+              ),
+              SimpleDialogOption(
+                onPressed: () {
+                  Navigator.pop(context, 6);
+                },
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 30, vertical: 18),
+                child: Text(StateHelper.convertPriority(context, 6)),
+              ),
+              SimpleDialogOption(
+                onPressed: () {
+                  Navigator.pop(context, 7);
+                },
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 30, vertical: 18),
+                child: Text(
+                  StateHelper.convertPriority(context, 7),
+                  style: TextStyle(fontSize: 16),
+                ),
+              ),
+            ],
+          );
+        });
+    if (result != null) {
+      context
+          .read<TorrentListCubit>()
+          .changePriorityFile(_torrentHash, file.position.toString(), result);
+    }
+  }
+
   Parent _recursiveBuildView(
       FileTreeNode currentNode, bool isRoot, int deepFolderLevel) {
     FileEntity? file = currentNode.fileEntity;
+    if (file != null) {
+      file.position = _positionFile;
+      _positionFile++;
+    }
     final parent = Parent(
         parent: file != null
-            ? Container(
-                margin: EdgeInsets.only(
-                    left: isRoot ? 8.0 : 8.0 * deepFolderLevel, right: 8),
-                child: _buildFileInfoCard(file, currentNode.path))
+            ? InkWell(
+                onTap: () {
+                  _askedToLead(file);
+                },
+                child: Container(
+                    margin: EdgeInsets.only(
+                        left: isRoot ? 8.0 : 8.0 * deepFolderLevel, right: 8),
+                    child: _buildFileInfoCard(file, currentNode.path)),
+              )
             : Container(
                 margin:
                     EdgeInsets.only(left: isRoot ? 0.0 : 8.0 * deepFolderLevel),
@@ -67,9 +134,6 @@ class _TorrentFilesScreenState extends State<TorrentFilesScreen> {
               .map((e) => _recursiveBuildView(e, false, deepFolderLevel + 1))
               .toList(),
         ));
-    // if (currentNode.fileEntity == null) {
-    //   deepFolderLevel ++;
-    // }
     return parent;
   }
 
@@ -85,7 +149,7 @@ class _TorrentFilesScreenState extends State<TorrentFilesScreen> {
               children: [
                 SizedBox(width: double.infinity, child: Text(fileName)),
                 Text(
-                    "Size: ${FormatHelper.formatBytes(fileInfo.size)} · ${StateHelper.convertPriority(fileInfo.priority)}")
+                    "Size: ${FormatHelper.formatBytes(fileInfo.size)} · ${StateHelper.convertPriority(context, fileInfo.priority)}")
               ],
             ),
           ),

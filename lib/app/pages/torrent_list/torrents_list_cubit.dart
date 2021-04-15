@@ -230,6 +230,20 @@ class TorrentListCubit extends Cubit<TorrentListState> {
     }
   }
 
+  Future<void> changePriorityFile(
+      String hash, String fileId, int priority) async {
+    ServerHost? currentServer = await getCurrentServerHost();
+    if (currentServer == null) {
+      emit(ShowError("Server no selected"));
+      return;
+    }
+    UiResponse response = await qBitRemoteRepository.changePriorityFile(
+        currentServer, hash, fileId, priority);
+    if (response.error.isNotEmpty) {
+      return emit(ShowError(response.error));
+    }
+  }
+
   Future<int> getUpdateTimeSettings() async {
     AppPrefs settings = await localRepository.loadAppPrefs();
     return settings.timeoutUpdate;

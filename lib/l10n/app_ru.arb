@@ -125,5 +125,17 @@
   "forceResume": "Возобновить принудительно",
   "@forceResume": {},
   "forceRecheck": "Проверить принудительно",
-  "@forceRecheck": {}
+  "@forceRecheck": {},
+  "doNotDownload": "Не загружать",
+  "@doNotDownload": {},
+  "normal": "Обычный",
+  "@normal": {},
+  "high": "Высокий",
+  "@high": {},
+  "maximal": "Максимальный",
+  "@maximal": {},
+  "none": "Ничего",
+  "@none": {},
+  "selectPriority": "Выставить приоритет",
+  "@selectPriority": {}
 }
