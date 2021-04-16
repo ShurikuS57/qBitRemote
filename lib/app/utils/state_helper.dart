@@ -10,11 +10,11 @@ class StateHelper {
         }
       case "error":
         {
-          return Icons.error_outline_outlined;
+          return Icons.report_problem_outlined;
         }
       case "allocating":
         {
-          return Icons.error_outline;
+          return Icons.report_problem_outlined;
         }
       case "uploading":
         {
@@ -34,13 +34,24 @@ class StateHelper {
         }
       case "stalledUP":
         {
-          return Icons.update_outlined;
+          return Icons.cloud_upload_outlined;
         }
       case "stalledDL":
         {
-          return Icons.update_outlined;
+          return Icons.play_disabled;
         }
-
+      case "forcedDL":
+        {
+          return Icons.fast_forward_outlined;
+        }
+      case "checkingDL":
+        {
+          return Icons.grading_outlined;
+        }
+      case "pausedUP":
+        {
+          return Icons.file_download_done;
+        }
       default:
         {
           return Icons.help_outline;
@@ -108,6 +119,14 @@ class StateHelper {
         {
           return "Force Uploading";
         }
+      case "forcedDL":
+        {
+          return "Force Downloading";
+        }
+      case "checkingDL":
+        {
+          return "Checking Files";
+        }
       case "allocating":
         {
           return "Allocating Space";
@@ -150,7 +169,7 @@ class StateHelper {
         }
       default:
         {
-          return "Unknown";
+          return state;
         }
     }
   }
