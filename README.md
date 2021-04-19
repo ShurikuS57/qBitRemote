@@ -6,7 +6,9 @@
 <img src="https://play.google.com/intl/en_us/badges/images/generic/en-play-badge.png" alt="Get it on Google Play" height="80"/></a>
 
 # Feature
-- Connects to the torrent client.
-- Upload local torrent files.
-- Supports magnet links
-- Supports multiple servers.
+- View torrent list.
+- Add torrent (from link in browser, file or magnet link).
+- Pause, resume, delete individual or all torrents.
+- Monitor and limit global speeds.
+- Management of multiple qBittorent servers.
+- Choose download folder.
