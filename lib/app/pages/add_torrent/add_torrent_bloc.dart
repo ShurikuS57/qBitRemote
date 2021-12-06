@@ -207,7 +207,7 @@ class AddTorrentBloc extends Bloc<AddTorrentEvent, AddTorrentState> {
     } else {
       final file = File(arg.uri);
       _filesSelectedPath = [
-        PlatformFile(path: file.path, name: basename(file.path))
+        PlatformFile(path: file.path, name: basename(file.path), size: 0)
       ];
       List<String> fileNames = prepareFileNameList();
       yield AddTorrentState.fileSelected(fileNames);

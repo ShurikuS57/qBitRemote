@@ -245,7 +245,7 @@ class _AddTorrentScreenState extends State<AddTorrentScreen> {
             ToggleSwitch(
               minWidth: 100.0,
               cornerRadius: 20.0,
-              activeBgColor: AppColors.actionButtonBackgroundColor,
+              activeBgColor: [AppColors.actionButtonBackgroundColor],
               activeFgColor: AppColors.actionButtonTextColor,
               inactiveBgColor: AppColors.actionButtonBackgroundDisableColor,
               inactiveFgColor: AppColors.actionButtonTextColor,
@@ -256,7 +256,7 @@ class _AddTorrentScreenState extends State<AddTorrentScreen> {
                 context
                     .read<AddTorrentBloc>()
                     .add(AddTorrentEvent.onSwitchInputSource(index == 0));
-              },
+              }, totalSwitches: 2,
             ),
           ],
         );
