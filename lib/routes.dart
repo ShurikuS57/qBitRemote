@@ -5,14 +5,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:qBitRemote/app/pages/add_server/add_server_page.dart';
 import 'package:qBitRemote/app/pages/add_torrent/add_torrent_page.dart';
 import 'package:qBitRemote/app/pages/app_settings/app_settings_page.dart';
-import 'package:qBitRemote/app/pages/app_settings/host/host_settings_bloc.dart';
-import 'package:qBitRemote/app/pages/app_settings/local/app_prefs_bloc.dart';
+import 'package:qBitRemote/app/pages/app_settings/host/bloc/host_settings_bloc.dart';
+import 'package:qBitRemote/app/pages/app_settings/local/bloc/app_prefs_bloc.dart';
 import 'package:qBitRemote/app/pages/app_settings/local/app_prefs_page.dart';
-import 'package:qBitRemote/app/pages/server_list/server_list_cubit.dart';
+import 'package:qBitRemote/app/pages/server_list/bloc/server_list_bloc.dart';
 
-import 'app/pages/add_server/add_server_bloc.dart';
-import 'app/pages/add_torrent/add_torrent_bloc.dart';
-import 'app/pages/add_torrent/clipboard_bloc.dart';
+import 'app/pages/add_server/bloc/add_server_bloc.dart';
+import 'app/pages/add_torrent/bloc/add_torrent_bloc.dart';
+import 'app/pages/add_torrent/clipboard_bloc/clipboard_bloc.dart';
 import 'app/pages/app_settings/host/host_settings_page.dart';
 import 'app/pages/server_list/server_list_page.dart';
 import 'app/pages/splash/splash_page.dart';
@@ -40,12 +40,12 @@ class Routes {
   static Map<String, WidgetBuilder> getRoutes() {
     return {
       Routes.splashPage: (BuildContext context) => BlocProvider(
-            create: (_) => ServerListCubit(
+            create: (_) => ServerListBloc(
                 localRepository: inject(), qBittorentRepository: inject()),
             child: SplashPage(),
           ),
       Routes.serverListPage: (BuildContext context) => BlocProvider(
-            create: (_) => ServerListCubit(
+            create: (_) => ServerListBloc(
                 localRepository: inject(), qBittorentRepository: inject()),
             child: ServerListPage(),
           ),

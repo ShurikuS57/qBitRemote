@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:qBitRemote/app/pages/add_server/add_server_bloc.dart';
+import 'package:qBitRemote/app/pages/add_server/bloc/add_server_bloc.dart';
 import 'package:qBitRemote/app/widgets/action_button.dart';
 import 'package:qBitRemote/app/widgets/input_text.dart';
 import 'package:qBitRemote/app/widgets/url_form_field.dart';
 import 'package:qBitRemote/commons/colors.dart';
 import 'package:qBitRemote/commons/extensions/build_context_ext.dart';
 import 'package:qBitRemote/local/models/server_host.dart';
+
+import 'bloc/add_server_event.dart';
+import 'bloc/add_server_state.dart';
 
 class AddServerPage extends StatefulWidget {
   @override

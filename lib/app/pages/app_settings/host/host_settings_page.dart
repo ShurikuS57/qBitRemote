@@ -5,8 +5,9 @@ import 'package:qBitRemote/app/widgets/slider/speed_slider.dart';
 import 'package:qBitRemote/commons/colors.dart';
 import 'package:qBitRemote/commons/extensions/build_context_ext.dart';
 import 'package:qBitRemote/local/models/server_preferences.dart';
-
-import 'host_settings_bloc.dart';
+import 'bloc/host_settings_state.dart';
+import 'bloc/host_settings_event.dart';
+import 'bloc/host_settings_bloc.dart';
 
 class HostSettingPage extends StatefulWidget {
   @override

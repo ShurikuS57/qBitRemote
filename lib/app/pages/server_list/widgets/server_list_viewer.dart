@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:qBitRemote/app/pages/add_server/add_server_page.dart';
-import 'package:qBitRemote/app/pages/server_list/server_list_cubit.dart';
+import 'package:qBitRemote/app/pages/server_list/bloc/server_list_event.dart';
+import 'package:qBitRemote/app/pages/server_list/bloc/server_list_bloc.dart';
 import 'package:qBitRemote/app/widgets/MaterialDialog.dart';
 import 'package:qBitRemote/commons/colors.dart';
 import 'package:qBitRemote/commons/extensions/build_context_ext.dart';
@@ -22,7 +23,7 @@ class ServerListViewer extends StatelessWidget {
           ServerHost server = servers[index];
           return InkWell(
             onTap: () {
-              context.read<ServerListCubit>().connectToServer(server);
+              context.read<ServerListBloc>().add(ConnectToServerEvent(server));
             },
             child: Padding(
               padding: const EdgeInsets.only(left: 8, right: 8, top: 8),
@@ -97,7 +98,7 @@ class ServerListViewer extends StatelessWidget {
       ..positiveButtonText = context.intl().ok
       ..negativeButtonText = context.intl().cancel
       ..setPositiveButtonCallback((dialog) {
-        context.read<ServerListCubit>().deleteServer(server);
+        context.read<ServerListBloc>().add(DeleteServerEvent(server));
       })
       ..show();
   }

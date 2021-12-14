@@ -1,7 +1,8 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
-part of 'host_settings_bloc.dart';
+part of 'host_settings_state.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -11,273 +12,6 @@ T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$HostSettingsEventTearOff {
-  const _$HostSettingsEventTearOff();
-
-  LoadSetupEvent loadSetup() {
-    return const LoadSetupEvent();
-  }
-
-  SavePrefEvent savePref(ServerPreferences prefs) {
-    return SavePrefEvent(
-      prefs,
-    );
-  }
-}
-
-/// @nodoc
-const $HostSettingsEvent = _$HostSettingsEventTearOff();
-
-/// @nodoc
-mixin _$HostSettingsEvent {
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() loadSetup,
-    required TResult Function(ServerPreferences prefs) savePref,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? loadSetup,
-    TResult Function(ServerPreferences prefs)? savePref,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(LoadSetupEvent value) loadSetup,
-    required TResult Function(SavePrefEvent value) savePref,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(LoadSetupEvent value)? loadSetup,
-    TResult Function(SavePrefEvent value)? savePref,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $HostSettingsEventCopyWith<$Res> {
-  factory $HostSettingsEventCopyWith(
-          HostSettingsEvent value, $Res Function(HostSettingsEvent) then) =
-      _$HostSettingsEventCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class _$HostSettingsEventCopyWithImpl<$Res>
-    implements $HostSettingsEventCopyWith<$Res> {
-  _$HostSettingsEventCopyWithImpl(this._value, this._then);
-
-  final HostSettingsEvent _value;
-  // ignore: unused_field
-  final $Res Function(HostSettingsEvent) _then;
-}
-
-/// @nodoc
-abstract class $LoadSetupEventCopyWith<$Res> {
-  factory $LoadSetupEventCopyWith(
-          LoadSetupEvent value, $Res Function(LoadSetupEvent) then) =
-      _$LoadSetupEventCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class _$LoadSetupEventCopyWithImpl<$Res>
-    extends _$HostSettingsEventCopyWithImpl<$Res>
-    implements $LoadSetupEventCopyWith<$Res> {
-  _$LoadSetupEventCopyWithImpl(
-      LoadSetupEvent _value, $Res Function(LoadSetupEvent) _then)
-      : super(_value, (v) => _then(v as LoadSetupEvent));
-
-  @override
-  LoadSetupEvent get _value => super._value as LoadSetupEvent;
-}
-
-/// @nodoc
-class _$LoadSetupEvent extends LoadSetupEvent {
-  const _$LoadSetupEvent() : super._();
-
-  @override
-  String toString() {
-    return 'HostSettingsEvent.loadSetup()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) || (other is LoadSetupEvent);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() loadSetup,
-    required TResult Function(ServerPreferences prefs) savePref,
-  }) {
-    return loadSetup();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? loadSetup,
-    TResult Function(ServerPreferences prefs)? savePref,
-    required TResult orElse(),
-  }) {
-    if (loadSetup != null) {
-      return loadSetup();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(LoadSetupEvent value) loadSetup,
-    required TResult Function(SavePrefEvent value) savePref,
-  }) {
-    return loadSetup(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(LoadSetupEvent value)? loadSetup,
-    TResult Function(SavePrefEvent value)? savePref,
-    required TResult orElse(),
-  }) {
-    if (loadSetup != null) {
-      return loadSetup(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class LoadSetupEvent extends HostSettingsEvent {
-  const factory LoadSetupEvent() = _$LoadSetupEvent;
-  const LoadSetupEvent._() : super._();
-}
-
-/// @nodoc
-abstract class $SavePrefEventCopyWith<$Res> {
-  factory $SavePrefEventCopyWith(
-          SavePrefEvent value, $Res Function(SavePrefEvent) then) =
-      _$SavePrefEventCopyWithImpl<$Res>;
-  $Res call({ServerPreferences prefs});
-}
-
-/// @nodoc
-class _$SavePrefEventCopyWithImpl<$Res>
-    extends _$HostSettingsEventCopyWithImpl<$Res>
-    implements $SavePrefEventCopyWith<$Res> {
-  _$SavePrefEventCopyWithImpl(
-      SavePrefEvent _value, $Res Function(SavePrefEvent) _then)
-      : super(_value, (v) => _then(v as SavePrefEvent));
-
-  @override
-  SavePrefEvent get _value => super._value as SavePrefEvent;
-
-  @override
-  $Res call({
-    Object? prefs = freezed,
-  }) {
-    return _then(SavePrefEvent(
-      prefs == freezed
-          ? _value.prefs
-          : prefs // ignore: cast_nullable_to_non_nullable
-              as ServerPreferences,
-    ));
-  }
-}
-
-/// @nodoc
-class _$SavePrefEvent extends SavePrefEvent {
-  const _$SavePrefEvent(this.prefs) : super._();
-
-  @override
-  final ServerPreferences prefs;
-
-  @override
-  String toString() {
-    return 'HostSettingsEvent.savePref(prefs: $prefs)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other is SavePrefEvent &&
-            (identical(other.prefs, prefs) ||
-                const DeepCollectionEquality().equals(other.prefs, prefs)));
-  }
-
-  @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(prefs);
-
-  @JsonKey(ignore: true)
-  @override
-  $SavePrefEventCopyWith<SavePrefEvent> get copyWith =>
-      _$SavePrefEventCopyWithImpl<SavePrefEvent>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() loadSetup,
-    required TResult Function(ServerPreferences prefs) savePref,
-  }) {
-    return savePref(prefs);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? loadSetup,
-    TResult Function(ServerPreferences prefs)? savePref,
-    required TResult orElse(),
-  }) {
-    if (savePref != null) {
-      return savePref(prefs);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(LoadSetupEvent value) loadSetup,
-    required TResult Function(SavePrefEvent value) savePref,
-  }) {
-    return savePref(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(LoadSetupEvent value)? loadSetup,
-    TResult Function(SavePrefEvent value)? savePref,
-    required TResult orElse(),
-  }) {
-    if (savePref != null) {
-      return savePref(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class SavePrefEvent extends HostSettingsEvent {
-  const factory SavePrefEvent(ServerPreferences prefs) = _$SavePrefEvent;
-  const SavePrefEvent._() : super._();
-
-  ServerPreferences get prefs => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $SavePrefEventCopyWith<SavePrefEvent> get copyWith =>
-      throw _privateConstructorUsedError;
-}
 
 /// @nodoc
 class _$HostSettingsStateTearOff {
@@ -320,6 +54,14 @@ mixin _$HostSettingsState {
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(String msg)? showError,
+    TResult Function(ServerPreferences prefs)? showPreferences,
+    TResult Function(String msg)? showToast,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(String msg)? showError,
@@ -334,6 +76,14 @@ mixin _$HostSettingsState {
     required TResult Function(ShowErrorState value) showError,
     required TResult Function(ShowPreferencesState value) showPreferences,
     required TResult Function(ShowToastState value) showToast,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(InitialHostSettingsState value)? initial,
+    TResult Function(ShowErrorState value)? showError,
+    TResult Function(ShowPreferencesState value)? showPreferences,
+    TResult Function(ShowToastState value)? showToast,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -385,6 +135,7 @@ class _$InitialHostSettingsStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$InitialHostSettingsState extends InitialHostSettingsState {
   const _$InitialHostSettingsState() : super._();
 
@@ -395,7 +146,8 @@ class _$InitialHostSettingsState extends InitialHostSettingsState {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is InitialHostSettingsState);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is InitialHostSettingsState);
   }
 
   @override
@@ -410,6 +162,17 @@ class _$InitialHostSettingsState extends InitialHostSettingsState {
     required TResult Function(String msg) showToast,
   }) {
     return initial();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(String msg)? showError,
+    TResult Function(ServerPreferences prefs)? showPreferences,
+    TResult Function(String msg)? showToast,
+  }) {
+    return initial?.call();
   }
 
   @override
@@ -436,6 +199,17 @@ class _$InitialHostSettingsState extends InitialHostSettingsState {
     required TResult Function(ShowToastState value) showToast,
   }) {
     return initial(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(InitialHostSettingsState value)? initial,
+    TResult Function(ShowErrorState value)? showError,
+    TResult Function(ShowPreferencesState value)? showPreferences,
+    TResult Function(ShowToastState value)? showToast,
+  }) {
+    return initial?.call(this);
   }
 
   @override
@@ -492,6 +266,7 @@ class _$ShowErrorStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$ShowErrorState extends ShowErrorState {
   const _$ShowErrorState(this.msg) : super._();
 
@@ -506,14 +281,14 @@ class _$ShowErrorState extends ShowErrorState {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is ShowErrorState &&
-            (identical(other.msg, msg) ||
-                const DeepCollectionEquality().equals(other.msg, msg)));
+        (other.runtimeType == runtimeType &&
+            other is ShowErrorState &&
+            const DeepCollectionEquality().equals(other.msg, msg));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(msg);
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(msg));
 
   @JsonKey(ignore: true)
   @override
@@ -529,6 +304,17 @@ class _$ShowErrorState extends ShowErrorState {
     required TResult Function(String msg) showToast,
   }) {
     return showError(msg);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(String msg)? showError,
+    TResult Function(ServerPreferences prefs)? showPreferences,
+    TResult Function(String msg)? showToast,
+  }) {
+    return showError?.call(msg);
   }
 
   @override
@@ -559,6 +345,17 @@ class _$ShowErrorState extends ShowErrorState {
 
   @override
   @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(InitialHostSettingsState value)? initial,
+    TResult Function(ShowErrorState value)? showError,
+    TResult Function(ShowPreferencesState value)? showPreferences,
+    TResult Function(ShowToastState value)? showToast,
+  }) {
+    return showError?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitialHostSettingsState value)? initial,
     TResult Function(ShowErrorState value)? showError,
@@ -577,7 +374,7 @@ abstract class ShowErrorState extends HostSettingsState {
   const factory ShowErrorState(String msg) = _$ShowErrorState;
   const ShowErrorState._() : super._();
 
-  String get msg => throw _privateConstructorUsedError;
+  String get msg;
   @JsonKey(ignore: true)
   $ShowErrorStateCopyWith<ShowErrorState> get copyWith =>
       throw _privateConstructorUsedError;
@@ -616,6 +413,7 @@ class _$ShowPreferencesStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$ShowPreferencesState extends ShowPreferencesState {
   const _$ShowPreferencesState(this.prefs) : super._();
 
@@ -630,14 +428,14 @@ class _$ShowPreferencesState extends ShowPreferencesState {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is ShowPreferencesState &&
-            (identical(other.prefs, prefs) ||
-                const DeepCollectionEquality().equals(other.prefs, prefs)));
+        (other.runtimeType == runtimeType &&
+            other is ShowPreferencesState &&
+            const DeepCollectionEquality().equals(other.prefs, prefs));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(prefs);
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(prefs));
 
   @JsonKey(ignore: true)
   @override
@@ -654,6 +452,17 @@ class _$ShowPreferencesState extends ShowPreferencesState {
     required TResult Function(String msg) showToast,
   }) {
     return showPreferences(prefs);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(String msg)? showError,
+    TResult Function(ServerPreferences prefs)? showPreferences,
+    TResult Function(String msg)? showToast,
+  }) {
+    return showPreferences?.call(prefs);
   }
 
   @override
@@ -684,6 +493,17 @@ class _$ShowPreferencesState extends ShowPreferencesState {
 
   @override
   @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(InitialHostSettingsState value)? initial,
+    TResult Function(ShowErrorState value)? showError,
+    TResult Function(ShowPreferencesState value)? showPreferences,
+    TResult Function(ShowToastState value)? showToast,
+  }) {
+    return showPreferences?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitialHostSettingsState value)? initial,
     TResult Function(ShowErrorState value)? showError,
@@ -703,7 +523,7 @@ abstract class ShowPreferencesState extends HostSettingsState {
       _$ShowPreferencesState;
   const ShowPreferencesState._() : super._();
 
-  ServerPreferences get prefs => throw _privateConstructorUsedError;
+  ServerPreferences get prefs;
   @JsonKey(ignore: true)
   $ShowPreferencesStateCopyWith<ShowPreferencesState> get copyWith =>
       throw _privateConstructorUsedError;
@@ -742,6 +562,7 @@ class _$ShowToastStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$ShowToastState extends ShowToastState {
   const _$ShowToastState(this.msg) : super._();
 
@@ -756,14 +577,14 @@ class _$ShowToastState extends ShowToastState {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is ShowToastState &&
-            (identical(other.msg, msg) ||
-                const DeepCollectionEquality().equals(other.msg, msg)));
+        (other.runtimeType == runtimeType &&
+            other is ShowToastState &&
+            const DeepCollectionEquality().equals(other.msg, msg));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(msg);
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(msg));
 
   @JsonKey(ignore: true)
   @override
@@ -779,6 +600,17 @@ class _$ShowToastState extends ShowToastState {
     required TResult Function(String msg) showToast,
   }) {
     return showToast(msg);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(String msg)? showError,
+    TResult Function(ServerPreferences prefs)? showPreferences,
+    TResult Function(String msg)? showToast,
+  }) {
+    return showToast?.call(msg);
   }
 
   @override
@@ -809,6 +641,17 @@ class _$ShowToastState extends ShowToastState {
 
   @override
   @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(InitialHostSettingsState value)? initial,
+    TResult Function(ShowErrorState value)? showError,
+    TResult Function(ShowPreferencesState value)? showPreferences,
+    TResult Function(ShowToastState value)? showToast,
+  }) {
+    return showToast?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitialHostSettingsState value)? initial,
     TResult Function(ShowErrorState value)? showError,
@@ -827,7 +670,7 @@ abstract class ShowToastState extends HostSettingsState {
   const factory ShowToastState(String msg) = _$ShowToastState;
   const ShowToastState._() : super._();
 
-  String get msg => throw _privateConstructorUsedError;
+  String get msg;
   @JsonKey(ignore: true)
   $ShowToastStateCopyWith<ShowToastState> get copyWith =>
       throw _privateConstructorUsedError;

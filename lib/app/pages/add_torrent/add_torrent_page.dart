@@ -2,15 +2,18 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:qBitRemote/app/pages/add_torrent/bloc/add_torrent_state.dart';
 import 'package:qBitRemote/app/widgets/action_button.dart';
 import 'package:qBitRemote/app/widgets/input_text.dart';
 import 'package:qBitRemote/commons/colors.dart';
 import 'package:qBitRemote/commons/extensions/build_context_ext.dart';
 import 'package:qBitRemote/routes.dart';
 import 'package:toggle_switch/toggle_switch.dart';
-
-import 'add_torrent_bloc.dart';
-import 'clipboard_bloc.dart';
+import 'bloc/add_torrent_bloc.dart';
+import 'bloc/add_torrent_event.dart';
+import 'bloc/add_torrent_state.dart';
+import 'clipboard_bloc/clipboard_bloc.dart';
+import 'clipboard_bloc/clipboard_state.dart';
 
 class AddTorrentScreen extends StatefulWidget {
   AddTorrentScreen({Key? key}) : super(key: key);
@@ -256,7 +259,8 @@ class _AddTorrentScreenState extends State<AddTorrentScreen> {
                 context
                     .read<AddTorrentBloc>()
                     .add(AddTorrentEvent.onSwitchInputSource(index == 0));
-              }, totalSwitches: 2,
+              },
+              totalSwitches: 2,
             ),
           ],
         );

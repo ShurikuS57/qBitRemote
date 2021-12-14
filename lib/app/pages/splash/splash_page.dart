@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:qBitRemote/app/pages/server_list/server_list_cubit.dart';
+import 'package:qBitRemote/app/pages/server_list/bloc/server_list_event.dart';
+import 'package:qBitRemote/app/pages/server_list/bloc/server_list_state.dart';
+import 'package:qBitRemote/app/pages/server_list/bloc/server_list_bloc.dart';
 import 'package:qBitRemote/commons/colors.dart';
 import 'package:qBitRemote/commons/icons.dart';
 import 'package:qBitRemote/commons/navigation/navigation_service.dart';
@@ -11,7 +13,7 @@ class SplashPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.primaryBackground,
-      body: BlocConsumer<ServerListCubit, ServerListState>(
+      body: BlocConsumer<ServerListBloc, ServerListState>(
           listener: (context, state) {
         if (state is ShowError) {
           Navigator.pushReplacementNamed(context, Routes.serverListPage);
@@ -23,10 +25,16 @@ class SplashPage extends StatelessWidget {
           } else {
             Navigator.pushReplacementNamed(context, Routes.torrentsPage);
           }
+        } else if (state is HaveSelectedServer) {
+          if (state.isHave) {
+            Navigator.pushReplacementNamed(context, Routes.torrentsPage);
+          } else {
+            Navigator.pushReplacementNamed(context, Routes.serverListPage);
+          }
         }
       }, builder: (context, snapshot) {
         if (snapshot is ServerListInitial) {
-          context.watch<ServerListCubit>().checkSelectedServer();
+          context.watch<ServerListBloc>().add(CheckIsHaveSelectedServer());
         }
         return Stack(
           children: <Widget>[

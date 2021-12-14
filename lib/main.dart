@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:qBitRemote/app/qremote_app.dart';
-import 'package:qBitRemote/commons/bloc_observer.dart';
+import 'package:qBitRemote/commons/app_bloc_observer.dart';
 import 'package:qBitRemote/local/models/app_prefs.dart';
 import 'package:qBitRemote/local/models/server_host.dart';
 
@@ -12,9 +12,9 @@ import 'repo/local_repository.dart';
 
 Future<void> main() async {
   await _initHive();
-  Bloc.observer = Observer();
   setupLocator();
-  runApp(QBitRemoteApp());
+  BlocOverrides.runZoned(() => runApp(QBitRemoteApp()),
+      blocObserver: AppBlocObserver());
 }
 
 Future<void> _initHive() async {

@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:qBitRemote/app/pages/app_settings/local/app_prefs_bloc.dart';
+import 'package:qBitRemote/app/pages/app_settings/local/bloc/app_prefs_bloc.dart';
 import 'package:qBitRemote/app/widgets/checkbox/check_box_tile.dart';
 import 'package:qBitRemote/app/widgets/input_text.dart';
 import 'package:qBitRemote/commons/colors.dart';
 import 'package:qBitRemote/commons/extensions/build_context_ext.dart';
 import 'package:qBitRemote/local/models/app_prefs.dart';
+
+import 'bloc/app_prefs_events.dart';
+import 'bloc/app_prefs_state.dart';
 
 class AppPrefsPage extends StatefulWidget {
   @override

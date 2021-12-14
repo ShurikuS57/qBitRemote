@@ -4,7 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:qBitRemote/api/models/file_entity.dart';
 import 'package:qBitRemote/api/models/torrent_entity.dart';
-import 'package:qBitRemote/app/pages/add_torrent/add_torrent_bloc.dart';
+import 'package:qBitRemote/app/pages/add_torrent/bloc/add_torrent_bloc.dart';
 import 'package:qBitRemote/app/utils/path_parser.dart';
 import 'package:qBitRemote/local/models/server_host.dart';
 import 'package:qBitRemote/local/models/server_preferences.dart';

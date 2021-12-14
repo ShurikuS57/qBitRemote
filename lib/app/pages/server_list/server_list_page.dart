@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:qBitRemote/app/pages/server_list/server_list_cubit.dart';
+import 'package:qBitRemote/app/pages/server_list/bloc/server_list_bloc.dart';
 import 'package:qBitRemote/app/utils/url_launcher.dart';
 import 'package:qBitRemote/commons/colors.dart';
 import 'package:qBitRemote/commons/extensions/build_context_ext.dart';
 import 'package:qBitRemote/routes.dart';
 
+import 'bloc/server_list_event.dart';
+import 'bloc/server_list_state.dart';
 import 'widgets/server_list_empty.dart';
 import 'widgets/server_list_viewer.dart';
 
@@ -38,7 +40,7 @@ class _ServerListPageState extends State<ServerListPage> {
           }),
       body: WillPopScope(
         onWillPop: () async {
-          context.read<ServerListCubit>().checkIsHaveSelectedServer();
+          context.read<ServerListBloc>().add(CheckIsHaveSelectedServer());
           return false;
         },
         child: Center(
@@ -54,7 +56,7 @@ class _ServerListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<ServerListCubit, ServerListState>(
+    return BlocConsumer<ServerListBloc, ServerListState>(
       buildWhen: (previous, current) {
         return !(current is ServerConnectSuccess) && !(current is ShowError);
       },
@@ -80,7 +82,6 @@ class _ServerListView extends StatelessWidget {
       },
       builder: (context, state) {
         if (state is ServerListInitial) {
-          context.watch<ServerListCubit>().loadServerList();
           return const ServerListEmpty();
         } else if (state is ServerListLoaded) {
           return ServerListViewer(servers: state.servers);
