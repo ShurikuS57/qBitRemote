@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:qBitRemote/commons/colors.dart';
+import 'package:qBitRemote/commons/extensions/theme_ext.dart';
 
 class InputText extends StatefulWidget {
   final TextEditingController controller;
@@ -43,19 +43,12 @@ class _InputTextState extends State<InputText> {
       minLines: widget.minLines,
       maxLines: widget.maxLines,
       obscureText: widget.obscureText,
+      style: context.textTheme().bodyText1,
       decoration: InputDecoration(
-          labelText: widget.lableText,
-          counter: Offstage(),
-          suffixIcon:
-              widget.suffixIcon != null ? Icon(widget.suffixIcon) : null,
-          focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(18),
-              borderSide: BorderSide(
-                  color: AppColors.inputTextFocusedBorderColor, width: 2)),
-          border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(18),
-              borderSide:
-                  BorderSide(color: AppColors.inputTextUnfocusBorderColor))),
+        labelText: widget.lableText,
+        counter: Offstage(),
+        suffixIcon: widget.suffixIcon != null ? Icon(widget.suffixIcon, color: Theme.of(context).inputDecorationTheme.enabledBorder?.borderSide.color,) : null,
+      ),
       onEditingComplete: widget.isEnableNextFocus
           ? () => FocusScope.of(context).nextFocus()
           : null,

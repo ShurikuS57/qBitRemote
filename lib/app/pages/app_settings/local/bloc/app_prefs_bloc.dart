@@ -13,9 +13,7 @@ class AppPrefsBloc extends Bloc<AppPrefsEvent, AppPrefsState> {
     add(LoadSetupEvent());
   }
 
-  void _loadSetup(
-      LoadSetupEvent event, Emitter<AppPrefsState> emit
-      ) async {
+  void _loadSetup(LoadSetupEvent event, Emitter<AppPrefsState> emit) async {
     AppPrefs prefs = await _localRepository.loadAppPrefs();
     emit(ShowSettingsData(prefs));
   }

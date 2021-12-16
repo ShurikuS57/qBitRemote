@@ -7,6 +7,7 @@ import 'package:qBitRemote/app/widgets/multiselect/multi_select_list_view.dart';
 import 'package:qBitRemote/commons/colors.dart';
 import 'package:qBitRemote/commons/extensions/build_context_ext.dart';
 import 'package:qBitRemote/routes.dart';
+import 'package:qBitRemote/commons/extensions/theme_ext.dart';
 
 class TorrentsViewerWidget extends StatefulWidget {
   TorrentsViewerWidget({Key? key, required this.torrents}) : super(key: key);
@@ -78,7 +79,7 @@ class TorrentItem extends StatelessWidget {
                               left: 0, top: 0, bottom: 0, right: 16),
                           child: Icon(
                             StateHelper.getIconByTorrentState(item.state),
-                            color: AppColors.primary,
+                            color: context.theme().primaryColor,
                             size: 38,
                           ),
                         ),
@@ -91,11 +92,7 @@ class TorrentItem extends StatelessWidget {
                               item.name,
                               overflow: TextOverflow.ellipsis,
                               maxLines: 2,
-                              style: TextStyle(
-                                  color: AppColors.textTitle1Color,
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w400),
-                            ),
+                              style: Theme.of(context).textTheme.bodyText1),
                             Container(
                               height: 6,
                             ),
@@ -103,35 +100,31 @@ class TorrentItem extends StatelessWidget {
                               children: [
                                 Icon(
                                   Icons.file_download,
-                                  color: AppColors.textSubtitle1Color,
+                                  color: Theme.of(context).textTheme.caption?.color,
                                   size: 16,
                                 ),
                                 SizedBox(
                                   width: 2,
                                 ),
                                 Text(item.size,
-                                    style: TextStyle(
-                                        fontSize: 14,
-                                        color: AppColors.textSubtitle1Color)),
+                                    style: Theme.of(context).textTheme.caption),
                                 SizedBox(
                                   width: 5,
                                 ),
-                                Text("·"),
+                                Text("·", style: Theme.of(context).textTheme.caption),
                                 SizedBox(
                                   width: 5,
                                 ),
                                 Icon(
                                   Icons.access_time_outlined,
-                                  color: AppColors.textSubtitle1Color,
+                                  color: Theme.of(context).textTheme.caption?.color,
                                   size: 16,
                                 ),
                                 SizedBox(
                                   width: 2,
                                 ),
                                 Text(item.estimateTime,
-                                    style: TextStyle(
-                                        fontSize: 14,
-                                        color: AppColors.textSubtitle1Color)),
+                                    style: Theme.of(context).textTheme.caption),
                               ],
                             ),
                           ],

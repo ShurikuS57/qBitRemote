@@ -14,6 +14,7 @@ import 'bloc/add_torrent_event.dart';
 import 'bloc/add_torrent_state.dart';
 import 'clipboard_bloc/clipboard_bloc.dart';
 import 'clipboard_bloc/clipboard_state.dart';
+import 'package:qBitRemote/commons/extensions/theme_ext.dart';
 
 class AddTorrentScreen extends StatefulWidget {
   AddTorrentScreen({Key? key}) : super(key: key);
@@ -62,7 +63,6 @@ class _AddTorrentScreenState extends State<AddTorrentScreen> {
         title: Text(context.intl().addTorrent),
         actions: [buildStartDownloadButton()],
       ),
-      backgroundColor: AppColors.primaryBackground,
       body: buildBody(context, argSetup),
     );
   }
@@ -128,7 +128,10 @@ class _AddTorrentScreenState extends State<AddTorrentScreen> {
                 _isDownloadFirst = state.options.isDownloadFirst;
               }
               return ExpansionTile(
-                title: Text(context.intl().options),
+                title: Text(
+                  context.intl().options,
+                  style: context.textTheme().bodyText2,
+                ),
                 initiallyExpanded: true,
                 children: [
                   SizedBox(
@@ -136,7 +139,8 @@ class _AddTorrentScreenState extends State<AddTorrentScreen> {
                   ),
                   buildInputSavePath(context),
                   CheckboxListTile(
-                    title: Text(context.intl().sequentialDownload),
+                    title: Text(context.intl().sequentialDownload,
+                        style: context.textTheme().bodyText1),
                     value: _isSequentialDownload,
                     onChanged: (bool? value) {
                       _isSequentialDownload = value ?? false;
@@ -146,7 +150,8 @@ class _AddTorrentScreenState extends State<AddTorrentScreen> {
                     },
                   ),
                   CheckboxListTile(
-                    title: Text(context.intl().downloadFirst),
+                    title: Text(context.intl().downloadFirst,
+                        style: context.textTheme().bodyText1),
                     value: _isDownloadFirst,
                     onChanged: (bool? value) {
                       _isDownloadFirst = value ?? false;
@@ -213,14 +218,13 @@ class _AddTorrentScreenState extends State<AddTorrentScreen> {
                   children: [
                     Text(
                       selectedFiles[index],
-                      style: TextStyle(
-                          fontSize: 16, color: AppColors.textTitle1Color),
+                      style: context.textTheme().bodyText1,
                     ),
                     Spacer(),
                     IconButton(
                       icon: Icon(
                         Icons.cancel_rounded,
-                        color: AppColors.textSubtitle1Color,
+                        color: context.theme().unselectedWidgetColor,
                       ),
                       onPressed: () {
                         context

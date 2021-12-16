@@ -24,4 +24,9 @@ class AppColors {
   static Color progressValueColor = '#00B745'.toColor();
   static Color progressBackgroundColor = '#D1E4D7'.toColor();
   static Color redColor = '#E16363'.toColor();
+  static Color appBarBackgroundDark = '#1D1F24'.toColor();
+  static Color appBackgroundDark = '#19191C'.toColor();
+  static Color menuTextColorDark = '#F2FFFFFF'.toColor();
+  static Color dialogBackgroundDark = '#333333'.toColor();
+  static Color primaryDarkTheme = '#00a6fa'.toColor();
 }

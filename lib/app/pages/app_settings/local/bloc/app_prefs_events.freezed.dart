@@ -26,6 +26,12 @@ class _$AppPrefsEventTearOff {
       prefs,
     );
   }
+
+  SwitchThemeEvent switchTheme(int index) {
+    return SwitchThemeEvent(
+      index,
+    );
+  }
 }
 
 /// @nodoc
@@ -37,18 +43,21 @@ mixin _$AppPrefsEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() loadSetup,
     required TResult Function(AppPrefs prefs) saveAppPref,
+    required TResult Function(int index) switchTheme,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? loadSetup,
     TResult Function(AppPrefs prefs)? saveAppPref,
+    TResult Function(int index)? switchTheme,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loadSetup,
     TResult Function(AppPrefs prefs)? saveAppPref,
+    TResult Function(int index)? switchTheme,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -56,18 +65,21 @@ mixin _$AppPrefsEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(LoadSetupEvent value) loadSetup,
     required TResult Function(SaveAppPrefEvent value) saveAppPref,
+    required TResult Function(SwitchThemeEvent value) switchTheme,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(LoadSetupEvent value)? loadSetup,
     TResult Function(SaveAppPrefEvent value)? saveAppPref,
+    TResult Function(SwitchThemeEvent value)? switchTheme,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(LoadSetupEvent value)? loadSetup,
     TResult Function(SaveAppPrefEvent value)? saveAppPref,
+    TResult Function(SwitchThemeEvent value)? switchTheme,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -133,6 +145,7 @@ class _$LoadSetupEvent extends LoadSetupEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() loadSetup,
     required TResult Function(AppPrefs prefs) saveAppPref,
+    required TResult Function(int index) switchTheme,
   }) {
     return loadSetup();
   }
@@ -142,6 +155,7 @@ class _$LoadSetupEvent extends LoadSetupEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? loadSetup,
     TResult Function(AppPrefs prefs)? saveAppPref,
+    TResult Function(int index)? switchTheme,
   }) {
     return loadSetup?.call();
   }
@@ -151,6 +165,7 @@ class _$LoadSetupEvent extends LoadSetupEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loadSetup,
     TResult Function(AppPrefs prefs)? saveAppPref,
+    TResult Function(int index)? switchTheme,
     required TResult orElse(),
   }) {
     if (loadSetup != null) {
@@ -164,6 +179,7 @@ class _$LoadSetupEvent extends LoadSetupEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(LoadSetupEvent value) loadSetup,
     required TResult Function(SaveAppPrefEvent value) saveAppPref,
+    required TResult Function(SwitchThemeEvent value) switchTheme,
   }) {
     return loadSetup(this);
   }
@@ -173,6 +189,7 @@ class _$LoadSetupEvent extends LoadSetupEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(LoadSetupEvent value)? loadSetup,
     TResult Function(SaveAppPrefEvent value)? saveAppPref,
+    TResult Function(SwitchThemeEvent value)? switchTheme,
   }) {
     return loadSetup?.call(this);
   }
@@ -182,6 +199,7 @@ class _$LoadSetupEvent extends LoadSetupEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(LoadSetupEvent value)? loadSetup,
     TResult Function(SaveAppPrefEvent value)? saveAppPref,
+    TResult Function(SwitchThemeEvent value)? switchTheme,
     required TResult orElse(),
   }) {
     if (loadSetup != null) {
@@ -263,6 +281,7 @@ class _$SaveAppPrefEvent extends SaveAppPrefEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() loadSetup,
     required TResult Function(AppPrefs prefs) saveAppPref,
+    required TResult Function(int index) switchTheme,
   }) {
     return saveAppPref(prefs);
   }
@@ -272,6 +291,7 @@ class _$SaveAppPrefEvent extends SaveAppPrefEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? loadSetup,
     TResult Function(AppPrefs prefs)? saveAppPref,
+    TResult Function(int index)? switchTheme,
   }) {
     return saveAppPref?.call(prefs);
   }
@@ -281,6 +301,7 @@ class _$SaveAppPrefEvent extends SaveAppPrefEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loadSetup,
     TResult Function(AppPrefs prefs)? saveAppPref,
+    TResult Function(int index)? switchTheme,
     required TResult orElse(),
   }) {
     if (saveAppPref != null) {
@@ -294,6 +315,7 @@ class _$SaveAppPrefEvent extends SaveAppPrefEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(LoadSetupEvent value) loadSetup,
     required TResult Function(SaveAppPrefEvent value) saveAppPref,
+    required TResult Function(SwitchThemeEvent value) switchTheme,
   }) {
     return saveAppPref(this);
   }
@@ -303,6 +325,7 @@ class _$SaveAppPrefEvent extends SaveAppPrefEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(LoadSetupEvent value)? loadSetup,
     TResult Function(SaveAppPrefEvent value)? saveAppPref,
+    TResult Function(SwitchThemeEvent value)? switchTheme,
   }) {
     return saveAppPref?.call(this);
   }
@@ -312,6 +335,7 @@ class _$SaveAppPrefEvent extends SaveAppPrefEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(LoadSetupEvent value)? loadSetup,
     TResult Function(SaveAppPrefEvent value)? saveAppPref,
+    TResult Function(SwitchThemeEvent value)? switchTheme,
     required TResult orElse(),
   }) {
     if (saveAppPref != null) {
@@ -328,5 +352,146 @@ abstract class SaveAppPrefEvent extends AppPrefsEvent {
   AppPrefs get prefs;
   @JsonKey(ignore: true)
   $SaveAppPrefEventCopyWith<SaveAppPrefEvent> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $SwitchThemeEventCopyWith<$Res> {
+  factory $SwitchThemeEventCopyWith(
+          SwitchThemeEvent value, $Res Function(SwitchThemeEvent) then) =
+      _$SwitchThemeEventCopyWithImpl<$Res>;
+  $Res call({int index});
+}
+
+/// @nodoc
+class _$SwitchThemeEventCopyWithImpl<$Res>
+    extends _$AppPrefsEventCopyWithImpl<$Res>
+    implements $SwitchThemeEventCopyWith<$Res> {
+  _$SwitchThemeEventCopyWithImpl(
+      SwitchThemeEvent _value, $Res Function(SwitchThemeEvent) _then)
+      : super(_value, (v) => _then(v as SwitchThemeEvent));
+
+  @override
+  SwitchThemeEvent get _value => super._value as SwitchThemeEvent;
+
+  @override
+  $Res call({
+    Object? index = freezed,
+  }) {
+    return _then(SwitchThemeEvent(
+      index == freezed
+          ? _value.index
+          : index // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SwitchThemeEvent extends SwitchThemeEvent {
+  const _$SwitchThemeEvent(this.index) : super._();
+
+  @override
+  final int index;
+
+  @override
+  String toString() {
+    return 'AppPrefsEvent.switchTheme(index: $index)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is SwitchThemeEvent &&
+            const DeepCollectionEquality().equals(other.index, index));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(index));
+
+  @JsonKey(ignore: true)
+  @override
+  $SwitchThemeEventCopyWith<SwitchThemeEvent> get copyWith =>
+      _$SwitchThemeEventCopyWithImpl<SwitchThemeEvent>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loadSetup,
+    required TResult Function(AppPrefs prefs) saveAppPref,
+    required TResult Function(int index) switchTheme,
+  }) {
+    return switchTheme(index);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? loadSetup,
+    TResult Function(AppPrefs prefs)? saveAppPref,
+    TResult Function(int index)? switchTheme,
+  }) {
+    return switchTheme?.call(index);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loadSetup,
+    TResult Function(AppPrefs prefs)? saveAppPref,
+    TResult Function(int index)? switchTheme,
+    required TResult orElse(),
+  }) {
+    if (switchTheme != null) {
+      return switchTheme(index);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(LoadSetupEvent value) loadSetup,
+    required TResult Function(SaveAppPrefEvent value) saveAppPref,
+    required TResult Function(SwitchThemeEvent value) switchTheme,
+  }) {
+    return switchTheme(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(LoadSetupEvent value)? loadSetup,
+    TResult Function(SaveAppPrefEvent value)? saveAppPref,
+    TResult Function(SwitchThemeEvent value)? switchTheme,
+  }) {
+    return switchTheme?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(LoadSetupEvent value)? loadSetup,
+    TResult Function(SaveAppPrefEvent value)? saveAppPref,
+    TResult Function(SwitchThemeEvent value)? switchTheme,
+    required TResult orElse(),
+  }) {
+    if (switchTheme != null) {
+      return switchTheme(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class SwitchThemeEvent extends AppPrefsEvent {
+  const factory SwitchThemeEvent(int index) = _$SwitchThemeEvent;
+  const SwitchThemeEvent._() : super._();
+
+  int get index;
+  @JsonKey(ignore: true)
+  $SwitchThemeEventCopyWith<SwitchThemeEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -4,7 +4,6 @@ import 'package:qBitRemote/app/pages/add_server/bloc/add_server_bloc.dart';
 import 'package:qBitRemote/app/widgets/action_button.dart';
 import 'package:qBitRemote/app/widgets/input_text.dart';
 import 'package:qBitRemote/app/widgets/url_form_field.dart';
-import 'package:qBitRemote/commons/colors.dart';
 import 'package:qBitRemote/commons/extensions/build_context_ext.dart';
 import 'package:qBitRemote/local/models/server_host.dart';
 
@@ -47,7 +46,6 @@ class _AddServerPageState extends State<AddServerPage> {
         title: _buildAppBarTitle(),
         actions: [_buildSaveButton()],
       ),
-      backgroundColor: AppColors.primaryBackground,
       body: _buildBody(context),
     );
   }

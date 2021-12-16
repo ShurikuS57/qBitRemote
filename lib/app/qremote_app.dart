@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:qBitRemote/commons/colors.dart';
 import 'package:qBitRemote/commons/dependencies/locator.dart';
 import 'package:qBitRemote/commons/navigation/navigation_service.dart';
 
 import '../routes.dart';
 import 'pages/add_torrent/add_torrent_page.dart';
+import 'theme/app_themes.dart';
+import 'theme/switch_cubit.dart';
 
 class QBitRemoteApp extends StatelessWidget {
   static const _methodChannel =
@@ -37,20 +39,23 @@ class QBitRemoteApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      initialRoute: Routes.splashPage,
-      routes: Routes.getRoutes(),
-      localizationsDelegates: AppLocalizations.localizationsDelegates,
-      supportedLocales: AppLocalizations.supportedLocales,
-      navigatorKey: inject<NavigationService>().navigatorKey,
-      theme: Theme.of(context).copyWith(
-          primaryColor: AppColors.primary,
-          primaryColorLight: AppColors.primaryLight,
-          primaryColorDark: AppColors.primaryDark,
-          accentColor: AppColors.primaryAccent,
-          appBarTheme: AppBarTheme.of(context)
-              .copyWith(color: AppColors.primary, brightness: Brightness.dark)),
-      debugShowCheckedModeBanner: false,
+    return BlocProvider<SwitchThemeCubit>(
+      create: (_) => SwitchThemeCubit(),
+      child: BlocBuilder<SwitchThemeCubit, SwitchThemeState>(
+        builder: (_, state){
+          return MaterialApp(
+            initialRoute: Routes.splashPage,
+            routes: Routes.getRoutes(),
+            localizationsDelegates: AppLocalizations.localizationsDelegates,
+            supportedLocales: AppLocalizations.supportedLocales,
+            navigatorKey: inject<NavigationService>().navigatorKey,
+            theme: AppThemes.lightTheme(context),
+            darkTheme: AppThemes.darkTheme(context),
+            themeMode: state.themeMode,
+            debugShowCheckedModeBanner: false,
+          );
+        },
+      ),
     );
   }
 }

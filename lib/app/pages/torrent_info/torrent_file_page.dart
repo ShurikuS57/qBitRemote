@@ -9,6 +9,7 @@ import 'package:qBitRemote/app/widgets/loader_layout.dart';
 import 'package:qBitRemote/app/widgets/tree_view.dart';
 import 'package:qBitRemote/commons/colors.dart';
 import 'package:qBitRemote/commons/extensions/build_context_ext.dart';
+import 'package:qBitRemote/commons/extensions/theme_ext.dart';
 
 class TorrentFilesScreen extends StatefulWidget {
   @override
@@ -124,9 +125,22 @@ class _TorrentFilesScreenState extends State<TorrentFilesScreen> {
                 margin:
                     EdgeInsets.only(left: isRoot ? 0.0 : 8.0 * deepFolderLevel),
                 child: ListTile(
-                  title: Text(currentNode.path),
-                  leading: Icon(Icons.folder),
-                  trailing: Icon(Icons.keyboard_arrow_right),
+                  title: Text(
+                    currentNode.path,
+                    style: context.textTheme().bodyText2,
+                  ),
+                  leading: Icon(Icons.folder,
+                      color: Theme.of(context)
+                          .inputDecorationTheme
+                          .enabledBorder
+                          ?.borderSide
+                          .color),
+                  trailing: Icon(Icons.keyboard_arrow_right,
+                      color: Theme.of(context)
+                          .inputDecorationTheme
+                          .enabledBorder
+                          ?.borderSide
+                          .color),
                 ),
               ),
         childList: ChildList(
@@ -147,9 +161,11 @@ class _TorrentFilesScreenState extends State<TorrentFilesScreen> {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(width: double.infinity, child: Text(fileName)),
+                SizedBox(width: double.infinity, child: Text(fileName, style: context.textTheme().bodyText1,)),
                 Text(
-                    "Size: ${FormatHelper.formatBytes(fileInfo.size)} · ${StateHelper.convertPriority(context, fileInfo.priority)}")
+                  "Size: ${FormatHelper.formatBytes(fileInfo.size)} · ${StateHelper.convertPriority(context, fileInfo.priority)}",
+                  style: context.textTheme().caption,
+                )
               ],
             ),
           ),

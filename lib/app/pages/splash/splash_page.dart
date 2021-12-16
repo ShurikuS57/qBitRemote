@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:qBitRemote/app/pages/server_list/bloc/server_list_event.dart';
 import 'package:qBitRemote/app/pages/server_list/bloc/server_list_state.dart';
 import 'package:qBitRemote/app/pages/server_list/bloc/server_list_bloc.dart';
-import 'package:qBitRemote/commons/colors.dart';
 import 'package:qBitRemote/commons/icons.dart';
 import 'package:qBitRemote/commons/navigation/navigation_service.dart';
 import 'package:qBitRemote/routes.dart';
@@ -12,7 +11,6 @@ class SplashPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.primaryBackground,
       body: BlocConsumer<ServerListBloc, ServerListState>(
           listener: (context, state) {
         if (state is ShowError) {

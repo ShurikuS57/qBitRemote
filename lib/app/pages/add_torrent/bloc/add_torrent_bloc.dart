@@ -2,18 +2,14 @@ import 'dart:io';
 
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:path/path.dart';
 import 'package:qBitRemote/api/http.dart';
 import 'package:qBitRemote/api/remote_repository.dart';
-import 'package:qBitRemote/app/pages/add_server/bloc/add_server_state.dart';
 import 'package:qBitRemote/app/utils/validator_helper.dart';
 import 'package:qBitRemote/local/models/app_prefs.dart';
 import 'package:qBitRemote/local/models/server_host.dart';
 import 'package:qBitRemote/repo/local_repository.dart';
 import 'package:string_validator/string_validator.dart';
-
-import '../add_torrent_page.dart';
 import 'add_torrent_event.dart';
 import 'add_torrent_state.dart';
 

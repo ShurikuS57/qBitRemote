@@ -11,4 +11,6 @@ class AppPrefsEvent with _$AppPrefsEvent {
   const factory AppPrefsEvent.loadSetup() = LoadSetupEvent;
 
   const factory AppPrefsEvent.saveAppPref(AppPrefs prefs) = SaveAppPrefEvent;
+
+  const factory AppPrefsEvent.switchTheme(int index) = SwitchThemeEvent;
 }

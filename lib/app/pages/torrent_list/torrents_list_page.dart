@@ -9,9 +9,9 @@ import 'package:qBitRemote/app/widgets/loader_layout.dart';
 import 'package:qBitRemote/app/widgets/multiselect/multi_select_app_bar.dart';
 import 'package:qBitRemote/app/widgets/multiselect/multi_select_cubit.dart';
 import 'package:qBitRemote/app/widgets/popup_submenu_item.dart';
-import 'package:qBitRemote/commons/colors.dart';
 import 'package:qBitRemote/commons/extensions/build_context_ext.dart';
 import 'package:qBitRemote/routes.dart';
+import 'package:qBitRemote/commons/extensions/theme_ext.dart';
 
 import 'torrents_list_cubit.dart';
 import 'widgets/torrents_empty.dart';
@@ -125,7 +125,6 @@ class _TorrentListScreenState extends State<TorrentListScreen> {
           )
         ],
       ),
-      backgroundColor: AppColors.primaryBackground,
       floatingActionButton: FloatingActionButton(
           child: Icon(Icons.add),
           onPressed: () {
@@ -136,7 +135,7 @@ class _TorrentListScreenState extends State<TorrentListScreen> {
         child: RefreshIndicator(
           onRefresh: _refreshData,
           child: Container(
-            color: AppColors.primaryBackground,
+            color: context.theme().scaffoldBackgroundColor,
             child: _TorrentsScreenView(),
           ),
         ),
@@ -219,7 +218,11 @@ class _TorrentListScreenState extends State<TorrentListScreen> {
       })
       ..checkboxList = [
         CheckboxEntity(
-            id: "1", title: Text(context.intl().questionDeleteWithData))
+            id: "1",
+            title: Text(
+              context.intl().questionDeleteWithData,
+              style: context.theme().dialogTheme.contentTextStyle,
+            ))
       ]
       ..show();
   }

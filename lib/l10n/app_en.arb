@@ -150,5 +150,15 @@
   "none": "None",
   "@none": {},
   "selectPriority": "Select priority",
-  "@selectPriority": {}
+  "@selectPriority": {},
+  "theme": "Theme",
+  "@theme": {},
+  "systemDefault": "System default",
+  "@systemDefault": {},
+  "dark": "Dark",
+  "@dark": {},
+  "light": "Light",
+  "@light": {},
+  "system": "System",
+  "@system": {}
 }

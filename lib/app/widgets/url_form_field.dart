@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:qBitRemote/commons/colors.dart';
+import 'package:qBitRemote/commons/extensions/theme_ext.dart';
 
 class UrlFormField extends StatefulWidget {
   final String labelText;
@@ -49,6 +50,7 @@ class _UrlFormFieldState extends State<UrlFormField> {
         maxLines: 1,
         controller: _addressController,
         onEditingComplete: () => FocusScope.of(context).nextFocus(),
+        style: context.textTheme().bodyText1,
         decoration: InputDecoration(
             labelText: widget.labelText,
             isDense: true,
@@ -78,13 +80,17 @@ class _UrlFormFieldState extends State<UrlFormField> {
               maxLines: 1,
               maxLength: 5,
               onEditingComplete: () => FocusScope.of(context).nextFocus(),
+              style: context.textTheme().bodyText1,
               inputFormatters: [
                 FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
               ],
               decoration: InputDecoration(
-                prefix: Text(": "),
+                prefix: Text(": ", style: context.textTheme().bodyText1,),
                 hintText: "8080",
+                hintStyle: context.theme().popupMenuTheme.textStyle,
                 border: InputBorder.none,
+                enabledBorder: InputBorder.none,
+                focusedBorder: InputBorder.none,
                 counter: Offstage(),
               ),
             ),
@@ -92,7 +98,7 @@ class _UrlFormFieldState extends State<UrlFormField> {
                 ? Align(
                     alignment: Alignment.centerRight,
                     heightFactor: 2,
-                    child: Icon(Icons.http_outlined))
+                    child: Icon(Icons.http_outlined, color: Theme.of(context).inputDecorationTheme.enabledBorder?.borderSide.color,))
                 : SizedBox()
           ],
         ));
@@ -100,6 +106,7 @@ class _UrlFormFieldState extends State<UrlFormField> {
 
   Widget buildPrefixUrlsMenu() {
     return DropdownButton(
+      dropdownColor: Theme.of(context).popupMenuTheme.color,
         value: selectPrefixUrl,
         underline: SizedBox(),
         onChanged: (String? value) {
@@ -111,7 +118,7 @@ class _UrlFormFieldState extends State<UrlFormField> {
         items: _prefixUrls
             .map((e) => DropdownMenuItem<String>(
                   value: e,
-                  child: Text(e),
+                  child: Text(e, style: Theme.of(context).popupMenuTheme.textStyle,),
                 ))
             .toList());
   }

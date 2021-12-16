@@ -33,7 +33,7 @@ class _MultiselectAppBarState extends State<MultiselectAppBar> {
 
         return Container(
           color: widget.appBar.backgroundColor ??
-              AppBarTheme.of(context).color ??
+              AppBarTheme.of(context).backgroundColor ??
               Theme.of(context).primaryColor,
           child: AnimatedSwitcher(
             duration: kThemeAnimationDuration,

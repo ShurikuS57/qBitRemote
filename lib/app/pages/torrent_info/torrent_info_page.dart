@@ -8,6 +8,7 @@ import 'package:qBitRemote/app/widgets/loader_layout.dart';
 import 'package:qBitRemote/commons/colors.dart';
 import 'package:qBitRemote/commons/extensions/build_context_ext.dart';
 import 'package:qBitRemote/commons/icons.dart';
+import 'package:qBitRemote/commons/extensions/theme_ext.dart';
 
 class TorrentInfoScreen extends StatefulWidget {
   @override
@@ -140,27 +141,21 @@ class _TorrentInfoScreenState extends State<TorrentInfoScreen> {
           AppLocalizations.of(context)!
               .percentToComplete((torrent.progress * 100).toInt())
               .toUpperCase(),
-          style: TextStyle(
-              color: AppColors.textTitle1Color,
-              fontSize: 14,
-              fontWeight: FontWeight.w700),
+          style: Theme.of(context).textTheme.caption,
         ),
         Expanded(
           child: SizedBox(),
         ),
         Icon(
           Icons.access_time_outlined,
-          color: AppColors.textSubtitle1Color,
+          color: Theme.of(context).textTheme.caption?.color,
           size: 16,
         ),
         SizedBox(
           width: 2,
         ),
         Text(torrent.estimateTime,
-            style: TextStyle(
-                fontSize: 14,
-                color: AppColors.textSubtitle1Color,
-                fontWeight: FontWeight.w300)),
+            style: Theme.of(context).textTheme.caption),
       ],
     );
   }
@@ -170,7 +165,7 @@ class _TorrentInfoScreenState extends State<TorrentInfoScreen> {
       children: [
         Icon(
           StateHelper.getIconByTorrentState(torrent.state),
-          color: AppColors.primary,
+          color: context.theme().primaryColor,
           size: 28,
         ),
         SizedBox(
@@ -181,10 +176,7 @@ class _TorrentInfoScreenState extends State<TorrentInfoScreen> {
             torrent.name,
             overflow: TextOverflow.ellipsis,
             maxLines: 3,
-            style: TextStyle(
-                color: AppColors.textTitle1Color,
-                fontSize: 20,
-                fontWeight: FontWeight.w500),
+            style: Theme.of(context).textTheme.headline3,
           ),
         ),
       ],

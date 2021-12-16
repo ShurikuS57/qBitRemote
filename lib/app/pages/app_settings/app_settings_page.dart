@@ -33,7 +33,6 @@ class _AppSettingsScreenState extends State<AppSettingsScreen> {
             ),
           ],
         ),
-        backgroundColor: AppColors.primaryBackground,
         body: ListView(
           padding: const EdgeInsets.all(8.0),
           children: [
@@ -74,10 +73,7 @@ class _AppSettingsScreenState extends State<AppSettingsScreen> {
       child: ListTile(
           title: Text(
             text,
-            style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.w400,
-                color: AppColors.textTitle1Color),
+            style: Theme.of(context).textTheme.button,
           ),
           leading: Icon(
             icon,

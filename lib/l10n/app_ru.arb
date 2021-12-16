@@ -137,5 +137,15 @@
   "none": "Ничего",
   "@none": {},
   "selectPriority": "Выставить приоритет",
-  "@selectPriority": {}
+  "@selectPriority": {},
+  "theme": "Тема",
+  "@theme": {},
+  "systemDefault": "По умолчанию",
+  "@systemDefault": {},
+  "dark": "Тёмная",
+  "@dark": {},
+  "light": "Светлая",
+  "@light": {},
+  "system": "Системная",
+  "@system": {}
 }

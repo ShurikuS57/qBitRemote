@@ -7,7 +7,6 @@ import 'package:qBitRemote/app/pages/torrent_info/torrent_file_page.dart';
 import 'package:qBitRemote/app/pages/torrent_list/torrents_list_cubit.dart';
 import 'package:qBitRemote/app/widgets/MaterialDialog.dart';
 import 'package:qBitRemote/app/widgets/multiselect/multi_select_app_bar.dart';
-import 'package:qBitRemote/commons/colors.dart';
 import 'package:qBitRemote/commons/extensions/build_context_ext.dart';
 
 import 'torrent_info_page.dart';
@@ -50,7 +49,6 @@ class _TorrentDetailsScreenState extends State<TorrentDetailsScreen> {
     return DefaultTabController(
       length: 2,
       child: Scaffold(
-        backgroundColor: AppColors.primaryBackground,
         appBar: MultiselectAppBar(
           appBar: _buildAppBar(context),
         ),

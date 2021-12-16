@@ -3,7 +3,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:qBitRemote/app/pages/server_list/bloc/server_list_bloc.dart';
 import 'package:qBitRemote/app/utils/url_launcher.dart';
-import 'package:qBitRemote/commons/colors.dart';
 import 'package:qBitRemote/commons/extensions/build_context_ext.dart';
 import 'package:qBitRemote/routes.dart';
 
@@ -32,7 +31,6 @@ class _ServerListPageState extends State<ServerListPage> {
           ),
         ],
       ),
-      backgroundColor: AppColors.primaryBackground,
       floatingActionButton: FloatingActionButton(
           child: Icon(Icons.add),
           onPressed: () {

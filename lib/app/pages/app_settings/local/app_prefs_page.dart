@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:qBitRemote/app/pages/app_settings/local/bloc/app_prefs_bloc.dart';
+import 'package:qBitRemote/app/theme/switch_cubit.dart';
 import 'package:qBitRemote/app/widgets/checkbox/check_box_tile.dart';
 import 'package:qBitRemote/app/widgets/input_text.dart';
 import 'package:qBitRemote/commons/colors.dart';
 import 'package:qBitRemote/commons/extensions/build_context_ext.dart';
 import 'package:qBitRemote/local/models/app_prefs.dart';
+import 'package:toggle_switch/toggle_switch.dart';
 
 import 'bloc/app_prefs_events.dart';
 import 'bloc/app_prefs_state.dart';
@@ -35,7 +37,6 @@ class _AppPrefsPageState extends State<AppPrefsPage> {
       appBar: AppBar(
         title: Text(context.intl().appPrefs),
       ),
-      backgroundColor: AppColors.primaryBackground,
       body: _buildBody(context),
     );
   }
@@ -65,19 +66,13 @@ class _AppPrefsPageState extends State<AppPrefsPage> {
               children: [
                 Text(
                   context.intl().applicationSettings,
-                  style: TextStyle(
-                      fontWeight: FontWeight.w700,
-                      fontSize: 20,
-                      color: AppColors.textTitle1Color),
+                  style: Theme.of(context).textTheme.headline3,
                 ),
                 SizedBox(
                   height: 8,
                 ),
                 Text(context.intl().timeoutUpdate,
-                    style: TextStyle(
-                        fontWeight: FontWeight.w400,
-                        fontSize: 14,
-                        color: AppColors.textTitle1Color)),
+                    style: Theme.of(context).textTheme.caption),
                 SizedBox(
                   height: 8,
                 ),
@@ -92,18 +87,12 @@ class _AppPrefsPageState extends State<AppPrefsPage> {
                   height: 8,
                 ),
                 Text(context.intl().defaultSettings,
-                    style: TextStyle(
-                        fontWeight: FontWeight.w700,
-                        fontSize: 20,
-                        color: AppColors.textTitle1Color)),
+                    style: Theme.of(context).textTheme.headline3),
                 CheckBoxTile(
                   contentPadding:
                       EdgeInsets.symmetric(horizontal: 8, vertical: 0),
                   title: Text(context.intl().sequentialDownload,
-                      style: TextStyle(
-                          fontWeight: FontWeight.w400,
-                          fontSize: 14,
-                          color: AppColors.textTitle1Color)),
+                      style: Theme.of(context).textTheme.bodyText1),
                   isChecked: _isSequentialDownload,
                   onChanged: (newValue) {
                     _isSequentialDownload = newValue;
@@ -114,16 +103,46 @@ class _AppPrefsPageState extends State<AppPrefsPage> {
                   contentPadding:
                       EdgeInsets.symmetric(horizontal: 8, vertical: 0),
                   title: Text(context.intl().downloadFirst,
-                      style: TextStyle(
-                          fontWeight: FontWeight.w400,
-                          fontSize: 14,
-                          color: AppColors.textTitle1Color)),
+                      style: Theme.of(context).textTheme.bodyText1),
                   isChecked: _isDownloadFirst,
                   onChanged: (newValue) {
                     _isDownloadFirst = newValue;
                     _savePrefs();
                   },
-                )
+                ),
+                SizedBox(
+                  height: 8,
+                ),
+                Text(context.intl().theme,
+                    style: Theme.of(context).textTheme.headline3),
+                SizedBox(
+                  height: 8,
+                ),
+                BlocBuilder<SwitchThemeCubit, SwitchThemeState>(
+                  builder: (context, state) {
+                    return Center(
+                      child: ToggleSwitch(
+                        minWidth: 100.0,
+                        cornerRadius: 20.0,
+                        activeBgColor: [AppColors.actionButtonBackgroundColor],
+                        activeFgColor: AppColors.actionButtonTextColor,
+                        inactiveBgColor:
+                            AppColors.actionButtonBackgroundDisableColor,
+                        inactiveFgColor: AppColors.actionButtonTextColor,
+                        labels: [
+                          context.intl().system,
+                          context.intl().dark,
+                          context.intl().light
+                        ],
+                        initialLabelIndex: state.currentIndex,
+                        onToggle: (index) {
+                          context.read<SwitchThemeCubit>().saveTheme(index);
+                        },
+                        totalSwitches: 3,
+                      ),
+                    );
+                  },
+                ),
               ],
             );
           } else {

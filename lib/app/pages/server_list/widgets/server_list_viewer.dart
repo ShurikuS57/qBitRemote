@@ -41,20 +41,14 @@ class ServerListViewer extends StatelessWidget {
                               padding: const EdgeInsets.only(left: 16),
                               child: Text(
                                 server.name,
-                                style: TextStyle(
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.w400,
-                                    color: AppColors.textTitle1Color),
+                                style: Theme.of(context).textTheme.bodyText2,
                               ),
                             ),
                             Padding(
                               padding: const EdgeInsets.only(left: 16, top: 2),
                               child: Text(
                                 server.host,
-                                style: TextStyle(
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w400,
-                                    color: AppColors.textSubtitle1Color),
+                                style: Theme.of(context).textTheme.bodyText1,
                               ),
                             ),
                           ],
