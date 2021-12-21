@@ -8,6 +8,7 @@ import 'package:qBitRemote/app/pages/torrent_list/torrents_list_cubit.dart';
 import 'package:qBitRemote/app/widgets/MaterialDialog.dart';
 import 'package:qBitRemote/app/widgets/multiselect/multi_select_app_bar.dart';
 import 'package:qBitRemote/commons/extensions/build_context_ext.dart';
+import 'package:qBitRemote/commons/extensions/theme_ext.dart';
 
 import 'torrent_info_page.dart';
 
@@ -129,7 +130,7 @@ class _TorrentDetailsScreenState extends State<TorrentDetailsScreen> {
       })
       ..checkboxList = [
         CheckboxEntity(
-            id: "1", title: Text(context.intl().questionDeleteWithData))
+            id: "1", title: Text(context.intl().questionDeleteWithData, style: context.theme().dialogTheme.contentTextStyle))
       ]
       ..show();
   }
