@@ -216,9 +216,13 @@ class _AddTorrentScreenState extends State<AddTorrentScreen> {
             itemCount: selectedFiles.length,
             itemBuilder: (context, index) => Row(
                   children: [
-                    Text(
-                      selectedFiles[index],
-                      style: context.textTheme().bodyText1,
+                    Expanded(
+                      child: Text(
+                        selectedFiles[index],
+                        maxLines: 3,
+                        overflow: TextOverflow.ellipsis,
+                        style: context.textTheme().bodyText1,
+                      ),
                     ),
                     Spacer(),
                     IconButton(
